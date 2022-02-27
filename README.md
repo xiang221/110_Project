@@ -8,7 +8,7 @@
 
 #創建帳號 create_account
 
-#遊戲主頁 game -第一回 round1 -第二回 round2 -第三回 round3 -指認 accusation
+#遊戲主頁 game -第一回 round1 -第二回 round2 -第三回 round3 -指認 accusation -信件 mail
 
 #成功 succes
 
