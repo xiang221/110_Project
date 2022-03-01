@@ -1,18 +1,44 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body section.backImage {
+  min-height: 90vh;
+  width: 100%;
+  background-image: url("/picture/firstpage.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+
+  .start {
+    background-color: #FEC7FD;
+    color:azure;
+    padding: 1.2rem;
+    width:250px;
+    font-size: large;
+    border-color: azure;
+    top:100px
   }
 
-.firstpage{
-    display:flex;
-    flex-direction:column;
-}
-
-.start-btn{
 
 
-
-
-}
 
