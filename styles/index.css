@@ -5,7 +5,7 @@
 }
 
 body section.backImage {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   background-image: url("/picture/firstpage.png");
   background-size: cover;
