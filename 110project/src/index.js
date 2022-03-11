@@ -1,12 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import Firstpage from "./pages/Firstpage";
+import { BrowserRouter } from "react-router-dom";
 
-/*
-function app(){
-  return React.createElement("h1",null,"This is react app.");
-}
-
-ReactDOM.render(React.createElement(App)
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Firstpage />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-
-*/

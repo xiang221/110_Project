@@ -7,7 +7,7 @@
 section.backImage {
   min-height: 90vh;
   width: 100%;
-  background-image: url("/110project/public/picture/firstpage.png");
+  background-image: url("../picture/firstpage.png");
   background-size: cover;
   background-position: center;
   position: relative;
