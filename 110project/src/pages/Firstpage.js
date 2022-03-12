@@ -4,8 +4,8 @@ import '../styles/index.css'
 
 const Firstpage = () => {
   return (
-    <section class="backImage">
-      <Link to="./Secondpage.js"><button class="startBtn">START GAME</button></Link>
+    <section className='backImage'>
+      <Link to="./Secondpage"><button className='startBtn'>START GAME</button></Link>
     </section>
   )
 }

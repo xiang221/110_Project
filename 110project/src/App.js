@@ -7,12 +7,12 @@ import Main from "./pages/Main";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Routes>
         <Route path="/" element={<Firstpage />} />
-        <Route path="/secondpage" element={<Secondpage />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/main" element={<Main />} />
+        <Route path="secondpage" element={<Secondpage />} />
+        <Route path="account" element={<Account />} />
+        <Route path="main" element={<Main />} />
       </Routes>
     </div>
   );

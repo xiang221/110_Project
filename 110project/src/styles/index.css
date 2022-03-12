@@ -19,23 +19,22 @@ section.backImage {
 }
 
 
-  .start {
-    background-image: url("../picture/startBtn.png");
-    background-repeat: no-repeat;
-    width:100%;
-    height:auto;
-    left:10rem;
-  }
+.start {
+  background-image: url("../picture/startBtn.png");
+  background-repeat: no-repeat;
+  width:100%;
+  height:auto;
+  left:10rem;
+}
 
 
-  .startBtn{
-    background-color: #FEC7FD;
-    color:azure;
-    border-color: azure;
-    padding: 0.5rem;
-    width:200px;
-    font-size: 1.5rem;
-    top:100px;
-  }
-
+.startBtn{
+  background-color: #FEC7FD;
+  color:azure;
+  border-color: azure;
+  padding: 0.5rem;
+  width:200px;
+  font-size: 1.5rem;
+  top:100px;
+}
 
