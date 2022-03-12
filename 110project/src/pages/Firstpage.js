@@ -5,7 +5,7 @@ import '../styles/index.css'
 const Firstpage = () => {
   return (
     <section class="backImage">
-      <Link to="./Firstpage.js"><button class="start">START GAME</button></Link>
+      <Link to="./Secondpage.js"><button class="startBtn">START GAME</button></Link>
     </section>
   )
 }

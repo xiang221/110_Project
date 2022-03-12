@@ -7,7 +7,80 @@
     <meta name="description" content="一款辨認資訊真偽的遊戲" />
     <meta name="robots" content="index,follow" />
     <title>論壇風雲</title>
-    <link rel="stylesheet" href="/110project/src/styles/game.css" />
+    <style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #000000;
+  }
+
+  header {
+    width: 100%;
+    height: 63px;
+    padding: 1rem;
+    background-color: #000000;
+    z-index: -1;
+  }
+
+  header div {
+    display: flex;
+    background-color: #000000;
+  }
+
+  div.circle {
+    width: 1.5rem;
+    height: 1.5rem;
+    left: 30px;
+    margin: 0rem 0.3rem;
+    border-radius: 999em;
+  }
+
+  div.circle.circle1 {
+    background-color: #f06874;
+  }
+
+  div.circle.circle2 {
+    background-color: #6aaff2;
+  }
+
+  div.circle.circle3 {
+    background-color: #ffffff;
+  }
+
+  main {
+    width: 100%;
+    display: flex;
+  }
+
+  .left {
+    padding: 3em 2em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .onlinePlayer{
+    background-image: url('../src/picture/startBtn.png');
+
+  }
+
+  .mail{
+    background-image: url('./picture/mail.png');
+    width:100%;
+  }
+
+  .player_image {
+    background-image: url('./picture/player.png');
+    background-size: cover;
+    width: 15rem;
+    height:auto;
+    padding:2rem;
+    left:5rem;
+  }
+
+
+
+    </style>
   </head>
   <body>
     <header>
@@ -18,17 +91,23 @@
       </div>
     </header>
     <main>
-      <div class="left">
-        <div class="player_image">
-          <img src="picture/player.png" alt="player" />
+        <div class="left">
+          <p style="color:#ffffff;">上線玩家</p>
+          <div class="onlinePlayer"></div>
+          <div class="onlinePlayer"></div>
+          <div class="onlinePlayer"></div>
+          <div class="onlinePlayer"></div>
+          <div class="mail"></div>
         </div>
-        <div class="board_card"></div>
-      </div>
-      <div class="right">
+        <div class="player_image">
+        </div>
+        
+ 
+
         <div class="chat_box">
           <div class="chat_box_header"></div>
         </div>
-      </div>
+
     </main>
   </body>
 </html>

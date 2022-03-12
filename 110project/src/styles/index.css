@@ -5,8 +5,8 @@
 }
 
 section.backImage {
-  min-height: 90vh;
-  width: 100%;
+  min-height: 100vh;
+  min-width: 100vw;
   background-image: url("../picture/firstpage.png");
   background-size: cover;
   background-position: center;
@@ -15,21 +15,27 @@ section.backImage {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-
   text-align: center;
 }
 
 
   .start {
-    background-color: #FEC7FD;
-    color:azure;
-    padding: 1.2rem;
-    width:250px;
-    font-size: large;
-    border-color: azure;
-    top:100px
+    background-image: url("../picture/startBtn.png");
+    background-repeat: no-repeat;
+    width:100%;
+    height:auto;
+    left:10rem;
   }
 
 
+  .startBtn{
+    background-color: #FEC7FD;
+    color:azure;
+    border-color: azure;
+    padding: 0.5rem;
+    width:200px;
+    font-size: 1.5rem;
+    top:100px;
+  }
 
 
