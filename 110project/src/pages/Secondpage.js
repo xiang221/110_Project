@@ -1,7 +1,10 @@
 import React from 'react'
 import '../styles/secondpage.css'
 
+
 const Secondpage = () => {
+
+    setTimeout("location.href='account'",17500);
 
     const TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
