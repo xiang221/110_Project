@@ -29,11 +29,7 @@ const Secondpage = () => {
         this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
         const that = this;
-<<<<<<< Updated upstream
-        let delta = 200 - Math.random() * 100;
-=======
         var delta = 140 - Math.random() * 100;
->>>>>>> Stashed changes
 
         if (this.isDeleting) { delta /= 2; }
 
