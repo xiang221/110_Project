@@ -4,6 +4,7 @@ import Firstpage from "./pages/Firstpage";
 import Secondpage from "./pages/Secondpage";
 import Account from "./pages/Account";
 import Main from "./pages/Main";
+import Game from "./pages/Game";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="secondpage" element={<Secondpage />} />
         <Route path="account" element={<Account />} />
         <Route path="main" element={<Main />} />
+        <Route path="game" element={<Game />} />
       </Routes>
     </div>
   );
