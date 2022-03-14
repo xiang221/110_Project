@@ -4,7 +4,7 @@ import '../styles/secondpage.css'
 
 const Secondpage = () => {
 
-    setTimeout("location.href='account'",17500);
+    setTimeout("location.href='account'",14000);
 
     const TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
@@ -29,7 +29,11 @@ const Secondpage = () => {
         this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
         const that = this;
+<<<<<<< Updated upstream
         let delta = 200 - Math.random() * 100;
+=======
+        var delta = 140 - Math.random() * 100;
+>>>>>>> Stashed changes
 
         if (this.isDeleting) { delta /= 2; }
 
@@ -43,9 +47,10 @@ const Secondpage = () => {
         }
 
         setTimeout(function() {
-        that.tick();
-        }, delta);
-    };
+          that.tick();
+          }, delta);
+        
+    }
 
     window.onload = function() {
         let elements = document.getElementsByClassName('typewrite');
@@ -55,6 +60,7 @@ const Secondpage = () => {
             if (toRotate) {
               new TxtType(elements[i], JSON.parse(toRotate), period);
             }
+            
         }
 
     };
@@ -62,7 +68,7 @@ const Secondpage = () => {
   return (
     <div className='secondpage'>
     <h1>
-    <a href="" class="typewrite" data-period="2000" data-type='[ "......有人在那裡嗎？", "我需要你的幫忙", "我接下來會邀請你加入一個論壇", "請你幫助我揪出內鬼" ]'>
+    <a class="typewrite" data-period="2000" data-type='[ "......有人在那裡嗎？", "我需要你的幫忙", "我接下來會邀請你加入一個論壇", "請你幫助我揪出內鬼" ]'>
     <span class="wrap"></span>
     </a>
     </h1>
