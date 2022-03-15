@@ -1,3 +1,7 @@
+import React from 'react'
+
+const Messenger = () => {
+
 /*--------------------------------劇本-----------------------------------*/
 
 const Msg1 = [{//開場對話
@@ -395,3 +399,42 @@ function btnJQ(){//玩家輸入中的動畫
 showMsg(Msg1);
 //setTimeout("showMsg(Msg2)",delaySum);
 //setTimeout("setOption(1)", delaySum);
+
+  return (
+    <body>
+  <div id="wrapper">
+    <div class="chat">
+      <div class="chat-container">
+        <div class="chat-listcontainer">
+
+          <ul class="chat-message-list" id="chat-list">
+          </ul>
+
+          <div id="modal">
+            <div class="modal-header">
+              <div class="title" id="question-header">question header</div>
+              <button class="close-button" id="close-button">&times;</button>
+            </div>
+            <div class="modal-body" id="question-body">
+              <div>question text</div>
+            </div>
+            <div id="option-buttons" class="btn-grid">
+            </div>
+          </div>
+
+          <div id="overlay"></div>
+        </div>
+      </div>
+    </div>
+    <button class="answer-botton" id="answer-button">Answer</button>
+  </div>
+  <div id="debug">test</div>
+  <link rel="stylesheet" href="messenger.css" />
+  <script type="text/javascript" src="Messenger.js"></script>
+</body>
+  )
+}
+
+export default Messenger
+
+
