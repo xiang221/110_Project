@@ -46,7 +46,7 @@ const Secondpage = () => {
     };
 
     window.onload = function() {
-        setTimeout("location.href='account'",14000);
+        setTimeout("location.href='account'",110500);
         var elements = document.getElementsByClassName('typewrite');
         for (var i=0; i<elements.length; i++) {
             var toRotate = elements[i].getAttribute('data-type');
