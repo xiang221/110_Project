@@ -15,9 +15,10 @@ const Secondpage = () => {
     };
 
     TxtType.prototype.tick = function() {
-        var i = this.loopNum % this.toRotate.length;
-        var fullTxt = this.toRotate[i];
+        let i = this.loopNum % this.toRotate.length;
+        let fullTxt = this.toRotate[i];
 
+        //字消失或增加
         if (this.isDeleting) {
         this.txt = fullTxt.substring(0, this.txt.length - 1);
         } else {
@@ -31,6 +32,7 @@ const Secondpage = () => {
 
         if (this.isDeleting) { delta /= 2; }
 
+        //判斷是否需刪除字
         if (!this.isDeleting && this.txt === fullTxt) {
         delta = this.period;
         this.isDeleting = true;
@@ -42,16 +44,16 @@ const Secondpage = () => {
 
         setTimeout(function() {
         that.tick();
-        }, delta);
+        },delta);
     };
 
     window.onload = function() {
-        setTimeout("location.href='account'",110500);
+        setTimeout("location.href='account'",11500);
         var elements = document.getElementsByClassName('typewrite');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
+        for (let i=0; i<elements.length; i++) {
+            let toRotate = elements[i].getAttribute('data-type');
+            let period = elements[i].getAttribute('data-period');
+            if (toRotate) { //是否還有剩餘字串
               new TxtType(elements[i], JSON.parse(toRotate), period);
             }
         }
@@ -59,12 +61,12 @@ const Secondpage = () => {
     };
 
   return (
-    <body onload="location.replace()">
-    <div className='secondpage'>
+    <body>
+    <div className='secondpage' >
     <h1>
-    <a href="" class="typewrite" data-period="2000" data-type='[ "......有人在那裡嗎？", "我需要你的幫忙", "我接下來會邀請你加入一個論壇", "請你幫助我揪出內鬼" ]'>
+    <div class="typewrite" data-period="1500" data-type='[ "......有人在那裡嗎？", "我需要你的幫忙", "我接下來會邀請你加入一個論壇", "請你幫助我揪出內鬼" ]'>
     <span class="wrap"></span>
-    </a>
+    </div>
     </h1>
     </div>
     </body>
