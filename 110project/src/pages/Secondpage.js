@@ -20,6 +20,7 @@ const Secondpage = () => {
         let i = this.loopNum % this.toRotate.length;
         let fullTxt = this.toRotate[i];
 
+        //刪除文字特效
         if (this.isDeleting) {
         this.txt = fullTxt.substring(0, this.txt.length - 1);
         } else {
