@@ -1,0 +1,38 @@
+
+body{
+    background-color: black;
+    color: green;
+    min-height: 100vh;
+}
+
+
+.form{
+    font-size: 1.5rem;
+    justify-content:center;
+    align-items:center;
+    padding-top:10rem;
+    text-align: center;
+}
+
+.input{
+    margin-top:2rem;
+    display:block;
+    justify-content:center;
+    align-items:center;
+}
+
+.input input[type="text"]{
+    color:black;
+    max-width:10rem;
+}
+.input input[type="password"]{
+    color:black;
+    max-width:10rem;
+}
+
+
+.input input[type="submit"]{
+    color:black;
+    max-width:10rem;
+    cursor:pointer;
+}

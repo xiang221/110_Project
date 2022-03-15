@@ -1,0 +1,17 @@
+* { 
+    text-decoration: none;
+    font-size:1rem;
+    color:green; 
+}
+
+
+.secondpage {
+    min-height: 100vh;
+    background-color:black;
+    text-align: center;
+    padding-top:15rem;
+}
+  
+.wrap { 
+    border-right: 0.08em solid #fff
+}
