@@ -13,3 +13,34 @@ body{
     align-items:center;
     padding-top:10rem;
 }
+<<<<<<< Updated upstream
+=======
+
+.input{
+    margin-top:2rem;
+    display:block;
+    justify-content:center;
+    align-items:center;
+}
+
+.input input[type="text"]{
+    background-color: aliceblue;
+    color:black;
+    max-width:10rem;
+}
+.input input[type="password"]{
+    background-color: aliceblue;
+    color:black;
+    max-width:10rem;
+}
+
+
+.input input[type="submit"]{
+    background-color: aliceblue;
+    color: black;
+    font-size: small;
+    padding: 0.1rem 0.5rem;
+    max-width:10rem;
+    cursor:pointer;
+}
+>>>>>>> Stashed changes

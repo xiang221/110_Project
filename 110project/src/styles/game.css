@@ -10,7 +10,7 @@
 .header {
   width: 100%;
   height: 63px;
-  padding: 1rem;
+  padding: 1rem 2rem;
   background-color: #000000;
   z-index: -1;
 }
@@ -47,6 +47,92 @@ main {
   display: flex;
 }
 
+<<<<<<< Updated upstream
+=======
+
+
+.container{
+  top:10rem;
+  width:30%;
+  height:80%;
+  text-align:center;
+  align-items: center;
+  width:10rem;
+  display:flex;
+  flex-direction: column;
+  padding:1rem 0.5rem;
+}
+
+/*Online*/
+
+.onlinecontainer{
+  padding:0rem 0.5rem;
+  align-items: center;
+  display:flex;
+  flex-direction: column;
+}
+
+.text{
+  color:#ffffff;
+  font-size: 0.8em;
+}
+
+.player{
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.player1{
+  background-image: url('../picture/player1.png');
+  background-repeat: no-repeat;
+  background-size: 80% auto;
+  background-position: center;
+  height:4.5rem;
+  width:4.5rem;
+}
+
+.player2{
+  background-image: url('../picture/player2.png');
+  background-repeat: no-repeat;
+  background-size: 80% auto;
+  background-position: center;
+  height:4.5rem;
+  width:4.5rem;
+}
+
+.player3{
+  background-image: url('../picture/player3.png');
+  background-repeat: no-repeat;
+  background-size: 80% auto;
+  background-position: center;
+  height:4.5rem;
+  width:4.5rem;
+}
+
+.player4{
+  background-image: url('../picture/player4.png');
+  background-repeat: no-repeat;
+  background-size: 80% auto;
+  background-position: center;
+  height:4.5rem;
+  width:4.5rem;
+}
+
+
+/*Mail*/
+
+
+.mail{
+  background-image: url('../picture/mail.png');
+  background-repeat: no-repeat;
+  background-size: 45% auto;
+  align-items: center;
+  padding:3rem;
+}
+
+
+
+>>>>>>> Stashed changes
 
 .left,
 .right {
