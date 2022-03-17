@@ -4,7 +4,7 @@ import '../styles/secondpage.css'
 
 const Secondpage = () => {
 
-    setTimeout("location.href='account'",14000);
+    
 
     const TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
@@ -50,6 +50,7 @@ const Secondpage = () => {
     }
 
     window.onload = function() {
+        setTimeout("location.href='account'",14000);
         let elements = document.getElementsByClassName('typewrite');
         for (let i=0; i<elements.length; i++) {
             let toRotate = elements[i].getAttribute('data-type');
