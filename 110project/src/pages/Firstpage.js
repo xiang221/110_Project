@@ -3,9 +3,16 @@ import { Link } from "react-router-dom";
 import '../styles/index.css'
 
 const Firstpage = () => {
+  const navigate = useNavigate();
+
+  const navEventHandler = () => {
+      navigate('/secondpage');
+      window.location.reload();
+  } 
+
   return (
     <section className='backImage'>
-      <Link to="account"><button className='startBtn'>START GAME</button></Link>
+      <button className='startBtn' onClick={navEventHandler}>START GAME</button>
     </section>
   )
 }
