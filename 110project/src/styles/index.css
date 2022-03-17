@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.backImage {
+section.backImage {
   min-height: 100vh;
   min-width: 100vw;
   background-image: url("../picture/firstpage.png");
@@ -18,20 +18,23 @@
   text-align: center;
 }
 
-.start{
-  background-image: url("../picture/startBtn.png");
-  background-size: cover;
-  background-position: center;
-  width:10rem;
-}
-
 .startBtn{
   background-color: #FEC7FD;
   color:azure;
   border-color: azure;
   padding: 0.5rem;
-  width:200px;
-  top:200px;
+  width:13.5rem;
+  height:3rem;
   font-size: 1.5rem;
+  position: absolute;
+  left: 19.7rem;
+  top: 18.6rem;
 }
 
+.start {
+  background-image: url("../picture/startBtn.png");
+  background-repeat: no-repeat;
+  width:100%;
+  height:auto;
+  left:10rem;
+}
