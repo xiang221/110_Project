@@ -13,6 +13,8 @@
   padding: 1rem 2rem;
   background-color: #000000;
   z-index: -1;
+  display:flex;
+
 }
 
 .header div {
@@ -21,11 +23,12 @@
 }
 
 div.circle {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   left: 30px;
   margin: 0rem 0.3rem;
   border-radius: 999em;
+  
 }
 
 div.circle.circle1 {
@@ -47,8 +50,6 @@ main {
   display: flex;
 }
 
-<<<<<<< Updated upstream
-=======
 
 
 .container{
@@ -60,7 +61,7 @@ main {
   width:10rem;
   display:flex;
   flex-direction: column;
-  padding:1rem 0.5rem;
+  padding:0.5rem;
 }
 
 /*Online*/
@@ -79,7 +80,7 @@ main {
 
 .player{
   align-items: center;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
 }
 
 .player1{
@@ -87,8 +88,8 @@ main {
   background-repeat: no-repeat;
   background-size: 80% auto;
   background-position: center;
-  height:4.5rem;
-  width:4.5rem;
+  height:4rem;
+  width:4rem;
 }
 
 .player2{
@@ -96,8 +97,8 @@ main {
   background-repeat: no-repeat;
   background-size: 80% auto;
   background-position: center;
-  height:4.5rem;
-  width:4.5rem;
+  height:4rem;
+  width:4rem;
 }
 
 .player3{
@@ -105,8 +106,8 @@ main {
   background-repeat: no-repeat;
   background-size: 80% auto;
   background-position: center;
-  height:4.5rem;
-  width:4.5rem;
+  height:4rem;
+  width:4rem;
 }
 
 .player4{
@@ -114,8 +115,8 @@ main {
   background-repeat: no-repeat;
   background-size: 80% auto;
   background-position: center;
-  height:4.5rem;
-  width:4.5rem;
+  height:4rem;
+  width:4rem;
 }
 
 
@@ -125,14 +126,14 @@ main {
 .mail{
   background-image: url('../picture/mail.png');
   background-repeat: no-repeat;
-  background-size: 45% auto;
+  background-size: 50% auto;
+  background-position: center;
   align-items: center;
-  padding:3rem;
+  padding:3.5rem;
 }
 
 
 
->>>>>>> Stashed changes
 
 .left,
 .right {

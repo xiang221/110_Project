@@ -5,13 +5,6 @@ const Online = () => {
 
 
   return (
-<<<<<<< Updated upstream
-    <div>
-    <div class="onlinePlayer"></div>
-    <div class="onlinePlayer"></div>
-    <div class="onlinePlayer"></div>
-    <div class="onlinePlayer"></div>
-=======
     <div className='onlinecontainer'>
     <div className='text'>上線玩家</div>
     <div className='player'>
@@ -26,7 +19,6 @@ const Online = () => {
     <div className='player'>
     <div className='player4'></div>
     </div>
->>>>>>> Stashed changes
     </div>
   )
 }
