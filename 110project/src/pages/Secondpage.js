@@ -6,7 +6,7 @@ const Secondpage = () => {
 
     
 
-    const TxtType = function(el, toRotate, period) {
+    const Text = function(el, toRotate, period) {
         this.toRotate = toRotate;
         this.el = el;
         this.loopNum = 0;
@@ -16,7 +16,7 @@ const Secondpage = () => {
         this.isDeleting = false;
     };
 
-    TxtType.prototype.tick = function() {
+    Text.prototype.tick = function() {
         let i = this.loopNum % this.toRotate.length;
         let fullTxt = this.toRotate[i];
 
@@ -56,7 +56,7 @@ const Secondpage = () => {
             let toRotate = elements[i].getAttribute('data-type');
             let period = elements[i].getAttribute('data-period');
             if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
+              new Text(elements[i], JSON.parse(toRotate), period);
             }
             
         }

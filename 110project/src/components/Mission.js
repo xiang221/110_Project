@@ -5,7 +5,7 @@ const Mission = () => {
 
 
     <div>
-
+      mission
     </div>
   )
 }

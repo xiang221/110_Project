@@ -10,7 +10,7 @@
 .header {
   width: 100%;
   height: 63px;
-  padding: 1rem 2rem;
+  padding: 1rem 2.2rem;
   background-color: #000000;
   z-index: -1;
   display:flex;
@@ -50,11 +50,14 @@ main {
   display: flex;
 }
 
-
-
 .container{
+  display:flex;
+  flex-direction: row;
+}
+
+
+.left{
   top:10rem;
-  width:30%;
   height:80%;
   text-align:center;
   align-items: center;
@@ -133,14 +136,19 @@ main {
 }
 
 
+/*playercard*/
 
-
-.left,
-.right {
-  padding: 1em 3rem;
-  display: flex;
+.middle{
+  display:flex;
   flex-direction: column;
+
+
 }
+
+
+
+
+
 
 .player_image {
   width: 300px;
