@@ -143,22 +143,9 @@ main {
 .middle{
   display:flex;
   flex-direction: column;
-  flex-grow:1;
+  flex-grow:0.5;
   padding-top: 2rem;
 }
-
-
-
-
-/*mission*/
-
-.mission1{
-
-
-}
-
-
-
 
 
 
