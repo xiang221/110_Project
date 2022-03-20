@@ -1,0 +1,54 @@
+
+
+.playercard{
+    margin: 0.5rem;
+    background-image: url('../picture/user.png');
+    background-size: 40% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    height:10rem;
+}
+
+
+h3{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 0.85rem;
+    line-height: 1.5rem;
+    display: inline;
+    color: black;
+}
+
+p{
+    font-size: 0.5rem;
+    line-height: 1rem; 
+    color: black; 
+}
+
+.missioncontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mission{
+    padding: 0.5rem;
+    width:15rem;
+    height:3.75rem;
+    background-color: #FFA5F1;
+    border-color: #C4C4C4;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.mission .circle{
+    width: 30px;
+    height: 30px;
+    margin: 0rem 0.3rem;
+    border-radius: 999em;
+    z-index: 2;
+    background: #C4C4C4;
+    border: 5px solid #81FAF8;
+    display: inline-flex;
+
+}

@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Roboto';
 }
 
 
@@ -55,6 +56,7 @@ main {
   flex-direction: row;
 }
 
+/*left*/
 
 .left{
   top:10rem;
@@ -136,11 +138,21 @@ main {
 }
 
 
-/*playercard*/
+/*middla*/
 
 .middle{
   display:flex;
   flex-direction: column;
+  flex-grow:1;
+  padding-top: 2rem;
+}
+
+
+
+
+/*mission*/
+
+.mission1{
 
 
 }
@@ -150,9 +162,13 @@ main {
 
 
 
-.player_image {
-  width: 300px;
+
+.right{
+  display:flex;
+  flex-grow:2;
 }
+
+
 
 .board_card {
   display: flex;
