@@ -1,13 +1,21 @@
 
+.playercontainer{
+    
+
+
+}
+
 
 .playercard{
     margin: 0.5rem;
     background-image: url('../picture/user.png');
-    background-size: 40% auto;
+    background-size: 50% auto;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: #FFA5F1;
     height:10rem;
 }
+
 
 
 h3{
