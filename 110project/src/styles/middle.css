@@ -1,8 +1,7 @@
 
 .playercontainer{
-    
-
-
+    background: linear-gradient(45deg, #FFA5F1,#98F9F3);
+    border: 0.2rem solid #FFF;
 }
 
 
@@ -12,7 +11,6 @@
     background-size: 50% auto;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #FFA5F1;
     height:10rem;
 }
 
@@ -25,7 +23,7 @@ h3{
     line-height: 1.5rem;
     display: inline;
     color: black;
-    margin-left:1rem;
+    margin-left:1.5rem;
 }
 
 p{
@@ -33,7 +31,7 @@ p{
     line-height: 1rem;
     display: inline; 
     color: black; 
-    margin-left:1rem;
+    margin-left:1.5rem;
 }
 
 .missioncontainer{
@@ -43,23 +41,23 @@ p{
 }
 
 .mission{
-    padding: 0.5rem;
     width:16rem;
     height:3.75rem;
-    background-color: #FFA5F1;
-    border-color: #C4C4C4;
+    background: linear-gradient(45deg, #FFA5F1,#98F9F3);
+    border: 0.2rem solid #FFF;
     margin-top: 1.5rem;
     text-align:start;
+    padding:0.3rem;
 }
 
 .boxcircle{
-    width: 2.8rem;
-    height: 2.8rem;
-    margin: 0rem 0.3rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    margin: 0.1rem;
     border-radius: 999em;
     z-index: 2;
     background: #C4C4C4;
-    border: 5px solid #81FAF8;
+    border: 0.3rem solid #81FAF8;
     display: inline;
     float:left;
 }

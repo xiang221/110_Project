@@ -5,10 +5,11 @@
 }
 
 section.backImage {
-  min-height: 100vh;
-  min-width: 100vw;
+  height: 100vh;
+  width: 100vw;
   background-image: url("../picture/firstpage.png");
-  background-size: cover;
+  background-size:contain;
+  background-repeat: no-repeat;
   background-position: center;
   position: relative;
   z-index: 0;
@@ -21,12 +22,12 @@ section.backImage {
   color:azure;
   border-color: azure;
   padding: 0.5rem;
-  width:13.5rem;
-  height:3rem;
+  width:15rem;
+  height:3.5rem;
   font-size: 1.5rem;
   position: absolute;
-  left: 16rem;
-  top: 17.5rem;
+  left: 40.5%;
+  top: 58%;
 }
 
 .start {
