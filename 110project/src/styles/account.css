@@ -32,7 +32,9 @@ body{
 
 
 .input input[type="submit"]{
+    background-color:antiquewhite;
     color:black;
-    max-width:10rem;
+    font-size: 0.5rem;
+    min-width:3rem;
     cursor:pointer;
 }
