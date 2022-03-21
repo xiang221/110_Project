@@ -4,7 +4,9 @@ import '../styles/secondpage.css'
 
 const Secondpage = () => {
 
-    const TxtType = function(el, toRotate, period) {
+    
+
+    const Text = function(el, toRotate, period) {
         this.toRotate = toRotate;
         this.el = el;
         this.loopNum = 0;
@@ -14,11 +16,11 @@ const Secondpage = () => {
         this.isDeleting = false;
     };
 
-    TxtType.prototype.tick = function() {
+    Text.prototype.tick = function() {
         let i = this.loopNum % this.toRotate.length;
         let fullTxt = this.toRotate[i];
 
-        //字消失或增加
+        //刪除文字特效
         if (this.isDeleting) {
         this.txt = fullTxt.substring(0, this.txt.length - 1);
         } else {
@@ -28,11 +30,10 @@ const Secondpage = () => {
         this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
         const that = this;
-        var delta = 130 - Math.random() * 100;
+        var delta = 140 - Math.random() * 100;
 
         if (this.isDeleting) { delta /= 2; }
 
-        //判斷是否需刪除字
         if (!this.isDeleting && this.txt === fullTxt) {
         delta = this.period;
         this.isDeleting = true;
@@ -43,33 +44,33 @@ const Secondpage = () => {
         }
 
         setTimeout(function() {
-        that.tick();
-        },delta);
-    };
+          that.tick();
+          }, delta);
+        
+    }
 
     window.onload = function() {
-        setTimeout("location.href='account'",11500);
-        var elements = document.getElementsByClassName('typewrite');
+        setTimeout("location.href='account'",14000);
+        let elements = document.getElementsByClassName('typewrite');
         for (let i=0; i<elements.length; i++) {
             let toRotate = elements[i].getAttribute('data-type');
             let period = elements[i].getAttribute('data-period');
-            if (toRotate) { //是否還有剩餘字串
-              new TxtType(elements[i], JSON.parse(toRotate), period);
+            if (toRotate) {
+              new Text(elements[i], JSON.parse(toRotate), period);
             }
+            
         }
 
     };
 
   return (
-    <body>
-    <div className='secondpage' >
+    <div className='secondpage'>
     <h1>
-    <div class="typewrite" data-period="1500" data-type='[ "......有人在那裡嗎？", "我需要你的幫忙", "我接下來會邀請你加入一個論壇", "請你幫助我揪出內鬼" ]'>
+    <a class="typewrite" data-period="2000" data-type='[ "......有人在那裡嗎？", "我需要你的幫忙", "我接下來會邀請你加入一個論壇", "請你幫助我揪出內鬼" ]'>
     <span class="wrap"></span>
-    </div>
+    </a>
     </h1>
     </div>
-    </body>
   )
 }
 

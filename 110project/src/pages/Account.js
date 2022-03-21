@@ -9,7 +9,7 @@ const Account = () => {
   return (
       <div className='form'>
       <h2>註冊東方哈拉論壇</h2>
-      <form action="main" method="get">
+      <form action="game" method="get">
       <div className='input'>
       帳號  <input type="text" name="account"/>
       </div>

@@ -12,8 +12,6 @@ section.backImage {
   background-position: center;
   position: relative;
   z-index: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   text-align: center;
 }
@@ -27,8 +25,8 @@ section.backImage {
   height:3rem;
   font-size: 1.5rem;
   position: absolute;
-  left: 19.7rem;
-  top: 18.6rem;
+  left: 16rem;
+  top: 17.5rem;
 }
 
 .start {
