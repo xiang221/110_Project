@@ -11,11 +11,10 @@
 .header {
   width: 100%;
   height: 63px;
-  padding: 1rem 2.2rem;
+  padding: 1rem 3.5rem;
   background-color: #000000;
   z-index: -1;
   display:flex;
-
 }
 
 .header div {
@@ -24,12 +23,11 @@
 }
 
 div.circle {
-  width: 22px;
-  height: 22px;
-  left: 30px;
+  width: 20px;
+  height: 20px;
+  left: 10rem;
   margin: 0rem 0.3rem;
-  border-radius: 999em;
-  
+  border-radius: 999em; 
 }
 
 div.circle.circle1 {
@@ -67,6 +65,7 @@ main {
   display:flex;
   flex-direction: column;
   padding:0.5rem;
+  flex-grow:0.5;
 }
 
 /*Online*/
@@ -143,7 +142,7 @@ main {
 .middle{
   display:flex;
   flex-direction: column;
-  flex-grow:0.5;
+  flex-grow:1.5;
   padding-top: 2rem;
 }
 

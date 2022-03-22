@@ -6,6 +6,7 @@ import '../styles/account.css'
 const Account = () => {
 
 
+  
   return (
       <div className='form'>
       <h2>註冊東方哈拉論壇</h2>
