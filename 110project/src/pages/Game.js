@@ -8,7 +8,8 @@ import Player from '../components/Player'
 import '../styles/game.css'
 
 
-const Game = () => {
+const Game = ({user, setUser}) => {
+
   return (
     <div>
       <Header/>
@@ -18,11 +19,11 @@ const Game = () => {
           <Mail/>
         </div>
         <div className='middle'>
-          <Player/>
+          <Player />
           <Mission/>
         </div>
         <div className='right'>
-          <Chatbox/>
+
         </div>
       </div>
     </div>

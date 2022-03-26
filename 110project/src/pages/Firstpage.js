@@ -7,6 +7,7 @@ const Firstpage = () => {
 
   const navEventHandler = () => {
       navigate('/secondpage');
+      localStorage.clear(); 
       window.location.reload();
   } 
 

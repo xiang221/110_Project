@@ -1,5 +1,4 @@
 import React from 'react'
-import GlitchedWriter from 'glitched-writer'
 
 
 const Second = () => {
