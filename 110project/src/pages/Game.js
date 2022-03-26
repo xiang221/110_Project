@@ -19,11 +19,11 @@ const Game = ({user, setUser}) => {
           <Mail/>
         </div>
         <div className='middle'>
-          <Player />
+          <Player/>
           <Mission/>
         </div>
         <div className='right'>
-
+          <Chatbox/>
         </div>
       </div>
     </div>
