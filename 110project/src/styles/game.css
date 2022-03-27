@@ -94,6 +94,7 @@ main {
   background-position: center;
   height:4rem;
   width:4rem;
+  cursor: pointer;
 }
 
 .player2{

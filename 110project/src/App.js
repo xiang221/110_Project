@@ -1,5 +1,6 @@
 import React, { useState, useEffect }  from "react";
 import { Routes, Route } from "react-router-dom";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Firstpage from "./pages/Firstpage";
 import Secondpage from "./pages/Secondpage";
 import Account from "./pages/Account";
