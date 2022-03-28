@@ -2,27 +2,32 @@ import React from 'react'
 import '../styles/popup.css'
 
 const Popup = (props) =>  {
-    return (props.trigger)?(
 
-        <div className="modal-overlay">
-		<div className="model-inner">
-			<div className="modal-header">
-				<h3></h3>
-				<a className="close-modal" onClick={()=>props.show1handler(false)}>✖</a>
-			</div>
-			<p>
-				Natus earum velit ab nobis eos. Sed et exercitationem voluptatum omnis
-				dolor voluptates. Velit ut ipsam sunt ipsam nostrum. Maiores officia
-				accusamus qui sapiente. Dolor qui vel placeat dolor nesciunt quo dolor
-				dolores. Quo accusamus hic atque nisi minima.
-			</p>
-		</div>
-	</div> 
-     
-    ):'';
+        return (props.trigger)?(
+            <div className="modal-overlay">
+                <div className={props.pic}>
+                    <a className="close-modal" onClick={()=>props.showhandler(false)}>✖</a>
+                </div>
+            </div>   
+        ):'';
+    
 }
 
 /*
+
+<div className="modal-overlay">
+		<div className="model-inner">
+			<div className="modal-header">
+				<h3>創世神</h3>
+				<a className="close-modal" onClick={()=>props.show1handler(false)}>✖</a>
+			</div>
+			<p>
+            東方哈啦論壇的創辦人與管理者。
+        日壞份子似乎想奪去管理者的身份、散播假消息，為了保護整個論壇的和平，創世神找上了調查員，希望能在找出壞份子的同時，保護創世神的身份不要被洩露。
+			</p>
+		</div>
+	</div> 
+
         <div className='popup'>
             <p>角色介紹</p>
             <div className='popup-inner'>
