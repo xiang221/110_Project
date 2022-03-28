@@ -18,6 +18,7 @@ const Account = ({user, setUser}) => {
   }
   
   return (
+      
       <div className='form'>
 
       <h2>註冊東方哈拉論壇</h2>
@@ -33,6 +34,7 @@ const Account = ({user, setUser}) => {
       </div>
       </form>
       </div>
+
   )
 }
 

@@ -23,7 +23,7 @@ const Game = ({user, setUser}) => {
           <Mission/>
         </div>
         <div className='right'>
-        
+          <Chatbox/>
         </div>
       </div>
     </div>
