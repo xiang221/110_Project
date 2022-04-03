@@ -1,11 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../styles/chatbox.css'
+import './OptionBtn.js'
+import OptionBtn from './OptionBtn.js'
+import ShowMessage from './ShowMessage'
 
-const Chatbox = () => {
-
-  function showOptions() {
-    console.log("clicked")
-  }
+const Chatbox = ({message}) => {
+  
+  const[buttonPopup, setButtonPopup] = useState(false);
 
   return (
     <>
@@ -16,109 +17,13 @@ const Chatbox = () => {
             <div className="time-limit-container"></div>
           </div>
           <div className="time-limit">14:00</div>
-          <button className="answer-button" id="answer-button" onClick={showOptions}>Answer</button>
+          <button className="answer-button" id="answer-button"  onClick={() => setButtonPopup(true)}>Answer</button>
           <div className="chat-container">
             <ul className="chat-message-list" id="chat-list">
-              <li>
-                <div className="message-left-first">
-                  <div className="message-sender">匿名蘋果</div>
-                  <span>
-                    <img className="chat-pic" src="https://img.onl/1MG2S1"></img>
-                  </span>
-                  <span>
-                    <span className="message-text">React 好難</span>
-                  </span>
-
-                  <span className="message-time">上午12:36</span>
-                </div>
-              </li>
-
-              <li>
-                <div className="message-left">
-                  <span>
-                    <span className="message-text">React 好難</span>
-                  </span>
-                </div>
-              </li>
-
-              <li>
-                <div className="message-left-first">
-                  <div className="message-sender">匿名蘋果</div>
-                  <span>
-                    <img className="chat-pic" src="https://img.onl/1MG2S1"></img>
-                  </span>
-                  <span>
-                    <span className="message-text">React 好難</span>
-                  </span>
-
-                  <span className="message-time">上午12:36</span>
-                </div>
-              </li>
-
-              <li>
-                <div className="message-left-first">
-                  <div className="message-sender">匿名蘋果</div>
-                  <span>
-                    <img className="chat-pic" src="https://img.onl/1MG2S1"></img>
-                  </span>
-                  <span>
-                    <span className="message-text">React 好難</span>
-                  </span>
-
-                  <span className="message-time">上午12:36</span>
-                </div>
-              </li>
-              <li>
-                <div className="message-left-first">
-                  <div className="message-sender">匿名蘋果</div>
-                  <span>
-                    <img className="chat-pic" src="https://img.onl/1MG2S1"></img>
-                  </span>
-                  <span>
-                    <span className="message-text">React 好難</span>
-                  </span>
-
-                  <span className="message-time">上午12:36</span>
-                </div>
-              </li>
-              <li>
-                <div className="message-left-first">
-                  <div className="message-sender">匿名蘋果</div>
-                  <span>
-                    <img className="chat-pic" src="https://img.onl/1MG2S1"></img>
-                  </span>
-                  <span>
-                    <span className="message-text">React 好難</span>
-                  </span>
-
-                  <span className="message-time">上午12:36</span>
-                </div>
-              </li>
-              <li>
-                <div className="message-left-first">
-                  <div className="message-sender">匿名蘋果</div>
-                  <span>
-                    <img className="chat-pic" src="https://img.onl/1MG2S1"></img>
-                  </span>
-                  <span>
-                    <span className="message-text">React 好難</span>
-                  </span>
-
-                  <span className="message-time">上午12:36</span>
-                </div>
-              </li>
-
+              <ShowMessage/>
             </ul>
           </div>
-
-          <div id="option-popup">
-            <div id="option-buttons" className="option-btn-grid">
-              <button className="option-btn">選項1</button>
-              <button className="option-btn">選項2</button>
-            </div>
-          </div>
-          <div id="overlay"></div>
-
+          <OptionBtn trigger={buttonPopup}/>
         </div>
 
       </div>
