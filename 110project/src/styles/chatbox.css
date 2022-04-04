@@ -208,6 +208,10 @@
     vertical-align: sub;
     color:#000000;
   }
+
+  .chat-message-list{
+    list-style: none;
+  }
   
   /*--------------向右對齊的訊息格式-----------------*/
   

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/chatbox.css'
 
+var optionState = [];
+
 //劇本的物件陣列
 const Scripts = [
   {
@@ -73,8 +75,6 @@ const Chatbox = () => {
     const nextScriptId2 = option2.map(sub => sub.nextScriptId);
     console.log("optionbutton scriptState = " + currScriptState)
 
-    let optionState = [];
-
     function record(optionText) {//記錄玩家選擇的option按鈕的文字
       optionState.push(optionText);
       console.log("optionText record = " + optionState)
@@ -95,7 +95,7 @@ const Chatbox = () => {
     ) : "";
   }
 
-  return (//顯示整個ChatBox
+  return (//顯示整個ChatBox的內容
     <>
       <div id="wrapper">
         <div className="chat">
