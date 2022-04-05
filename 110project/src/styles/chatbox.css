@@ -198,6 +198,20 @@
     line-height: 15px;
     color:#000000;
   }
+  .message-left .message-time {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 10px;
+    line-height: 12px;
+    margin-left: 10px;
+    vertical-align: sub;
+    color:#000000;
+  }
+
+  .chat-message-list{
+    list-style: none;
+  }
   
   /*--------------向右對齊的訊息格式-----------------*/
   
@@ -265,21 +279,21 @@
   /*--------------------Answer按鈕按下後的選項popUp-----------------------*/
   
   #option-popup{
-    transform:scale(0);
+    transform:scale(1);
     transition: 200ms ease-in-out;
     z-index: 10;
   
     position: absolute;
-    width: 500px;
+    width: 502px;
     height: 208px;
-    left: 5px;
+    left: 0px;
     top: 326px;
-  
+
     background: #C4C4C4;
   }
   
   #option-popup.active{
-    transform:scale(1);
+    transform:scale(0);
     transition: 200ms ease-in-out;
     z-index: 10;
   
@@ -309,6 +323,8 @@
     margin:30px;
     width: 190px;
     height: 145px;
+    color: #000;
+
   }
   
   .option-btn:hover {
