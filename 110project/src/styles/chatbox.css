@@ -132,7 +132,7 @@
   
   .message-left-first .message-text {
   
-  max-width: 70%;
+  max-width: 60%;
   display: inline-block;
   align-items: center;
   padding: 8px 8px 8px 8px;
@@ -185,7 +185,7 @@
   }
   
   .message-left .message-text {
-    max-width: 70%;
+    max-width: 60%;
     display: inline-block;
     align-items: center;
     padding: 8px 8px 8px 8px;
@@ -387,4 +387,55 @@
   
     background: #C4C4C4;
     color:#000000;
+  }
+
+    /*--------------------第一關InputPopUp-----------------------*/
+  
+    #accuse2-popup{
+      transform:scale(1);
+      transition: 200ms ease-in-out;
+      z-index: 10;
+  
+      position: absolute;
+      width: 502px;
+      height: 535px;
+      left: 0px;
+      top: 0px;
+    
+      background: #C4C4C4;
+      color:#000000;
     }
+
+    .accuse2-title {
+      text-align: center;
+      
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 21px;
+
+      color: #000;
+    }
+
+    .accuse2-btn {
+      background: #FFFFFF;
+      
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 21px;
+      margin:30px;
+      width: 190px;
+      height: 145px;
+      color: #000;
+  
+    }
+
+    .accuse-btn-grid {
+      display: grid;/*用格線方式排button*/
+      grid-template-columns: repeat(4, auto);
+      gap: 0px;
+    }
+

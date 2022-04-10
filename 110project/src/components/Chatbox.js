@@ -22,36 +22,36 @@ function getRandomInt(max) {
 const nickNameRandomIndex = getRandomInt(11)
 const nickNameList = nickNameRandomList[nickNameRandomIndex]
 
-console.log("nickNameRandomList = " + nickNameRandomList);
+//console.log("nickNameRandomList = " + nickNameRandomList);
 console.log("nickNameRandomIndex = " + nickNameRandomIndex);
 console.log("nickNameRandomList" + nickNameList);
 
-function assignChatPic(nickName) {
-  switch (nickName) {
-    case (nickName === "A"):
-      return "../picture/ChatPic_faker.png"
-    case (nickName === "B"):
-      return "../picture/ChatPic_noname.png.png"
-    case (nickName === "C"):
-      return "../picture/ChatPic_netizen.png"
-    case (nickName === "D"):
-      return "../picture/ChatPic_hacker.png"
-    default:
-      console.log(nickName + "'s CharPic didn't match any one")
-      break
+function assignChatPic(nickName) {//圖片待UI補
+  if(nickName === "A"){
+    return "https://img.onl/zxNUe"
+  }
+  else if(nickName === "B"){
+    return "https://img.onl/zpL9RB"
+  }
+  else if(nickName === "C"){
+    return "https://img.onl/XERRDA"
+  } 
+  else if(nickName === "D"){
+    return "https://img.onl/V9HtiR"
   }
 }
 
-const Young = new Character("Young", "C", assignChatPic("C"))
-const Robot = new Character("Robot", nickNameList[0], assignChatPic(nickNameList[0]))
-const God = new Character("God", nickNameList[1], assignChatPic(nickNameList[1]))
-const Hack = new Character("Hack", nickNameList[2], assignChatPic(nickNameList[2]))
-const GodOrHack = new Character("GodOrHack", nickNameList[3], assignChatPic(nickNameList[3]))
-const HackOrGod = new Character("HackOrGod", nickNameList[4], assignChatPic(nickNameList[4]))
-const Player = new Character("Player", "Player", "")
-const System = new Character("System", "System", "")
+const Young = new Character("Young", "C", assignChatPic("C")) //對應劇本 資深鄉民
+const Robot = new Character("Robot", nickNameList[0], assignChatPic(nickNameList[0])) //對應劇本 機器人
+const God = new Character("God", nickNameList[1], assignChatPic(nickNameList[1])) //對應劇本 創世神
+const Hack = new Character("Hack", nickNameList[2], assignChatPic(nickNameList[2])) //對應劇本 駭客
+const GodOrHack = new Character("GodOrHack", nickNameList[3], assignChatPic(nickNameList[3])) //對應劇本 創世神或駭客
+const HackOrGod = new Character("HackOrGod", nickNameList[4], assignChatPic(nickNameList[4])) //對應劇本 駭客或創世神
+const Player = new Character("Player", "Player", "") //待補玩家名字
+const System = new Character("System", "System", "") //備用
 
-console.log(Young)
+const Accuse2List = [Young, Robot, GodOrHack, HackOrGod]//第二關玩家指認駭客的選項
+console.log(Young.chatPicSrc)
 
 //劇本的物件陣列
 const Scripts = [
@@ -69,7 +69,7 @@ const Scripts = [
       { align: "message-center", text: Robot.nickName + "已將噁男移出群組(人數:6人)" },
       { align: "message-right", text: "欸不是，6個人是要怎麼多數決?", time: "上午12:36" },
       { align: "message-center", text: Robot.nickName + "已將潛水艇移出群組(人數:5人)" },
-      { align: "message-left-first", sender: Young.nickName, chatPicSrc: God.chatPicSrc, text: "嗨嗨，跟你說明一下，從今天起，你就是管理團隊的一員囉。我們的管理權限召集人每周會輪值，一共有三個管理權限:群組拉人、群組踢人、管理權限管理。因此下周開始你要負責拉人進群組的權限喔。", time: "上午12:36" },
+      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "嗨嗨，跟你說明一下，從今天起，你就是管理團隊的一員囉。我們的管理權限召集人每周會輪值，一共有三個管理權限:群組拉人、群組踢人、管理權限管理。因此下周開始你要負責拉人進群組的權限喔。", time: "上午12:36" },
       { align: "message-right", text: "OK，了解了!", time: "上午12:36" },
     ]
   },
@@ -88,11 +88,11 @@ const Scripts = [
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "該換一支了吧", time: "上午12:36" },
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-bluetext">http://fuckyourphone.com/login</span>, time: "上午12:36" },
       { align: "message-left", text: "這個啦~填一些基本資料就可以抽iphone欸", time: "上午12:36" },
-      { align: "message-left-first", text: "現在才100多人抽欸，我還不抽爆", time: "上午12:36" }
+      { align: "message-left", text: "現在才100多人抽欸，我還不抽爆", time: "上午12:36" }
     ]
   },
   {
-    scriptId: 2,//第一關_資安小尖兵_第二段(點進連結) //待補input帳號密碼介面
+    scriptId: 2,//第一關_資安小尖兵_第二段(點進連結) //已補input帳號密碼介面
     options: [
       { text: "選項C", nextScriptId: null },
       { text: "選項D", nextScriptId: null },
@@ -169,10 +169,10 @@ const Scripts = [
     ]
   },
   {
-    scriptId: 8,//第一關_資安小尖兵_第三段(我覺得資深鄉民很可疑)
+    scriptId: 8,//第二關_誰中毒了_第三段(我覺得資深鄉民很可疑)
     options: [
-      { text: "跳到第三關", nextScriptId: 16 },
-      { text: "跳到第三關", nextScriptId: 16 },
+      { text: "第二關指認(待補)", nextScriptId: 16 },
+      { text: "第二關指認(待補)", nextScriptId: 16 },
     ],
     messages: [
       { align: "message-left-first", sender: HackOrGod.nickName, chatPicSrc: HackOrGod.chatPicSrc, text: "也是，搞不好就是故意做得很明顯掩護自己。", time: "上午12:36" },
@@ -394,6 +394,7 @@ const Chatbox = () => {
   const [buttonPopup, setButtonPopup] = useState(false); //用useState設定目前Optionbuttons的Popup狀態
   const [currScriptState, setCurrScriptState] = useState(0);//用useState設定目前在進行中的劇本ID
   const [inputPopup, setInputPopup] = useState("display:none");//用useState設定目前在進行中的劇本ID
+  const [accuse2Popup,setAccuse2Popup] = useState(false)
 
   const ShowMessage = (props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本顯示出來
@@ -479,7 +480,7 @@ const Chatbox = () => {
     };
 
     useEffect(()=>{
-      console.log("儲存的帳號" + savedAcc)
+      // console.log("儲存的帳號" + savedAcc)
       if(savedAcc === "123" ){//待改成本地儲存的玩家帳號
         return checkAcc(true)
       }
@@ -489,7 +490,7 @@ const Chatbox = () => {
     },[savedAcc])
 
     useEffect(()=>{
-      console.log("儲存的密碼" + savedPwd)
+      // console.log("儲存的密碼" + savedPwd)
       if(savedPwd === "456" ){//待改成本地儲存的玩家帳號
         return checkPwd(true)
       }
@@ -508,8 +509,8 @@ const Chatbox = () => {
         else if( (!accResult && pwdResult) || (!accResult && !pwdResult) ){setCurrScriptState(4); props.setStyle("display:none"); console.log("狀況三");}
         else console.log("狀況四"); props.setStyle("display:none");
       }
-      else(console.log("InputPopup還在預設狀態"))
-      })
+      // else(console.log("InputPopup還在預設狀態"))
+    })
 
 
     if(props.style==="display:none"){
@@ -534,6 +535,43 @@ const Chatbox = () => {
     }
   }
 
+  const Accuse2= (props) => {//第二關，指認駭客的介面
+
+    function whoisHack(nickNamepicked){
+      let pickedCharacter = Accuse2List.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來要用陣列
+      // console.log("玩家選的選項文字 = " + nickNamepicked);
+      // console.log(pickedCharacter);
+      // console.log(pickedCharacter[0].realName)
+      if(pickedCharacter[0].realName === 'HackOrGod'){//待向耕竹確認第二關駭客的身分的是不是HackOrGod
+        optionState.push('第二關指認成功');
+        console.log("optionState = "+optionState)
+      }
+      else{
+        optionState.push('第二關指認失敗');
+        console.log("optionState = "+optionState)
+      }
+    }
+
+    function changeScript(nextScriptId) {
+      let nextScriptIdNumber = Number(nextScriptId)
+      setCurrScriptState(nextScriptIdNumber)
+    }
+
+    return (props.trigger) ? (//指認後直接跳轉到第三關
+      <>
+        <div id="accuse2-popup">
+          <div id="accuse2-btn" className="accuse2-btn-grid">
+            <div className="accuse2-title">你覺得誰是駭客？</div>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("A"); changeScript(16); props.setTrigger(false); }}>{"A"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("B"); changeScript(16); props.setTrigger(false); }}>{"B"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("C"); changeScript(16); props.setTrigger(false); }}>{"C"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("D"); changeScript(16); props.setTrigger(false); }}>{"D"}</button>
+          </div>
+        </div>
+      </>
+    ) : "";
+  }
+
   return (//顯示整個ChatBox的內容
     <>
       <div id="wrapper">
@@ -548,9 +586,12 @@ const Chatbox = () => {
             <ul className="chat-message-list" id="chat-list">
               <ShowMessage currScript={currScriptState} />
             </ul>
+            <button onClick={()=>setAccuse2Popup(true)}>Accuse</button>
           </div>
           <OptionBtn trigger={buttonPopup} setTrigger={setButtonPopup} currScript={currScriptState} />
           <InputPopup style={inputPopup} setStyle={setInputPopup} currScript={currScriptState}/>
+          <Accuse2 trigger={accuse2Popup} setTrigger={setAccuse2Popup} currScript={currScriptState}/>
+
         </div>
 
       </div>
