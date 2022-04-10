@@ -50,8 +50,9 @@ const HackOrGod = new Character("HackOrGod", nickNameList[4], assignChatPic(nick
 const Player = new Character("Player", "Player", "") //待補玩家名字
 const System = new Character("System", "System", "") //備用
 
-const Accuse2List = [Young, Robot, GodOrHack, HackOrGod]//第二關玩家指認駭客的選項
-console.log(Young.chatPicSrc)
+const Accuse2List = [Young, Robot, GodOrHack, HackOrGod]//第二關玩家指認中毒者的選項
+const HintList = [Young, Robot, God, Hack]//第三關提示選項中的選項
+const Accuse3List = [Young, Robot, God, Hack]//第三關玩家指認駭客的選項
 
 //劇本的物件陣列
 const Scripts = [
@@ -394,7 +395,10 @@ const Chatbox = () => {
   const [buttonPopup, setButtonPopup] = useState(false); //用useState設定目前Optionbuttons的Popup狀態
   const [currScriptState, setCurrScriptState] = useState(0);//用useState設定目前在進行中的劇本ID
   const [inputPopup, setInputPopup] = useState("display:none");//用useState設定目前在進行中的劇本ID
-  const [accuse2Popup,setAccuse2Popup] = useState(false)
+  const [accuse2Popup,setAccuse2Popup] = useState(false)//控制第二關指認介面Popup
+  const [hintPopup,setHintPopup] = useState(false)//控制第三關選項提示介面Popup
+  const [currHint,setCurrHint] = useState(1)//第三關選項提示介面跳轉
+  const [accuse3Popup,setAccuse3Popup] = useState(false)//控制第二關指認介面Popup
 
   const ShowMessage = (props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本顯示出來
@@ -535,14 +539,14 @@ const Chatbox = () => {
     }
   }
 
-  const Accuse2= (props) => {//第二關，指認駭客的介面
+  const Accuse2= (props) => {//第二關，指認中毒者的介面
 
-    function whoisHack(nickNamepicked){
+    function whoisControlled(nickNamepicked){
       let pickedCharacter = Accuse2List.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來要用陣列
       // console.log("玩家選的選項文字 = " + nickNamepicked);
       // console.log(pickedCharacter);
       // console.log(pickedCharacter[0].realName)
-      if(pickedCharacter[0].realName === 'HackOrGod'){//待向耕竹確認第二關駭客的身分的是不是HackOrGod
+      if(pickedCharacter[0].realName === 'HackOrGod'){//待順過劇本的第二關中毒者的身分
         optionState.push('第二關指認成功');
         console.log("optionState = "+optionState)
       }
@@ -561,7 +565,41 @@ const Chatbox = () => {
       <>
         <div id="accuse2-popup">
           <div id="accuse2-btn" className="accuse2-btn-grid">
-            <div className="accuse2-title">你覺得誰是駭客？</div>
+            <div className="accuse2-title">你覺得誰中毒了？</div>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); changeScript(16); props.setTrigger(false); }}>{"A"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); changeScript(16); props.setTrigger(false); }}>{"B"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); changeScript(16); props.setTrigger(false); }}>{"C"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); changeScript(16); props.setTrigger(false); }}>{"D"}</button>
+          </div>
+        </div>
+      </>
+    ) : "";
+  }
+
+  const Accuse3= (props) => {//第三關，指認駭客的介面
+
+    function whoisHack(nickNamepicked){
+      let pickedCharacter = Accuse3List.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來要用陣列
+      if(pickedCharacter[0].realName === 'Hack'){
+        optionState.push('第三關指認成功');
+        console.log("optionState = "+optionState)
+      }
+      else{
+        optionState.push('第三關指認失敗');
+        console.log("optionState = "+optionState)
+      }
+    }
+
+    function changeScript(nextScriptId) {
+      let nextScriptIdNumber = Number(nextScriptId)
+      setCurrScriptState(nextScriptIdNumber)
+    }
+
+    return (props.trigger) ? (//指認後直接跳轉到第三關
+      <>
+        <div id="accuse2-popup">
+          <div id="accuse2-btn" className="accuse2-btn-grid">
+            <div className="accuse2-title">你覺得誰中毒了？</div>
             <button className="accuse2-btn" onClick={(event) => { whoisHack("A"); changeScript(16); props.setTrigger(false); }}>{"A"}</button>
             <button className="accuse2-btn" onClick={(event) => { whoisHack("B"); changeScript(16); props.setTrigger(false); }}>{"B"}</button>
             <button className="accuse2-btn" onClick={(event) => { whoisHack("C"); changeScript(16); props.setTrigger(false); }}>{"C"}</button>
@@ -571,6 +609,139 @@ const Chatbox = () => {
       </>
     ) : "";
   }
+
+  const Hint = (props) => {//第三關，選擇提示部分
+
+    let HintState = [];
+
+    function changeCurrHint(nextHint){
+        setCurrHint(nextHint)
+    }
+
+    function changeScript(nextScriptId) {
+      let nextScriptIdNumber = Number(nextScriptId)
+      setCurrScriptState(nextScriptIdNumber)
+    }
+
+    function Hint1(nickNamepicked){//是誰不謹慎(f1)
+      let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
+      if(pickedCharacter[0].realName === 'God'){
+        HintState.push("e1-f1");
+        console.log("Hint1 = "+HintState);
+      }
+      else if (pickedCharacter[0].realName === 'Hack'){
+        HintState.push("e2-f1");
+        console.log("Hint1 = "+HintState);
+      }
+      else if (pickedCharacter[0].realName === 'Young'){
+        HintState.push("e3-f1");
+        console.log("Hint1 = "+HintState);
+      }
+      else if (pickedCharacter[0].realName === 'Robot'){
+        HintState.push("e4-f1")
+        console.log("Hint1 = "+HintState);
+      }
+      else console.log("Hint1 有問題")
+    }
+    
+    function Hint2(nickNamepicked){//是誰在帶風向(f2)
+      let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
+      if(pickedCharacter[0].realName === 'God'){
+        HintState.push("e1-f2");
+        console.log("Hint1 = "+HintState);
+      }
+      else if (pickedCharacter[0].realName === 'Hack'){
+        HintState.push("e2-f2");
+        console.log("Hint1 = "+HintState);
+      }
+      else if (pickedCharacter[0].realName === 'Young'){
+        HintState.push("e3-f2");
+        console.log("Hint1 = "+HintState);
+      }
+      else if (pickedCharacter[0].realName === 'Robot'){
+        HintState.push("e4-f2")
+        console.log("Hint1 = "+HintState);
+      }
+      else console.log("Hint2 有問題")
+    }
+
+    function Hint3(nickNamepicked){//直接連到最後
+      let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
+      if(pickedCharacter[0].realName === 'God'){
+        HintState.push("e1-f2");
+        console.log("Hint1 = "+HintState);
+      }
+      else if (pickedCharacter[0].realName === 'Hack'){
+        HintState.push("e2-f2");
+        console.log("Hint1 = "+HintState);
+      }
+      else if (pickedCharacter[0].realName === 'Young'){
+        HintState.push("e3-f2");
+        console.log("Hint1 = "+HintState);
+      }
+      else if (pickedCharacter[0].realName === 'Robot'){
+        HintState.push("e4-f2")
+        console.log("Hint1 = "+HintState);
+      }
+      else console.log("Hint2 有問題")
+    }
+
+    function Disable(nickNamepicked){
+      let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
+
+      if(pickedCharacter[0].realName === 'God' && (HintState.includes("God"))){
+        return true;
+      }
+      else if (pickedCharacter[0].realName === 'Hack' && (HintState.includes("Hack"))){
+        return true;
+      }
+      else if (pickedCharacter[0].realName === 'Young' && (HintState.includes("Young"))){
+        return true;
+      }
+      else if (pickedCharacter[0].realName === 'Robot' && (HintState.includes("Robot"))){
+        return true;
+      }
+      else return false
+    }
+
+    return (props.trigger && currHint === 1) ? (
+      <>
+        <div id="hint-popup">
+          <div className="hint-title">你覺得誰不謹慎？</div>
+          <div className="hint-btn-grid">
+            <button className="hint-btn"  onClick={(event) => { Hint1("A"); changeCurrHint(2)}}>{"A"}</button>
+            <button className="hint-btn"  onClick={(event) => { Hint1("B"); changeCurrHint(2)}}>{"B"}</button>
+            <button className="hint-btn"  onClick={(event) => { Hint1("C"); changeCurrHint(2)}}>{"C"}</button>
+            <button className="hint-btn"  onClick={(event) => { Hint1("D"); changeCurrHint(2)}}>{"D"}</button>
+          </div>
+        </div>
+      </>
+      ):
+      (props.trigger && currHint === 2) ?
+      (      <>
+        <div id="hint-popup">
+          <div className="hint-title">你覺得誰在帶風向？</div>
+          <div className="hint-btn-grid">
+            <button className="hint-btn" disabled={Disable("A")} onClick={(event) => { Hint2("A"); changeCurrHint(3)}}>{"A"}</button>
+            <button className="hint-btn" disabled={Disable("B")} onClick={(event) => { Hint2("B"); changeCurrHint(3)}}>{"B"}</button>
+            <button className="hint-btn" disabled={Disable("C")} onClick={(event) => { Hint2("C"); changeCurrHint(3)}}>{"C"}</button>
+            <button className="hint-btn" disabled={Disable("D")} onClick={(event) => { Hint2("D"); changeCurrHint(3)}}>{"D"}</button>
+          </div>
+        </div>
+      </>):
+      (props.trigger && currHint === 3) ?
+      (      <>
+        <div id="hint-popup">
+          <div className="hint-title">再一次，你覺得誰在帶風向？</div>
+          <div className="hint-btn-grid">
+            <button className="hint-btn"  onClick={(event) => { Hint3("A"); changeCurrHint(3)}}>{"A"}</button>
+            <button className="hint-btn"  onClick={(event) => { Hint3("B"); changeCurrHint(3)}}>{"B"}</button>
+            <button className="hint-btn"  onClick={(event) => { Hint3("C"); changeCurrHint(3)}}>{"C"}</button>
+            <button className="hint-btn"  onClick={(event) => { Hint3("D"); changeCurrHint(3)}}>{"D"}</button>
+          </div>
+        </div>
+      </>):"";
+     }
 
   return (//顯示整個ChatBox的內容
     <>
@@ -586,12 +757,15 @@ const Chatbox = () => {
             <ul className="chat-message-list" id="chat-list">
               <ShowMessage currScript={currScriptState} />
             </ul>
-            <button onClick={()=>setAccuse2Popup(true)}>Accuse</button>
+            <button onClick={()=>setAccuse2Popup(true)}>Accuse2</button>
+            <button onClick={()=>setAccuse3Popup(true)}>Accuse3</button>
+            <button onClick={()=>setHintPopup(true)}>Hint</button>
           </div>
           <OptionBtn trigger={buttonPopup} setTrigger={setButtonPopup} currScript={currScriptState} />
           <InputPopup style={inputPopup} setStyle={setInputPopup} currScript={currScriptState}/>
           <Accuse2 trigger={accuse2Popup} setTrigger={setAccuse2Popup} currScript={currScriptState}/>
-
+          <Accuse3 trigger={accuse3Popup} setTrigger={setAccuse3Popup} currScript={currScriptState}/>
+          <Hint trigger={hintPopup} setTrigger={setHintPopup} currScript={currScriptState} currHint={currHint}/>
         </div>
 
       </div>
