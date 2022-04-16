@@ -132,7 +132,7 @@
   
   .message-left-first .message-text {
   
-  max-width: 70%;
+  max-width: 60%;
   display: inline-block;
   align-items: center;
   padding: 8px 8px 8px 8px;
@@ -171,10 +171,11 @@
     color: #000000;
   }
   
-  .message-left-first .message-bluetext {/*訊息裡藍字標註*/
+  /*訊息裡藍字標註*/
+  /* .message-left-first .message-bluetext {
     color: #000FFF;
     text-decoration: underline;
-  }
+  } */
   
   /*-------------向左對齊的一般訊息格式---------------*/
   
@@ -184,7 +185,7 @@
   }
   
   .message-left .message-text {
-    max-width: 70%;
+    max-width: 60%;
     display: inline-block;
     align-items: center;
     padding: 8px 8px 8px 8px;
@@ -234,8 +235,34 @@
     color: #ccc;
     font-family: Courier;
   }
-  
-  .message-center {/*系統訊息的CSS*/
+
+  .message-right {
+    text-align: right;
+    margin-bottom: 16px;
+  }
+
+  .message-right .message-text {
+    line-height: 1.5em;
+    display: inline-block;
+    background: #5ca6fa;
+    padding: 15px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 30px;
+    line-height: 1.5em;
+    font-weight: 100;
+    text-align: left;
+  }
+
+  /*訊息裡藍字標註*/
+  /* .message-right .message-bluetext { 
+    color: #000FFF;
+    text-decoration: underline;
+  } */
+
+/*--------------系統的訊息格式-----------------*/
+
+  .message-center {
     text-align: center;
     margin-bottom: 16px;
   }
@@ -251,30 +278,27 @@
     font-weight: 100;
     line-height: 1.5em;
   }
-  
-  
-  .message-right {
-    text-align: right;
-    margin-bottom: 16px;
-  }
-  
-  .message-right .message-text {
-    line-height: 1.5em;
-    display: inline-block;
-    background: #5ca6fa;
-    padding: 15px;
-    font-size: 14px;
-    color: #fff;
-    border-radius: 30px;
-    line-height: 1.5em;
-    font-weight: 100;
-    text-align: left;
-  }
-  
-  .message-right .message-bluetext { /*訊息裡藍字標註*/
-    color: #000FFF;
-    text-decoration: underline;
-  }
+
+  /*-------------額外的訊息格式(藍字、一般字體)--------------*/
+
+    .message-bluetext{
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 13px;
+      line-height: 15px;
+      color: #000FFF;
+      text-decoration: underline;
+    }
+
+    .message-normal{
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 13px;
+      line-height: 15px;
+      color:#000000;
+    }
 
   /*--------------------Answer按鈕按下後的選項popUp-----------------------*/
   
@@ -347,3 +371,127 @@
     opacity: 1;
     pointer-events: all;
   }
+
+  /*--------------------第一關InputPopUp-----------------------*/
+  
+  #input-popup{
+    transform:scale(1);
+    transition: 200ms ease-in-out;
+    z-index: 10;
+
+    position: absolute;
+    width: 502px;
+    height: 535px;
+    left: 0px;
+    top: 0px;
+  
+    background: #C4C4C4;
+    color:#000000;
+  }
+
+    /*--------------------第二關指認中毒者PopUp-----------------------*/
+  
+    #accuse2-popup{
+      transform:scale(1);
+      transition: 200ms ease-in-out;
+      z-index: 10;
+  
+      position: absolute;
+      width: 502px;
+      height: 535px;
+      left: 0px;
+      top: 0px;
+    
+      background: #C4C4C4;
+      color:#000000;
+    }
+
+    .accuse2-title {
+      text-align: center;
+      
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 21px;
+
+      color: #000;
+    }
+
+    .accuse2-btn {
+      background: #FFFFFF;
+      
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 21px;
+      margin:30px;
+      width: 190px;
+      height: 145px;
+      color: #000;
+  
+    }
+
+    .accuse-btn-grid {
+      display: grid;/*用格線方式排button*/
+      grid-template-columns: repeat(4, auto);
+      gap: 0px;
+    }
+    /*--------------------第三關提示選項PopUp-----------------------*/
+
+    #hint-popup{
+      transform:scale(1);
+      transition: 200ms ease-in-out;
+      z-index: 10;
+  
+      position: absolute;
+      width: 502px;
+      height: 535px;
+      left: 0px;
+      top: 0px;
+    
+      background: #C4C4C4;
+      color:#000000;
+    }
+
+    .hint-title {
+      text-align: center;
+      
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 21px;
+
+      color: #000;
+    }
+
+    .hint-btn {
+      background: #FFFFFF;
+      
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 21px;
+      margin:12px;
+      width: 80px;
+      height: 80px;
+      color: #000;
+  
+    }
+
+    .option-btn:disabled {
+      background: #333333;
+      border-color: black;
+    }
+
+    .hint-btn-grid {
+      display: grid;/*用格線方式排button*/
+      grid-template-columns: repeat(4, auto);
+      grid-template-rows: repeat(4, auto);
+      gap: 0px;
+    }
+
+    
