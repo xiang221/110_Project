@@ -12,7 +12,7 @@
 	left: 0;
 	right: 0;
     opacity: 0.95;
-	z-index: 1;
+	z-index: 2;
 }
 
 
@@ -64,6 +64,22 @@
     float:right;
 }
 
+
+.openmail{
+	background-color: #696969;
+	position: absolute;
+	width:30%;
+	min-height: 75%;
+	border: 0.1rem solid #FFF;
+	z-index: 1;
+}
+
+.mailheader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 2px solid black;
+}
 
 
 /*

@@ -1,9 +1,12 @@
 import React from 'react'
 
+const Mail = (props) => {
 
-const Mail = () => {
+
   return (
-    <div className='mail'>
+    <div>
+    <div className='mail' onClick={()=>props.mailhandler(true)}></div>
+
     </div>
   )
 }
