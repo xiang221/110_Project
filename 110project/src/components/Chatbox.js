@@ -3,6 +3,7 @@ import '../styles/chatbox.css'
 
 
 var optionState = [];
+var pastScripts = [];//加上顯示過的劇本的紀錄
 
 //角色分配(Random)
 class Character extends React.Component {
@@ -60,14 +61,14 @@ const Scripts = [
   {
     scriptId: 0,//開場對話
     options: [
-      { text: "了解A", nextScriptId: 1 },//按下answer按鈕後跳出的選項文字，與按下選項之後要跳轉的下一個劇本ID
-      { text: "了解B", nextScriptId: 1 },
+      { text: "了解A", nextScriptId: 1, /*optionButtonClass:"option-btn"*/ },//按下answer按鈕後跳出的選項文字，與按下選項之後要跳轉的下一個劇本ID
+      { text: "了解B", nextScriptId: 1, /*optionButtonClass:"option-btn"*/ },
     ],
     messages: [//這一個劇本ID下的具體聊天室內容
       { align: "message-center", text: Young.nickName + "已將您加入群組(人數:7人)" },
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "嗨嗨，歡迎加入", time: "上午12:36" },
       { align: "message-right", text: "安安", time: "上午12:36" },
-      { align: "message-left-first", sender: "噁男", chatPicSrc: God.chatPicSrc, text: "React好難", time: "上午12:36" },//噁男照片待補
+      { align: "message-left-first", sender: "噁男", chatPicSrc: God.chatPicSrc, text: "妹子ㄇ?", time: "上午12:36" },//噁男照片待補
       { align: "message-center", text: Robot.nickName + "已將噁男移出群組(人數:6人)" },
       { align: "message-right", text: "欸不是，6個人是要怎麼多數決?", time: "上午12:36" },
       { align: "message-center", text: Robot.nickName + "已將潛水艇移出群組(人數:5人)" },
@@ -160,7 +161,7 @@ const Scripts = [
   {
     scriptId: 7,//第二關_誰中毒了_第二段(我覺得有內鬼)
     options: [
-      { text: <span>但我也覺得{Young.nickName}很可疑</span>, nextScriptId: 8 },
+      { text: <span className="message-normal">但我也覺得{Young.nickName}很可疑</span>, nextScriptId: 8 },
       { text: "我也覺得壞人不會那麼明顯", nextScriptId: 9 },
     ],
     messages: [
@@ -178,7 +179,7 @@ const Scripts = [
     ],
     messages: [
       { align: "message-left-first", sender: HackOrGod.nickName, chatPicSrc: HackOrGod.chatPicSrc, text: "也是，搞不好就是故意做得很明顯掩護自己。", time: "上午12:36" },
-      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: <span>這麼一說，{Young.nickName}真的有點像被盜帳號一直亂傳連結的那種朋友呢</span>, time: "上午12:36" },
+      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: <span className="message-normal">這麼一說，{Young.nickName}真的有點像被盜帳號一直亂傳連結的那種朋友呢</span>, time: "上午12:36" },
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "喂，我真的不是啦，我只是平常對資安比較沒放在心上而已", time: "上午12:36" }
 
     ]
@@ -227,7 +228,7 @@ const Scripts = [
     messages: [
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "內鬼當然會說沒有內鬼囉", time: "上午12:36" },
       { align: "message-left-first", sender: GodOrHack.nickName, chatPicSrc: GodOrHack.chatPicSrc, text: "那你覺得內鬼是誰?", time: "上午12:36" },
-      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: <span>{Young.nickName}或{Player.nickName}吧。{Young.nickName}感覺就是被盜了阿，然後{Player.nickName}一直在帶風向</span>, time: "上午12:36" }
+      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: <span className="message-normal">{Young.nickName}或{Player.nickName}吧。{Young.nickName}感覺就是被盜了阿，然後{Player.nickName}一直在帶風向</span>, time: "上午12:36" }
     ]
   },
   {
@@ -300,7 +301,7 @@ const Scripts = [
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "真正的創世神才不會這麼明顯地提示好嘛==", time: "上午12:36" },
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "呵呵，難道我是創世神還要特別跟你說嗎?", time: "上午12:36" },
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "笑死，少假鬼假怪了。清者自清，不需要你特別跳出來刷存在。", time: "上午12:36" },
-      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: <span>誰在假鬼假怪其實很明顯吧，{Player.nickName}，你覺得呢?</span>, time: "上午12:36" }
+      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: <span className="message-normal">誰在假鬼假怪其實很明顯吧，{Player.nickName}，你覺得呢?</span>, time: "上午12:36" }
     ]
   },
   {
@@ -327,7 +328,7 @@ const Scripts = [
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "我如果是創世神難道會特別跟你們說嗎?", time: "上午12:36" },
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "好了啦，你們兩個別再自導自演了，看了就想笑。", time: "上午12:36" },
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "笑死，你少假鬼假怪了。清者自清，不需要特別跳出來刷存在。", time: "上午12:36" },
-      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: <span>誰在假鬼假怪其實很明顯吧，{Player.nickName}，你說呢?</span>, time: "上午12:36" }
+      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: <span className="message-normal">誰在假鬼假怪其實很明顯吧，{Player.nickName}，你說呢?</span>, time: "上午12:36" }
     ]
   },
   {
@@ -341,7 +342,7 @@ const Scripts = [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "呵呵，看來終究被發現了呢。這些釣魚連結的確是用來釣創世神上鉤的，想不到這傢伙那麼謹慎，沒有上鉤呢。", time: "上午12:36" },
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "其實是你上鉤了對吧?釣到自己ㄌ", time: "上午12:36" },
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "看吧，這傢伙露出馬腳了，看來該把不適任的人踢掉了呢", time: "上午12:36" },
-      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: <span>且慢，我覺得事情沒那麼簡單，{Player.nickName}，你怎麼看?</span>, time: "上午12:36" }
+      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: <span className="message-normal">且慢，我覺得事情沒那麼簡單，{Player.nickName}，你怎麼看?</span>, time: "上午12:36" }
     ]
   },
   {
@@ -368,8 +369,8 @@ const Scripts = [
     messages: [
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "笑死，你要帶風向也有點邏輯吧，剛剛我就看你們一群蠢蛋點進釣魚連結，我可是點都沒有點開呢!", time: "上午12:36" },
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: <span className="message-bluetext">@{Player.nickName}<span className="message-normal">，你還是洗洗睡啦，這種胡亂指責只會顯得你很像被操控的機器人帳號而已。</span></span>, time: "上午12:36" },
-      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span>其實我也覺得是我比較不謹慎欸，{Player.nickName}你是不是搞錯什麼了?</span>, time: "上午12:36" },
-      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: <span>這麼說起來，我也不覺得{Robot.nickName}有很不謹慎就是了。</span>, time: "上午12:36" }
+      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-normal">其實我也覺得是我比較不謹慎欸，{Player.nickName}你是不是搞錯什麼了?</span>, time: "上午12:36" },
+      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: <span className="message-normal">這麼說起來，我也不覺得{Robot.nickName}有很不謹慎就是了。</span>, time: "上午12:36" }
     ]
   },
   {
@@ -386,7 +387,7 @@ const Scripts = [
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "你也不用裝得好像自己是什麼智者似的混淆視聽好嗎?", time: "上午12:36" },
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "笑死，難道我是創世神還要特別跟大家說嗎?", time: "上午12:36" },
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "真正的創世神才不會這麼明顯地提示大家好嘛==", time: "上午12:36" },
-      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: <span>好啦你們別吵了，{Player.nickName}你怎麼看呢?</span>, time: "上午12:36" }
+      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: <span className="message-normal">好啦你們別吵了，{Player.nickName}你怎麼看呢?</span>, time: "上午12:36" }
     ]
   },
 ]
@@ -427,16 +428,140 @@ const Chatbox = () => {
       </>
     )
   }
+/*
+  class ShowMessage extends React.Component {
+    constructor(props) {
+      super(props);
+      this.messageDelay = 5000;
+      //this.messageDisplay = {display: "block"};
+      this.state = {display: "block"};
+    }
 
-  const OptionBtn = (props) => {//設定option-button的選項介面
+    display(){
+      console.log("hi")
+      this.setState({display: "block"});
+    }
+
+    // componentDidMount(){
+    //   setTimeout(function() {console.log("時間到")}, this.messageDelay);
+    //   setTimeout(this.display.bind(this), this.messageDelay);
+    //   setTimeout(function() {console.log(this.state)}, this.messageDelay+100);
+    //   console.log(this.state)
+    // }
+
+    
+    // render() {
+    //   const CurrScript = Scripts.filter(Script => Script.scriptId === this.props.currScript)
+    //   console.log("currscriptState = " + currScriptState);//顯示目前的進行中的劇本ID
+
+    //   const messageList = CurrScript.map((CurrScript) =>
+    //     CurrScript.messages.map((sub) =>
+    //       <div style={this.state} className={sub.align}>
+    //         <div className="message-sender">{sub.sender}</div>
+    //         <span>
+    //           <img className="chat-pic" src={sub.chatPicSrc}></img>
+    //         </span>
+    //         <span>
+    //           <span className="message-text">{sub.text}</span>
+    //         </span>
+    //         <span className="message-time">{sub.time}</span>
+    //       </div>
+    //     )
+    //   );
+
+    //   return (
+    //   <>
+    //     <li >{messageList}</li>
+    //   </>
+    //   )
+    // }
+
+    render(){
+      const CurrScript = Scripts.filter(Script => Script.scriptId === this.props.currScript)
+      console.log("currscriptState = " + currScriptState);//顯示目前的進行中的劇本ID
+
+      const messageList = CurrScript.map((CurrScript) =>
+        CurrScript.messages.map((sub) =>
+          <div style={this.state} className={sub.align}>
+            <div className="message-sender">{sub.sender}</div>
+            <span>
+              <img className="chat-pic" src={sub.chatPicSrc}></img>
+            </span>
+            <span>
+              <span className="message-text">{sub.text}</span>
+            </span>
+            <span className="message-time">{sub.time}</span>
+          </div>
+        )
+      );
+      console.log(messageList)
+      console.log(messageList[1])
+      console.log(typeof(messageList))
+      console.log(messageList.keys = 'messages')
+      let List = [1, 2, 3]
+      for(let i=0; i<List.length; i++){
+
+      }
+
+    return(
+      <div wait={1000}>"hi"</div>
+    )
+    }
+  }
+*/
+  // const ShowPastMessage = (props) => {//顯示已經過去的聊天室內容
+
+  //   useEffect(()=>{
+  //     pastScripts.push(props.currScript);//新增過去的劇本ID
+  //   },[optionState])
+
+  //   let PastScriptOut;
+
+  //   // useEffect(()=>{
+  //     for(let i=1; i < pastScripts.length; i=i+2){
+  //       const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[i])//待修正為什麼會跑兩次的問題(可能是answerButton)
+  //       const PastScriptList = PastScript.map((PastScript) =>
+  //         PastScript.messages.map((sub) =>
+  //           <div className={sub.align}>
+  //             <div className="message-sender">{sub.sender}</div>
+  //             <span>
+  //               <img className="chat-pic" src={sub.chatPicSrc}></img>
+  //             </span>
+  //             <span>
+  //               <span className="message-text">{sub.text}</span>
+  //             </span>
+  //             <span className="message-time">{sub.time}</span>
+  //           </div>
+  //         )
+  //       );
+  //       PastScriptOut = PastScriptList
+  //       console.log("pastScripts = " + pastScripts);//顯示目前的進行中的劇本ID
+  //     }
+  //   //},[pastScripts]) //<li>{PastScriptList}</li>
+
+  //   return (
+  //     <>
+  //       <li>{PastScriptOut}</li>
+  //     </>
+  //   )
+  // }
+
+
+  const OptionBtn = (props) => {//設定option-button的選項介面  //正在新增不同按鈕數量的CSS
 
     let CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)
     let option1 = CurrScript.map(Script => Script.options[0]);
     let option2 = CurrScript.map(Script => Script.options[1]);
+    //let option3 = CurrScript.map(Script => Script.options[2]);
     let option1Text = option1.map(sub => sub.text)
     let option2Text = option2.map(sub => sub.text)
+    //let option3Text = option3.map(sub => sub.text)
     let nextScriptId1 = option1.map(sub => sub.nextScriptId);
     let nextScriptId2 = option2.map(sub => sub.nextScriptId);
+    //let nextScriptId3 = option3.map(sub => sub.nextScriptId);//第三個選項按鈕
+    let optionBtnClass1 = option1.map(sub => sub.optionButtonClass);//新增按鈕CSS
+    let optionBtnClass2 = option2.map(sub => sub.optionButtonClass);//新增按鈕CSS
+    //let optionBtnClass3 = option3.map(sub => sub.optionButtonClass);//新增按鈕CSS
     console.log("optionbutton scriptState = " + props.currScript);
 
 
@@ -451,6 +576,7 @@ const Chatbox = () => {
     }
 
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
+
       //按下option-button介面中的其中一個選項按鈕，會關閉option-button介面、記錄玩家選擇的按鈕的文字、將CurrScriptState更新成劇本中按下按鈕後要接續的下個劇本ID
       <>
         <div id="option-popup">
@@ -540,14 +666,14 @@ const Chatbox = () => {
     }
   }
 
-  const Accuse2= (props) => {//第二關，指認中毒者的介面
+  const Accuse2= (props) => {//第二關，指認中毒者(青年)的介面
 
     function whoisControlled(nickNamepicked){
       let pickedCharacter = Accuse2List.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來要用陣列
       // console.log("玩家選的選項文字 = " + nickNamepicked);
       // console.log(pickedCharacter);
       // console.log(pickedCharacter[0].realName)
-      if(pickedCharacter[0].realName === 'HackOrGod'){//待順過劇本的第二關中毒者的身分
+      if(pickedCharacter[0].realName === 'Young'){//劇本的第二關的中毒者是青年
         optionState.push('第二關指認成功');
         console.log("optionState = "+optionState)
       }
@@ -756,6 +882,7 @@ const Chatbox = () => {
           <button className="answer-button" id="answer-button" onClick={() => setButtonPopup(true)}>Answer</button>
           <div className="chat-container">
             <ul className="chat-message-list" id="chat-list">
+
               <ShowMessage currScript={currScriptState} />
             </ul>
             <button onClick={()=>setAccuse2Popup(true)}>Accuse2</button>
@@ -775,3 +902,4 @@ const Chatbox = () => {
 }
 
 export default Chatbox
+//              <ShowPastMessage currScript={currScriptState} />
