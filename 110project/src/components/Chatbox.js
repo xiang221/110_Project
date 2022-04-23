@@ -1,6 +1,7 @@
 import React, { useState, Component, useEffect } from 'react'
 import '../styles/chatbox.css'
 
+
 var optionState = [];
 
 //角色分配(Random)

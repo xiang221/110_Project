@@ -6,9 +6,10 @@ const Mailbox = (props) => {
     return (props.trigger)?(
         <div className="openmail">
             <div class="mailheader">
-            <a className="close-modal" onClick={()=>props.mailhandler(false)}>✖</a>
-            <h3>信夾匣</h3>
+            <h2 className="mailfont">信夾匣</h2>
             </div>
+
+            <button className="mailBtn" onClick={()=>props.mailhandler(false)}></button>
         </div>   
     ):'';
 

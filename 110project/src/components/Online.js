@@ -8,9 +8,6 @@ const Online = () => {
   const [player3intro,show3handler] = useState(false);
   const [player4intro,show4handler] = useState(false);
 
-
-
-
   return (
     <div className='onlinecontainer'>
     <div className='text'>上線玩家</div>
