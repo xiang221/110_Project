@@ -1,8 +1,6 @@
-import React, { useState, Component, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/chatbox.css'
 
-
-var optionState = [];
 var pastScripts = [];//加上顯示過的劇本的紀錄
 
 //角色分配(Random)
@@ -29,16 +27,16 @@ console.log("nickNameRandomIndex = " + nickNameRandomIndex);
 console.log("nickNameRandomList" + nickNameList);
 
 function assignChatPic(nickName) {//圖片待UI補
-  if(nickName === "A"){
+  if (nickName === "A") {
     return "https://img.onl/zxNUe"
   }
-  else if(nickName === "B"){
+  else if (nickName === "B") {
     return "https://img.onl/zpL9RB"
   }
-  else if(nickName === "C"){
+  else if (nickName === "C") {
     return "https://img.onl/XERRDA"
-  } 
-  else if(nickName === "D"){
+  }
+  else if (nickName === "D") {
     return "https://img.onl/V9HtiR"
   }
 }
@@ -49,7 +47,7 @@ const God = new Character("God", nickNameList[1], assignChatPic(nickNameList[1])
 const Hack = new Character("Hack", nickNameList[2], assignChatPic(nickNameList[2])) //對應劇本 駭客
 const GodOrHack = new Character("GodOrHack", nickNameList[3], assignChatPic(nickNameList[3])) //對應劇本 創世神或駭客
 const HackOrGod = new Character("HackOrGod", nickNameList[4], assignChatPic(nickNameList[4])) //對應劇本 駭客或創世神
-const Player = new Character("Player", "Player", "") //待補玩家名字
+const Player = new Character(localStorage.getItem('account'), localStorage.getItem('account'), "") //已補玩家名字 
 const System = new Character("System", "System", "") //備用
 
 const Accuse2List = [Young, Robot, GodOrHack, HackOrGod]//第二關玩家指認中毒者的選項
@@ -58,11 +56,19 @@ const Accuse3List = [Young, Robot, God, Hack]//第三關玩家指認駭客的選
 
 //劇本的物件陣列
 const Scripts = [
+  {scriptId:-3,
+    options:[{text: "還沒做好，所以先跳轉第三關指認", nextScriptId:-2}],
+    messages:[{ align: "正在進行第三關指認" }]},
+  {scriptId:-2,
+    options:[{text: "正在進行第三關指認"}],
+    messages:[{ align: "正在進行第三關指認" }]},
+  {scriptId:-1,
+  options:[{text: "正在進行第二關指認"}],
+  messages:[{ align: "正在進行第二關指認" }]},
   {
     scriptId: 0,//開場對話
     options: [
-      { text: "了解A", nextScriptId: 1, /*optionButtonClass:"option-btn"*/ },//按下answer按鈕後跳出的選項文字，與按下選項之後要跳轉的下一個劇本ID
-      { text: "了解B", nextScriptId: 1, /*optionButtonClass:"option-btn"*/ },
+      { text: "了解", nextScriptId: 1 },//按下answer按鈕後跳出的選項文字，與按下選項之後要跳轉的下一個劇本ID
     ],
     messages: [//這一個劇本ID下的具體聊天室內容
       { align: "message-center", text: Young.nickName + "已將您加入群組(人數:7人)" },
@@ -79,8 +85,8 @@ const Scripts = [
   {
     scriptId: 1,//第一關_資安小尖兵_第一段
     options: [
-      { text: "點進連結", nextScriptId: 2 },//進入輸入帳號密碼介面
-      { text: "不點連結", nextScriptId: 3 },//進入Pass後劇本
+      { text: "點進連結", nextScriptId: 2, record: "第一次不點連結，已過關" },//進入輸入帳號密碼介面
+      { text: "不點連結", nextScriptId: 3, record: "第一次點進連結"},//進入Pass後劇本
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-normal"><span className="message-bluetext">@{Robot.nickName}</span>，嗨我有事要私訊你喔。</span>, time: "上午12:36" },
@@ -109,8 +115,8 @@ const Scripts = [
   {
     scriptId: 3,//第一關_資安小尖兵_第二段(不點進連結)
     options: [
-      { text: "點進連結", nextScriptId: 4 },
-      { text: "不點連結", nextScriptId: 5 },
+      { text: "點進連結", nextScriptId: 4, record: "第二次點進連結" },
+      { text: "不點連結", nextScriptId: 5, record: "第二次不點連結(收到釣魚信)" },
     ],
     messages: [
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "已抽，我是第187個", time: "上午12:36" },
@@ -121,7 +127,6 @@ const Scripts = [
   {
     scriptId: 4,//第一關_資安小尖兵_第三段(Pass)
     options: [
-      { text: "進入第二關", nextScriptId: 6 },
       { text: "進入第二關", nextScriptId: 6 },
     ],
     messages: [
@@ -134,7 +139,6 @@ const Scripts = [
   {
     scriptId: 5,//第一關_資安小尖兵_第三段(Fail)
     options: [
-      { text: "進入第二關", nextScriptId: 6 },
       { text: "進入第二關", nextScriptId: 6 },
     ],
     messages: [
@@ -161,11 +165,11 @@ const Scripts = [
   {
     scriptId: 7,//第二關_誰中毒了_第二段(我覺得有內鬼)
     options: [
-      { text: <span className="message-normal">但我也覺得{Young.nickName}很可疑</span>, nextScriptId: 8 },
+      { text: <span>但我也覺得{Young.nickName}很可疑</span>, nextScriptId: 8 },
       { text: "我也覺得壞人不會那麼明顯", nextScriptId: 9 },
     ],
     messages: [
-      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: <span>阿就{Young.nickName}一直在雷阿，如果有內鬼應該很明顯吧(笑</span>, time: "上午12:36" },
+      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: <span className="message-normal">阿就{Young.nickName}一直在雷阿，如果有內鬼應該很明顯吧(笑</span>, time: "上午12:36" },
       { align: "message-left-first", sender: GodOrHack.nickName, chatPicSrc: GodOrHack.chatPicSrc, text: "嘿阿，你一直幹蠢事很難讓人不懷疑你", time: "上午12:36" },
       { align: "message-left-first", sender: HackOrGod.nickName, chatPicSrc: HackOrGod.chatPicSrc, text: "不過壞人這樣做也蠢得太明顯了吧?", time: "上午12:36" },
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "嘿咩，你以為壞人會大搖大擺秀給你看「我是壞人」喔?", time: "上午12:36" }
@@ -174,8 +178,7 @@ const Scripts = [
   {
     scriptId: 8,//第二關_誰中毒了_第三段(我覺得資深鄉民很可疑)
     options: [
-      { text: "第二關指認(待補)", nextScriptId: 16 },
-      { text: "第二關指認(待補)", nextScriptId: 16 },
+      { text: "第二關指認", nextScriptId: -1 },
     ],
     messages: [
       { align: "message-left-first", sender: HackOrGod.nickName, chatPicSrc: HackOrGod.chatPicSrc, text: "也是，搞不好就是故意做得很明顯掩護自己。", time: "上午12:36" },
@@ -201,8 +204,7 @@ const Scripts = [
   {
     scriptId: 10,//第二關_誰中毒了_第四段(我也覺得機器人一直在帶風向很奇怪)
     options: [
-      { text: "第二關指認(待補)", nextScriptId: 16 },
-      { text: "第二關指認(待補)", nextScriptId: 16 },
+      { text: "第二關指認", nextScriptId: -1 },
     ],
     messages: [
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "你才是一直在帶風向吧，說有內鬼的是你，說別人在帶風向也是你，作賊喊抓賊zzz", time: "上午12:36" },
@@ -211,8 +213,7 @@ const Scripts = [
   {
     scriptId: 11,//第二關_誰中毒了_第四段(我覺得機器人只是比較謹慎而已)
     options: [
-      { text: "第二關指認(待補)", nextScriptId: 16 },
-      { text: "第二關指認(待補)", nextScriptId: 16 },
+      { text: "第二關指認(待補)", nextScriptId: -1 },
     ],
     messages: [
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "抱歉啦各位，我是真的很怕群組被入侵，口氣激動了點", time: "上午12:36" },
@@ -234,8 +235,7 @@ const Scripts = [
   {
     scriptId: 13,//第二關_誰中毒了_第三段(我覺得創世神 or 駭客才在帶風向)
     options: [
-      { text: "第二關指認(待補)", nextScriptId: 16 },
-      { text: "第二關指認(待補)", nextScriptId: 16 },
+      { text: "第二關指認", nextScriptId: -1 },
     ],
     messages: [
       { align: "message-left-first", sender: GodOrHack.nickName, chatPicSrc: GodOrHack.chatPicSrc, text: "你要這樣想也沒辦法囉", time: "上午12:36" }
@@ -244,8 +244,7 @@ const Scripts = [
   {
     scriptId: 14,//第二關_誰中毒了_第三段(我覺得機器人你才是在帶風向)
     options: [
-      { text: "第二關指認(待補)", nextScriptId: 16 },
-      { text: "第二關指認(待補)", nextScriptId: 16 },
+      { text: "第二關指認", nextScriptId: -1 },
     ],
     messages: [
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "說沒有內鬼的是你，說別人在帶風向也是你，到底???", time: "上午12:36" }
@@ -254,8 +253,7 @@ const Scripts = [
   {
     scriptId: 15,//第二關_誰中毒了_第三段(我覺得資深鄉民可能被盜了)
     options: [
-      { text: "第二關指認(待補)", nextScriptId: 16 },
-      { text: "第二關指認(待補)", nextScriptId: 16 },
+      { text: "第二關指認", nextScriptId: -1 },
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "真的沒有被盜啦，我下次會更注意安全的", time: "上午12:36" }
@@ -264,8 +262,7 @@ const Scripts = [
   {
     scriptId: 16,//第三關_揪出駭客_第一段 //待補指認介面
     options: [
-      { text: "第二關指認(待補)", nextScriptId: 16 },
-      { text: "第二關指認(待補)", nextScriptId: 16 },
+      { text: "第三關提示介面", nextScriptId: -3 },
     ],
     messages: [
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "必須說，管理群的篩選標準應該要嚴格一點吧，像資深鄉民這種天兵是不是應該被淘汰?", time: "上午12:36" },
@@ -275,8 +272,7 @@ const Scripts = [
   {
     scriptId: 17,//第三關_揪出駭客_第二段(e1-f1)
     options: [
-      { text: "第三關指認(待補)", nextScriptId: null },
-      { text: "第三關指認(待補)", nextScriptId: null },
+      { text: "第三關指認", nextScriptId: -2 },
     ],
     messages: [
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "我承認，我的確有點進去剛剛資深鄉民傳的釣魚連結，但我是為了提醒大家才點進去確認的。", time: "上午12:36" },
@@ -291,8 +287,7 @@ const Scripts = [
   {
     scriptId: 18,//第三關_揪出駭客_第二段(e1-f2)
     options: [
-      { text: "第三關指認(待補)", nextScriptId: null },
-      { text: "第三關指認(待補)", nextScriptId: null },
+      { text: "第三關指認", nextScriptId: -2 },
     ],
     messages: [
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "是囉，畢竟要讓大家看清楚局勢，也只能這樣了", time: "上午12:36" },
@@ -307,8 +302,7 @@ const Scripts = [
   {
     scriptId: 19,//第三關_揪出駭客_第二段(e2-f1)
     options: [
-      { text: "第三關指認(待補)", nextScriptId: null },
-      { text: "第三關指認(待補)", nextScriptId: null },
+      { text: "第三關指認", nextScriptId: -2 },
     ],
     messages: [
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "笑死，你要帶風向也有點邏輯吧，剛剛我就看你們一群蠢蛋點進釣魚連結，我可是點都沒有點開呢!", time: "上午12:36" },
@@ -319,8 +313,7 @@ const Scripts = [
   {
     scriptId: 20,//第三關_揪出駭客_第二段(e2-f2)
     options: [
-      { text: "第三關指認(待補)", nextScriptId: null },
-      { text: "第三關指認(待補)", nextScriptId: null },
+      { text: "第三關指認", nextScriptId: -2 },
     ],
     messages: [
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "是囉，畢竟要讓大家看清楚局勢，也只能這樣了", time: "上午12:36" },
@@ -334,8 +327,7 @@ const Scripts = [
   {
     scriptId: 21,//第三關_揪出駭客_第二段(e3-f1)
     options: [
-      { text: "第三關指認(待補)", nextScriptId: null },
-      { text: "第三關指認(待補)", nextScriptId: null },
+      { text: "第三關指認", nextScriptId: -2 },
     ],
     messages: [
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "的確是，怎麼會在這麼重要的群組亂傳釣魚連結呢?", time: "上午12:36" },
@@ -348,8 +340,7 @@ const Scripts = [
   {
     scriptId: 22,//第三關_揪出駭客_第二段(e3-f2)
     options: [
-      { text: "第三關指認(待補)", nextScriptId: null },
-      { text: "第三關指認(待補)", nextScriptId: null },
+      { text: "第三關指認", nextScriptId: -2 },
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "笑死，你才在帶風向吧。帶風向也要有點邏輯，你哪時看到我在帶風向了?", time: "上午12:36" },
@@ -363,8 +354,7 @@ const Scripts = [
   {
     scriptId: 23,//第三關_揪出駭客_第二段(e4-f1)
     options: [
-      { text: "第三關指認(待補)", nextScriptId: null },
-      { text: "第三關指認(待補)", nextScriptId: null },
+      { text: "第三關指認", nextScriptId: -2 },
     ],
     messages: [
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "笑死，你要帶風向也有點邏輯吧，剛剛我就看你們一群蠢蛋點進釣魚連結，我可是點都沒有點開呢!", time: "上午12:36" },
@@ -376,8 +366,7 @@ const Scripts = [
   {
     scriptId: 24,//第三關_揪出駭客_第二段(e4-f2)
     options: [
-      { text: "第三關指認(待補)", nextScriptId: null },
-      { text: "第三關指認(待補)", nextScriptId: null },
+      { text: "第三關指認", nextScriptId: -2 },
     ],
     messages: [
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: ":笑死，那我幹嘛說帶風向的人其心可誅，作賊喊抓賊?", time: "上午12:36" },
@@ -397,92 +386,20 @@ const Chatbox = () => {
   const [buttonPopup, setButtonPopup] = useState(false); //用useState設定目前Optionbuttons的Popup狀態
   const [currScriptState, setCurrScriptState] = useState(0);//用useState設定目前在進行中的劇本ID
   const [inputPopup, setInputPopup] = useState("display:none");//用useState設定目前在進行中的劇本ID
-  const [accuse2Popup,setAccuse2Popup] = useState(false)//控制第二關指認介面Popup
-  const [hintPopup,setHintPopup] = useState(false)//控制第三關選項提示介面Popup
-  const [currHint,setCurrHint] = useState(1)//第三關選項提示介面跳轉
-  const [accuse3Popup,setAccuse3Popup] = useState(false)//控制第二關指認介面Popup
-
-  const ShowMessage = (props) => {
-    //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本顯示出來
-    const CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)
-    console.log("currscriptState = " + currScriptState);//顯示目前的進行中的劇本ID
-
-    const messageList = CurrScript.map((CurrScript) =>
-      CurrScript.messages.map((sub) =>
-        <div className={sub.align}>
-          <div className="message-sender">{sub.sender}</div>
-          <span>
-            <img className="chat-pic" src={sub.chatPicSrc}></img>
-          </span>
-          <span>
-            <span className="message-text">{sub.text}</span>
-          </span>
-          <span className="message-time">{sub.time}</span>
-        </div>
-      )
-    );
-
-    return (
-      <>
-        <li>{messageList}</li>
-      </>
-    )
-  }
-/*
-  class ShowMessage extends React.Component {
-    constructor(props) {
-      super(props);
-      this.messageDelay = 5000;
-      //this.messageDisplay = {display: "block"};
-      this.state = {display: "block"};
-    }
-
-    display(){
-      console.log("hi")
-      this.setState({display: "block"});
-    }
-
-    // componentDidMount(){
-    //   setTimeout(function() {console.log("時間到")}, this.messageDelay);
-    //   setTimeout(this.display.bind(this), this.messageDelay);
-    //   setTimeout(function() {console.log(this.state)}, this.messageDelay+100);
-    //   console.log(this.state)
-    // }
-
-    
-    // render() {
-    //   const CurrScript = Scripts.filter(Script => Script.scriptId === this.props.currScript)
-    //   console.log("currscriptState = " + currScriptState);//顯示目前的進行中的劇本ID
-
-    //   const messageList = CurrScript.map((CurrScript) =>
-    //     CurrScript.messages.map((sub) =>
-    //       <div style={this.state} className={sub.align}>
-    //         <div className="message-sender">{sub.sender}</div>
-    //         <span>
-    //           <img className="chat-pic" src={sub.chatPicSrc}></img>
-    //         </span>
-    //         <span>
-    //           <span className="message-text">{sub.text}</span>
-    //         </span>
-    //         <span className="message-time">{sub.time}</span>
-    //       </div>
-    //     )
-    //   );
-
-    //   return (
-    //   <>
-    //     <li >{messageList}</li>
-    //   </>
-    //   )
-    // }
-
-    render(){
-      const CurrScript = Scripts.filter(Script => Script.scriptId === this.props.currScript)
+  const [ansBtnDisabled, setAnsBtnDisabled] = useState(false); //Answer按鈕disable
+  const [accuse2Popup, setAccuse2Popup] = useState(false)//控制第二關指認介面Popup
+  const [hintPopup, setHintPopup] = useState(false)//控制第三關選項提示介面Popup
+  const [currHint, setCurrHint] = useState(1)//第三關選項提示介面跳轉
+  const [accuse3Popup, setAccuse3Popup] = useState(false)//控制第二關指認介面Popup
+  /*
+    const ShowMessage = (props) => {
+      //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本顯示出來
+      const CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)
       console.log("currscriptState = " + currScriptState);//顯示目前的進行中的劇本ID
-
+  
       const messageList = CurrScript.map((CurrScript) =>
         CurrScript.messages.map((sub) =>
-          <div style={this.state} className={sub.align}>
+          <div className={sub.align}>
             <div className="message-sender">{sub.sender}</div>
             <span>
               <img className="chat-pic" src={sub.chatPicSrc}></img>
@@ -494,21 +411,56 @@ const Chatbox = () => {
           </div>
         )
       );
-      console.log(messageList)
-      console.log(messageList[1])
-      console.log(typeof(messageList))
-      console.log(messageList.keys = 'messages')
-      let List = [1, 2, 3]
-      for(let i=0; i<List.length; i++){
-
-      }
-
-    return(
-      <div wait={1000}>"hi"</div>
-    )
+  
+      return (
+        <>
+          <li>{messageList}</li>
+        </>
+      )
     }
+  */
+
+
+  const ShowMessage = (props) => {
+    //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本顯示出來
+    const CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)[0].messages
+    //console.log("currscriptState = " + currScriptState);//顯示目前的進行中的劇本ID
+
+    const [currIndex, setCurrIndex] = useState(0); //建立Index管理
+
+    useEffect(() => {//當索引發生變化
+      if (currIndex > CurrScript.length - 1) {//如果目前Index大於目標陣列長度則返回
+        return
+      }
+      //設定一定的時間後，改變當前的Index
+      setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)
+      console.log(currIndex)
+    }, [currIndex])
+
+    useEffect(() => {
+      setCurrIndex(0)
+    }, [currScriptState])
+
+
+    //顯示當前索引指涉的陣列值
+    return (
+      <>
+        <div>{CurrScript.slice(0, currIndex + 1).map((sub) =>
+          <div className={sub.align}>
+            <div className="message-sender">{sub.sender}</div>
+            <span>
+              <img className="chat-pic" src={sub.chatPicSrc}></img>
+            </span>
+            <span>
+              <span className="message-text">{sub.text}</span>
+            </span>
+            <span className="message-time">{sub.time}</span>
+          </div>)}</div>
+      </>
+    )
   }
-*/
+
+  /**/
   // const ShowPastMessage = (props) => {//顯示已經過去的聊天室內容
 
   //   useEffect(()=>{
@@ -547,33 +499,32 @@ const Chatbox = () => {
   // }
 
 
-  const OptionBtn = (props) => {//設定option-button的選項介面  //正在新增不同按鈕數量的CSS
+  const OptionBtn = (props) => {
 
-    let CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)
-    let option1 = CurrScript.map(Script => Script.options[0]);
-    let option2 = CurrScript.map(Script => Script.options[1]);
-    //let option3 = CurrScript.map(Script => Script.options[2]);
-    let option1Text = option1.map(sub => sub.text)
-    let option2Text = option2.map(sub => sub.text)
-    //let option3Text = option3.map(sub => sub.text)
-    let nextScriptId1 = option1.map(sub => sub.nextScriptId);
-    let nextScriptId2 = option2.map(sub => sub.nextScriptId);
-    //let nextScriptId3 = option3.map(sub => sub.nextScriptId);//第三個選項按鈕
-    let optionBtnClass1 = option1.map(sub => sub.optionButtonClass);//新增按鈕CSS
-    let optionBtnClass2 = option2.map(sub => sub.optionButtonClass);//新增按鈕CSS
-    //let optionBtnClass3 = option3.map(sub => sub.optionButtonClass);//新增按鈕CSS
-    console.log("optionbutton scriptState = " + props.currScript);
+    let btnClass;
 
-
-    function record(optionText) {//記錄玩家選擇的option按鈕的文字
-      optionState.push(optionText);
-      console.log("optionText record = " + optionState)
-    };
-
-    function changeScript(nextScriptId) {
-      let nextScriptIdNumber = Number(nextScriptId)
-      setCurrScriptState(nextScriptIdNumber)
+    let CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)[0].options
+    if (CurrScript.length === 1) {
+      btnClass = "option-btn"
     }
+    else if (CurrScript.length === 2) {
+      btnClass = "option-btn"
+    }
+    else if (CurrScript.length === 3) {
+      btnClass = "option-btn"
+    }
+    else return;
+
+    const BtnList = CurrScript.map((sub) =>
+      <button className={btnClass} onClick={(event) => { props.setTrigger(false); record(sub.record); setCurrScriptState(Number(sub.nextScriptId)); }}>{sub.text}</button>
+    )
+
+    function record(record) {//記錄玩家選擇的option按鈕的文字
+      if (!record) {
+        return;
+      }
+      localStorage.setItem('第一關選項紀錄',record);//用localStorage存起來
+    };
 
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
 
@@ -581,8 +532,7 @@ const Chatbox = () => {
       <>
         <div id="option-popup">
           <div id="option-buttons" className="option-btn-grid">
-            <button className="option-btn" onClick={(event) => { props.setTrigger(false); record(option1Text); changeScript(nextScriptId1); }}>{option1Text}</button>
-            <button className="option-btn" onClick={(event) => { props.setTrigger(false); record(option2Text); changeScript(nextScriptId2); }}>{option2Text}</button>
+            <div>{BtnList}</div>
           </div>
         </div>
         <div id="overlay"></div>
@@ -592,10 +542,10 @@ const Chatbox = () => {
 
   const InputPopup = (props) => {//第一關的帳號密碼輸入介面
 
-    if(props.currScript === 2){
+    if (props.currScript === 2) {
       props.setStyle("display:block");
     }
-    else{props.setStyle("display:none");}
+    else { props.setStyle("display:none"); }
 
     const [accField, setAccField] = useState("");
     const [pwdField, setPwdField] = useState("");
@@ -604,51 +554,51 @@ const Chatbox = () => {
     const [accResult, checkAcc] = useState("");
     const [pwdResult, checkPwd] = useState("");
 
-    const Save =(e) => {
+    const Save = (e) => {
       e.preventDefault();
       setSavedAcc(accField);
       setSavedPwd(pwdField);
     };
 
-    useEffect(()=>{
+    useEffect(() => {
       // console.log("儲存的帳號" + savedAcc)
-      if(savedAcc === "123" ){//待改成本地儲存的玩家帳號
+      if (savedAcc === localStorage.getItem('account')) {//已改成本地儲存的玩家帳號
         return checkAcc(true)
       }
-      if(savedAcc !== "123" && savedAcc!==""){//待改成本地儲存的玩家帳號
+      if (savedAcc !== localStorage.getItem('account') && savedAcc !== "") {//已改成本地儲存的玩家帳號
         return checkAcc(false)
       }
-    },[savedAcc])
+    }, [savedAcc])
 
-    useEffect(()=>{
+    useEffect(() => {
       // console.log("儲存的密碼" + savedPwd)
-      if(savedPwd === "456" ){//待改成本地儲存的玩家帳號
+      if (savedPwd === localStorage.getItem('password')) {//已改成本地儲存的玩家帳號
         return checkPwd(true)
       }
-      if(savedPwd !== "456" && savedPwd!=="" ){//待改成本地儲存的玩家帳號
+      if (savedPwd !== localStorage.getItem('password') && savedPwd !== "") {//已改成本地儲存的玩家帳號
         return checkPwd(false)
       }
-    },[savedPwd])
+    }, [savedPwd])
 
-    useEffect(()=>{//判斷下一個要跳轉的劇本ID、關掉inputPopup介面
-      if( accResult !=="" && pwdResult !==""){//確認不是預設狀態
+    useEffect(() => {//判斷下一個要跳轉的劇本ID、關掉inputPopup介面
+      if (accResult !== "" && pwdResult !== "") {//確認不是預設狀態
         //如果帳密都輸對，跳劇本5，關掉介面
-        if( accResult && pwdResult){setCurrScriptState(5); props.setStyle("display:none"); props.setStyle("display:none"); console.log("狀況一")}
+        if (accResult && pwdResult) { setCurrScriptState(5); props.setStyle("display:none"); props.setStyle("display:none"); console.log("狀況一") }
         //如果帳號對密碼錯，跳劇本5，關掉介面
-        else if( accResult  && !pwdResult){setCurrScriptState(5); props.setStyle("display:none"); console.log("狀況二");}
+        else if (accResult && !pwdResult) { setCurrScriptState(5); props.setStyle("display:none"); console.log("狀況二"); }
         //如果帳號錯密碼對or帳號錯密碼錯，跳劇本4，關掉介面
-        else if( (!accResult && pwdResult) || (!accResult && !pwdResult) ){setCurrScriptState(4); props.setStyle("display:none"); console.log("狀況三");}
+        else if ((!accResult && pwdResult) || (!accResult && !pwdResult)) { setCurrScriptState(4); props.setStyle("display:none"); console.log("狀況三"); }
         else console.log("狀況四"); props.setStyle("display:none");
       }
       // else(console.log("InputPopup還在預設狀態"))
     })
 
 
-    if(props.style==="display:none"){
+    if (props.style === "display:none") {
       return "";
     }
 
-    if(props.style==="display:block"){
+    if (props.style === "display:block") {
       return <>
         <div id="input-popup">
           <div className="input-popup-container">
@@ -659,33 +609,28 @@ const Chatbox = () => {
               <div>東方哈拉帳號:</div>
               <input type="text" value={pwdField} placeholder="請輸入您的密碼" onChange={(e) => { setPwdField(e.target.value) }} />
               <button type="submit">提交</button>
-          </form>
+            </form>
           </div>
         </div>
       </>
     }
   }
 
-  const Accuse2= (props) => {//第二關，指認中毒者(青年)的介面
+  const Accuse2 = (props) => {//第二關，指認中毒者(青年)的介面
 
-    function whoisControlled(nickNamepicked){
-      let pickedCharacter = Accuse2List.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來要用陣列
-      // console.log("玩家選的選項文字 = " + nickNamepicked);
-      // console.log(pickedCharacter);
-      // console.log(pickedCharacter[0].realName)
-      if(pickedCharacter[0].realName === 'Young'){//劇本的第二關的中毒者是青年
-        optionState.push('第二關指認成功');
-        console.log("optionState = "+optionState)
-      }
-      else{
-        optionState.push('第二關指認失敗');
-        console.log("optionState = "+optionState)
-      }
+    if(currScriptState === -1){//如果currScriptState是-1，直接自動開啟第二關指認
+      props.setTrigger(true)
     }
 
-    function changeScript(nextScriptId) {
-      let nextScriptIdNumber = Number(nextScriptId)
-      setCurrScriptState(nextScriptIdNumber)
+    function whoisControlled(nickNamepicked) {
+      let pickedCharacter = Accuse2List.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來要用陣列
+
+      if (pickedCharacter[0].realName === 'Young') {//劇本的第二關的中毒者是青年
+        localStorage.setItem('FindYoung', true)//用localstorage來記錄
+      }
+      else {
+        localStorage.setItem('FindYoung', false)//用localstorage來記錄
+      }
     }
 
     return (props.trigger) ? (//指認後直接跳轉到第三關
@@ -693,44 +638,56 @@ const Chatbox = () => {
         <div id="accuse2-popup">
           <div id="accuse2-btn" className="accuse2-btn-grid">
             <div className="accuse2-title">你覺得誰中毒了？</div>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); changeScript(16); props.setTrigger(false); }}>{"A"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); changeScript(16); props.setTrigger(false); }}>{"B"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); changeScript(16); props.setTrigger(false); }}>{"C"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); changeScript(16); props.setTrigger(false); }}>{"D"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); setCurrScriptState(Number(16)); props.setTrigger(false); }}>{"A"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); setCurrScriptState(Number(16)); props.setTrigger(false); }}>{"B"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); setCurrScriptState(Number(16)); props.setTrigger(false); }}>{"C"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); setCurrScriptState(Number(16)); props.setTrigger(false); }}>{"D"}</button>
           </div>
         </div>
       </>
     ) : "";
   }
 
-  const Accuse3= (props) => {//第三關，指認駭客的介面
+  const Accuse3 = (props) => {//如果currScriptState是-2，直接自動開啟第二關指認
 
-    function whoisHack(nickNamepicked){
+    if(currScriptState === -2){
+      props.setTrigger(true)
+    }
+
+    function whoisHack(nickNamepicked) {
       let pickedCharacter = Accuse3List.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來要用陣列
-      if(pickedCharacter[0].realName === 'Hack'){
-        optionState.push('第三關指認成功');
-        console.log("optionState = "+optionState)
+      if (pickedCharacter[0].realName === 'Hack') {
+        localStorage.setItem('FindHack', true)//用localstorage來記錄
       }
-      else{
-        optionState.push('第三關指認失敗');
-        console.log("optionState = "+optionState)
+      else {
+        localStorage.setItem('FindHack', false)//用localstorage來記錄
       }
     }
 
-    function changeScript(nextScriptId) {
-      let nextScriptIdNumber = Number(nextScriptId)
-      setCurrScriptState(nextScriptIdNumber)
+    function goToEnd() {//直接前往結局 //待補結局邏輯
+      // if(localStorage.getItem('FindYoung')){
+      //   setCurrScriptState(-1)
+      // }
+      // else{
+
+      // }
+      // if(localStorage.getItem('FindHack')){
+      //   setCurrScriptState(8)
+      // }
+      // else{
+      //   setCurrScriptState(6)
+      // }
     }
 
-    return (props.trigger) ? (//指認後直接跳轉到第三關
+    return (props.trigger) ? (//指認後直接跳轉結局
       <>
         <div id="accuse2-popup">
           <div id="accuse2-btn" className="accuse2-btn-grid">
-            <div className="accuse2-title">你覺得誰中毒了？</div>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("A"); changeScript(16); props.setTrigger(false); }}>{"A"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("B"); changeScript(16); props.setTrigger(false); }}>{"B"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("C"); changeScript(16); props.setTrigger(false); }}>{"C"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("D"); changeScript(16); props.setTrigger(false); }}>{"D"}</button>
+            <div className="accuse2-title">你覺得誰是駭客？</div>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("A"); goToEnd(); props.setTrigger(false); }}>{"A"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("B"); goToEnd(); props.setTrigger(false); }}>{"B"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("C"); goToEnd(); props.setTrigger(false); }}>{"C"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("D"); goToEnd(); props.setTrigger(false); }}>{"D"}</button>
           </div>
         </div>
       </>
@@ -741,8 +698,8 @@ const Chatbox = () => {
 
     let HintState = [];
 
-    function changeCurrHint(nextHint){
-        setCurrHint(nextHint)
+    function changeCurrHint(nextHint) {
+      setCurrHint(nextHint)
     }
 
     function changeScript(nextScriptId) {
@@ -750,82 +707,82 @@ const Chatbox = () => {
       setCurrScriptState(nextScriptIdNumber)
     }
 
-    function Hint1(nickNamepicked){//是誰不謹慎(f1)
+    function Hint1(nickNamepicked) {//是誰不謹慎(f1)
       let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
-      if(pickedCharacter[0].realName === 'God'){
+      if (pickedCharacter[0].realName === 'God') {
         HintState.push("e1-f1");
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
-      else if (pickedCharacter[0].realName === 'Hack'){
+      else if (pickedCharacter[0].realName === 'Hack') {
         HintState.push("e2-f1");
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
-      else if (pickedCharacter[0].realName === 'Young'){
+      else if (pickedCharacter[0].realName === 'Young') {
         HintState.push("e3-f1");
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
-      else if (pickedCharacter[0].realName === 'Robot'){
+      else if (pickedCharacter[0].realName === 'Robot') {
         HintState.push("e4-f1")
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
       else console.log("Hint1 有問題")
     }
-    
-    function Hint2(nickNamepicked){//是誰在帶風向(f2)
+
+    function Hint2(nickNamepicked) {//是誰在帶風向(f2)
       let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
-      if(pickedCharacter[0].realName === 'God'){
+      if (pickedCharacter[0].realName === 'God') {
         HintState.push("e1-f2");
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
-      else if (pickedCharacter[0].realName === 'Hack'){
+      else if (pickedCharacter[0].realName === 'Hack') {
         HintState.push("e2-f2");
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
-      else if (pickedCharacter[0].realName === 'Young'){
+      else if (pickedCharacter[0].realName === 'Young') {
         HintState.push("e3-f2");
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
-      else if (pickedCharacter[0].realName === 'Robot'){
+      else if (pickedCharacter[0].realName === 'Robot') {
         HintState.push("e4-f2")
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
       else console.log("Hint2 有問題")
     }
 
-    function Hint3(nickNamepicked){//直接連到最後
+    function Hint3(nickNamepicked) {//直接連到最後
       let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
-      if(pickedCharacter[0].realName === 'God'){
+      if (pickedCharacter[0].realName === 'God') {
         HintState.push("e1-f2");
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
-      else if (pickedCharacter[0].realName === 'Hack'){
+      else if (pickedCharacter[0].realName === 'Hack') {
         HintState.push("e2-f2");
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
-      else if (pickedCharacter[0].realName === 'Young'){
+      else if (pickedCharacter[0].realName === 'Young') {
         HintState.push("e3-f2");
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
-      else if (pickedCharacter[0].realName === 'Robot'){
+      else if (pickedCharacter[0].realName === 'Robot') {
         HintState.push("e4-f2")
-        console.log("Hint1 = "+HintState);
+        console.log("Hint1 = " + HintState);
       }
       else console.log("Hint2 有問題")
     }
 
-    function Disable(nickNamepicked){
+    function Disable(nickNamepicked) {
       let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
 
-      if(pickedCharacter[0].realName === 'God' && (HintState.includes("God"))){
+      if (pickedCharacter[0].realName === 'God' && (HintState.includes("God"))) {
         return true;
       }
-      else if (pickedCharacter[0].realName === 'Hack' && (HintState.includes("Hack"))){
+      else if (pickedCharacter[0].realName === 'Hack' && (HintState.includes("Hack"))) {
         return true;
       }
-      else if (pickedCharacter[0].realName === 'Young' && (HintState.includes("Young"))){
+      else if (pickedCharacter[0].realName === 'Young' && (HintState.includes("Young"))) {
         return true;
       }
-      else if (pickedCharacter[0].realName === 'Robot' && (HintState.includes("Robot"))){
+      else if (pickedCharacter[0].realName === 'Robot' && (HintState.includes("Robot"))) {
         return true;
       }
       else return false
@@ -836,39 +793,39 @@ const Chatbox = () => {
         <div id="hint-popup">
           <div className="hint-title">你覺得誰不謹慎？</div>
           <div className="hint-btn-grid">
-            <button className="hint-btn"  onClick={(event) => { Hint1("A"); changeCurrHint(2)}}>{"A"}</button>
-            <button className="hint-btn"  onClick={(event) => { Hint1("B"); changeCurrHint(2)}}>{"B"}</button>
-            <button className="hint-btn"  onClick={(event) => { Hint1("C"); changeCurrHint(2)}}>{"C"}</button>
-            <button className="hint-btn"  onClick={(event) => { Hint1("D"); changeCurrHint(2)}}>{"D"}</button>
+            <button className="hint-btn" onClick={(event) => { Hint1("A"); changeCurrHint(2) }}>{"A"}</button>
+            <button className="hint-btn" onClick={(event) => { Hint1("B"); changeCurrHint(2) }}>{"B"}</button>
+            <button className="hint-btn" onClick={(event) => { Hint1("C"); changeCurrHint(2) }}>{"C"}</button>
+            <button className="hint-btn" onClick={(event) => { Hint1("D"); changeCurrHint(2) }}>{"D"}</button>
           </div>
         </div>
       </>
-      ):
+    ) :
       (props.trigger && currHint === 2) ?
-      (      <>
-        <div id="hint-popup">
-          <div className="hint-title">你覺得誰在帶風向？</div>
-          <div className="hint-btn-grid">
-            <button className="hint-btn" disabled={Disable("A")} onClick={(event) => { Hint2("A"); changeCurrHint(3)}}>{"A"}</button>
-            <button className="hint-btn" disabled={Disable("B")} onClick={(event) => { Hint2("B"); changeCurrHint(3)}}>{"B"}</button>
-            <button className="hint-btn" disabled={Disable("C")} onClick={(event) => { Hint2("C"); changeCurrHint(3)}}>{"C"}</button>
-            <button className="hint-btn" disabled={Disable("D")} onClick={(event) => { Hint2("D"); changeCurrHint(3)}}>{"D"}</button>
+        (<>
+          <div id="hint-popup">
+            <div className="hint-title">你覺得誰在帶風向？</div>
+            <div className="hint-btn-grid">
+              <button className="hint-btn" disabled={Disable("A")} onClick={(event) => { Hint2("A"); changeCurrHint(3) }}>{"A"}</button>
+              <button className="hint-btn" disabled={Disable("B")} onClick={(event) => { Hint2("B"); changeCurrHint(3) }}>{"B"}</button>
+              <button className="hint-btn" disabled={Disable("C")} onClick={(event) => { Hint2("C"); changeCurrHint(3) }}>{"C"}</button>
+              <button className="hint-btn" disabled={Disable("D")} onClick={(event) => { Hint2("D"); changeCurrHint(3) }}>{"D"}</button>
+            </div>
           </div>
-        </div>
-      </>):
-      (props.trigger && currHint === 3) ?
-      (      <>
-        <div id="hint-popup">
-          <div className="hint-title">再一次，你覺得誰在帶風向？</div>
-          <div className="hint-btn-grid">
-            <button className="hint-btn"  onClick={(event) => { Hint3("A"); changeCurrHint(3)}}>{"A"}</button>
-            <button className="hint-btn"  onClick={(event) => { Hint3("B"); changeCurrHint(3)}}>{"B"}</button>
-            <button className="hint-btn"  onClick={(event) => { Hint3("C"); changeCurrHint(3)}}>{"C"}</button>
-            <button className="hint-btn"  onClick={(event) => { Hint3("D"); changeCurrHint(3)}}>{"D"}</button>
-          </div>
-        </div>
-      </>):"";
-     }
+        </>) :
+        (props.trigger && currHint === 3) ?
+          (<>
+            <div id="hint-popup">
+              <div className="hint-title">再一次，你覺得誰在帶風向？</div>
+              <div className="hint-btn-grid">
+                <button className="hint-btn" onClick={(event) => { Hint3("A"); changeCurrHint(3) }}>{"A"}</button>
+                <button className="hint-btn" onClick={(event) => { Hint3("B"); changeCurrHint(3) }}>{"B"}</button>
+                <button className="hint-btn" onClick={(event) => { Hint3("C"); changeCurrHint(3) }}>{"C"}</button>
+                <button className="hint-btn" onClick={(event) => { Hint3("D"); changeCurrHint(3) }}>{"D"}</button>
+              </div>
+            </div>
+          </>) : "";
+  }
 
   return (//顯示整個ChatBox的內容
     <>
@@ -879,21 +836,19 @@ const Chatbox = () => {
             <div className="time-limit-container"></div>
           </div>
           <div className="time-limit">14:00</div>
-          <button className="answer-button" id="answer-button" onClick={() => setButtonPopup(true)}>Answer</button>
+          <button className="answer-button" id="answer-button" onClick={() => setButtonPopup(true)} disabled={ansBtnDisabled}>Answer</button>
           <div className="chat-container">
             <ul className="chat-message-list" id="chat-list">
 
               <ShowMessage currScript={currScriptState} />
             </ul>
-            <button onClick={()=>setAccuse2Popup(true)}>Accuse2</button>
-            <button onClick={()=>setAccuse3Popup(true)}>Accuse3</button>
-            <button onClick={()=>setHintPopup(true)}>Hint</button>
+            <button onClick={() => setHintPopup(true)}>Hint</button>
           </div>
           <OptionBtn trigger={buttonPopup} setTrigger={setButtonPopup} currScript={currScriptState} />
-          <InputPopup style={inputPopup} setStyle={setInputPopup} currScript={currScriptState}/>
-          <Accuse2 trigger={accuse2Popup} setTrigger={setAccuse2Popup} currScript={currScriptState}/>
-          <Accuse3 trigger={accuse3Popup} setTrigger={setAccuse3Popup} currScript={currScriptState}/>
-          <Hint trigger={hintPopup} setTrigger={setHintPopup} currScript={currScriptState} currHint={currHint}/>
+          <InputPopup style={inputPopup} setStyle={setInputPopup} currScript={currScriptState} />
+          <Accuse2 trigger={accuse2Popup} setTrigger={setAccuse2Popup} currScript={currScriptState} />
+          <Accuse3 trigger={accuse3Popup} setTrigger={setAccuse3Popup} currScript={currScriptState} />
+          <Hint trigger={hintPopup} setTrigger={setHintPopup} currScript={currScriptState} currHint={currHint} />
         </div>
 
       </div>
