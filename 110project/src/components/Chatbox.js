@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import {Scripts} from './Scripts'
-import {Accuse2List, Accuse3List, HintList} from './Character'
+import React, { useState, useEffect, memo } from 'react'
+import { Scripts } from './Scripts'
+import { Accuse2List, Accuse3List, HintList } from './Character'
 import '../styles/chatbox.css'
 
 var pastScripts = [];//加上顯示過的劇本的紀錄
@@ -10,64 +10,29 @@ const Chatbox = () => {
 
   const [buttonPopup, setButtonPopup] = useState(false); //用useState設定目前Optionbuttons的Popup狀態
   const [currScriptState, setCurrScriptState] = useState(0);//用useState設定目前在進行中的劇本ID
-  const [inputPopup, setInputPopup] = useState("display:none");//用useState設定目前在進行中的劇本ID
-  const [ansBtnDisabled, setAnsBtnDisabled] = useState(false); //Answer按鈕disable
+  const [inputPopup, setInputPopup] = useState("display:none");//控制第一關釣魚網站介面Popup
+  const [ansBtnDisabled, setAnsBtnDisabled] = useState(true); //Answer按鈕disable
   const [accuse2Popup, setAccuse2Popup] = useState(false)//控制第二關指認介面Popup
   const [hintPopup, setHintPopup] = useState(false)//控制第三關選項提示介面Popup
-  const [currHint, setCurrHint] = useState(1)//第三關選項提示介面跳轉
-  const [accuse3Popup, setAccuse3Popup] = useState(false)//控制第二關指認介面Popup
-  /*
-    const ShowMessage = (props) => {
-      //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本顯示出來
-      const CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)
-      console.log("currscriptState = " + currScriptState);//顯示目前的進行中的劇本ID
-  
-      const messageList = CurrScript.map((CurrScript) =>
-        CurrScript.messages.map((sub) =>
-          <div className={sub.align}>
-            <div className="message-sender">{sub.sender}</div>
-            <span>
-              <img className="chat-pic" src={sub.chatPicSrc}></img>
-            </span>
-            <span>
-              <span className="message-text">{sub.text}</span>
-            </span>
-            <span className="message-time">{sub.time}</span>
-          </div>
-        )
-      );
-  
-      return (
-        <>
-          <li>{messageList}</li>
-        </>
-      )
-    }
-  */
+  const [accuse3Popup, setAccuse3Popup] = useState(false)//控制第三關指認介面Popup
+  const [currIndex, setCurrIndex] = useState(0);
 
-
-  const ShowMessage = (props) => {
-    //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本顯示出來
+  const ShowMessage = memo((props) => {
+    //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本，將裡面messages拿出來
     const CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)[0].messages
     //console.log("currscriptState = " + currScriptState);//顯示目前的進行中的劇本ID
 
-    const [currIndex, setCurrIndex] = useState(0); //建立Index管理
-
     useEffect(() => {//當索引發生變化
       if (currIndex > CurrScript.length - 1) {//如果目前Index大於目標陣列長度則返回
+        setAnsBtnDisabled(false)
         return
       }
-      //設定一定的時間後，改變當前的Index
-      setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)
+      else { setAnsBtnDisabled(true) }
+      setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
       console.log(currIndex)
     }, [currIndex])
 
-    useEffect(() => {
-      setCurrIndex(0)
-    }, [currScriptState])
 
-
-    //顯示當前索引指涉的陣列值
     return (
       <>
         <div>{CurrScript.slice(0, currIndex + 1).map((sub) =>
@@ -83,45 +48,37 @@ const Chatbox = () => {
           </div>)}</div>
       </>
     )
+  }, currScriptState)
+
+
+  const ShowPastMessage = (props) => {//顯示已經過去的聊天室內容
+
+    let PastScriptList
+
+    for (let i = 0; i <= pastScripts.length; i = i + 1) {
+      const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[0])//待修正為什麼會跑兩次的問題(可能是answerButton)
+      PastScriptList = PastScript.map((PastScript) =>
+        PastScript.messages.map((sub) =>
+          <div className={sub.align}>
+            <div className="message-sender">{sub.sender}</div>
+            <span>
+              <img className="chat-pic" src={sub.chatPicSrc}></img>
+            </span>
+            <span>
+              <span className="message-text">{sub.text}</span>
+            </span>
+            <span className="message-time">{sub.time}</span>
+          </div>
+        )
+      );
+    }
+
+    return (
+      <>
+        <li>{PastScriptList}</li>
+      </>
+    )
   }
-
-  /**/
-  // const ShowPastMessage = (props) => {//顯示已經過去的聊天室內容
-
-  //   useEffect(()=>{
-  //     pastScripts.push(props.currScript);//新增過去的劇本ID
-  //   },[optionState])
-
-  //   let PastScriptOut;
-
-  //   // useEffect(()=>{
-  //     for(let i=1; i < pastScripts.length; i=i+2){
-  //       const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[i])//待修正為什麼會跑兩次的問題(可能是answerButton)
-  //       const PastScriptList = PastScript.map((PastScript) =>
-  //         PastScript.messages.map((sub) =>
-  //           <div className={sub.align}>
-  //             <div className="message-sender">{sub.sender}</div>
-  //             <span>
-  //               <img className="chat-pic" src={sub.chatPicSrc}></img>
-  //             </span>
-  //             <span>
-  //               <span className="message-text">{sub.text}</span>
-  //             </span>
-  //             <span className="message-time">{sub.time}</span>
-  //           </div>
-  //         )
-  //       );
-  //       PastScriptOut = PastScriptList
-  //       console.log("pastScripts = " + pastScripts);//顯示目前的進行中的劇本ID
-  //     }
-  //   //},[pastScripts]) //<li>{PastScriptList}</li>
-
-  //   return (
-  //     <>
-  //       <li>{PastScriptOut}</li>
-  //     </>
-  //   )
-  // }
 
 
   const OptionBtn = (props) => {
@@ -140,20 +97,26 @@ const Chatbox = () => {
     }
     else return;
 
+    function AddPassScript(currScript) {
+      if (currScript !== pastScripts[pastScripts.length] && currScript!==2 && currScript >= 0) {
+        pastScripts.push(currScript)
+        console.log(pastScripts)
+      }
+    }
+
     const BtnList = CurrScript.map((sub) =>
-      <button className={btnClass} onClick={(event) => { props.setTrigger(false); record(sub.record); setCurrScriptState(Number(sub.nextScriptId)); }}>{sub.text}</button>
+      <button className={btnClass} onClick={(event) => { props.setTrigger(false); record(sub.record); setCurrScriptState(Number(sub.nextScriptId)); setCurrIndex(0); AddPassScript(props.currScript) }}>{sub.text}</button>
+      //按下option-button介面中的其中一個選項按鈕，會關閉option-button介面、記錄玩家選擇的按鈕的文字、將CurrScriptState更新成劇本中按下按鈕後要接續的下個劇本ID
     )
 
     function record(record) {//記錄玩家選擇的option按鈕的文字
       if (!record) {
         return;
       }
-      localStorage.setItem('第一關選項紀錄',record);//用localStorage存起來
+      localStorage.setItem('第一關選項紀錄', record);//用localStorage存起來
     };
 
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
-
-      //按下option-button介面中的其中一個選項按鈕，會關閉option-button介面、記錄玩家選擇的按鈕的文字、將CurrScriptState更新成劇本中按下按鈕後要接續的下個劇本ID
       <>
         <div id="option-popup">
           <div id="option-buttons" className="option-btn-grid">
@@ -165,7 +128,7 @@ const Chatbox = () => {
     ) : "";
   }
 
-  const InputPopup = (props) => {//第一關的帳號密碼輸入介面
+  const InputPopup = (props) => {//第一關的帳號密碼輸入介面 //待改成跳轉視窗
 
     if (props.currScript === 2) {
       props.setStyle("display:block");
@@ -243,7 +206,7 @@ const Chatbox = () => {
 
   const Accuse2 = (props) => {//第二關，指認中毒者(青年)的介面
 
-    if(currScriptState === -1){//如果currScriptState是-1，直接自動開啟第二關指認
+    if (currScriptState === -1) {//如果currScriptState是-1，直接自動開啟第二關指認
       props.setTrigger(true)
     }
 
@@ -263,10 +226,10 @@ const Chatbox = () => {
         <div id="accuse2-popup">
           <div id="accuse2-btn" className="accuse2-btn-grid">
             <div className="accuse2-title">你覺得誰中毒了？</div>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); setCurrScriptState(Number(16)); props.setTrigger(false); }}>{"A"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); setCurrScriptState(Number(16)); props.setTrigger(false); }}>{"B"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); setCurrScriptState(Number(16)); props.setTrigger(false); }}>{"C"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); setCurrScriptState(Number(16)); props.setTrigger(false); }}>{"D"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); setCurrScriptState(Number(16)); props.setTrigger(false); setCurrIndex(0); }}>{"A"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); setCurrScriptState(Number(16)); props.setTrigger(false); setCurrIndex(0); }}>{"B"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); setCurrScriptState(Number(16)); props.setTrigger(false); setCurrIndex(0); }}>{"C"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); setCurrScriptState(Number(16)); props.setTrigger(false); setCurrIndex(0); }}>{"D"}</button>
           </div>
         </div>
       </>
@@ -275,7 +238,7 @@ const Chatbox = () => {
 
   const Accuse3 = (props) => {//如果currScriptState是-2，直接自動開啟第二關指認
 
-    if(currScriptState === -2){
+    if (currScriptState === -2) {
       props.setTrigger(true)
     }
 
@@ -289,7 +252,7 @@ const Chatbox = () => {
       }
     }
 
-    function goToEnd() {//直接前往結局 //待補結局邏輯
+    function goToEnd() {//選完直接前往結局 //待補結局邏輯
       // if(localStorage.getItem('FindYoung')){
       //   setCurrScriptState(-1)
       // }
@@ -309,28 +272,19 @@ const Chatbox = () => {
         <div id="accuse2-popup">
           <div id="accuse2-btn" className="accuse2-btn-grid">
             <div className="accuse2-title">你覺得誰是駭客？</div>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("A"); goToEnd(); props.setTrigger(false); }}>{"A"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("B"); goToEnd(); props.setTrigger(false); }}>{"B"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("C"); goToEnd(); props.setTrigger(false); }}>{"C"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("D"); goToEnd(); props.setTrigger(false); }}>{"D"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("A"); goToEnd(); props.setTrigger(false); setCurrIndex(0); }}>{"A"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("B"); goToEnd(); props.setTrigger(false); setCurrIndex(0); }}>{"B"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("C"); goToEnd(); props.setTrigger(false); setCurrIndex(0); }}>{"C"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("D"); goToEnd(); props.setTrigger(false); setCurrIndex(0); }}>{"D"}</button>
           </div>
         </div>
       </>
     ) : "";
   }
 
-  const Hint = (props) => {//第三關，選擇提示部分
+  const Hint = (props) => {//第三關的選擇提示部分
 
     let HintState = [];
-
-    function changeCurrHint(nextHint) {
-      setCurrHint(nextHint)
-    }
-
-    function changeScript(nextScriptId) {
-      let nextScriptIdNumber = Number(nextScriptId)
-      setCurrScriptState(nextScriptIdNumber)
-    }
 
     function Hint1(nickNamepicked) {//是誰不謹慎(f1)
       let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
@@ -395,61 +349,24 @@ const Chatbox = () => {
       else console.log("Hint2 有問題")
     }
 
-    function Disable(nickNamepicked) {
-      let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
-
-      if (pickedCharacter[0].realName === 'God' && (HintState.includes("God"))) {
-        return true;
-      }
-      else if (pickedCharacter[0].realName === 'Hack' && (HintState.includes("Hack"))) {
-        return true;
-      }
-      else if (pickedCharacter[0].realName === 'Young' && (HintState.includes("Young"))) {
-        return true;
-      }
-      else if (pickedCharacter[0].realName === 'Robot' && (HintState.includes("Robot"))) {
-        return true;
-      }
-      else return false
-    }
-
-    return (props.trigger && currHint === 1) ? (
+    return (props.trigger) ? (
       <>
         <div id="hint-popup">
-          <div className="hint-title">你覺得誰不謹慎？</div>
+          <div className="hint-title">你覺得</div>
           <div className="hint-btn-grid">
-            <button className="hint-btn" onClick={(event) => { Hint1("A"); changeCurrHint(2) }}>{"A"}</button>
-            <button className="hint-btn" onClick={(event) => { Hint1("B"); changeCurrHint(2) }}>{"B"}</button>
-            <button className="hint-btn" onClick={(event) => { Hint1("C"); changeCurrHint(2) }}>{"C"}</button>
-            <button className="hint-btn" onClick={(event) => { Hint1("D"); changeCurrHint(2) }}>{"D"}</button>
+            <button className="hint-btn" onClick={(event) => { Hint1("A"); }}>{"A"} </button>
+            <button className="hint-btn" onClick={(event) => { Hint1("B"); }}>{"B"}</button>
+            <button className="hint-btn" onClick={(event) => { Hint1("C"); }}>{"C"}</button>
+            <button className="hint-btn" onClick={(event) => { Hint1("D"); }}>{"D"}</button>
+          </div>
+
+          <div className="hint-btn-grid">
+            <button className="hint-btn" onClick={(event) => { Hint1("A"); }}>{"不謹慎"}</button>
+            <button className="hint-btn" onClick={(event) => { Hint1("B"); }}>{"在帶風向"}</button>
           </div>
         </div>
       </>
-    ) :
-      (props.trigger && currHint === 2) ?
-        (<>
-          <div id="hint-popup">
-            <div className="hint-title">你覺得誰在帶風向？</div>
-            <div className="hint-btn-grid">
-              <button className="hint-btn" disabled={Disable("A")} onClick={(event) => { Hint2("A"); changeCurrHint(3) }}>{"A"}</button>
-              <button className="hint-btn" disabled={Disable("B")} onClick={(event) => { Hint2("B"); changeCurrHint(3) }}>{"B"}</button>
-              <button className="hint-btn" disabled={Disable("C")} onClick={(event) => { Hint2("C"); changeCurrHint(3) }}>{"C"}</button>
-              <button className="hint-btn" disabled={Disable("D")} onClick={(event) => { Hint2("D"); changeCurrHint(3) }}>{"D"}</button>
-            </div>
-          </div>
-        </>) :
-        (props.trigger && currHint === 3) ?
-          (<>
-            <div id="hint-popup">
-              <div className="hint-title">再一次，你覺得誰在帶風向？</div>
-              <div className="hint-btn-grid">
-                <button className="hint-btn" onClick={(event) => { Hint3("A"); changeCurrHint(3) }}>{"A"}</button>
-                <button className="hint-btn" onClick={(event) => { Hint3("B"); changeCurrHint(3) }}>{"B"}</button>
-                <button className="hint-btn" onClick={(event) => { Hint3("C"); changeCurrHint(3) }}>{"C"}</button>
-                <button className="hint-btn" onClick={(event) => { Hint3("D"); changeCurrHint(3) }}>{"D"}</button>
-              </div>
-            </div>
-          </>) : "";
+    ) : ""
   }
 
   return (//顯示整個ChatBox的內容
@@ -461,18 +378,19 @@ const Chatbox = () => {
             <div className="time-limit-container"></div>
           </div>
           <div className="time-limit">14:00</div>
-          <button className="answer-button" id="answer-button" onClick={() => setButtonPopup(true)} disabled={ansBtnDisabled}>Answer</button>
+          <button className="answer-button" id="answer-button" setButtonPopup={setButtonPopup} buttonPopup={buttonPopup} onClick={() => setButtonPopup(true)} disabled={ansBtnDisabled}>Answer</button>
           <div className="chat-container">
             <ul className="chat-message-list" id="chat-list">
+              <ShowPastMessage currScript={currScriptState} />
               <ShowMessage currScript={currScriptState} />
             </ul>
             <button onClick={() => setHintPopup(true)}>Hint</button>
           </div>
-          <OptionBtn trigger={buttonPopup} setTrigger={setButtonPopup} currScript={currScriptState} />
+          <OptionBtn trigger={buttonPopup} setTrigger={setButtonPopup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
           <InputPopup style={inputPopup} setStyle={setInputPopup} currScript={currScriptState} />
-          <Accuse2 trigger={accuse2Popup} setTrigger={setAccuse2Popup} currScript={currScriptState} />
-          <Accuse3 trigger={accuse3Popup} setTrigger={setAccuse3Popup} currScript={currScriptState} />
-          <Hint trigger={hintPopup} setTrigger={setHintPopup} currScript={currScriptState} currHint={currHint} />
+          <Accuse2 trigger={accuse2Popup} setTrigger={setAccuse2Popup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
+          <Accuse3 trigger={accuse3Popup} setTrigger={setAccuse3Popup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
+          <Hint trigger={hintPopup} setTrigger={setHintPopup} currScript={currScriptState} />
         </div>
 
       </div>
@@ -481,4 +399,3 @@ const Chatbox = () => {
 }
 
 export default Chatbox
-//              <ShowPastMessage currScript={currScriptState} />
