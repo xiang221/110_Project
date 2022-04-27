@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import Popup from './Popup';
 
+
+
+
 const Online = () => {
 
   const [player1intro,show1handler] = useState(false);

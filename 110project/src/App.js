@@ -4,7 +4,9 @@ import Firstpage from "./pages/Firstpage";
 import Secondpage from "./pages/Secondpage";
 import Account from "./pages/Account";
 import Game from "./pages/Game";
-import Test from "./pages/Test"
+import Test from "./pages/Test";
+import Fish from "./pages/Fish";
+
 
 function App() {
 
@@ -18,7 +20,8 @@ function App() {
         <Route path="secondpage" element={<Secondpage />} />
         <Route path="account" element={<Account user={user} setUser={setUser}/>} />
         <Route path="game" element={<Game user={user} setUser={setUser}/>} />
-        <Route path="test" element={<Test user={user} setUser={setUser}/>} />        
+        <Route path="test" element={<Test user={user} setUser={setUser}/>} /> 
+        <Route path="fish" element={<Fish />}/>        
       </Routes>
     </div>
   );

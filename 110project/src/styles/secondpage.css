@@ -1,15 +1,15 @@
 * { 
     text-decoration: none;
-    font-size:1rem;
-    color:green; 
 }
 
 
 .secondpage {
+    color:green; 
     min-height: 100vh;
     background-color:black;
     text-align: center;
     padding-top:15rem;
+    font-size:1rem;
 }
   
 .wrap { 

@@ -67,7 +67,7 @@
 .openmail{
 	background-color: #696969;
 	position: absolute;
-	width:30%;
+	width:28%;
 	min-height: 75%;
 	border: 0.1rem solid #FFF;
 	z-index: 1;
@@ -77,22 +77,51 @@
 	display: flex;
 	text-align: center;
 	align-items: center;
-	padding:1rem;
+	justify-content: center;
+	padding:0.75rem;
+	margin:0 0.7rem;
 	border-bottom: 2px solid #FFF;
+	color:#FFF;
+	font-weight: 400;
+	font-size: 1.25rem;
+	line-height: 38px;
+}
+
+
+.mailClose{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .mailBtn{
-	position: absolute;
 	background-color: #FFF;
-	width:auto;
-	height:10%;
+	font-weight: 600;
+	margin:1rem;
+	width:18rem;
+	height:3rem;
 }
 
-/*
-.modal-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+.mailline{
+	height:4.5rem;
+	margin:1.5rem 0.7rem;
+	color:#FFF;
+	cursor: pointer;
 }
 
-*/
+.mailtext{
+    margin-left:4rem;
+}
+
+
+.mailcircle{
+    width: 3rem;
+    height: 3rem;
+    margin: 0.5rem;
+    border-radius: 999em;
+    z-index: 2;
+    background: #C4C4C4;
+    display: inline;
+    float:left;
+}

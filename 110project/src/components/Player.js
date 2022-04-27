@@ -1,4 +1,5 @@
 import React from 'react';
+import playerImg from '../picture/player.png';
 import '../styles/middle.css';
 
 
@@ -7,7 +8,7 @@ const Player = () => {
   return (
     <div>
       <div className='playercontainer'>
-        <div className='playercard'></div> 
+        <img src={playerImg} className='playercard' /> 
       </div>
     </div>
   )

@@ -2,35 +2,32 @@
 .playercontainer{
     background: linear-gradient(45deg, #FFA5F1,#98F9F3);
     border: 0.2rem solid #FFF;
+    width:18rem;
+    height:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 .playercard{
     margin: 0.5rem;
-    background-image: url('../picture/user.png');
-    background-size: 50% auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    height:9rem;
+    width:14rem;
+    height:auto;
 }
-
 
 
 h3{
     font-style: normal;
     font-weight: 900;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1.5rem;
-    display: inline;
-    color: black;
     margin-left:1.5rem;
 }
 
 p{
     font-size: 0.5rem;
     line-height: 1rem;
-    display: inline; 
-    color: black; 
     margin-left:1.5rem;
 }
 
@@ -38,16 +35,19 @@ p{
     display: flex;
     flex-direction: column;
     align-items:center;
+    color: black;
+
 }
 
 .mission{
-    width:16rem;
+    width:18rem;
     height:3.75rem;
     background: linear-gradient(45deg, #FFA5F1,#98F9F3);
     border: 0.2rem solid #FFF;
     margin-top: 1.5rem;
     text-align:start;
     padding:0.3rem;
+    display: inline;
 }
 
 .boxcircle{
@@ -60,4 +60,8 @@ p{
     border: 0.3rem solid #81FAF8;
     display: inline;
     float:left;
+}
+
+.boxtext{
+    margin-left:2.5rem;
 }
