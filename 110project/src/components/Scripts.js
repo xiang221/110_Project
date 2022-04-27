@@ -3,8 +3,8 @@ import {Young, God, Robot, Hack, GodOrHack, HackOrGod, Player, System} from './C
 
 export const Scripts = [
     {scriptId:-3,
-      options:[{text: "還沒做好，所以先跳轉第三關指認", nextScriptId:-2}],
-      messages:[{ align: "正在進行第三關指認" }]},
+      options:[{text: "正在進行第三關提示選項", nextScriptId:-2}],
+      messages:[{ align: "正在進行第三關提示選項" }]},
     {scriptId:-2,
       options:[{text: "正在進行第三關指認"}],
       messages:[{ align: "正在進行第三關指認" }]},
@@ -206,7 +206,7 @@ export const Scripts = [
       ]
     },
     {
-      scriptId: 16,//第三關_揪出駭客_第一段 //待補指認介面
+      scriptId: 16,//第三關_揪出駭客_第一段
       options: [
         { text: "第三關提示介面", nextScriptId: -3 },
       ],
