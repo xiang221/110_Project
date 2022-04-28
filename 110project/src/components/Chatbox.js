@@ -21,7 +21,6 @@ const Chatbox = () => {
   const [selected, setSelected] = useState(null);//第三關提示中 選人的按鈕disable
   const [selected2, setSelected2] = useState(null);//第三關提示中 選帶風向的按鈕disable
   const [pastScripts, setPastScripts] = useState([]);
-  const [pastIndex, setPastIndex] = useState(0)
 
   const ShowMessage = memo((props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本，將裡面messages拿出來
@@ -66,70 +65,28 @@ const Chatbox = () => {
 
   const ShowPastMessage = (props) => {//顯示已經過去的聊天室內容
 
-    //let PastScriptList = [];
+    let PastScriptList = [];
 
-    // for (let i = 0; i <= pastScripts.length; i = i + 1) {
-    //   console.log('i = '+i)
-    //   const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[i])
-    //   PastScriptList = PastScript.map((PastScript) =>
-    //     PastScript.messages.map((sub) =>
-    //       <div className={sub.align}>
-    //         <div className="message-sender">{sub.sender}</div>
-    //         <span>
-    //           <img className="chat-pic" src={sub.chatPicSrc}></img>
-    //         </span>
-    //         <span>
-    //           <span className="message-text">{sub.text}</span>
-    //         </span>
-    //         <span className="message-time">{sub.time}</span>
-    //       </div>
-    //     )
-    //   );
+    for (let i = 0; i <= pastScripts.length; i++) {
+      const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[i])
+      let Item = PastScript.map((PastScript) =>
+        PastScript.messages.map((sub) =>
+          <div className={sub.align}>
+            <div className="message-sender">{sub.sender}</div>
+            <span>
+              <img className="chat-pic" src={sub.chatPicSrc}></img>
+            </span>
+            <span>
+              <span className="message-text">{sub.text}</span>
+            </span>
+            <span className="message-time">{sub.time}</span>
+          </div>))
+      PastScriptList.push(Item)
+    }
 
-    //return PastScriptList  //會顯示不出來是因為原本這邊沒把值return出來
-    //}
-    //console.log(PastScriptList)
 
-    // return PastScriptList===null?"":(
-    //   <>
-    //     <li>{PastScriptList}</li>
-    //   </>
-    // )
-    // useEffect(() => {//當索引發生變化
-    //   if (pastIndex > pastIndex.length - 1) {//如果目前Index大於目標陣列長度則返回
-    //     return
-    //   }
-    //   setTimeout(() => { setPastIndex(pastIndex + 1) }, 1)//設定一定的時間後，改變當前的Index
-    // }, [pastIndex])
+    return (<><div>{PastScriptList}</div></>)
 
-    // const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[pastIndex])[0].messages
-    // PastScript.slice(0, pastScripts.length).map((PastScript) =>
-    //   PastScript.messages.map((sub) =>
-    //     <div className={sub.align}>
-    //       <div className="message-sender">{sub.sender}</div>
-    //       <span>
-    //         <img className="chat-pic" src={sub.chatPicSrc}></img>
-    //       </span>
-    //       <span>
-    //         <span className="message-text">{sub.text}</span>
-    //       </span>
-    //       <span className="message-time">{sub.time}</span>
-    //     </div>))
-
-    // return (
-    //   <>
-    //     <div>{CurrScript.slice(0, pastScripts.length).map((sub) =>
-    //       <div className={sub.align}>
-    //         <div className="message-sender">{sub.sender}</div>
-    //         <span>
-    //           <img className="chat-pic" src={sub.chatPicSrc}></img>
-    //         </span>
-    //         <span>
-    //           <span className="message-text">{sub.text}</span>
-    //         </span>
-    //         <span className="message-time">{sub.time}</span>
-    //       </div>)}</div>
-    //   </>)
   }
 
 
@@ -530,14 +487,12 @@ const Chatbox = () => {
           </div>
           <div className="time-limit">14:00</div>
           <button className="answer-button" id="answer-button" setButtonPopup={setButtonPopup} buttonPopup={buttonPopup} onClick={() => setButtonPopup(true)} disabled={ansBtnDisabled}>Answer</button>
-          <scrollToButtom>
-            <div className="chat-container">
-              <ul className="chat-message-list" id="chat-list">
-                <ShowPastMessage currScript={currScriptState} />
-                <ShowMessage currScript={currScriptState} />
-              </ul>
-            </div>
-          </scrollToButtom>
+          <div className="chat-container">
+            <ul className="chat-message-list" id="chat-list">
+              <ShowPastMessage currScript={currScriptState} />
+              <ShowMessage currScript={currScriptState} />
+            </ul>
+          </div>
           <OptionBtn trigger={buttonPopup} setTrigger={setButtonPopup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
           <InputPopup style={inputPopup} setStyle={setInputPopup} currScript={currScriptState} />
           <Accuse2 trigger={accuse2Popup} setTrigger={setAccuse2Popup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
