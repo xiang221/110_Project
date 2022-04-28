@@ -8,10 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.1.3",
     "glitched-writer": "^2.0.29",
-<<<<<<< HEAD
-=======
     "jquery": "^3.6.0",
->>>>>>> test_chen
     "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.2",
