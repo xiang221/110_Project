@@ -19,6 +19,7 @@ const Chatbox = () => {
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
   const [selected, setSelected] = useState(null);//第三關提示中 選人的按鈕disable
   const [selected2, setSelected2] = useState(null);//第三關提示中 選帶風向的按鈕disable
+  // const [pastScripts, setPastScripts] = useState([]);
 
   const ShowMessage = memo((props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本，將裡面messages拿出來
@@ -66,7 +67,8 @@ const Chatbox = () => {
     let PastScriptList;
 
     for (let i = 0; i <= pastScripts.length; i = i + 1) {
-      const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[i])//待修正為什麼會跑兩次的問題(可能是answerButton)
+      console.log('i = '+i)
+      const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[i])
       PastScriptList = PastScript.map((PastScript) =>
         PastScript.messages.map((sub) =>
           <div className={sub.align}>
@@ -81,6 +83,7 @@ const Chatbox = () => {
           </div>
         )
       );
+      return PastScriptList //會顯示不出來是因為原本這邊沒把值return出來
     }
 
     return (
@@ -109,7 +112,8 @@ const Chatbox = () => {
 
     function AddPassScript(currScript) {
       if (currScript !== pastScripts[pastScripts.length] && currScript !== 2 && currScript >= 0) {
-        pastScripts.push(currScript)
+         pastScripts.push(currScript)
+        // setPastScripts(oldArray => [...oldArray, currScript])
         console.log(pastScripts)
       }
     }
