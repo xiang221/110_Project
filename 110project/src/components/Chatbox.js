@@ -95,41 +95,41 @@ const Chatbox = () => {
     //     <li>{PastScriptList}</li>
     //   </>
     // )
-    useEffect(() => {//當索引發生變化
-      if (pastIndex > pastIndex.length - 1) {//如果目前Index大於目標陣列長度則返回
-        return
-      }
-      setTimeout(() => { setPastIndex(pastIndex + 1) }, 1)//設定一定的時間後，改變當前的Index
-    }, [pastIndex])
+    // useEffect(() => {//當索引發生變化
+    //   if (pastIndex > pastIndex.length - 1) {//如果目前Index大於目標陣列長度則返回
+    //     return
+    //   }
+    //   setTimeout(() => { setPastIndex(pastIndex + 1) }, 1)//設定一定的時間後，改變當前的Index
+    // }, [pastIndex])
 
-    const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[pastIndex])[0].messages
-    PastScript.map((PastScript) =>
-      PastScript.messages.map((sub) =>
-        <div className={sub.align}>
-          <div className="message-sender">{sub.sender}</div>
-          <span>
-            <img className="chat-pic" src={sub.chatPicSrc}></img>
-          </span>
-          <span>
-            <span className="message-text">{sub.text}</span>
-          </span>
-          <span className="message-time">{sub.time}</span>
-        </div>))
+    // const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[pastIndex])[0].messages
+    // PastScript.slice(0, pastScripts.length).map((PastScript) =>
+    //   PastScript.messages.map((sub) =>
+    //     <div className={sub.align}>
+    //       <div className="message-sender">{sub.sender}</div>
+    //       <span>
+    //         <img className="chat-pic" src={sub.chatPicSrc}></img>
+    //       </span>
+    //       <span>
+    //         <span className="message-text">{sub.text}</span>
+    //       </span>
+    //       <span className="message-time">{sub.time}</span>
+    //     </div>))
 
-    return (
-      <>
-        <div>{CurrScript.slice(0, pastScripts.length).map((sub) =>
-          <div className={sub.align}>
-            <div className="message-sender">{sub.sender}</div>
-            <span>
-              <img className="chat-pic" src={sub.chatPicSrc}></img>
-            </span>
-            <span>
-              <span className="message-text">{sub.text}</span>
-            </span>
-            <span className="message-time">{sub.time}</span>
-          </div>)}</div>
-      </>)
+    // return (
+    //   <>
+    //     <div>{CurrScript.slice(0, pastScripts.length).map((sub) =>
+    //       <div className={sub.align}>
+    //         <div className="message-sender">{sub.sender}</div>
+    //         <span>
+    //           <img className="chat-pic" src={sub.chatPicSrc}></img>
+    //         </span>
+    //         <span>
+    //           <span className="message-text">{sub.text}</span>
+    //         </span>
+    //         <span className="message-time">{sub.time}</span>
+    //       </div>)}</div>
+    //   </>)
   }
 
 
