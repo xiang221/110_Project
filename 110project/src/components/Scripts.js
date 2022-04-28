@@ -101,7 +101,7 @@ export const Scripts = [
       ],
       messages: [
         {
-          align: "message-left-first", sender: GodOrHack.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-normal"><span className="message-bluetext">@{Young.nickName}</span>，麻煩你小心一點欸，如果有心人士盜你帳號把病毒傳進來怎麼辦?
+          align: "message-left-first", sender: GodOrHack.nickName, chatPicSrc: GodOrHack.chatPicSrc, text: <span className="message-normal"><span className="message-bluetext">@{Young.nickName}</span>，麻煩你小心一點欸，如果有心人士盜你帳號把病毒傳進來怎麼辦?
           </span>, time: "上午12:36"
         },
         { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "我覺得還好欸，除非有心人士就在群組裡面。", time: "上午12:36" },
@@ -159,7 +159,7 @@ export const Scripts = [
     {
       scriptId: 11,//第二關_誰中毒了_第四段(我覺得機器人只是比較謹慎而已)
       options: [
-        { text: "第二關指認(待補)", nextScriptId: -1 },
+        { text: "第二關指認", nextScriptId: -1 },
       ],
       messages: [
         { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "抱歉啦各位，我是真的很怕群組被入侵，口氣激動了點", time: "上午12:36" },
