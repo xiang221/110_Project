@@ -3,6 +3,17 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Roboto';
+  position:relative;
+}
+
+.overlay{
+  z-index: 100;
+}
+
+#video{
+  z-index: -100;
+  position:relative;
+  width:100%;
 }
 
 
@@ -52,12 +63,12 @@ main {
 .container{
   display:flex;
   flex-direction: row;
+  top: 5rem;
 }
 
 /*left*/
 
 .left{
-  top:10rem;
   height:80%;
   text-align:center;
   align-items: center;

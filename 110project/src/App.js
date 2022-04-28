@@ -6,7 +6,7 @@ import Account from "./pages/Account";
 import Game from "./pages/Game";
 import Test from "./pages/Test";
 import Fish from "./pages/Fish";
-
+import Second from "./pages/Second";
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Firstpage />} />
         <Route path="secondpage" element={<Secondpage />} />
+        <Route path="second" element={<Second />} />
         <Route path="account" element={<Account user={user} setUser={setUser}/>} />
         <Route path="game" element={<Game user={user} setUser={setUser}/>} />
         <Route path="test" element={<Test user={user} setUser={setUser}/>} /> 

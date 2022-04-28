@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity:0.8;
 }
 
 
@@ -40,6 +41,7 @@ p{
 }
 
 .mission{
+    opacity:0.8;
     width:18rem;
     height:3.75rem;
     background: linear-gradient(45deg, #FFA5F1,#98F9F3);
