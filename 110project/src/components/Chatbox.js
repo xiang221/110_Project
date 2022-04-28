@@ -4,7 +4,8 @@ import { Accuse2List, Accuse3List, HintList } from './Character'
 import '../styles/chatbox.css'
 import $ from 'jquery'
 
-var pastScripts = [];//加上顯示過的劇本的紀錄
+// var pastScripts = [];//加上顯示過的劇本的紀錄
+//把isWho放在這邊應該就可可了
 
 
 const Chatbox = () => {
@@ -19,7 +20,8 @@ const Chatbox = () => {
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
   const [selected, setSelected] = useState(null);//第三關提示中 選人的按鈕disable
   const [selected2, setSelected2] = useState(null);//第三關提示中 選帶風向的按鈕disable
-  // const [pastScripts, setPastScripts] = useState([]);
+  const [pastScripts, setPastScripts] = useState([]);
+  const [pastIndex, setPastIndex] = useState(0)
 
   const ShowMessage = memo((props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本，將裡面messages拿出來
@@ -37,14 +39,14 @@ const Chatbox = () => {
         setAnsBtnDisabled(false)
         return
       }
-      else { setAnsBtnDisabled(true); onRowAdded()}
+      else { setAnsBtnDisabled(true); onRowAdded() }
       setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
       console.log(currIndex)
-      
+
     }, [currIndex])
 
 
-    return (
+    return CurrScript === null ? "" : (
       <>
         <div>{CurrScript.slice(0, currIndex + 1).map((sub) =>
           <div className={sub.align}>
@@ -64,13 +66,59 @@ const Chatbox = () => {
 
   const ShowPastMessage = (props) => {//顯示已經過去的聊天室內容
 
-    let PastScriptList;
+    //let PastScriptList = [];
 
-    for (let i = 0; i <= pastScripts.length; i = i + 1) {
-      console.log('i = '+i)
-      const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[i])
-      PastScriptList = PastScript.map((PastScript) =>
-        PastScript.messages.map((sub) =>
+    // for (let i = 0; i <= pastScripts.length; i = i + 1) {
+    //   console.log('i = '+i)
+    //   const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[i])
+    //   PastScriptList = PastScript.map((PastScript) =>
+    //     PastScript.messages.map((sub) =>
+    //       <div className={sub.align}>
+    //         <div className="message-sender">{sub.sender}</div>
+    //         <span>
+    //           <img className="chat-pic" src={sub.chatPicSrc}></img>
+    //         </span>
+    //         <span>
+    //           <span className="message-text">{sub.text}</span>
+    //         </span>
+    //         <span className="message-time">{sub.time}</span>
+    //       </div>
+    //     )
+    //   );
+
+    //return PastScriptList  //會顯示不出來是因為原本這邊沒把值return出來
+    //}
+    //console.log(PastScriptList)
+
+    // return PastScriptList===null?"":(
+    //   <>
+    //     <li>{PastScriptList}</li>
+    //   </>
+    // )
+    useEffect(() => {//當索引發生變化
+      if (pastIndex > pastIndex.length - 1) {//如果目前Index大於目標陣列長度則返回
+        return
+      }
+      setTimeout(() => { setPastIndex(pastIndex + 1) }, 1)//設定一定的時間後，改變當前的Index
+    }, [pastIndex])
+
+    const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[pastIndex])[0].messages
+    PastScript.map((PastScript) =>
+      PastScript.messages.map((sub) =>
+        <div className={sub.align}>
+          <div className="message-sender">{sub.sender}</div>
+          <span>
+            <img className="chat-pic" src={sub.chatPicSrc}></img>
+          </span>
+          <span>
+            <span className="message-text">{sub.text}</span>
+          </span>
+          <span className="message-time">{sub.time}</span>
+        </div>))
+
+    return (
+      <>
+        <div>{CurrScript.slice(0, pastScripts.length).map((sub) =>
           <div className={sub.align}>
             <div className="message-sender">{sub.sender}</div>
             <span>
@@ -80,17 +128,8 @@ const Chatbox = () => {
               <span className="message-text">{sub.text}</span>
             </span>
             <span className="message-time">{sub.time}</span>
-          </div>
-        )
-      );
-      return PastScriptList //會顯示不出來是因為原本這邊沒把值return出來
-    }
-
-    return (
-      <>
-        <li>{PastScriptList}</li>
-      </>
-    )
+          </div>)}</div>
+      </>)
   }
 
 
@@ -112,8 +151,8 @@ const Chatbox = () => {
 
     function AddPassScript(currScript) {
       if (currScript !== pastScripts[pastScripts.length] && currScript !== 2 && currScript >= 0) {
-         pastScripts.push(currScript)
-        // setPastScripts(oldArray => [...oldArray, currScript])
+        //  pastScripts.push(currScript)
+        setPastScripts(oldArray => [...oldArray, currScript])
         console.log(pastScripts)
       }
     }
@@ -312,32 +351,32 @@ const Chatbox = () => {
         // console.log("Hint1 = " + HintState);
         // isWho = "e1"
         // console.log("isHow = " + isHow +"isWho = "+ isWho);
-        localStorage.setItem("isWho","e1")
-        console.log("isWho = "+localStorage.getItem("isWho") + "isHow = " +localStorage.getItem("isHow"))
+        localStorage.setItem("isWho", "e1")
+        console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else if (pickedCharacter[0].realName === 'Hack') {
         // HintState.push("e2");
         // console.log("Hint1 = " + HintState);
         // isWho = "e2"
         // console.log("isHow = " + isHow +"isWho = "+ isWho);
-        localStorage.setItem("isWho","e2")
-        console.log("isWho = "+localStorage.getItem("isWho") + "isHow = " +localStorage.getItem("isHow"))
+        localStorage.setItem("isWho", "e2")
+        console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else if (pickedCharacter[0].realName === 'Young') {
         // HintState.push("e3");
         // console.log("Hint1 = " + HintState);
         // isWho = "e3"
         // console.log("isHow = " + isHow +"isWho = "+ isWho);
-        localStorage.setItem("isWho","e3")
-        console.log("isWho = "+localStorage.getItem("isWho") + "isHow = " +localStorage.getItem("isHow"))
+        localStorage.setItem("isWho", "e3")
+        console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else if (pickedCharacter[0].realName === 'Robot') {
         // HintState.push("e4")
         // console.log("Hint1 = " + HintState);
         // isWho = "e4"
         // console.log("isHow = " + isHow +"isWho = "+ isWho);
-        localStorage.setItem("isWho","e4")
-        console.log("isWho = "+localStorage.getItem("isWho") + "isHow = " +localStorage.getItem("isHow"))
+        localStorage.setItem("isWho", "e4")
+        console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else console.log("Hint1 有問題")
     }
@@ -348,8 +387,8 @@ const Chatbox = () => {
         // console.log("Hint2 = " + HintState);
         // isHow = "f1"
         // console.log("isHow = " + isHow +"isWho = "+ isWho);
-        localStorage.setItem("isHow","f1")
-        console.log("isWho = "+localStorage.getItem("isWho") + "isHow = " +localStorage.getItem("isHow"))
+        localStorage.setItem("isHow", "f1")
+        console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else if (selected === '2') {
         // HintState.push("f2");
@@ -357,14 +396,14 @@ const Chatbox = () => {
         // isHow = "f2"
         // console.log("isHow = " + isHow
         //             +"isWho = "+ isWho);
-        localStorage.setItem("isHow","f2")
-        console.log("isWho = "+localStorage.getItem("isWho") + "isHow = " +localStorage.getItem("isHow"))
+        localStorage.setItem("isHow", "f2")
+        console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else console.log("Hint2 有問題")
     }
 
     function Judge() {
-      if (isWho==="e1" && isHow==="f1"/*HintState.includes("e1") && HintState.includes("f1")*/) {
+      if (isWho === "e1" && isHow === "f1"/*HintState.includes("e1") && HintState.includes("f1")*/) {
         console.log("e1-f1")
         console.log(17)
         setHintPopup(false)
@@ -372,14 +411,14 @@ const Chatbox = () => {
         setCurrIndex(0)
       }
 
-      else if (isWho==="e1" && isHow==="f2"/*HintState.includes("e1") && HintState.includes("f2")*/) {
+      else if (isWho === "e1" && isHow === "f2"/*HintState.includes("e1") && HintState.includes("f2")*/) {
         console.log("e1-f2")
         console.log(18)
         setHintPopup(false)
         setCurrScriptState(18)
         setCurrIndex(0)
       }
-      else if (isWho==="e2" && isHow==="f1"/*HintState.includes("e2") && HintState.includes("f1")*/) {
+      else if (isWho === "e2" && isHow === "f1"/*HintState.includes("e2") && HintState.includes("f1")*/) {
         console.log("e2-f1")
         console.log(19)
         setHintPopup(false)
@@ -387,35 +426,35 @@ const Chatbox = () => {
         setCurrIndex(0)
       }
 
-      else if (isWho==="e2" && isHow==="f2"/*HintState.includes("e2") && HintState.includes("f2")*/) {
+      else if (isWho === "e2" && isHow === "f2"/*HintState.includes("e2") && HintState.includes("f2")*/) {
         console.log("e2-f2")
         console.log(20)
         setHintPopup(false)
         setCurrScriptState(20)
         setCurrIndex(0)
       }
-      else if (isWho==="e3" && isHow==="f1"/*HintState.includes("e3") && HintState.includes("f1")*/) {
+      else if (isWho === "e3" && isHow === "f1"/*HintState.includes("e3") && HintState.includes("f1")*/) {
         console.log("e3-f1")
         console.log(21)
         setHintPopup(false)
         setCurrScriptState(21)
         setCurrIndex(0)
       }
-      else if (isWho==="e3" && isHow==="f2"/*HintState.includes("e3") && HintState.includes("f2")*/) {
+      else if (isWho === "e3" && isHow === "f2"/*HintState.includes("e3") && HintState.includes("f2")*/) {
         console.log("e3-f2")
         console.log(22)
         setHintPopup(false)
         setCurrScriptState(22)
         setCurrIndex(0)
       }
-      else if (isWho==="e4" && isHow==="f1"/*HintState.includes("e4") && HintState.includes("f1")*/) {
+      else if (isWho === "e4" && isHow === "f1"/*HintState.includes("e4") && HintState.includes("f1")*/) {
         console.log("e4-f1")
         console.log(23)
         setHintPopup(false)
         setCurrScriptState(23)
         setCurrIndex(0)
       }
-      else if (isWho==="e4" && isHow==="f2"/*HintState.includes("e4") && HintState.includes("f2")*/) {
+      else if (isWho === "e4" && isHow === "f2"/*HintState.includes("e4") && HintState.includes("f2")*/) {
         console.log("e4-f2")
         console.log(24)
         setHintPopup(false)
@@ -492,12 +531,12 @@ const Chatbox = () => {
           <div className="time-limit">14:00</div>
           <button className="answer-button" id="answer-button" setButtonPopup={setButtonPopup} buttonPopup={buttonPopup} onClick={() => setButtonPopup(true)} disabled={ansBtnDisabled}>Answer</button>
           <scrollToButtom>
-          <div className="chat-container">
-            <ul className="chat-message-list" id="chat-list">
-              <ShowPastMessage currScript={currScriptState} />
-              <ShowMessage currScript={currScriptState} />
-            </ul>
-          </div>
+            <div className="chat-container">
+              <ul className="chat-message-list" id="chat-list">
+                <ShowPastMessage currScript={currScriptState} />
+                <ShowMessage currScript={currScriptState} />
+              </ul>
+            </div>
           </scrollToButtom>
           <OptionBtn trigger={buttonPopup} setTrigger={setButtonPopup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
           <InputPopup style={inputPopup} setStyle={setInputPopup} currScript={currScriptState} />

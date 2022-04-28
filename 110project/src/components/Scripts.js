@@ -341,4 +341,65 @@ export const Scripts = [
         { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "哼哼，很好。現在群組內有三個魁儡，剩下一個愛莫能助了吧。", time: "上午12:36" }
       ]
     },
+    {
+      scriptId: 26,//結局_自身難保(初始選項)
+      options: [
+        { text: "原來一直都是駭客在搞鬼!", nextScriptId: 27 },
+        { text: "原來一直都是機器人在搞鬼!", nextScriptId: 27 }
+      ],
+      messages: null
+    },
+    {
+      scriptId: 27,//結局_自身難保(選項後內容)
+      options: [
+        { text: "前往結局動畫", nextScriptId: -4 },//結局動畫暫定-4
+      ],
+      messages: [
+        { align: "message-right", sender: Player.nickName, text: "原來一直都是創世神在搞鬼!", time: "上午12:36" },
+        { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "這樣啊，我也懷疑他很久了", time: "上午12:36" },
+        { align: "message-center", text: "機器人已將創世神移出群組", time: "上午12:36" },
+        { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "原來就是他!", time: "上午12:36" },
+        { align: "message-right", sender: Player.nickName, text: "感謝機器人將內鬼移除，以後論壇就和平了!", time: "上午12:36" },
+        { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "耶呼~", time: "上午12:36" },
+        { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "我看我們來重新組織論壇的管理吧", time: "上午12:36" },
+        { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "咦，可是我覺得既然內鬼已經找出來了，應該不用再特別調整吧?", time: "上午12:36" },
+        { align: "message-right", sender: Player.nickName, text: "我覺得被入侵代表現行制度有問題，因此贊成重組", time: "上午12:36" },
+        { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "我也贊成重組", time: "上午12:36" },
+        { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "好的，既然大多數人都同意，我們重組的第一步就把異議者掃地出門吧", time: "上午12:36" },
+        { align: "message-center", text: "機器人已將資深鄉民移出群組", time: "上午12:36" },
+        { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "哼哼，很好。現在群組內有三個魁儡，剩下一個愛莫能助了吧。", time: "上午12:36" }
+      ]
+    },
+    {
+      scriptId: 28,//結局_創世神殞落
+      options: [
+        { text: "前往結局動畫", nextScriptId: -4 },//結局動畫暫定-4
+      ],
+      messages: [
+        { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "其實，群組早就被有心人士入侵了…", time: "上午12:36" },
+        { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "那麼會是誰呢?", time: "上午12:36" },
+        { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "(此帳號疑似異常)", time: "上午12:36" },
+        { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "難道他的帳號也被控制了?", time: "上午12:36" },
+        { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "所以你也被控制過囉?", time: "上午12:36" },
+        { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "到底是誰在搞鬼!?", time: "上午12:36" },
+        { align: "message-center", text: "機器人已將資深鄉民移出群組", time: "上午12:36" },
+        { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "哼哼，很好。現在群組內有三個魁儡，剩下一個愛莫能助了吧。", time: "上午12:36" }
+      ]
+    },
+    {
+      scriptId: 25,//結局_創世神殞落
+      options: [
+        { text: "前往結局動畫", nextScriptId: -4 },//結局動畫暫定-4
+      ],
+      messages: [
+        { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "其實，群組早就被有心人士入侵了…", time: "上午12:36" },
+        { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "那麼會是誰呢?", time: "上午12:36" },
+        { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "(此帳號疑似異常)", time: "上午12:36" },
+        { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "難道他的帳號也被控制了?", time: "上午12:36" },
+        { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "所以你也被控制過囉?", time: "上午12:36" },
+        { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "到底是誰在搞鬼!?", time: "上午12:36" },
+        { align: "message-center", text: "機器人已將資深鄉民移出群組", time: "上午12:36" },
+        { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "哼哼，很好。現在群組內有三個魁儡，剩下一個愛莫能助了吧。", time: "上午12:36" }
+      ]
+    },
   ]
