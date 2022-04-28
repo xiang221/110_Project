@@ -34,18 +34,20 @@ const Chatbox = () => {
     };
 
     useEffect(() => {//當索引發生變化
-      if (currIndex > CurrScript.length - 1) {//如果目前Index大於目標陣列長度則返回
-        setAnsBtnDisabled(false)
-        return
-      }
-      else { setAnsBtnDisabled(true); onRowAdded() }
-      setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
-      console.log(currIndex)
+
+        if (currIndex > CurrScript.length - 1 || CurrScript[0].text===null) {//如果目前Index大於目標陣列長度則返回
+          setAnsBtnDisabled(false)
+          return
+        }
+        else { setAnsBtnDisabled(true); onRowAdded() }
+        setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
+        console.log(currIndex)
 
     }, [currIndex])
 
+      console.log("Hi = "+ CurrScript[0].text)
 
-    return CurrScript === null ? "" : (
+    return CurrScript[0].text === null ? ("") : (
       <>
         <div>{CurrScript.slice(0, currIndex + 1).map((sub) =>
           <div className={sub.align}>
