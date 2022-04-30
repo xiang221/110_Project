@@ -1,40 +1,83 @@
 
 body{
     background-color: black;
-    color: green;
+    color: '#FFF';
     min-height: 100vh;
 }
 
-
-.form{
-    font-size: 1.5rem;
+.signupForm{
+    display: flex;
+    flex-direction: column;
     justify-content:center;
     align-items:center;
-    padding-top:10rem;
     text-align: center;
-}
-
-.input{
-    margin-top:2rem;
-    display:block;
-    justify-content:center;
-    align-items:center;
+    margin:auto;
 }
 
 .input input[type="text"]{
+    width: 24rem;
+    height: 3rem;
+    margin:1rem;
     color:black;
-    max-width:10rem;
 }
 .input input[type="password"]{
+    width: 24rem;
+    height: 3rem;
+    margin:1rem;
     color:black;
-    max-width:10rem;
 }
 
 
 .input input[type="submit"]{
-    background-color:antiquewhite;
-    color:black;
-    font-size: 0.5rem;
-    min-width:3rem;
     cursor:pointer;
+    width: 24rem;
+    height: 3.5rem;
+    border:none;
+    color:#FFF;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    margin-top:3.5rem;
+    background: linear-gradient(267.46deg, rgba(250, 178, 239, 0.8) 11.57%, rgba(164, 246, 241, 0.8) 81.78%);
 }
+
+
+.signLeft{
+    position: absolute;
+    width: 445px;
+    height: 720px;
+    left: 1px;
+    top: 0px;
+    background: linear-gradient(164.26deg, rgba(255, 165, 241, 0.8) 1.04%, rgba(152, 249, 243, 0.8) 98.03%);
+    mix-blend-mode: screen;
+}
+
+#logo{
+    position: absolute;
+    width: 193px;
+    height: 175.52px;
+    left: 127px;
+    top: 242px;
+}
+
+.signupText{
+    font-size: 35px;
+    font-weight: 900;
+    white-space:pre-wrap;
+    color:#FFF;  
+    display: flex;
+    justify-content: center;
+    line-height:8rem;
+}
+
+
+.signRight{
+    background: linear-gradient(164.26deg, rgba(255, 165, 241, 0.8) 1.04%, rgba(152, 249, 243, 0.8) 98.03%);
+    position: absolute;
+    width: 35%;
+    height: 75%;
+    left: 50%;
+    top: 5rem;
+    border: 0.2rem solid #FFF;
+}
+
