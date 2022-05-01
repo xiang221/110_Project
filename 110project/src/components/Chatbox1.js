@@ -188,13 +188,13 @@ const Chatbox1 = () => {
       let FishPwd = localStorage.getItem('FishPwd')
 
       if (FishAcc !== null && FishPwd !== null) {//確認不是預設狀態
-        //如果帳密都輸對，跳劇本5，關掉介面
-        if (FishAcc && FishPwd) {setCurrScriptState(5); props.setStyle("display:none"); props.setStyle("display:none"); }
-        //如果帳號對密碼錯，跳劇本5，關掉介面
-        else if (FishAcc && !FishPwd) { setCurrScriptState(5); props.setStyle("display:none"); }
+        //如果帳密都輸對，跳劇本102，關掉介面
+        if (FishAcc && FishPwd) {setCurrScriptState(102); props.setStyle("display:none"); props.setStyle("display:none"); }
+        //如果帳號對密碼錯，跳劇本101，關掉介面
+        else if (FishAcc && !FishPwd) { setCurrScriptState(101); props.setStyle("display:none"); }
         //如果帳號錯密碼對or帳號錯密碼錯，跳劇本4，關掉介面
-        else if ((!FishAcc && FishPwd) || (!FishAcc && !FishPwd)) { setCurrScriptState(4); props.setStyle("display:none"); console.log("狀況三"); }
-        else console.log("狀況四"); props.setStyle("display:none");
+        else if ((!FishAcc && FishPwd) || (!FishAcc && !FishPwd)) { setCurrScriptState(4); props.setStyle("display:none"); }
+        else props.setStyle("display:none");
       }
       // if (accResult !== "" && pwdResult !== "") {//確認不是預設狀態
       //   //如果帳密都輸對，跳劇本5，關掉介面
