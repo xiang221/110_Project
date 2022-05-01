@@ -15,7 +15,7 @@ const Game = ({user, setUser}) => {
 
   return (
     <div>
-      <video autoPlay loop muted style={{zIndex:-100, position:'fixed' }} >
+      <video autoPlay muted loop style={{zIndex:-100, position:'fixed', objectFit:'fill'}} >
         <source src={video} type='video/mp4'/>
       </video> 
         <div className='container'>

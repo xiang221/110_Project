@@ -20,8 +20,7 @@ function App() {
         <Route path="/" element={<Firstpage />} />
         <Route path="secondpage" element={<Secondpage />} />
         <Route path="second" element={<Second />} />
-        <Route path="account" element={<Account user={user} setUser={setUser}/>} />
-        <Route path="signup" element={<Signup />} />
+        <Route path="signup" element={<Signup user={user} setUser={setUser}/>} />
         <Route path="game" element={<Game user={user} setUser={setUser}/>} />
         <Route path="test" element={<Test user={user} setUser={setUser}/>} /> 
         <Route path="fish" element={<Fish />}/>        
