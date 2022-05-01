@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from 'react'
 import { Scripts } from './Scripts'
-import { Accuse2List, Accuse3List, HintList } from './Character'
+import { Accuse3List, HintList } from './Character'
 import '../styles/chatbox.css'
 import $ from 'jquery'
 
@@ -8,13 +8,11 @@ import $ from 'jquery'
 //把isWho放在這邊應該就可可了
 
 
-const Chatbox = () => {
+const Chatbox3 = () => {
 
   const [buttonPopup, setButtonPopup] = useState(false); //用useState設定目前Optionbuttons的Popup狀態
-  const [currScriptState, setCurrScriptState] = useState(0);//用useState設定目前在進行中的劇本ID
-  const [inputPopup, setInputPopup] = useState("display:none");//控制第一關釣魚網站介面Popup
+  const [currScriptState, setCurrScriptState] = useState(16);//用useState設定目前在進行中的劇本ID
   const [ansBtnDisabled, setAnsBtnDisabled] = useState(true); //Answer按鈕disable
-  const [accuse2Popup, setAccuse2Popup] = useState(false);//控制第二關指認介面Popup
   const [hintPopup, setHintPopup] = useState(false);//控制第三關選項提示介面Popup
   const [accuse3Popup, setAccuse3Popup] = useState(false);//控制第三關指認介面Popup
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
@@ -136,114 +134,6 @@ const Chatbox = () => {
           </div>
         </div>
         <div id="overlay"></div>
-      </>
-    ) : "";
-  }
-
-  const InputPopup = (props) => {//第一關的帳號密碼輸入介面 //待改成跳轉視窗
-
-    if (props.currScript === 2) {
-      props.setStyle("display:block");
-    }
-    else { props.setStyle("display:none"); }
-
-    const [accField, setAccField] = useState("");
-    const [pwdField, setPwdField] = useState("");
-    const [savedAcc, setSavedAcc] = useState("");
-    const [savedPwd, setSavedPwd] = useState("");
-    const [accResult, checkAcc] = useState("");
-    const [pwdResult, checkPwd] = useState("");
-
-    const Save = (e) => {
-      e.preventDefault();
-      setSavedAcc(accField);
-      setSavedPwd(pwdField);
-    };
-
-    useEffect(() => {
-      // console.log("儲存的帳號" + savedAcc)
-      if (savedAcc === localStorage.getItem('account')) {//已改成本地儲存的玩家帳號
-        return checkAcc(true)
-      }
-      if (savedAcc !== localStorage.getItem('account') && savedAcc !== "") {//已改成本地儲存的玩家帳號
-        return checkAcc(false)
-      }
-    }, [savedAcc])
-
-    useEffect(() => {
-      // console.log("儲存的密碼" + savedPwd)
-      if (savedPwd === localStorage.getItem('password')) {//已改成本地儲存的玩家帳號
-        return checkPwd(true)
-      }
-      if (savedPwd !== localStorage.getItem('password') && savedPwd !== "") {//已改成本地儲存的玩家帳號
-        return checkPwd(false)
-      }
-    }, [savedPwd])
-
-    useEffect(() => {//判斷下一個要跳轉的劇本ID、關掉inputPopup介面
-      if (accResult !== "" && pwdResult !== "") {//確認不是預設狀態
-        //如果帳密都輸對，跳劇本5，關掉介面
-        if (accResult && pwdResult) { setCurrScriptState(5); props.setStyle("display:none"); props.setStyle("display:none"); console.log("狀況一") }
-        //如果帳號對密碼錯，跳劇本5，關掉介面
-        else if (accResult && !pwdResult) { setCurrScriptState(5); props.setStyle("display:none"); console.log("狀況二"); }
-        //如果帳號錯密碼對or帳號錯密碼錯，跳劇本4，關掉介面
-        else if ((!accResult && pwdResult) || (!accResult && !pwdResult)) { setCurrScriptState(4); props.setStyle("display:none"); console.log("狀況三"); }
-        else console.log("狀況四"); props.setStyle("display:none");
-      }
-      // else(console.log("InputPopup還在預設狀態"))
-    })
-
-
-    if (props.style === "display:none") {
-      return "";
-    }
-
-    if (props.style === "display:block") {
-      return <>
-        <div id="input-popup">
-          <div className="input-popup-container">
-            <div>恭喜您!您是今日的第187位訪客!填入基本資料已獲得抽取iphone大獎的機會!<br />請依序填入您的</div>
-            <form onSubmit={Save} >
-              <div>東方哈拉帳號:</div>
-              <input type="text" value={accField} placeholder="請輸入您的帳號" onChange={(e) => { setAccField(e.target.value) }} />
-              <div>東方哈拉帳號:</div>
-              <input type="text" value={pwdField} placeholder="請輸入您的密碼" onChange={(e) => { setPwdField(e.target.value) }} />
-              <button type="submit">提交</button>
-            </form>
-          </div>
-        </div>
-      </>
-    }
-  }
-
-  const Accuse2 = (props) => {//第二關，指認中毒者(青年)的介面
-
-    if (currScriptState === -1) {//如果currScriptState是-1，直接自動開啟第二關指認
-      props.setTrigger(true)
-    }
-
-    function whoisControlled(nickNamepicked) {
-      let pickedCharacter = Accuse2List.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來要用陣列
-
-      if (pickedCharacter[0].realName === 'Young') {//劇本的第二關的中毒者是青年
-        localStorage.setItem('FindYoung', true)//用localstorage來記錄
-      }
-      else {
-        localStorage.setItem('FindYoung', false)//用localstorage來記錄
-      }
-    }
-
-    return (props.trigger) ? (//指認後直接跳轉到第三關
-      <>
-        <div id="accuse2-popup">
-          <div id="accuse2-btn" className="accuse2-btn-grid">
-            <div className="accuse2-title">你覺得誰中毒了？</div>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); setCurrScriptState(Number(16)); props.setTrigger(false); setCurrIndex(0); }}>{"A"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); setCurrScriptState(Number(16)); props.setTrigger(false); setCurrIndex(0); }}>{"B"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); setCurrScriptState(Number(16)); props.setTrigger(false); setCurrIndex(0); }}>{"C"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); setCurrScriptState(Number(16)); props.setTrigger(false); setCurrIndex(0); }}>{"D"}</button>
-          </div>
-        </div>
       </>
     ) : "";
   }
@@ -496,8 +386,6 @@ const Chatbox = () => {
             </ul>
           </div>
           <OptionBtn trigger={buttonPopup} setTrigger={setButtonPopup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
-          <InputPopup style={inputPopup} setStyle={setInputPopup} currScript={currScriptState} />
-          <Accuse2 trigger={accuse2Popup} setTrigger={setAccuse2Popup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
           <Accuse3 trigger={accuse3Popup} setTrigger={setAccuse3Popup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
           <Hint trigger={hintPopup} setTrigger={setHintPopup} currScript={currScriptState} />
         </div>
@@ -507,4 +395,4 @@ const Chatbox = () => {
   );
 }
 
-export default Chatbox
+export default Chatbox3
