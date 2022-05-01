@@ -111,7 +111,7 @@ const Chatbox1 = () => {
     }
 
     const BtnList = CurrScript.map((sub) =>
-      <button className={btnClass} onClick={(event) => { props.setTrigger(false); record(sub.record); setCurrScriptState(Number(sub.nextScriptId)); setCurrIndex(0); AddPassScript(props.currScript) }}>{sub.text}</button>
+      <button className={btnClass} onClick={(event) => { props.setTrigger(false); record(sub.record); setCurrScriptState(Number(sub.nextScriptId)); setCurrIndex(0); AddPassScript(props.currScript); test(sub.test) }}>{sub.text}</button>
       //按下option-button介面中的其中一個選項按鈕，會關閉option-button介面、記錄玩家選擇的按鈕的文字、將CurrScriptState更新成劇本中按下按鈕後要接續的下個劇本ID
     )
 
@@ -119,8 +119,13 @@ const Chatbox1 = () => {
       if (!record) {
         return;
       }
-      localStorage.setItem('第一關選項紀錄', record);//用localStorage存起來
+      localStorage.setItem('Security', record);//用localStorage存起來
     };
+
+    function test(something){
+      localStorage.setItem('帳號',something[0])
+      localStorage.setItem('密碼',something[0])
+    }
 
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
       <>
@@ -136,17 +141,17 @@ const Chatbox1 = () => {
 
   const InputPopup = (props) => {//第一關的帳號密碼輸入介面 //待改成跳轉視窗
 
-    // if (props.currScript === 2) {
-    //   props.setStyle("display:block");
-    // }
-    // else { props.setStyle("display:none"); }
+    if (props.currScript === 2) {
+      props.setStyle("display:block");
+    }
+    else { props.setStyle("display:none"); }
 
     const [accField, setAccField] = useState("");
     const [pwdField, setPwdField] = useState("");
     const [savedAcc, setSavedAcc] = useState("");
     const [savedPwd, setSavedPwd] = useState("");
-    const [accResult, checkAcc] = useState("");
-    const [pwdResult, checkPwd] = useState("");
+    // const [accResult, checkAcc] = useState("");
+    // const [pwdResult, checkPwd] = useState("");
 
     const Save = (e) => {
       e.preventDefault();
@@ -157,33 +162,49 @@ const Chatbox1 = () => {
     useEffect(() => {
       // console.log("儲存的帳號" + savedAcc)
       if (savedAcc === localStorage.getItem('account')) {//已改成本地儲存的玩家帳號
-        return checkAcc(true)
+        return localStorage.setItem('FishAcc',true)
+        // return checkAcc(true)
       }
       if (savedAcc !== localStorage.getItem('account') && savedAcc !== "") {//已改成本地儲存的玩家帳號
-        return checkAcc(false)
+        return localStorage.setItem('FishAcc',false)
+        // return checkAcc(false)
       }
     }, [savedAcc])
 
     useEffect(() => {
       // console.log("儲存的密碼" + savedPwd)
       if (savedPwd === localStorage.getItem('password')) {//已改成本地儲存的玩家帳號
-        return checkPwd(true)
+        return localStorage.setItem('FishPwd',true)
+        // return checkPwd(true)
       }
       if (savedPwd !== localStorage.getItem('password') && savedPwd !== "") {//已改成本地儲存的玩家帳號
-        return checkPwd(false)
+        return localStorage.setItem('FishPwd',false)
+        // return checkPwd(false)
       }
     }, [savedPwd])
 
     useEffect(() => {//判斷下一個要跳轉的劇本ID、關掉inputPopup介面
-      if (accResult !== "" && pwdResult !== "") {//確認不是預設狀態
+      let FishAcc = localStorage.getItem('FishAcc')
+      let FishPwd = localStorage.getItem('FishPwd')
+
+      if (FishAcc !== null && FishPwd !== null) {//確認不是預設狀態
         //如果帳密都輸對，跳劇本5，關掉介面
-        if (accResult && pwdResult) { setCurrScriptState(5); props.setStyle("display:none"); props.setStyle("display:none"); console.log("狀況一") }
+        if (FishAcc && FishPwd) {setCurrScriptState(5); props.setStyle("display:none"); props.setStyle("display:none"); }
         //如果帳號對密碼錯，跳劇本5，關掉介面
-        else if (accResult && !pwdResult) { setCurrScriptState(5); props.setStyle("display:none"); console.log("狀況二"); }
+        else if (FishAcc && !FishPwd) { setCurrScriptState(5); props.setStyle("display:none"); }
         //如果帳號錯密碼對or帳號錯密碼錯，跳劇本4，關掉介面
-        else if ((!accResult && pwdResult) || (!accResult && !pwdResult)) { setCurrScriptState(4); props.setStyle("display:none"); console.log("狀況三"); }
+        else if ((!FishAcc && FishPwd) || (!FishAcc && !FishPwd)) { setCurrScriptState(4); props.setStyle("display:none"); console.log("狀況三"); }
         else console.log("狀況四"); props.setStyle("display:none");
       }
+      // if (accResult !== "" && pwdResult !== "") {//確認不是預設狀態
+      //   //如果帳密都輸對，跳劇本5，關掉介面
+      //   if (accResult && pwdResult) { setCurrScriptState(5); props.setStyle("display:none"); props.setStyle("display:none"); console.log("狀況一") }
+      //   //如果帳號對密碼錯，跳劇本5，關掉介面
+      //   else if (accResult && !pwdResult) { setCurrScriptState(5); props.setStyle("display:none"); console.log("狀況二"); }
+      //   //如果帳號錯密碼對or帳號錯密碼錯，跳劇本4，關掉介面
+      //   else if ((!accResult && pwdResult) || (!accResult && !pwdResult)) { setCurrScriptState(4); props.setStyle("display:none"); console.log("狀況三"); }
+      //   else console.log("狀況四"); props.setStyle("display:none");
+      //}
       // else(console.log("InputPopup還在預設狀態"))
     })
 
@@ -209,6 +230,7 @@ const Chatbox1 = () => {
       </>
     }
   }
+
 
   return (//顯示整個ChatBox的內容
     <>

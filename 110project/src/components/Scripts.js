@@ -3,15 +3,15 @@ import { Young, God, Robot, Hack, GodOrHack, HackOrGod, Player, System } from '.
 
 export const Scripts = [
   {
-    scriptId: 102,
-    options: [{ text: "點擊左方按鈕進行第三關", nextScriptId: 102 }],
+    scriptId: 103,//第二關最後
+    options: [{ text: "點擊左方按鈕進行第三關", nextScriptId: 103 }],
     messages: [{ text: null }]
   },
   {
-    scriptId: 100,
+    scriptId: 102,//劇本三稿新增內容 //帳號對密碼對的狀態，點進連結/不點連結 都到劇本編號5(Fail)
     options: [
-      { text: "點進連結", nextScriptId: 5 },
-      { text: "不點連結", nextScriptId: 4 },
+      { text: "點進連結", nextScriptId: 5,  },
+      { text: "不點連結", nextScriptId: 5,  },
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "http://fuckyourphonetwice.com/gift", time: "上午12:36" },
@@ -20,6 +20,36 @@ export const Scripts = [
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "為什麼要fxxk my phone?", time: "上午12:36" },
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "诶，不會被盜了吧?", time: "上午12:36" },
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "滿有趣的，我點點看", time: "上午12:36" }
+    ]
+  },
+  {
+    scriptId: 101,//劇本三稿新增內容 //帳號對密碼錯的狀態，點進連結到劇本編號5(Fail)  不點連結到劇本編號4(Pass)
+    options: [
+      { text: "點進連結", nextScriptId: 5,  },
+      { text: "不點連結", nextScriptId: 4,  },
+    ],
+    messages: [
+      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "http://fuckyourphonetwice.com/gift", time: "上午12:36" },
+      { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "???", time: "上午12:36" },
+      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "???", time: "上午12:36" },
+      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "為什麼要fxxk my phone?", time: "上午12:36" },
+      { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "诶，不會被盜了吧?", time: "上午12:36" },
+      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "滿有趣的，我點點看", time: "上午12:36" }
+    ]
+  },
+  {
+    scriptId: 100,//劇本編號3+劇本編號4 連續出現  //用100的內容覆蓋掉劇本編號3的位置，編號三原本就是這個內容
+    options: [
+      { text: "點擊左方按鈕進行第二關", nextScriptId: 100 },
+    ],
+    messages: [
+      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "已抽，我是第187個", time: "上午12:36" },
+      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "诶!?我也是第187個欸", time: "上午12:36" },
+      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "白癡喔，不要亂傳這種釣魚連結啦", time: "上午12:36" },
+      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "歐不，我好像帳號被盜了，大家不要點那個連結!", time: "上午12:36" },
+      { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "原來現在還有人會中這種低級的招喔(笑", time: "上午12:36" },
+      { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "看來我們剛見證了史前人類使用手機的過程呢", time: "上午12:36" },
+      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "抱歉啦我就蠢咩，有點連結的趕快去換密碼喔", time: "上午12:36" }
     ]
   },
   {
@@ -57,8 +87,8 @@ export const Scripts = [
   {
     scriptId: 1,//第一關_資安小尖兵_第一段
     options: [
-      { text: "點進連結", nextScriptId: 2, record: "第一次不點連結，已過關" },//進入輸入帳號密碼介面
-      { text: "不點連結", nextScriptId: 3, record: "第一次點進連結" },//進入Pass後劇本
+      { text: "點進連結", nextScriptId: 2,  },//進入輸入帳號密碼介面
+      { text: "不點連結", nextScriptId: 3,  },//進入Pass後劇本
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-normal"><span className="message-bluetext">@{Robot.nickName}</span>，嗨我有事要私訊你喔。</span>, time: "上午12:36" },
@@ -75,10 +105,8 @@ export const Scripts = [
   {
     scriptId: 2,//第一關_資安小尖兵_第二段(點進連結) //已補input帳號密碼介面//待改成
     options: [
-      { text: "帳號對密碼對", nextScriptId: 100, },
-      { text: "帳號對密碼錯", nextScriptId: 100, },
-      { text: "帳號錯密碼對", nextScriptId: 4, },
-      { text: "帳號錯密碼錯", nextScriptId: 4, },
+      { text: "帳號對密碼對", /*nextScriptId: 101,*/nextScriptId: 3 },
+      { text: "帳號對密碼錯", /*nextScriptId: 100,*/nextScriptId: 3 },
     ],
     messages: [
       { align: "message-left-first", sender: "Chen", chatPicSrc: "https://img.onl/1MG2S1", text: "待改成釣魚頁面跳轉", time: "上午12:36" }
@@ -87,8 +115,8 @@ export const Scripts = [
   {
     scriptId: 3,//第一關_資安小尖兵_第二段(不點進連結)
     options: [
-      { text: "點進連結", nextScriptId: 4, record: "第二次點進連結" },
-      { text: "不點連結", nextScriptId: 5, record: "第二次不點連結(收到釣魚信)" },
+      { text: "點進連結", nextScriptId: 4,  },
+      { text: "不點連結", nextScriptId: 5,  },
     ],
     messages: [
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "已抽，我是第187個", time: "上午12:36" },
@@ -99,7 +127,7 @@ export const Scripts = [
   {
     scriptId: 4,//第一關_資安小尖兵_第三段(Pass)
     options: [
-      { text: "進入第二關", nextScriptId: 6 },
+      { text: "點擊左方按鈕進行第三關", nextScriptId: 4 },
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "歐不，我好像帳號被盜了，大家不要點那個連結!", time: "上午12:36" },
@@ -111,7 +139,7 @@ export const Scripts = [
   {
     scriptId: 5,//第一關_資安小尖兵_第三段(Fail)
     options: [
-      { text: "進入第二關", nextScriptId: 6 },
+      { text: "點擊左方按鈕進行第三關", nextScriptId: 5 },
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "歐不，我好像帳號被盜了，大家不要點那個連結!", time: "上午12:36" },
