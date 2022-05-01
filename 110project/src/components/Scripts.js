@@ -10,8 +10,8 @@ export const Scripts = [
   {
     scriptId: 102,//劇本三稿新增內容 //帳號對密碼對的狀態，點進連結/不點連結 都到劇本編號5(Fail)
     options: [
-      { text: "點進連結", nextScriptId: 5,  },
-      { text: "不點連結", nextScriptId: 5,  },
+      { text: "點進連結", nextScriptId: 5, },
+      { text: "不點連結", nextScriptId: 5, },
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "http://fuckyourphonetwice.com/gift", time: "上午12:36" },
@@ -72,7 +72,7 @@ export const Scripts = [
   {
     scriptId: 1,//第一關_資安小尖兵_第一段
     options: [
-      { text: "點進連結", nextScriptId: 2,  },//進入輸入帳號密碼介面
+      { text: "點進連結", nextScriptId: 2, },//進入輸入帳號密碼介面
       { text: "不點連結", nextScriptId: 3, record: true },//進入Pass後劇本
     ],
     messages: [
@@ -90,7 +90,7 @@ export const Scripts = [
   {
     scriptId: 2,//第一關_資安小尖兵_第二段(點進連結) //已補input帳號密碼介面//待改成
     options: [
-      { text: "釣魚頁面"},
+      { text: "釣魚頁面" },
     ],
     messages: [
       { align: "message-left-first", sender: "Chen", chatPicSrc: "https://img.onl/1MG2S1", text: "待改成釣魚頁面跳轉", time: "上午12:36" }
@@ -405,7 +405,7 @@ export const Scripts = [
       { text: <span>原來一直都是{Hack.nickName}在搞鬼!</span>, nextScriptId: 27 },
       { text: <span>原來一直都是{Robot.nickName}在搞鬼!</span>, nextScriptId: 27 }
     ],
-    messages: [{text: null}]
+    messages: [{ text: null }]
   },
   {
     scriptId: 27,//結局_自身難保(選項後內容)

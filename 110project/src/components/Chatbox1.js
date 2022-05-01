@@ -29,17 +29,17 @@ const Chatbox1 = () => {
 
     useEffect(() => {//當索引發生變化
 
-        if (currIndex > CurrScript.length - 1 || CurrScript[0].text===null) {//如果目前Index大於目標陣列長度則返回
-          setAnsBtnDisabled(false)
-          return
-        }
-        else { setAnsBtnDisabled(true); onRowAdded() }
-        setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
-        console.log(currIndex)
+      if (currIndex > CurrScript.length - 1 || CurrScript[0].text === null) {//如果目前Index大於目標陣列長度則返回
+        setAnsBtnDisabled(false)
+        return
+      }
+      else { setAnsBtnDisabled(true); onRowAdded() }
+      setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
+      console.log(currIndex)
 
     }, [currIndex])
 
-      console.log("Hi = "+ CurrScript[0].text)
+    console.log("Hi = " + CurrScript[0].text)
 
     return CurrScript[0].text === null ? ("") : (
       <>
@@ -122,9 +122,9 @@ const Chatbox1 = () => {
       localStorage.setItem('Security', record);//用localStorage存起來
     };
 
-    function test(something){
-      localStorage.setItem('帳號',something[0])
-      localStorage.setItem('密碼',something[0])
+    function test(something) {
+      localStorage.setItem('帳號', something[0])
+      localStorage.setItem('密碼', something[0])
     }
 
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
@@ -162,11 +162,11 @@ const Chatbox1 = () => {
     useEffect(() => {
       // console.log("儲存的帳號" + savedAcc)
       if (savedAcc === localStorage.getItem('account')) {//已改成本地儲存的玩家帳號
-        return localStorage.setItem('FishAcc',true)
+        return localStorage.setItem('FishAcc', true)
         // return checkAcc(true)
       }
       if (savedAcc !== localStorage.getItem('account') && savedAcc !== "") {//已改成本地儲存的玩家帳號
-        return localStorage.setItem('FishAcc',false)
+        return localStorage.setItem('FishAcc', false)
         // return checkAcc(false)
       }
     }, [savedAcc])
@@ -174,11 +174,11 @@ const Chatbox1 = () => {
     useEffect(() => {
       // console.log("儲存的密碼" + savedPwd)
       if (savedPwd === localStorage.getItem('password')) {//已改成本地儲存的玩家帳號
-        return localStorage.setItem('FishPwd',true)
+        return localStorage.setItem('FishPwd', true)
         // return checkPwd(true)
       }
       if (savedPwd !== localStorage.getItem('password') && savedPwd !== "") {//已改成本地儲存的玩家帳號
-        return localStorage.setItem('FishPwd',false)
+        return localStorage.setItem('FishPwd', false)
         // return checkPwd(false)
       }
     }, [savedPwd])
@@ -189,11 +189,11 @@ const Chatbox1 = () => {
 
       if (FishAcc !== null && FishPwd !== null) {//確認不是預設狀態
         //如果帳密都輸對，跳劇本102，關掉介面
-        if (FishAcc && FishPwd) {setCurrScriptState(102); props.setStyle("display:none"); props.setStyle("display:none"); }
+        if (FishAcc && FishPwd) { setCurrScriptState(102); props.setStyle("display:none"); props.setStyle("display:none"); }
         //如果帳號對密碼錯，跳劇本101，關掉介面
         else if (FishAcc && !FishPwd) { setCurrScriptState(101); props.setStyle("display:none"); }
         //如果帳號錯密碼對or帳號錯密碼錯，跳劇本4，關掉介面
-        else if ((!FishAcc && FishPwd) || (!FishAcc && !FishPwd)) { setCurrScriptState(4); localStorage.setItem('Security',true); props.setStyle("display:none"); }
+        else if ((!FishAcc && FishPwd) || (!FishAcc && !FishPwd)) { setCurrScriptState(4); localStorage.setItem('Security', true); props.setStyle("display:none"); }
         else props.setStyle("display:none");
       }
       // if (accResult !== "" && pwdResult !== "") {//確認不是預設狀態
