@@ -25,8 +25,8 @@ export const Scripts = [
   {
     scriptId: 101,//劇本三稿新增內容 //帳號對密碼錯的狀態，點進連結到劇本編號5(Fail)  不點連結到劇本編號4(Pass)
     options: [
-      { text: "點進連結", nextScriptId: 5,  },
-      { text: "不點連結", nextScriptId: 4,  },
+      { text: "點進連結", nextScriptId: 5, record: false },
+      { text: "不點連結", nextScriptId: 4, record: true },
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "http://fuckyourphonetwice.com/gift", time: "上午12:36" },
@@ -73,7 +73,7 @@ export const Scripts = [
     scriptId: 1,//第一關_資安小尖兵_第一段
     options: [
       { text: "點進連結", nextScriptId: 2,  },//進入輸入帳號密碼介面
-      { text: "不點連結", nextScriptId: 3,  },//進入Pass後劇本
+      { text: "不點連結", nextScriptId: 3, record: true },//進入Pass後劇本
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-normal"><span className="message-bluetext">@{Robot.nickName}</span>，嗨我有事要私訊你喔。</span>, time: "上午12:36" },
@@ -429,7 +429,7 @@ export const Scripts = [
     ]
   },
   {
-    scriptId: 28,//結局_我就是駭客
+    scriptId: 28,//結局_特洛伊木馬
     options: [
       { text: "前往結局動畫", nextScriptId: -4 },//結局動畫暫定-4
     ],

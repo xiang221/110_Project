@@ -193,7 +193,7 @@ const Chatbox1 = () => {
         //如果帳號對密碼錯，跳劇本101，關掉介面
         else if (FishAcc && !FishPwd) { setCurrScriptState(101); props.setStyle("display:none"); }
         //如果帳號錯密碼對or帳號錯密碼錯，跳劇本4，關掉介面
-        else if ((!FishAcc && FishPwd) || (!FishAcc && !FishPwd)) { setCurrScriptState(4); props.setStyle("display:none"); }
+        else if ((!FishAcc && FishPwd) || (!FishAcc && !FishPwd)) { setCurrScriptState(4); localStorage.setItem('Security',true); props.setStyle("display:none"); }
         else props.setStyle("display:none");
       }
       // if (accResult !== "" && pwdResult !== "") {//確認不是預設狀態

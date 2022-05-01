@@ -154,19 +154,31 @@ const Chatbox3 = () => {
       }
     }
 
-    function goToEnd() {//選完直接前往結局 //待補結局邏輯
-      // if(localStorage.getItem('FindYoung')){
-      //   setCurrScriptState(-1)
-      // }
-      // else{
+    function goToEnd() {//選完直接前往結局 //結局邏輯
+      let Lv1 = localStorage.getItem('FindYoung')
+      let Lv2 = localStorage.getItem('FindHack')
+      let Lv3 = localStorage.getItem('Security')
+      let GameEnd = [Lv1, Lv2, Lv3]
 
-      // }
-      // if(localStorage.getItem('FindHack')){
-      //   setCurrScriptState(8)
-      // }
-      // else{
-      //   setCurrScriptState(6)
-      // }
+      if(GameEnd === [true, true, true]){ //OOO以牙還牙
+        setCurrScriptState(31)
+      }
+      if(GameEnd === [true, false, true]){ //OXO驅逐內鬼
+        setCurrScriptState(30)
+      }
+      if(GameEnd === [true, true, false]){ //OOX縱虎歸山
+        setCurrScriptState(29)
+      }
+      if(GameEnd === [false, true, true]){ //XOO特洛伊木馬
+        setCurrScriptState(28)
+      }
+      if(GameEnd === [false, false, false]||GameEnd === [false, true, false]){ //XXX或XOX自身難保
+        setCurrScriptState(26)
+      }
+      if(GameEnd === [false, false, true]||GameEnd === [true, false, false]){ //XXO或OXX創世神殞落
+        setCurrScriptState(25)
+      }
+
     }
 
     return (props.trigger) ? (//指認後直接跳轉結局
