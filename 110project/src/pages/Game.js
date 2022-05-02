@@ -11,7 +11,7 @@ import Mission from '../components/Mission'
 import Online from '../components/Online'
 import '../styles/game.css'
 import video from '../picture/backgoundVideo.mp4';
-
+import {MailText} from '../components/Mail'
 
 const Game = ({user, setUser}) => {
 
@@ -28,21 +28,14 @@ const Game = ({user, setUser}) => {
             <Mail trigger={mailbox} mailhandler={mailhandler}/>
           </div>
           <div className='middle'>
-            <Mailbox trigger={mailbox} mailhandler={mailhandler}/>
-            <Mission/>
-          </div>
-          <div className='right'>
-            <Chatbox/>
-          </div>
-        </div>
-        <div className='middle'>
           <Mailbox trigger={mailbox} mailhandler={mailhandler}/>
           <Mission/>
+          </div>
+          <div className='right'>
+          <Chatbox0/>
+          </div>
         </div>
-        <div className='right'>
-          <Chatbox3/>
-        </div>
-      </div>
+    </div>
   )
 }
 

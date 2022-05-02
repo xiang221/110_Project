@@ -67,8 +67,9 @@
 .openmail{
 	background-color: #696969;
 	position: absolute;
-	width:28%;
-	min-height: 90%;
+	width:22.9%;
+	height: 90%;
+	left:15rem;
 	border: 0.1rem solid #FFF;
 	z-index: 1;
 }
@@ -101,6 +102,7 @@
 	margin:1rem;
 	width:18rem;
 	height:3rem;
+	cursor: pointer;
 }
 
 .mailline{
@@ -124,4 +126,26 @@
     background: #C4C4C4;
     display: inline;
     float:left;
+}
+
+.mailOne{
+	background-image: url('../picture/mail1.png') ;
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: relative;
+	left:0.1rem;
+	height:27.8rem;
+	z-index: 2;
+}
+
+.mailTextBtn{
+	position:absolute;
+	top:83%;
+	left:2.7rem;
+	width:15.5rem;
+	height:2.5rem;
+	color:#FFF;
+	padding-top:0.1rem;
+	border:none;  
+	background: linear-gradient(45deg, #FFA5F1,#98F9F3);
 }

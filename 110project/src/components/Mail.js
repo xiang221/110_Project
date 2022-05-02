@@ -43,12 +43,16 @@ const Mailbox = (props) => {
 }
 
 
-const MailText = () => {
+const Mailtext = (props) => {
   return (
-    <div>Mail</div>
+    <div className="openmail">
+    <div className='mailOne'>
+    <button type='button' className='mailTextBtn' onClick={()=>props.mailhandler(false)}>關閉通知</button>
+    </div>
+    </div>
   )
 }
 
 
 
-export {Mail, Mailbox, MailText}
+export {Mail, Mailbox, Mailtext}
