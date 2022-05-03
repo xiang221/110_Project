@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import '../styles/middle.css'
 import playerImg from '../picture/player.png';
 
+<<<<<<< Updated upstream
 const Mission = (props) => {
 
   const [mission, setMission] = useState();
@@ -12,6 +13,12 @@ const Mission = (props) => {
 
 
 
+=======
+
+const Mission = (props) => {
+
+  
+>>>>>>> Stashed changes
 
   return (
     <div className='missioncontainer'>
