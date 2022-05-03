@@ -3,6 +3,8 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Roboto';
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .overlay{
@@ -62,7 +64,7 @@ main {
 .container{
   display:flex;
   flex-direction: row;
-  top: 3rem;
+  top: 5rem;
   position: relative;
 }
 
@@ -159,7 +161,7 @@ main {
 .middle{
   display:flex;
   flex-direction: column;
-  flex-grow:1.5;
+  flex-grow:2;
   padding-top: 2rem;
 }
 

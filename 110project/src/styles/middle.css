@@ -2,7 +2,7 @@
 .playercontainer{
     background: linear-gradient(45deg, #FFA5F1,#98F9F3);
     border: 0.2rem solid #FFF;
-    width:18rem;
+    width:19rem;
     height:auto;
     display: flex;
     align-items: center;
@@ -42,7 +42,7 @@ p{
 
 .mission{
     opacity:0.8;
-    width:18rem;
+    width:19rem;
     height:3.75rem;
     background: linear-gradient(45deg, #FFA5F1,#98F9F3);
     border: 0.2rem solid #FFF;

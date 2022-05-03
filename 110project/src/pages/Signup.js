@@ -1,5 +1,7 @@
 import React,{ useEffect } from 'react'
 import logo from '../picture/logo.ico'
+import video from '../picture/backgoundVideo.mp4';
+
 
 const Signup = ({user, setUser}) => {
 
@@ -7,12 +9,12 @@ const Signup = ({user, setUser}) => {
         const newAccount ={
         account : e.target.account.value,
         password : e.target.password.value,
-        mission : [0, 0, 0]
+        mission : 1
       }
         setUser(newAccount);
         localStorage.setItem( 'account', e.target.account.value);
         localStorage.setItem( 'password', e.target.password.value );
-        localStorage.setItem( 'mission', [0,0,0] );
+        localStorage.setItem( 'mission', 1 );
       }
 
 
@@ -20,7 +22,9 @@ const Signup = ({user, setUser}) => {
 
   return (
     <div>
-
+      <video autoPlay muted loop style={{zIndex:-100, position:'fixed', objectFit:'fill'}} >
+        <source src={video} type='video/mp4'/>
+      </video> 
         <div className='signLeft'>
             <h3 className='signupText' style={{lineHeight:'13rem'}}>歡迎加入論壇風雲！</h3>
             <img src={logo} id='logo'/>

@@ -1,20 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../styles/middle.css'
 import playerImg from '../picture/player.png';
 
 const Mission = (props) => {
 
-  /*
-  const missionhandler = () =>{
-     const [mission, setMission] = useState([null,null,null]);
+  const [mission, setMission] = useState();
 
-  }
-
-  //mission 3
-  if (props[0]!==null && props[1]!==null){  
+  let nowMission = localStorage.getItem('mission');
+  console.log(nowMission);
     
-  }
-*/
+
+
+
 
   return (
     <div className='missioncontainer'>

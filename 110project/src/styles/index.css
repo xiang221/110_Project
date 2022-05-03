@@ -2,12 +2,16 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  max-height: 100%;
+  max-width: 100%;
 }
 
+
+/*
 section.backImage {
   height: 100vh;
   width: 100vw;
-  background-image: url("../picture/firstpage.png");
+  background-image: url("../picture/startGame.png");
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -16,7 +20,7 @@ section.backImage {
   display: flex;
   text-align: center;
 }
-
+*/
 .startBtn{
   background-color: #FEC7FD;
   color:azure;
@@ -37,3 +41,15 @@ section.backImage {
   height:auto;
   left:10rem;
 }
+
+
+.indexContainer{
+  display: flex;
+  flex-direction: column;
+
+}
+
+/*
+align-items: center;
+justify-content: center;
+*/
