@@ -11,7 +11,7 @@ import Mission from '../components/Mission'
 import Online from '../components/Online'
 import '../styles/game.css'
 import video from '../picture/backgoundVideo.mp4';
-import {MailText} from '../components/Mail'
+import {Mailtext} from '../components/Mail'
 
 const Game = ({user, setUser}) => {
 
@@ -22,19 +22,19 @@ const Game = ({user, setUser}) => {
       <video autoPlay muted loop style={{zIndex:-100, position:'fixed', objectFit:'fill'}} >
         <source src={video} type='video/mp4'/>
       </video> 
-        <div className='container'>
+      <div className='container'>
           <div className='left'>
             <Online/>
             <Mail trigger={mailbox} mailhandler={mailhandler}/>
           </div>
           <div className='middle'>
-          <Mailbox trigger={mailbox} mailhandler={mailhandler}/>
-          <Mission/>
+            <Mailbox trigger={mailbox} mailhandler={mailhandler}/>
+            <Mission/>
           </div>
           <div className='right'>
-          <Chatbox0/>
+          <Chatbox3/>
           </div>
-        </div>
+      </div>
     </div>
   )
 }

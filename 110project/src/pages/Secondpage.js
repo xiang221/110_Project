@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/secondpage.css'
-
+import video from '../picture/backgoundVideo.mp4';
 
 const Secondpage = () => {
 
@@ -64,13 +64,18 @@ const Secondpage = () => {
     };
 
   return (
+    <>
+    <video autoPlay muted loop style={{zIndex:-100, position:'fixed', objectFit:'fill'}} >
+    <source src={video} type='video/mp4'/>
+    </video> 
     <div className='secondpage'>
-    <h1>
-    <a class="typewrite" data-period="2000" data-type='[ "......有人在那裡嗎？", "我需要你的幫忙", "我接下來會邀請你加入一個論壇", "請你幫助我揪出內鬼" ]'>
-    <span class="wrap"></span>
-    </a>
-    </h1>
+      <h1>
+      <a class="typewrite" data-period="2000" data-type='[ "......有人在那裡嗎？", "我需要你的幫忙", "我接下來會邀請你加入一個論壇", "請你幫助我揪出內鬼" ]'>
+      <span class="wrap"></span>
+      </a>
+      </h1>
     </div>
+  </>
   )
 }
 
