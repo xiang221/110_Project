@@ -16,6 +16,9 @@ import {Mailtext} from '../components/Mail'
 const Game = ({user, setUser}) => {
 
   const [mailbox,mailhandler] = useState(false);
+  const [chosenChatbox,setChatbox] = useState(0);
+
+
 
   return (
     <div>
@@ -29,10 +32,13 @@ const Game = ({user, setUser}) => {
           </div>
           <div className='middle'>
             <Mailbox trigger={mailbox} mailhandler={mailhandler}/>
-            <Mission/>
+            <Mission chosen={chosenChatbox} setChatbox={setChatbox}/>
           </div>
           <div className='right'>
-          <Chatbox3/>
+            {chosenChatbox===0 && <Chatbox0/>}
+            {chosenChatbox===1 && <Chatbox1/>}
+            {chosenChatbox===2 && <Chatbox2/>}
+            {chosenChatbox===3 && <Chatbox3/>}
           </div>
       </div>
     </div>
