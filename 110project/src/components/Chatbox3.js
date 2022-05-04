@@ -1,12 +1,11 @@
 import React, { useState, useEffect, memo } from 'react'
 import { Scripts } from './Scripts'
-import { Accuse3List, HintList } from './Character'
+import { Accuse3List, God, Hack, HintList, Robot, Young } from './Character'
 import '../styles/chatbox.css'
 import $ from 'jquery'
 
 // var pastScripts = [];//加上顯示過的劇本的紀錄
 //把isWho放在這邊應該就可可了
-
 
 const Chatbox3 = () => {
 
@@ -33,17 +32,16 @@ const Chatbox3 = () => {
 
     useEffect(() => {//當索引發生變化
 
-        if (currIndex > CurrScript.length - 1 || CurrScript[0].text===null) {//如果目前Index大於目標陣列長度則返回
-          setAnsBtnDisabled(false)
-          return
-        }
-        else { setAnsBtnDisabled(true); onRowAdded() }
-        setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
-        console.log(currIndex)
+      if (currIndex > CurrScript.length - 1 || CurrScript[0].text === null) {//如果目前Index大於目標陣列長度則返回
+        setAnsBtnDisabled(false)
+        return
+      }
+      else { setAnsBtnDisabled(true); onRowAdded() }
+      setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
+      console.log(currIndex)
 
     }, [currIndex])
 
-      console.log("Hi = "+ CurrScript[0].text)
 
     return CurrScript[0].text === null ? ("") : (
       <>
@@ -138,7 +136,7 @@ const Chatbox3 = () => {
     ) : "";
   }
 
-  const Accuse3 = (props) => {//如果currScriptState是-2，直接自動開啟第二關指認
+  const Accuse3 = (props) => {//如果currScriptState是-2，直接自動開啟第三關指認
 
     if (currScriptState === -2) {
       props.setTrigger(true)
@@ -155,30 +153,34 @@ const Chatbox3 = () => {
     }
 
     function goToEnd() {//選完直接前往結局 //結局邏輯
-      let Lv1 = localStorage.getItem('FindYoung')
-      let Lv2 = localStorage.getItem('FindHack')
-      let Lv3 = localStorage.getItem('Security')
-      let GameEnd = [Lv1, Lv2, Lv3]
+      let Lv1 = localStorage.getItem('Security')
+      let Lv2 = localStorage.getItem('FindYoung')
+      let Lv3 = localStorage.getItem('FindHack')
 
-      if(GameEnd === [true, true, true]){ //OOO以牙還牙
+      if (Lv1 === 'true' && Lv2 === 'true' && Lv3 === 'true') { //OOO以牙還牙
         setCurrScriptState(31)
+        setAccuse3Popup(false);
       }
-      if(GameEnd === [true, false, true]){ //OXO驅逐內鬼
+      if (Lv1 === 'true' && Lv2 === 'false' && Lv3 === 'true') { //OXO驅逐內鬼
         setCurrScriptState(30)
+        setAccuse3Popup(false);
       }
-      if(GameEnd === [true, true, false]){ //OOX縱虎歸山
+      if (Lv1 === 'true' && Lv2 === 'true' && Lv3 === 'false') { //OOX縱虎歸山
         setCurrScriptState(29)
+        setAccuse3Popup(false);
       }
-      if(GameEnd === [false, true, true]){ //XOO特洛伊木馬
+      if (Lv1 === 'false' && Lv2 === 'true' && Lv3 === 'true') { //XOO特洛伊木馬
         setCurrScriptState(28)
+        setAccuse3Popup(false);
       }
-      if(GameEnd === [false, false, false]||GameEnd === [false, true, false]){ //XXX或XOX自身難保
+      if ((Lv1 === 'false' && Lv2 === 'false' && Lv3 === 'false') || (Lv1 === 'false' && Lv2 === 'true' && Lv3 === 'false')) { //XXX或XOX自身難保
         setCurrScriptState(26)
+        setAccuse3Popup(false);
       }
-      if(GameEnd === [false, false, true]||GameEnd === [true, false, false]){ //XXO或OXX創世神殞落
+      if ((Lv1 === false && Lv2 === false && Lv3 === true) || (Lv1 === true && Lv2 === false && Lv3 === false)) { //XXO或OXX創世神殞落
         setCurrScriptState(25)
+        setAccuse3Popup(false);
       }
-
     }
 
     return (props.trigger) ? (//指認後直接跳轉結局
@@ -186,10 +188,10 @@ const Chatbox3 = () => {
         <div id="accuse2-popup">
           <div id="accuse2-btn" className="accuse2-btn-grid">
             <div className="accuse2-title">你覺得誰是駭客？</div>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("A"); goToEnd(); props.setTrigger(false); setCurrIndex(0); }}>{"A"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("B"); goToEnd(); props.setTrigger(false); setCurrIndex(0); }}>{"B"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("C"); goToEnd(); props.setTrigger(false); setCurrIndex(0); }}>{"C"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("D"); goToEnd(); props.setTrigger(false); setCurrIndex(0); }}>{"D"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("A"); goToEnd(); setCurrIndex(0); }}>{"A"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("B"); goToEnd(); setCurrIndex(0); }}>{"B"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("C"); goToEnd(); setCurrIndex(0); }}>{"C"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("D"); goToEnd(); setCurrIndex(0); }}>{"D"}</button>
           </div>
         </div>
       </>
@@ -202,61 +204,38 @@ const Chatbox3 = () => {
       props.setTrigger(true);
     }
 
-    let isWho = localStorage.getItem("isWho");
-    let isHow = localStorage.getItem("isHow")
+    console.log("God = " + God.nickName)
+    console.log("Hack = " + Hack.nickName)
+    console.log("Young = " + Young.nickName)
+    console.log("Robot = " + Robot.nickName)
 
-    function Who(nickNamepicked) {//是誰
+    function Who(nickNamepicked) {//是誰(e1, e2, e3, e4)
       let pickedCharacter = HintList.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來之後要用陣列
       if (pickedCharacter[0].realName === 'God') {
-        // HintState.push("e1");
-        // console.log("Hint1 = " + HintState);
-        // isWho = "e1"
-        // console.log("isHow = " + isHow +"isWho = "+ isWho);
         localStorage.setItem("isWho", "e1")
-        console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
+        // console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else if (pickedCharacter[0].realName === 'Hack') {
-        // HintState.push("e2");
-        // console.log("Hint1 = " + HintState);
-        // isWho = "e2"
-        // console.log("isHow = " + isHow +"isWho = "+ isWho);
         localStorage.setItem("isWho", "e2")
-        console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
+        // console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else if (pickedCharacter[0].realName === 'Young') {
-        // HintState.push("e3");
-        // console.log("Hint1 = " + HintState);
-        // isWho = "e3"
-        // console.log("isHow = " + isHow +"isWho = "+ isWho);
         localStorage.setItem("isWho", "e3")
-        console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
+        // console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else if (pickedCharacter[0].realName === 'Robot') {
-        // HintState.push("e4")
-        // console.log("Hint1 = " + HintState);
-        // isWho = "e4"
-        // console.log("isHow = " + isHow +"isWho = "+ isWho);
         localStorage.setItem("isWho", "e4")
-        console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
+        // console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else console.log("Hint1 有問題")
     }
 
     function How(selected) {//不謹慎(f1)帶風向(f2)
       if (selected === '1') {
-        // HintState.push("f1");
-        // console.log("Hint2 = " + HintState);
-        // isHow = "f1"
-        // console.log("isHow = " + isHow +"isWho = "+ isWho);
         localStorage.setItem("isHow", "f1")
         console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
       else if (selected === '2') {
-        // HintState.push("f2");
-        // console.log("Hint2 = " + HintState);
-        // isHow = "f2"
-        // console.log("isHow = " + isHow
-        //             +"isWho = "+ isWho);
         localStorage.setItem("isHow", "f2")
         console.log("isWho = " + localStorage.getItem("isWho") + "isHow = " + localStorage.getItem("isHow"))
       }
@@ -264,7 +243,9 @@ const Chatbox3 = () => {
     }
 
     function Judge() {
-      if (isWho === "e1" && isHow === "f1"/*HintState.includes("e1") && HintState.includes("f1")*/) {
+      let isWho = localStorage.getItem("isWho");
+      let isHow = localStorage.getItem("isHow");
+      if (isWho === "e1" && isHow === "f1") {
         console.log("e1-f1")
         console.log(17)
         setHintPopup(false)
@@ -272,14 +253,14 @@ const Chatbox3 = () => {
         setCurrIndex(0)
       }
 
-      else if (isWho === "e1" && isHow === "f2"/*HintState.includes("e1") && HintState.includes("f2")*/) {
+      else if (isWho === "e1" && isHow === "f2") {
         console.log("e1-f2")
         console.log(18)
         setHintPopup(false)
         setCurrScriptState(18)
         setCurrIndex(0)
       }
-      else if (isWho === "e2" && isHow === "f1"/*HintState.includes("e2") && HintState.includes("f1")*/) {
+      else if (isWho === "e2" && isHow === "f1") {
         console.log("e2-f1")
         console.log(19)
         setHintPopup(false)
@@ -287,35 +268,35 @@ const Chatbox3 = () => {
         setCurrIndex(0)
       }
 
-      else if (isWho === "e2" && isHow === "f2"/*HintState.includes("e2") && HintState.includes("f2")*/) {
+      else if (isWho === "e2" && isHow === "f2") {
         console.log("e2-f2")
         console.log(20)
         setHintPopup(false)
         setCurrScriptState(20)
         setCurrIndex(0)
       }
-      else if (isWho === "e3" && isHow === "f1"/*HintState.includes("e3") && HintState.includes("f1")*/) {
+      else if (isWho === "e3" && isHow === "f1") {
         console.log("e3-f1")
         console.log(21)
         setHintPopup(false)
         setCurrScriptState(21)
         setCurrIndex(0)
       }
-      else if (isWho === "e3" && isHow === "f2"/*HintState.includes("e3") && HintState.includes("f2")*/) {
+      else if (isWho === "e3" && isHow === "f2") {
         console.log("e3-f2")
         console.log(22)
         setHintPopup(false)
         setCurrScriptState(22)
         setCurrIndex(0)
       }
-      else if (isWho === "e4" && isHow === "f1"/*HintState.includes("e4") && HintState.includes("f1")*/) {
+      else if (isWho === "e4" && isHow === "f1") {
         console.log("e4-f1")
         console.log(23)
         setHintPopup(false)
         setCurrScriptState(23)
         setCurrIndex(0)
       }
-      else if (isWho === "e4" && isHow === "f2"/*HintState.includes("e4") && HintState.includes("f2")*/) {
+      else if (isWho === "e4" && isHow === "f2") {
         console.log("e4-f2")
         console.log(24)
         setHintPopup(false)
@@ -366,15 +347,15 @@ const Chatbox3 = () => {
         <div id="hint-popup">
           <div className="hint-title">你覺得</div>
           <div className="hint-btn-grid">
-            <button className="hint-btn" onClick={(event) => { Who("A"); Judge(); setSelected("A") }} disabled={A}>{"A"}</button>
-            <button className="hint-btn" onClick={(event) => { Who("B"); Judge(); setSelected("B") }} disabled={B}>{"B"}</button>
-            <button className="hint-btn" onClick={(event) => { Who("C"); Judge(); setSelected("C") }} disabled={C}>{"C"}</button>
-            <button className="hint-btn" onClick={(event) => { Who("D"); Judge(); setSelected("D") }} disabled={D}>{"D"}</button>
+            <button className="hint-btn" onClick={(event) => { Who("A"); Judge(); setSelected("A"); event.preventDefault() }} disabled={A}>{"A"}</button>
+            <button className="hint-btn" onClick={(event) => { Who("B"); Judge(); setSelected("B"); event.preventDefault() }} disabled={B}>{"B"}</button>
+            <button className="hint-btn" onClick={(event) => { Who("C"); Judge(); setSelected("C"); event.preventDefault() }} disabled={C}>{"C"}</button>
+            <button className="hint-btn" onClick={(event) => { Who("D"); Judge(); setSelected("D"); event.preventDefault() }} disabled={D}>{"D"}</button>
           </div>
 
           <div className="hint-btn-grid">
-            <button className="hint-btn" onClick={(event) => { How("1"); Judge(); setSelected2("E") }} disabled={E}>{"不謹慎"}</button>
-            <button className="hint-btn" onClick={(event) => { How("2"); Judge(); setSelected2("F") }} disabled={F}>{"在帶風向"}</button>
+            <button className="hint-btn" onClick={(event) => { How("1"); Judge(); setSelected2("E"); event.preventDefault() }} disabled={E}>{"不謹慎"}</button>
+            <button className="hint-btn" onClick={(event) => { How("2"); Judge(); setSelected2("F"); event.preventDefault() }} disabled={F}>{"在帶風向"}</button>
           </div>
         </div>
       </>

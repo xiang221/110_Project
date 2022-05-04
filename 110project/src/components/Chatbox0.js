@@ -38,8 +38,6 @@ const Chatbox0 = () => {
 
     }, [currIndex])
 
-      console.log("Hi = "+ CurrScript[0].text)
-
     return CurrScript[0].text === null ? ("") : (
       <>
         <div>{CurrScript.slice(0, currIndex + 1).map((sub) =>

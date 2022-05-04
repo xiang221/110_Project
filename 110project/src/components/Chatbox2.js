@@ -7,7 +7,6 @@ import $ from 'jquery'
 // var pastScripts = [];//加上顯示過的劇本的紀錄
 //把isWho放在這邊應該就可可了
 
-
 const Chatbox2 = () => {
 
   const [buttonPopup, setButtonPopup] = useState(false); //用useState設定目前Optionbuttons的Popup狀態
@@ -39,8 +38,6 @@ const Chatbox2 = () => {
         console.log(currIndex)
 
     }, [currIndex])
-
-      console.log("Hi = "+ CurrScript[0].text)
 
     return CurrScript[0].text === null ? ("") : (
       <>
@@ -158,10 +155,10 @@ const Chatbox2 = () => {
         <div id="accuse2-popup">
           <div id="accuse2-btn" className="accuse2-btn-grid">
             <div className="accuse2-title">你覺得誰中毒了？</div>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); setCurrScriptState(Number(102)); props.setTrigger(false); setCurrIndex(0); }}>{"A"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); setCurrScriptState(Number(102)); props.setTrigger(false); setCurrIndex(0); }}>{"B"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); setCurrScriptState(Number(102)); props.setTrigger(false); setCurrIndex(0); }}>{"C"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); setCurrScriptState(Number(102)); props.setTrigger(false); setCurrIndex(0); }}>{"D"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); setCurrScriptState(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"A"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); setCurrScriptState(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"B"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); setCurrScriptState(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"C"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); setCurrScriptState(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"D"}</button>
           </div>
         </div>
       </>
