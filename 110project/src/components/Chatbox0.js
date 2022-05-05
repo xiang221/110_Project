@@ -11,6 +11,8 @@ const Chatbox0 = (props) => {
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
   const [pastScripts, setPastScripts] = useState([]);//過去訊息呈現的ScriptId紀錄
 
+  if(currIndex === 8){props.setMission(1)}
+
   const ShowMessage = memo((props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本，將裡面messages拿出來
     const CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)[0].messages
