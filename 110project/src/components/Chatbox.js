@@ -4,9 +4,6 @@ import { Accuse2List, Accuse3List, HintList } from './Character'
 import '../styles/chatbox.css'
 import $ from 'jquery'
 
-// var pastScripts = [];//加上顯示過的劇本的紀錄
-//把isWho放在這邊應該就可可了
-
 
 const Chatbox = () => {
 

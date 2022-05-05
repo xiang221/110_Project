@@ -4,13 +4,15 @@ import { Accuse2List } from './Character'
 import '../styles/chatbox.css'
 import $ from 'jquery'
 
-// var pastScripts = [];//加上顯示過的劇本的紀錄
-//把isWho放在這邊應該就可可了
 
 const Chatbox2 = () => {
 
+  let currScript_2 = Number(JSON.parse(localStorage.getItem('currScript_2')))//用localStorage控制目前狀態
+  let pastScripts_2 = JSON.parse(localStorage.getItem('pastScripts_2'))
+  if(!pastScripts_2){localStorage.setItem('pastScripts_2',JSON.stringify([]))}
+
   const [buttonPopup, setButtonPopup] = useState(false); //用useState設定目前Optionbuttons的Popup狀態
-  const [currScriptState, setCurrScriptState] = useState(6);//用useState設定目前在進行中的劇本ID
+  const [currScriptState, setCurrScriptState] = useState(currScript_2 ? (currScript_2) : 6);//用useState設定目前在進行中的劇本ID
   const [ansBtnDisabled, setAnsBtnDisabled] = useState(true); //Answer按鈕disable
   const [accuse2Popup, setAccuse2Popup] = useState(false);//控制第二關指認介面Popup
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
@@ -61,8 +63,8 @@ const Chatbox2 = () => {
 
     let PastScriptList = [];
 
-    for (let i = 0; i <= pastScripts.length; i++) {
-      const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[i])
+    for (let i = 0; i <= JSON.parse(localStorage.getItem('pastScripts_2')).length; i++) {
+      const PastScript = Scripts.filter(Script => Script.scriptId === JSON.parse(localStorage.getItem('pastScripts_2'))[i])
       let Item = PastScript.map((PastScript) =>
         PastScript.messages.map((sub) =>
           <div className={sub.align}>
@@ -100,18 +102,15 @@ const Chatbox2 = () => {
     }
     else return;
 
-    function AddPassScript(currScript) {
-      if (currScript !== pastScripts[pastScripts.length] && currScript !== 2 && currScript >= 0) {
-        //  pastScripts.push(currScript)
-        setPastScripts(oldArray => [...oldArray, currScript])
-        console.log(pastScripts)
-      }
-    }
-
     const BtnList = CurrScript.map((sub) =>
-      <button className={btnClass} onClick={(event) => { props.setTrigger(false); record(sub.record); setCurrScriptState(Number(sub.nextScriptId)); setCurrIndex(0); AddPassScript(props.currScript) }}>{sub.text}</button>
+      <button className={btnClass} disabled={disable(sub.disable)} onClick={(event) => { props.setTrigger(false); record(sub.record); toNextScript(sub.nextScriptId); setCurrIndex(0); AddPassScript(props.currScript) }}>{sub.text}</button>
       //按下option-button介面中的其中一個選項按鈕，會關閉option-button介面、記錄玩家選擇的按鈕的文字、將CurrScriptState更新成劇本中按下按鈕後要接續的下個劇本ID
     )
+    
+    function toNextScript(nextScriptId) {
+      localStorage.setItem('currScript_2', JSON.stringify(nextScriptId))
+      setCurrScriptState(Number(JSON.parse(localStorage.getItem('currScript_2'))))
+    }
 
     function record(record) {//記錄玩家選擇的option按鈕的文字
       if (!record) {
@@ -119,6 +118,18 @@ const Chatbox2 = () => {
       }
       localStorage.setItem('第一關選項紀錄', record);//用localStorage存起來
     };
+
+    function disable(disable) {
+      if(disable === true){return true}
+      else return false;
+    }
+
+    function AddPassScript(currScript) {
+      if(currScript === 2  || currScript <= 0){return}
+      let pastScripts = [];
+      pastScripts.push(currScript)
+      localStorage.setItem('pastScripts_2', JSON.stringify(pastScripts))
+    }
 
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
       <>
@@ -150,15 +161,20 @@ const Chatbox2 = () => {
       }
     }
 
+    function toNextScript(nextScriptId) {
+      localStorage.setItem('currScript_2', JSON.stringify(nextScriptId))
+      setCurrScriptState(Number(JSON.parse(localStorage.getItem('currScript_2'))))
+    }
+
     return (props.trigger) ? (//指認後直接跳轉到第三關
       <>
         <div id="accuse2-popup">
           <div id="accuse2-btn" className="accuse2-btn-grid">
             <div className="accuse2-title">你覺得誰中毒了？</div>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); setCurrScriptState(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"A"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); setCurrScriptState(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"B"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); setCurrScriptState(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"C"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); setCurrScriptState(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"D"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"A"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"B"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"C"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"D"}</button>
           </div>
         </div>
       </>

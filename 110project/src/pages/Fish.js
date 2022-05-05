@@ -46,11 +46,11 @@ const Fish = (props) => {
 
     if (FishAcc !== null && FishPwd !== null) {//確認不是預設狀態
       //如果帳密都輸對，跳劇本102，關掉介面
-      if (FishAcc && FishPwd) {localStorage.setItem('CurrScript_1', 102); }
+      if (FishAcc && FishPwd) {localStorage.setItem('currScript_1', 102); }
       //如果帳號對密碼錯，跳劇本101，關掉介面
-      else if (FishAcc && !FishPwd) {localStorage.setItem('CurrScript_1', 101); }
+      else if (FishAcc && !FishPwd) {localStorage.setItem('currScript_1', 101); }
       //如果帳號錯密碼對or帳號錯密碼錯，跳劇本4，關掉介面
-      else if ((!FishAcc && FishPwd) || (!FishAcc && !FishPwd)) { localStorage.setItem('CurrScript_1', 4); localStorage.setItem('Security', true);  }
+      else if ((!FishAcc && FishPwd) || (!FishAcc && !FishPwd)) { localStorage.setItem('currScript_1', 4); localStorage.setItem('Security', true);  }
       else props.setStyle("display:none");
     }
   })
