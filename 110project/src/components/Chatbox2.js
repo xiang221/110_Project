@@ -4,6 +4,7 @@ import { Accuse2List } from './Character'
 import '../styles/chatbox.css'
 import $ from 'jquery'
 
+let pastScripts = [];
 
 const Chatbox2 = (props) => {
 
@@ -128,7 +129,7 @@ const Chatbox2 = (props) => {
 
     function AddPassScript(currScript) {
       if(currScript === 2  || currScript <= 0){return}
-      let pastScripts = [];
+      // let pastScripts = []; //test
       pastScripts.push(currScript)
       localStorage.setItem('pastScripts_2', JSON.stringify(pastScripts))
     }

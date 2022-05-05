@@ -6,6 +6,8 @@ import $ from 'jquery'
 
 const Chatbox3 = () => {
 
+  let pastScripts = [];
+
   let currScript_3 = Number(JSON.parse(localStorage.getItem('currScript_3')))//用localStorage控制目前狀態
   let pastScripts_3 = JSON.parse(localStorage.getItem('pastScripts_3'))
   if(!pastScripts_3){localStorage.setItem('pastScripts_3',JSON.stringify([]))}
@@ -128,7 +130,7 @@ const Chatbox3 = () => {
 
     function AddPassScript(currScript) {
       if(currScript === 2  || currScript <= 0){return}
-      let pastScripts = [];
+      // let pastScripts = [];
       pastScripts.push(currScript)
       localStorage.setItem('pastScripts_3', JSON.stringify(pastScripts))
     }

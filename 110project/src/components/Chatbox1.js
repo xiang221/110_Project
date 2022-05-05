@@ -4,6 +4,8 @@ import { Scripts } from './Scripts'
 import '../styles/chatbox.css'
 import $ from 'jquery'
 
+let pastScripts = [];
+
 const Chatbox1 = (props) => {
 
   let currScript_1 = Number(JSON.parse(localStorage.getItem('currScript_1')))//用localStorage控制目前狀態
@@ -15,8 +17,15 @@ const Chatbox1 = (props) => {
   const [ansBtnDisabled, setAnsBtnDisabled] = useState(true); //Answer按鈕disable
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
 
-  if((currScript_1 === 3 && currIndex === 6)||(currScript_1 === 4 && currIndex === 3)||(currScript_1 === 5 && currIndex === 2))
-  {props.setMission(2);}
+  if(currScript_1 === 3 && currIndex === 6){
+    props.setMission(2);
+  }
+  if(currScript_1 === 4 && currIndex === 3){
+    props.setMission(2);
+  }
+  if(currScript_1 === 5 && currIndex === 2){
+    props.setMission(2);
+  }
 
   const ShowMessage = memo((props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本，將裡面messages拿出來
@@ -124,7 +133,6 @@ const Chatbox1 = (props) => {
 
     function AddPassScript(currScript) {
       if(currScript === 2  || currScript <= 0){return}
-      let pastScripts = [];
       pastScripts.push(currScript)
       localStorage.setItem('pastScripts_1', JSON.stringify(pastScripts))
     }
