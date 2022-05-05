@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Chatbox from '../components/Chatbox'
 import Chatbox0 from '../components/Chatbox0'
 import Chatbox1 from '../components/Chatbox1'
 import Chatbox2 from '../components/Chatbox2'
@@ -34,7 +33,7 @@ const Game = ({user, setUser}) => {
             <Mission chosen={chosenChatbox} setChatbox={setChatbox} mission={mission} setMission={setMission}/>
           </div>
           <div className='right'>
-            {chosenChatbox===0 && <Chatbox0/>}
+            {chosenChatbox===0 && <Chatbox0 mission={mission} setMission={setMission}/>}
             {chosenChatbox===1 && <Chatbox1 mission={mission} setMission={setMission}/>}
             {chosenChatbox===2 && <Chatbox2 mission={mission} setMission={setMission}/>}
             {chosenChatbox===3 && <Chatbox3/>}

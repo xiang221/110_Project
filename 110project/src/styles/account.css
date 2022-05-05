@@ -45,7 +45,7 @@ body{
 .signLeft{
     position: absolute;
     width: 445px;
-    height: 720px;
+    height: 100%;
     left: 1px;
     top: 0px;
     background: linear-gradient(164.26deg, rgba(255, 165, 241, 0.8) 1.04%, rgba(152, 249, 243, 0.8) 98.03%);
