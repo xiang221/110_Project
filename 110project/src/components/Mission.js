@@ -6,14 +6,12 @@ const Mission = (props) => {
 
   console.log('missionprops',props.mission);
 
-
-
   return (
     <div className='missioncontainer'>
       <div className='playercontainer'>
         <img src={playerImg} className='playercard' /> 
       </div>
-      <div className='mission mission1' onClick={() => props.setChatbox(1)}>
+      <div className='mission mission1' onClick={() => props.setChatbox(1)} style={{display:props.mission>=1?'':'none'}}>
         <div className='boxcircle'></div>
         <div className='boxtext' >
         <h3>第一回合對話</h3>
