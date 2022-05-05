@@ -9,9 +9,11 @@ import $ from 'jquery'
 
 
 const Chatbox1 = () => {
+//currScript_1? (currScript_1):1
+  const currScript_1 = JSON.parse(localStorage.getItem('currScript_1'))
 
   const [buttonPopup, setButtonPopup] = useState(false); //用useState設定目前Optionbuttons的Popup狀態
-  const [currScriptState, setCurrScriptState] = useState(1);//用useState設定目前在進行中的劇本ID
+  const [currScriptState, setCurrScriptState] = useState(1);//用useState設定目前在進行中的劇本ID //原本是1
   const [ansBtnDisabled, setAnsBtnDisabled] = useState(true); //Answer按鈕disable
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
   const [pastScripts, setPastScripts] = useState([]);
@@ -120,8 +122,8 @@ const Chatbox1 = () => {
     };
 
     function disable(disable) {
-      if(disable !== true){return false}
-      else return true
+      if(disable === true){return true}
+      else return false;
     }
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
       <>

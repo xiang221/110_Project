@@ -59,14 +59,14 @@ export const Scripts = [
     ],
     messages: [//這一個劇本ID下的具體聊天室內容
       { align: "message-center", text: Young.nickName + "已將您加入群組(人數:7人)" },
-      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "嗨嗨，歡迎加入", time: "上午12:00" },
-      { align: "message-right", text: "安安", time: "上午12:00" },
-      { align: "message-left-first", sender: "噁男", chatPicSrc: God.chatPicSrc, text: "妹子ㄇ?", time: "上午12:00" },//噁男照片待補
+      { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "嗨嗨，歡迎加入", time: "下午04:53" },
+      { align: "message-right", text: "安安", time: "下午04:53" },
+      { align: "message-left-first", sender: "噁男", chatPicSrc: God.chatPicSrc, text: "妹子ㄇ?", time: "下午04:53" },//噁男照片待補
       { align: "message-center", text: Robot.nickName + "已將噁男移出群組(人數:6人)" },
-      { align: "message-right", text: "欸不是，6個人是要怎麼多數決?", time: "上午12:00" },
+      { align: "message-right", text: "欸不是，6個人是要怎麼多數決?", time: "下午04:54" },
       { align: "message-center", text: Robot.nickName + "已將潛水艇移出群組(人數:5人)" },
-      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "嗨嗨，跟你說明一下，從今天起，你就是管理團隊的一員囉。我們的管理權限召集人每周會輪值，一共有三個管理權限:群組拉人、群組踢人、管理權限管理。因此下周開始你要負責拉人進群組的權限喔。", time: "上午12:00" },
-      { align: "message-right", text: "OK，了解了!", time: "上午12:00" },
+      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "嗨嗨，跟你說明一下，從今天起，你就是管理團隊的一員囉。我們的管理權限召集人每周會輪值，一共有三個管理權限:群組拉人、群組踢人、管理權限管理。因此下周開始你要負責拉人進群組的權限喔。", time: "下午04:54" },
+      { align: "message-right", text: "OK，了解了!", time: "下午04:55" },
     ]
   },
   {
@@ -76,9 +76,9 @@ export const Scripts = [
       { text: "不點連結", nextScriptId: 3, record: true },//進入Pass後劇本
     ],
     messages: [
-      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-normal"><span className="message-bluetext">@{Robot.nickName}</span>，嗨我有事要私訊你喔。</span>, time: "上午12:01" },
+      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-normal"><span className="message-bluetext">@{Robot.nickName}</span>，嗨我有事要私訊你喔。</span>, time: "下午04:59" },
       { align: "message-center", text: "(兩小時後)" },
-      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-normal"><span className="message-bluetext">@{Robot.nickName}</span>請問有看到嗎？</span>, time: "上午12:01" },
+      { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-normal"><span className="message-bluetext">@{Robot.nickName}</span>請問有看到嗎？</span>, time: "下午07:00" },
       { align: "message-center", text: "(五小時後)" },
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "抱歉現在才看到，最近手機都會莫名其妙噴電==", time: "上午12:01" },
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "該換一支了吧", time: "上午12:02" },
@@ -99,7 +99,7 @@ export const Scripts = [
   {
     scriptId: 3,//第一關_資安小尖兵_第二段(不點進連結)
     options: [
-      { text: "<此回合已結束，請進入下回合>", nextScriptId: 3 }
+      { text: "<此回合已結束，請進入下回合>", disable: true }
     ],
     messages: [
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "已抽，我是第187個", time: "上午12:06" },
@@ -114,7 +114,7 @@ export const Scripts = [
   {
     scriptId: 4,//第一關_資安小尖兵_第三段(Pass)
     options: [
-      { text: "<此回合已結束，請進入下回合>", nextScriptId: 4 },
+      { text: "<此回合已結束，請進入下回合>", disable: true },
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "歐不，我好像帳號被盜了，大家不要點那個連結!", time: "上午12:30" },
@@ -126,7 +126,7 @@ export const Scripts = [
   {
     scriptId: 5,//第一關_資安小尖兵_第三段(Fail)
     options: [
-      { text: "<此回合已結束，請進入下回合>", nextScriptId: 5 },
+      { text: "<此回合已結束，請進入下回合>", disable: true },
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: "歐不，我好像帳號被盜了，大家不要點那個連結!", time: "上午12:30" },

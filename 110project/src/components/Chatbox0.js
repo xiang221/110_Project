@@ -108,7 +108,7 @@ const Chatbox0 = () => {
     }
 
     const BtnList = CurrScript.map((sub) =>
-      <button className={btnClass} onClick={(event) => { props.setTrigger(false); record(sub.record); AddPassScript(props.currScript) }}>{sub.text}</button>
+      <button className={btnClass} disabled={disable(sub.disable)} onClick={(event) => { props.setTrigger(false); record(sub.record); AddPassScript(props.currScript) }}>{sub.text}</button>
       //按下option-button介面中的其中一個選項按鈕，會關閉option-button介面、記錄玩家選擇的按鈕的文字、將CurrScriptState更新成劇本中按下按鈕後要接續的下個劇本ID
     )
 
@@ -118,6 +118,11 @@ const Chatbox0 = () => {
       }
       localStorage.setItem('第一關選項紀錄', record);//用localStorage存起來
     };
+
+    function disable(disable) {
+      if(disable === true){return true}
+      else return false;
+    }
 
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
       <>
