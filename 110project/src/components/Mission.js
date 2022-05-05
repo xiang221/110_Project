@@ -6,8 +6,6 @@ const Mission = (props) => {
 
   console.log('missionprops',props.mission);
 
-
-
   return (
     <div className='missioncontainer'>
       <div className='playercontainer'>
