@@ -65,13 +65,14 @@
 
 
 .openmail{
-	background-color: #696969;
+	background-image: url('../picture/texture.png');
+	background-color: #272727;
 	position: absolute;
-	width:23rem;
-	height: 90%;
-	left:15rem;
+	width:22rem;
+	height: 87%;
 	border: 0.1rem solid #FFF;
 	z-index: 1;
+	margin-left:1rem;
 }
 
 .mailheader {
@@ -80,7 +81,7 @@
 	align-items: center;
 	justify-content: center;
 	padding:0.75rem;
-	margin:0 0.7rem;
+	margin:0.5rem 0.7rem;
 	border-bottom: 2px solid #FFF;
 	color:#FFF;
 	font-weight: 400;
@@ -92,16 +93,16 @@
 .mailClose{
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	overflow: hidden;
+	margin:0.3rem 0;
 }
 
 .mailBtn{
 	background-color: #FFF;
 	font-weight: 600;
-	margin:1rem;
 	width:18rem;
-	height:3rem;
+	height:2.5rem;
 	cursor: pointer;
 }
 

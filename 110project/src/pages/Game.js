@@ -17,6 +17,8 @@ const Game = ({user, setUser}) => {
 
   const [mailbox,mailhandler] = useState(false);
   const [chosenChatbox,setChatbox] = useState(0);
+  const [mission, setMission] = useState(0);
+
 
 
 
@@ -31,13 +33,13 @@ const Game = ({user, setUser}) => {
             <Mail trigger={mailbox} mailhandler={mailhandler}/>
           </div>
           <div className='middle'>
-            <Mailbox trigger={mailbox} mailhandler={mailhandler}/>
-            <Mission chosen={chosenChatbox} setChatbox={setChatbox}/>
+            <Mailbox trigger={mailbox} mailhandler={mailhandler} mission={mission} setMission={setMission}/>
+            <Mission chosen={chosenChatbox} setChatbox={setChatbox} mission={mission} setMission={setMission}/>
           </div>
           <div className='right'>
             {chosenChatbox===0 && <Chatbox0/>}
-            {chosenChatbox===1 && <Chatbox1/>}
-            {chosenChatbox===2 && <Chatbox2/>}
+            {chosenChatbox===1 && <Chatbox1 mission={mission} setMission={setMission}/>}
+            {chosenChatbox===2 && <Chatbox2 mission={mission} setMission={setMission}/>}
             {chosenChatbox===3 && <Chatbox3/>}
           </div>
       </div>

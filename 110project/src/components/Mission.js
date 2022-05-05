@@ -4,13 +4,9 @@ import playerImg from '../picture/player.png';
 
 const Mission = (props) => {
 
-  const [mission, setMission] = useState();
+  console.log('missionprops',props.mission);
 
-  let nowMission = localStorage.getItem('mission');
-  console.log(nowMission);
-    
-
-
+  props.setMission(3)
 
 
   return (
@@ -25,14 +21,14 @@ const Mission = (props) => {
         <p>駭客傳送了貼圖</p>
         </div>
       </div>
-      <div className='mission mission2' onClick={() => props.setChatbox(2)}>
+      <div className='mission mission2' onClick={() => props.setChatbox(2)} style={{display:props.mission>=2?'':'none'}}>
         <div className='boxcircle'></div>
         <div className='boxtext'>
         <h3>第二回合對話</h3>
         <p>機器人傳送了貼圖</p>
         </div>
       </div>
-      <div className='mission mission3' onClick={() => props.setChatbox(3)}>
+      <div className='mission mission3' onClick={() => props.setChatbox(3)} style={{display:props.mission>=3?'':'none'}}>
         <div className='boxcircle'></div>
         <div className='boxtext'>
         <h3>第三回合對話</h3>
