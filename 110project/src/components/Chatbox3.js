@@ -18,7 +18,6 @@ const Chatbox3 = () => {
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
   const [selected, setSelected] = useState(null);//第三關提示中 選人的按鈕disable
   const [selected2, setSelected2] = useState(null);//第三關提示中 選帶風向的按鈕disable
-  const [pastScripts, setPastScripts] = useState([]);
 
   const ShowMessage = memo((props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本，將裡面messages拿出來

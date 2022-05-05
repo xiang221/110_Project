@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Chatbox from '../components/Chatbox'
 import Chatbox0 from '../components/Chatbox0'
 import Chatbox1 from '../components/Chatbox1'
 import Chatbox2 from '../components/Chatbox2'

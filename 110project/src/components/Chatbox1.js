@@ -1,5 +1,5 @@
 import React, { useState, useEffect, memo } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { Scripts } from './Scripts'
 import '../styles/chatbox.css'
 import $ from 'jquery'
@@ -14,6 +14,9 @@ const Chatbox1 = (props) => {
   const [currScriptState, setCurrScriptState] = useState(currScript_1 ? (currScript_1) : 1);//用useState設定目前在進行中的劇本ID //原本是1
   const [ansBtnDisabled, setAnsBtnDisabled] = useState(true); //Answer按鈕disable
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
+
+  if((currScript_1 === 3 && currIndex === 6)||(currScript_1 === 4 && currIndex === 3)||(currScript_1 === 5 && currIndex === 2))
+  {props.setMission(2);}
 
   const ShowMessage = memo((props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本，將裡面messages拿出來
