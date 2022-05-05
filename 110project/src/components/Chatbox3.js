@@ -4,13 +4,14 @@ import { Accuse3List, God, Hack, HintList, Robot, Young } from './Character'
 import '../styles/chatbox.css'
 import $ from 'jquery'
 
-// var pastScripts = [];//加上顯示過的劇本的紀錄
-//把isWho放在這邊應該就可可了
-
 const Chatbox3 = () => {
 
+  let currScript_3 = Number(JSON.parse(localStorage.getItem('currScript_3')))//用localStorage控制目前狀態
+  let pastScripts_3 = JSON.parse(localStorage.getItem('pastScripts_3'))
+  if(!pastScripts_3){localStorage.setItem('pastScripts_3',JSON.stringify([]))}
+
   const [buttonPopup, setButtonPopup] = useState(false); //用useState設定目前Optionbuttons的Popup狀態
-  const [currScriptState, setCurrScriptState] = useState(16);//用useState設定目前在進行中的劇本ID
+  const [currScriptState, setCurrScriptState] = useState(currScript_3 ? (currScript_3) : 16);//用useState設定目前在進行中的劇本ID
   const [ansBtnDisabled, setAnsBtnDisabled] = useState(true); //Answer按鈕disable
   const [hintPopup, setHintPopup] = useState(false);//控制第三關選項提示介面Popup
   const [accuse3Popup, setAccuse3Popup] = useState(false);//控制第三關指認介面Popup
@@ -65,8 +66,8 @@ const Chatbox3 = () => {
 
     let PastScriptList = [];
 
-    for (let i = 0; i <= pastScripts.length; i++) {
-      const PastScript = Scripts.filter(Script => Script.scriptId === pastScripts[i])
+    for (let i = 0; i <= JSON.parse(localStorage.getItem('pastScripts_3')).length; i++) {
+      const PastScript = Scripts.filter(Script => Script.scriptId === JSON.parse(localStorage.getItem('pastScripts_3'))[i])
       let Item = PastScript.map((PastScript) =>
         PastScript.messages.map((sub) =>
           <div className={sub.align}>
@@ -104,16 +105,8 @@ const Chatbox3 = () => {
     }
     else return;
 
-    function AddPassScript(currScript) {
-      if (currScript !== pastScripts[pastScripts.length] && currScript !== 2 && currScript >= 0) {
-        //  pastScripts.push(currScript)
-        setPastScripts(oldArray => [...oldArray, currScript])
-        console.log(pastScripts)
-      }
-    }
-
     const BtnList = CurrScript.map((sub) =>
-      <button className={btnClass} disabled={disable(sub.disable)} onClick={(event) => { props.setTrigger(false); record(sub.record); setCurrScriptState(Number(sub.nextScriptId)); setCurrIndex(0); AddPassScript(props.currScript) }}>{sub.text}</button>
+      <button className={btnClass} disabled={disable(sub.disable)} onClick={(event) => { props.setTrigger(false); record(sub.record); toNextScript(sub.nextScriptId); setCurrIndex(0); AddPassScript(props.currScript) }}>{sub.text}</button>
       //按下option-button介面中的其中一個選項按鈕，會關閉option-button介面、記錄玩家選擇的按鈕的文字、將CurrScriptState更新成劇本中按下按鈕後要接續的下個劇本ID
     )
 
@@ -127,6 +120,18 @@ const Chatbox3 = () => {
     function disable(disable) {
       if(disable === true){return true}
       else return false;
+    }
+
+    function toNextScript(nextScriptId) {
+      localStorage.setItem('currScript_3', JSON.stringify(nextScriptId))
+      setCurrScriptState(Number(JSON.parse(localStorage.getItem('currScript_3'))))
+    }
+
+    function AddPassScript(currScript) {
+      if(currScript === 2  || currScript <= 0){return}
+      let pastScripts = [];
+      pastScripts.push(currScript)
+      localStorage.setItem('pastScripts_3', JSON.stringify(pastScripts))
     }
 
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
