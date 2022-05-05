@@ -24,17 +24,7 @@ const Fish = (props) => {
     console.log("目前輸入的密碼："+pwdField)
   }, [pwdField])
 
-  // useEffect(() => {
-  //   if (savedAcc === localStorage.getItem('account')) {
-  //     return localStorage.setItem('FishAcc', true)
-  //   }
-  //   if (savedAcc !== localStorage.getItem('account') && savedAcc !== "") {
-  //     return localStorage.setItem('FishAcc', false)
-  //   }
-  // }, [savedAcc])
-
   useEffect(() => {
-    console.log("(down)儲存的帳號" + savedAcc)
     if (savedAcc === localStorage.getItem('account')) {//已改成本地儲存的玩家帳號
       return localStorage.setItem('FishAcc', true)
     }
@@ -44,7 +34,6 @@ const Fish = (props) => {
   }, [savedAcc])
 
   useEffect(() => {
-    console.log("(down)儲存的密碼" + savedPwd)
     if (savedAcc === localStorage.getItem('account')) {//已改成本地儲存的玩家帳號
       return localStorage.setItem('FishAcc', true)
     }
