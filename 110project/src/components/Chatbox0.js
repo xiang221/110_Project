@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from 'react'
 import { Scripts } from './Scripts'
-import '../styles/chatbox.css'
+import '../styles/chatbox_RWD.css'
 import $ from 'jquery'
 
 const Chatbox0 = (props) => {

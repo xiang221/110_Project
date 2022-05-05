@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from 'react'
 import { Navigate } from 'react-router-dom'
 import { Scripts } from './Scripts'
-import '../styles/chatbox.css'
+import '../styles/chatbox_RWD.css'
 import $ from 'jquery'
 
 let pastScripts = [];

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from 'react'
 import { Scripts } from './Scripts'
 import { Accuse2List } from './Character'
-import '../styles/chatbox.css'
+import '../styles/chatbox_RWD.css'
 import $ from 'jquery'
 
 let pastScripts = [];

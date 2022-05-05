@@ -19,7 +19,6 @@ function getRandomInt(max) {
 const nickNameRandomIndex = getRandomInt(11)
 const nickNameList = nickNameRandomList[nickNameRandomIndex]
 
-//console.log("nickNameRandomList = " + nickNameRandomList);
 console.log("nickNameRandomIndex = " + nickNameRandomIndex);
 console.log("nickNameRandomList" + nickNameList);
 
