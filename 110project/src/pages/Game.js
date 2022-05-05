@@ -37,7 +37,7 @@ const Game = ({user, setUser}) => {
             <Mission chosen={chosenChatbox} setChatbox={setChatbox} mission={mission} setMission={setMission}/>
           </div>
           <div className='right'>
-            {chosenChatbox===0 && <Chatbox0/>}
+            {chosenChatbox===0 && <Chatbox0 mission={mission} setMission={setMission}/>}
             {chosenChatbox===1 && <Chatbox1 mission={mission} setMission={setMission}/>}
             {chosenChatbox===2 && <Chatbox2 mission={mission} setMission={setMission}/>}
             {chosenChatbox===3 && <Chatbox3/>}
