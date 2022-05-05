@@ -19,9 +19,6 @@ const Game = ({user, setUser}) => {
   const [chosenChatbox,setChatbox] = useState(0);
   const [mission, setMission] = useState(0);
 
-
-
-
   return (
     <div>
       <video autoPlay muted loop style={{zIndex:-100, position:'fixed', objectFit:'fill'}} >
