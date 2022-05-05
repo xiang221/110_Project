@@ -16,7 +16,9 @@ const Chatbox2 = (props) => {
   const [ansBtnDisabled, setAnsBtnDisabled] = useState(true); //Answer按鈕disable
   const [accuse2Popup, setAccuse2Popup] = useState(false);//控制第二關指認介面Popup
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
-  const [pastScripts, setPastScripts] = useState([]);
+
+  if(currScript_2 === 103){props.setMission(3);}
+
 
   const ShowMessage = memo((props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本，將裡面messages拿出來
