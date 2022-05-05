@@ -3,7 +3,7 @@ import { Scripts } from './Scripts'
 import '../styles/chatbox.css'
 import $ from 'jquery'
 
-const Chatbox0 = () => {
+const Chatbox0 = (props) => {
 
   const [buttonPopup, setButtonPopup] = useState(false); //用useState設定目前Optionbuttons的Popup狀態
   const [currScriptState, setCurrScriptState] = useState(0);//用useState設定目前在進行中的劇本ID

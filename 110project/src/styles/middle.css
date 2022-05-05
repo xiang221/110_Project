@@ -50,6 +50,7 @@ p{
     text-align:start;
     padding:0.3rem;
     display: inline;
+    cursor: pointer;
 }
 
 .boxcircle{

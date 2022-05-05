@@ -5,7 +5,7 @@ import '../styles/chatbox.css'
 import $ from 'jquery'
 
 
-const Chatbox2 = () => {
+const Chatbox2 = (props) => {
 
   let currScript_2 = Number(JSON.parse(localStorage.getItem('currScript_2')))//用localStorage控制目前狀態
   let pastScripts_2 = JSON.parse(localStorage.getItem('pastScripts_2'))
