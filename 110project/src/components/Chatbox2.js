@@ -92,19 +92,22 @@ const Chatbox2 = (props) => {
   const OptionBtn = (props) => {
 
     let btnClass;
+    let gridClass;
 
     let CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)[0].options
     if (CurrScript.length === 1) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-1"
+      gridClass = "option-btn-grid-1"
     }
     else if (CurrScript.length === 2) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-2"
+      gridClass = "option-btn-grid-2"
     }
     else if (CurrScript.length === 3) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-3"
+      gridClass = "option-btn-grid-3"
     }
     else return;
-
     const BtnList = CurrScript.map((sub) =>
       <button className={btnClass} disabled={disable(sub.disable)} onClick={(event) => { props.setTrigger(false); record(sub.record); toNextScript(sub.nextScriptId); setCurrIndex(0); AddPassScript(props.currScript) }}>{sub.text}</button>
       //按下option-button介面中的其中一個選項按鈕，會關閉option-button介面、記錄玩家選擇的按鈕的文字、將CurrScriptState更新成劇本中按下按鈕後要接續的下個劇本ID
@@ -137,7 +140,7 @@ const Chatbox2 = (props) => {
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
       <>
         <div id="option-popup">
-          <div id="option-buttons" className="option-btn-grid">
+          <div /*id="option-buttons"*/ className={gridClass}>
             <div>{BtnList}</div>
           </div>
         </div>
@@ -171,14 +174,16 @@ const Chatbox2 = (props) => {
 
     return (props.trigger) ? (//指認後直接跳轉到第三關
       <>
+        <div className="accuse2-container">
         <div id="accuse2-popup">
+        <div className="accuse2-title">誰，才是真正中毒的人？</div>
           <div id="accuse2-btn" className="accuse2-btn-grid">
-            <div className="accuse2-title">你覺得誰中毒了？</div>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("A"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"A"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("B"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"B"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("C"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"C"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("D"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}>{"D"}</button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名火龍蕉"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src="https://img.onl/T3V7p" className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名凸頂橙"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src="https://img.onl/uHe5oT" className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名麝香葡萄"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src="https://img.onl/waqDg6" className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名白桃"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src="https://img.onl/llKIo0" className='accuse2-btn-pic'/></button>
           </div>
+        </div>
         </div>
       </>
     ) : "";

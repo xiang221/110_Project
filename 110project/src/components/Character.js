@@ -24,25 +24,40 @@ console.log("nickNameRandomList" + nickNameList);
 
 function assignChatPic(nickName) {//圖片待UI補
     if (nickName === "A") {
-        return "https://img.onl/zxNUe"
+        return "https://img.onl/waSEor" //火龍蕉
     }
     else if (nickName === "B") {
-        return "https://img.onl/zpL9RB"
+        return "https://img.onl/j9TIUF" //凸頂橙
     }
     else if (nickName === "C") {
-        return "https://img.onl/XERRDA"
+        return "https://img.onl/fQva9Z" //麝香葡萄
     }
     else if (nickName === "D") {
-        return "https://img.onl/V9HtiR"
+        return "https://img.onl/g1CxXX" //白桃
     }
 }
 
-export const Young = new Character("Young", "C", assignChatPic("C")) //對應劇本 資深鄉民
-export const Robot = new Character("Robot", nickNameList[0], assignChatPic(nickNameList[0])) //對應劇本 機器人
-export const God = new Character("God", nickNameList[1], assignChatPic(nickNameList[1])) //對應劇本 創世神
-export const Hack = new Character("Hack", nickNameList[2], assignChatPic(nickNameList[2])) //對應劇本 駭客
-export const GodOrHack = new Character("GodOrHack", nickNameList[3], assignChatPic(nickNameList[3])) //對應劇本 創世神或駭客
-export const HackOrGod = new Character("HackOrGod", nickNameList[4], assignChatPic(nickNameList[4])) //對應劇本 駭客或創世神
+function assignNickName(nickName) {
+    if (nickName === "A") {
+        return "匿名火龍蕉"  //A=匿名火龍蕉
+    }
+    else if (nickName === "B") {
+        return "匿名凸頂橙" //B=匿名凸頂橙
+    }
+    else if (nickName === "C") {
+        return "匿名麝香葡萄" //C=匿名麝香葡萄(鄉民)
+    }
+    else if (nickName === "D") {
+        return "匿名白桃" //D=匿名白桃
+    }
+}
+
+export const Young = new Character("Young", assignNickName("C"), assignChatPic("C")) //對應劇本 資深鄉民
+export const Robot = new Character("Robot", assignNickName(nickNameList[0]), assignChatPic(nickNameList[0])) //對應劇本 機器人
+export const God = new Character("God", assignNickName(nickNameList[1]), assignChatPic(nickNameList[1])) //對應劇本 創世神
+export const Hack = new Character("Hack", assignNickName(nickNameList[2]), assignChatPic(nickNameList[2])) //對應劇本 駭客
+export const GodOrHack = new Character("GodOrHack", assignNickName(nickNameList[3]), assignChatPic(nickNameList[3])) //對應劇本 創世神或駭客
+export const HackOrGod = new Character("HackOrGod", assignNickName(nickNameList[4]), assignChatPic(nickNameList[4])) //對應劇本 駭客或創世神
 export const Player = new Character(localStorage.getItem('account'), localStorage.getItem('account'), "") //已補玩家名字 
 export const System = new Character("System", "System", "") //備用
 

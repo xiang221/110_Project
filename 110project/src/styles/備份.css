@@ -1,0 +1,148 @@
+
+.message-left-first {
+    text-align: left;
+    margin-bottom: 5px;
+    padding-top: 0.4rem;
+    color: #000000;
+  }
+  
+  .message-left-first .chat-pic {
+    border-radius: 30px;
+    margin: -15px 10px 3px 20px;
+    vertical-align: middle;
+  }
+  
+  .message-left-first .message-text {
+  
+    max-width: 60%;
+    display: inline-block;
+    align-items: center;
+    padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+    background: rgba(255, 165, 241, 0.8);
+    border-radius: 0px 10px 10px 15px;
+    ;
+  
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 15px;
+    color: #000000;
+  
+  }
+  
+  .message-left-first .message-time {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 10px;
+    line-height: 12px;
+    margin-left: 10px;
+    vertical-align: sub;
+    color: #000000;
+  }
+  
+  .message-left-first .message-sender {
+    text-align: left;
+    padding-left: 85px;
+    padding-top: 15px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 10px;
+    line-height: 12px;
+    color: #000000;
+  }
+  
+  
+  /*-------------向左對齊的一般訊息格式---------------*/
+  
+  .message-left {
+    text-align: left;
+    margin: -5px 0px 8px 82px;
+  }
+  
+  .message-left .message-text {
+    max-width: 60%;
+    display: inline-block;
+    align-items: center;
+    padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+    background: rgba(255, 165, 241, 0.8);
+    border-radius: 0px 10px 10px 15px;
+    ;
+  
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 15px;
+    color: #000000;
+  }
+  
+  .message-left .message-time {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 10px;
+    line-height: 12px;
+    margin-left: 10px;
+    vertical-align: sub;
+    color: #000000;
+  }
+  
+  .chat-message-list {
+    list-style: none;
+  }
+  
+
+
+
+  /*--------------向右對齊的訊息格式-----------------*/
+
+
+  .message-right {
+    display: flex;
+    margin-bottom: 1rem;
+    max-width: 60%;
+    align-items: flex-end;
+    float: right;
+    padding: 10px 0px 10px 0px
+  }
+  
+  .message-right .message-time {
+    display: flex;
+    flex-direction: row;
+    align-items: right;
+  
+    right: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 10px;
+    line-height: 12px;
+    color: #000000;
+    order: -1;
+  
+    margin-right: 0.4rem;
+  }
+  
+  .message-right .message-text {
+  
+    display: flex;
+    flex-direction: row;
+    display: inline-block;
+    align-items: center;
+    padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+  
+    background: #81FAF8;
+    border-radius: 10px 0px 15px 10px;
+  
+    text-align: left;
+  
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 15px;
+    color: #000000;
+  }

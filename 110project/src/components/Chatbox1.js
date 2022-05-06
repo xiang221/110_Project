@@ -96,16 +96,20 @@ const Chatbox1 = (props) => {
   const OptionBtn = (props) => {
 
     let btnClass;
+    let gridClass;
 
     let CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)[0].options
     if (CurrScript.length === 1) {
-      btnClass = "option-btn"//待補CSS
+      btnClass = "option-btn-1"
+      gridClass = "option-btn-grid-1"
     }
     else if (CurrScript.length === 2) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-2"
+      gridClass = "option-btn-grid-2"
     }
     else if (CurrScript.length === 3) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-3"
+      gridClass = "option-btn-grid-3"
     }
     else return;
 
@@ -140,8 +144,8 @@ const Chatbox1 = (props) => {
 
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
       <>
-        <div id="option-popup">
-          <div id="option-buttons" className="option-btn-grid">
+        <div /*id="option-popup"*/ className={gridClass}>
+          <div id="option-buttons">
             <div>{BtnList}</div>
           </div>
         </div>

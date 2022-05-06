@@ -1,8 +1,9 @@
 /*---------------從這裡開始加入------------*/
 #wrapper {
   width: 25rem;
-  height: 27rem;
+  height: 2rem;
   margin: 2rem;
+  margin-right: 1rem;
 }
 
 
@@ -21,7 +22,6 @@
   background: linear-gradient(269.61deg, rgba(255, 165, 241, 0.8) 13.18%, rgba(152, 249, 243, 0.64) 92.58%);
   opacity: 0.8;
   box-shadow: 0 0 0 0.175rem white;
-  /*原3px*/
   box-sizing: border-box;
   z-index: -20;
 }
@@ -29,11 +29,10 @@
 .chat-container {
   display: absolute;
   width: 25rem;
-  height: 19.5rem;
-  margin-top: 3.5rem;
+  height: 20.5rem;
+  margin-top: 2.55rem;
   overflow-y: scroll;
   padding-right: 0.5rem;
-  z-index: 1;
 }
 
 .time-limit-container {
@@ -82,7 +81,7 @@
   left: 3.75rem;
   top: 24rem;
 
-  background: linear-gradient(269.61deg, rgba(255, 165, 241, 0.8) 13.18%, rgba(152, 249, 243, 0.64) 92.58%);
+  background: linear-gradient(269.61deg, rgba(255, 165, 241, 1) 13.18%, rgba(152, 249, 243, 1) 92.58%);
   border: 2px solid #FFFFFF;
   box-sizing: border-box;
 
@@ -111,20 +110,18 @@
   border: 2px solid #FFFFFF;
 }
 
-
-
 /*--------------向左對齊，有大頭貼的訊息格式--------------*/
 
 .message-left-first {
   text-align: left;
-  margin-bottom: 5px;
-  padding-top: 0.4rem;
+  padding: 0.4rem 0rem 0.15rem 0rem;
   color: #000000;
 }
 
 .message-left-first .chat-pic {
   border-radius: 30px;
-  margin: -15px 10px 3px 20px;
+  /* margin: -15px 10px 3px 20px; */
+  /* margin: -15px 10px 3px 0px; */
   vertical-align: middle;
 }
 
@@ -144,6 +141,7 @@
   font-size: 13px;
   line-height: 15px;
   color: #000000;
+    vertical-align: middle;
 
 }
 
@@ -212,43 +210,44 @@
 
 /*--------------向右對齊的訊息格式-----------------*/
 
-/* .message-right .message-sender {
-  display: block;
-  font-size: 13px;
-  text-align: right;
-  padding-right: 5px;
-  padding-top: 4px;
-  color: #ccc;
-  font-family: Courier;
-} */
+.message-right {
+  display: flex;
+  margin-bottom: 1rem;
+  max-width: 60%;
+  align-items: flex-end;
+  float: right;
+  padding: 10px 0px 10px 0px
+}
 
 .message-right .message-time {
-  display: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: right;
+
   right: 10px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
   font-size: 10px;
   line-height: 12px;
-  margin-left: 10px;
-  vertical-align: sub;
   color: #000000;
-}
+  order: -1;
 
-.message-right {
-  text-align: right;
-  margin-bottom: 16px;
+  margin-right: 0.4rem;
 }
 
 .message-right .message-text {
 
-  max-width: 60%;
+  display: flex;
+  flex-direction: row;
   display: inline-block;
   align-items: center;
   padding: 0.4rem 0.4rem 0.4rem 0.4rem;
 
   background: #81FAF8;
   border-radius: 10px 0px 15px 10px;
+
+  text-align: left;
 
   font-family: 'Roboto';
   font-style: normal;
@@ -281,6 +280,8 @@
   line-height: 14px;
   letter-spacing: 0.07em;
 
+  margin: 1rem;
+
   justify-content: center;
   align-items: center;
 
@@ -293,10 +294,12 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 15px;
-  color: #000FFF;
-  text-decoration: underline;
+  text-decoration-line: underline;
+  
+  color: #7B61FF;
+  margin-right: 0.2rem;
 }
 
 .message-normal {
@@ -311,40 +314,65 @@
 /*--------------------Answer按鈕按下後的選項popUp-----------------------*/
 
 #option-popup {
+  width: 25rem;
+  height: 5rem;
+  background-color: #000000;
+  z-index: 15;
+
+}
+
+.option-btn-grid-1 {
+
   transform: scale(1);
   transition: 200ms ease-in-out;
   z-index: 10;
 
   position: absolute;
-  width: 502px;
-  height: 208px;
-  left: 0px;
-  top: 326px;
+  width: 25rem;
+  height: 5rem;
+  top: 21.85rem;
+
 
   background: #C4C4C4;
+
 }
 
-#option-popup.active {
-  transform: scale(0);
+.option-btn-grid-2 {
+
+  transform: scale(1);
   transition: 200ms ease-in-out;
   z-index: 10;
 
   position: absolute;
-  width: 500px;
-  height: 208px;
-  left: 5px;
-  top: 326px;
+  width: 25rem;
+  height: 8rem;
+  top: 18.8rem;
+
+  padding: 1.25rem 1.78rem 0rem 1.78rem;
 
   background: #C4C4C4;
+
 }
 
-.option-btn-grid {
-  /* display: grid;
-  grid-template-columns: repeat(1, auto);
-  gap: 0px; */
+.option-btn-grid-3 {
+
+  transform: scale(1);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+
+  position: absolute;
+  width: 25rem;
+  height: 12rem;
+  top: 14.88rem;
+
+  padding: 1.5rem 1.78rem 0rem 1.78rem;
+
+  background: #C4C4C4;
+
 }
 
-.option-btn {
+
+.option-btn-1 {
   background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
 
   font-family: 'Roboto';
@@ -370,30 +398,126 @@
   left: 0px;
   top: 0px;
 
+}
+
+.option-btn-2 {
+  background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  box-sizing: border-box;
+  border: 2px solid #FFFFFF;
+
+
+  margin: 0.25rem 0rem 0.5rem 0rem;
+  width: 190px;
+  height: 145px;
+
+  position: static;
+  width: 428px;
+  height: 43px;
+  left: 0px;
+  top: 0px;
 
 }
 
-.option-btn:hover {
-  border-color: black;
+.option-btn-2 {
+  background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  box-sizing: border-box;
+  border: 2px solid #FFFFFF;
+
+
+  /* margin: 20px 30px 15px 30px; */
+  width: 190px;
+  height: 145px;
+
+  position: static;
+  width: 428px;
+  height: 43px;
+  left: 0px;
+  top: 0px;
+
 }
 
-#overlay {
-  position: fixed;
-  opacity: 0;
-  transition: 200ms ease-in-out;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, .5);
-  pointer-events: none;
+.option-btn-3 {
+  background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  box-sizing: border-box;
+  border: 2px solid #FFFFFF;
+
+  margin: 0rem 0rem 1.25rem 0rem;
+  width: 190px;
+  height: 145px;
+
+  position: static;
+  width: 428px;
+  height: 43px;
+  left: 0px;
+  top: 0px;
+
 }
 
-#overlay.active {
-  opacity: 1;
-  pointer-events: all;
+.option-btn1:hover {
+  background: rgba(152, 249, 243, 0.8);
 }
 
+.option-btn-1:disabled {
+  background: #C4C4C4;
+}
+
+.option-btn-1:focus {
+  background: rgba(255, 165, 241, 0.8);
+}
+
+.option-btn-2:hover {
+  background: rgba(152, 249, 243, 0.8);
+}
+
+.option-btn-2:disabled {
+  background: #C4C4C4;
+}
+
+.option-btn-2:focus {
+  background: rgba(255, 165, 241, 0.8);
+}
+
+.option-btn-3:hover {
+  background: rgba(152, 249, 243, 0.8);
+}
+
+.option-btn-3:disabled {
+  background: #C4C4C4;
+}
+
+.option-btn-3:focus {
+  background: rgba(255, 165, 241, 0.8);
+}
 /*--------------------第一關InputPopUp-----------------------*/
 
 #input-popup {
@@ -413,19 +537,27 @@
 
 /*--------------------第二關指認中毒者PopUp-----------------------*/
 
+.accuse2-container {
+  position: absolute;
+  width: 25rem;
+  height: 24rem;
+  left: 0px;
+  top: 2.55rem;
+  background-color: #000000;
+  z-index: 2;
+}
+
 #accuse2-popup {
   transform: scale(1);
   transition: 200ms ease-in-out;
   z-index: 10;
 
   position: absolute;
-  width: 502px;
-  height: 535px;
+  width: 25rem;
+  height: 24rem;
   left: 0px;
-  top: 0px;
-
-  background: #C4C4C4;
-  color: #000000;
+  top: 0rem;
+  background: linear-gradient(269.61deg, rgba(255, 165, 241, 0.8) 13.18%, rgba(152, 249, 243, 0.64) 92.58%);
 }
 
 .accuse2-title {
@@ -434,25 +566,32 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  font-size: 18px;
-  line-height: 21px;
+  font-size: 28px;
+  line-height: 33px;
+  text-align: center;
+  margin-top: 1.75rem;
+  margin-bottom: 0rem;
 
-  color: #000;
+  color: #FFFFFF;
 }
 
 .accuse2-btn {
-  background: #FFFFFF;
+  border:0;
+  background-color: rgba(255, 255, 255, 0.0);
 
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 900;
-  font-size: 18px;
-  line-height: 21px;
-  margin: 30px;
-  width: 190px;
-  height: 145px;
-  color: #000;
+  margin: 2.25rem 0.25rem 0rem 1.575rem;
+  width: 10rem;
+  height: 6.85rem;
 
+}
+
+.accuse2-btn:hover{
+  opacity: 0.5;
+}
+
+.accuse2-btn-pic{
+  width: 10rem;
+  height: auto;
 }
 
 .accuse-btn-grid {
@@ -470,51 +609,130 @@
   z-index: 10;
 
   position: absolute;
-  width: 502px;
-  height: 535px;
+  width: 25rem;
+  height: 24rem;
   left: 0px;
-  top: 0px;
+  top: 2.55rem;
+  background-color: #000000;
+  z-index: 2;
+}
 
-  background: #C4C4C4;
-  color: #000000;
+.hint-background {
+  position: absolute;
+  width: 25rem;
+  height: 24rem;
+  left: 0px;
+  top: 0rem;
+  background: linear-gradient(269.61deg, rgba(255, 165, 241, 0.8) 13.18%, rgba(152, 249, 243, 0.64) 92.58%);
+}
+
+.hint-title-pink {
+
+  position: absolute;
+  width: 6.65rem;
+  height: 2.3rem;
+  left: 9rem;
+  top: 1.75rem;
+
+  box-sizing: border-box;
+  background: rgba(255, 165, 241, 0.8);
+  border: 0.1rem solid #FFFFFF;
+
+  z-index: 15;
+}
+
+.hint-title-blue {
+  position: absolute;
+  width: 6.65rem;
+  height: 2.3rem;
+  left: 9rem;
+  top: 12.5rem;
+
+  box-sizing: border-box;
+  background: rgba(152, 249, 243, 0.84);
+  border: 0.1rem solid #FFFFFF;
+
+  z-index: 15;
 }
 
 .hint-title {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 33px;
+
   text-align: center;
 
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 900;
-  font-size: 18px;
-  line-height: 21px;
-
-  color: #000;
+  color: #FFFFFF;
 }
 
-.hint-btn {
-  background: #FFFFFF;
+.hint-btn-grid-1 {
+  position: absolute;
+  width: 20.75rem;
+  height: 6.5rem;
+  left: 1.98rem;
+  top: 3.6rem;
+  background: rgba(255, 255, 255, 0.8);
+}
 
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 900;
-  font-size: 18px;
-  line-height: 21px;
-  margin: 12px;
-  width: 80px;
-  height: 80px;
-  color: #000;
+.hint-btn-grid-2 {
+  position: absolute;
+  width: 20.75rem;
+  height: 7.5rem;
+  left: 1.98rem;
+  top: 14.35rem;
+
+  padding: 1rem;
+
+  background: rgba(255, 255, 255, 0.8);
 
 }
 
-.option-btn:disabled {
-  background: #333333;
-  border-color: black;
+.hint-btn-1 {
+  border:0;
+ background-color:none;
+  margin: 5% 2.2% 2.2% 2.2%;
+  /* width:3rem;
+  height:3rem; */
+  width: 20%;
+  height: 65%;
+  border-radius: 50%;
 }
 
-.hint-btn-grid {
-  display: grid;
-  /*用格線方式排button*/
-  grid-template-columns: repeat(4, auto);
-  grid-template-rows: repeat(4, auto);
-  gap: 0px;
+.hint-btn-1:disabled {
+  opacity: 0.2;
 }
+
+.hint-pic{
+  width:8.2rem;
+  margin-left: -2rem;
+  margin-top: -1.75rem;
+}
+
+.hint-btn-2 {
+
+  width: 8.5rem;
+  height: 2.5rem;
+  margin: 1.5rem 7px 10px 10px;
+  
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 900;
+font-size:20px;
+line-height: 21px;
+text-align: center;
+color: #FFFFFF;
+
+  background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
+  box-sizing: border-box;
+  border: 2px solid #FFFFFF;
+
+}
+
+.hint-btn-2:disabled {
+
+  opacity: 0.2;
+
+}
+
