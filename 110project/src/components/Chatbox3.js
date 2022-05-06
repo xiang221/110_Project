@@ -40,7 +40,7 @@ const Chatbox3 = () => {
       }
       else { setAnsBtnDisabled(true); onRowAdded() }
       setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
-      console.log(currIndex)
+      console.log(currIndex) 
 
     }, [currIndex])
 
@@ -197,7 +197,7 @@ const Chatbox3 = () => {
         setAccuse3Popup(false);
         localStorage.setItem('End',26)
       }
-      if ((Lv1 === false && Lv2 === false && Lv3 === true) || (Lv1 === true && Lv2 === false && Lv3 === false)) { //XXO或OXX創世神殞落
+      if ((Lv1 === 'false' && Lv2 === 'false' && Lv3 === 'true') || (Lv1 === 'true' && Lv2 === 'false' && Lv3 === 'false')) { //XXO或OXX創世神殞落
         setCurrScriptState(25)
         setAccuse3Popup(false);
         localStorage.setItem('End',25)
@@ -209,9 +209,9 @@ const Chatbox3 = () => {
       <div className="accuse2-container">
         <div id="accuse2-popup">
           <div id="accuse2-btn" className="accuse2-btn-grid">
-            <div className="accuse2-title">你覺得誰是駭客？</div>
+            <div className="accuse2-title">揪出駭客！</div>
             <button className="accuse2-btn" onClick={(event) => { whoisHack("匿名火龍蕉"); goToEnd(); setCurrIndex(0); }}><img src="https://img.onl/T3V7p" className='accuse2-btn-pic'/></button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("匿名凸頂橙B"); goToEnd(); setCurrIndex(0); }}><img src="https://img.onl/uHe5oT" className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("匿名凸頂橙"); goToEnd(); setCurrIndex(0); }}><img src="https://img.onl/uHe5oT" className='accuse2-btn-pic'/></button>
             <button className="accuse2-btn" onClick={(event) => { whoisHack("匿名麝香葡萄"); goToEnd(); setCurrIndex(0); }}><img src="https://img.onl/waqDg6" className='accuse2-btn-pic'/></button>
             <button className="accuse2-btn" onClick={(event) => { whoisHack("匿名白桃"); goToEnd(); setCurrIndex(0); }}><img src="https://img.onl/llKIo0" className='accuse2-btn-pic'/></button>
           </div>

@@ -19,12 +19,15 @@ const Chatbox1 = (props) => {
 
   if(currScript_1 === 3 && currIndex === 6){
     props.setMission(2);
+    localStorage.setItem('Security', true)
   }
   if(currScript_1 === 4 && currIndex === 3){
     props.setMission(2);
+    localStorage.setItem('Security', true)
   }
   if(currScript_1 === 5 && currIndex === 2){
     props.setMission(2);
+    localStorage.setItem('Security', false)
   }
 
   const ShowMessage = memo((props) => {

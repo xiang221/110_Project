@@ -114,7 +114,7 @@
 
 .message-left-first .message-sender {
   text-align: left;
-  padding-left: 85px;
+  padding-left: 80px;
   padding-top: 15px;
   font-family: 'Roboto';
   font-style: normal;
@@ -126,9 +126,6 @@
  
 .message-left-first {
   text-align: left;
-  /* margin-bottom: 5px; */
-  /* padding-top: 8px; */
-  /* color:#000000; */
 }
 
 .message-left-first .chat-pic{
@@ -142,11 +139,11 @@
 max-width: 60%;
 display: inline-block;
 align-items: center;
-margin-left: -10px;
+margin-left: -15px;
 margin-top: 5px;
 
 padding: 8px 8px 8px 8px;
-background: #E5E5E5;
+background: rgba(255, 165, 241, 0.8);
 border-radius: 0px 10px 10px 15px;
   
 font-family: 'Roboto';
@@ -167,7 +164,7 @@ vertical-align: super;
   font-size: 10px;
   line-height: 12px;
   margin-left: 10px;
-  vertical-align: sub;
+  vertical-align: middle;
   color:#000000;
 }
 
@@ -176,7 +173,7 @@ vertical-align: super;
 
 .message-left {
   text-align: left;
-  margin: -5px 0px 8px 82px;
+  margin: -15px 0px 20px 75px;
 }
 
 .message-left .message-text {
@@ -219,10 +216,11 @@ vertical-align: super;
   flex-direction: row-reverse;
   margin-bottom: 1rem;
   align-items: flex-end;
-  padding: 10px 0px 10px 0px
+  padding: 10px 0px 0px 0px
 }
 
 .message-right .message-time {
+  
   display: flex;
   align-items: right;
 
@@ -243,6 +241,7 @@ vertical-align: super;
   display: inline-block;
   align-items: center;
 
+  max-width: 16.5rem;
 
   padding: 0.4rem 0.4rem 0.4rem 0.4rem;
 
@@ -264,12 +263,13 @@ vertical-align: super;
 
 .message-center {
   text-align: center;
-  margin-bottom: 16px;
-  margin-left: 28px;
+  /* margin-bottom: 10px; */
+  margin-left: 10px;
 }
 
 .message-center .message-text {
-  max-width: 80%;
+  max-width: 85%;
+  min-width: 35%;
   display: inline-block;
   background: #E5E5E5;
   border-radius: 20px;
@@ -279,7 +279,7 @@ vertical-align: super;
   font-style: normal;
   font-weight: 900;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 16px;
   letter-spacing: 0.07em;
 
   margin: 1rem;
@@ -544,7 +544,7 @@ vertical-align: super;
   width: 25rem;
   height: 24rem;
   left: 0px;
-  top: 2.55rem;
+  top: 2.45rem;
   background-color: #000000;
   z-index: 2;
 }
@@ -556,7 +556,7 @@ vertical-align: super;
 
   position: absolute;
   width: 25rem;
-  height: 24rem;
+  height: 24.2rem;
   left: 0px;
   top: 0rem;
   background: linear-gradient(269.61deg, rgba(255, 165, 241, 0.8) 13.18%, rgba(152, 249, 243, 0.64) 92.58%);
