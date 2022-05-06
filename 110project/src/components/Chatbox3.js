@@ -2,6 +2,7 @@ import React, { useState, useEffect, memo } from 'react'
 import { Scripts } from './Scripts'
 import { Accuse3List, God, Hack, HintList, Robot, Young } from './Character'
 import '../styles/chatbox_RWD.css'
+import Timer from './Timer'
 import $ from 'jquery'
 
 const Chatbox3 = () => {
@@ -400,7 +401,7 @@ const Chatbox3 = () => {
             <div className="answer-botton-container"></div>
             <div className="time-limit-container"></div>
           </div>
-          <div className="time-limit">14:00</div>
+          <div className="time-limit"><Timer/></div>
           <button className="answer-button" id="answer-button" setButtonPopup={setButtonPopup} buttonPopup={buttonPopup} onClick={() => setButtonPopup(true)} disabled={ansBtnDisabled}>Answer</button>
           <div className="chat-container">
             <ul className="chat-message-list" id="chat-list">

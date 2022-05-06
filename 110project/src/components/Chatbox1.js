@@ -2,6 +2,7 @@ import React, { useState, useEffect, memo } from 'react'
 import { Navigate } from 'react-router-dom'
 import { Scripts } from './Scripts'
 import '../styles/chatbox_RWD.css'
+import Timer from './Timer'
 import $ from 'jquery'
 
 let pastScripts = [];
@@ -169,7 +170,7 @@ const Chatbox1 = (props) => {
             <div className="answer-botton-container"></div>
             <div className="time-limit-container"></div>
           </div>
-          <div className="time-limit">14:00</div>
+          <div className="time-limit"><Timer/></div>
           <button className="answer-button" id="answer-button" setButtonPopup={setButtonPopup} buttonPopup={buttonPopup} onClick={() => setButtonPopup(true)} disabled={ansBtnDisabled}>Answer</button>
           <div className="chat-container">
             <ul className="chat-message-list" id="chat-list">
