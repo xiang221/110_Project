@@ -323,6 +323,18 @@ vertical-align: super;
 
 }
 
+.options-bluetext{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 15px;
+  text-decoration-line: underline;
+  
+  color: #7B61FF;
+  margin-right: 0.2rem;
+}
+
 .option-btn-grid-1 {
 
   transform: scale(1);
