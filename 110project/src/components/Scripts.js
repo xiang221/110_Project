@@ -61,7 +61,7 @@ export const Scripts = [
       { align: "message-center", text: Young.nickName + "已將您加入群組(人數:7人)" },
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "嗨嗨，歡迎加入", time: "下午04:53" },
       { align: "message-right", text: "安安", time: "下午04:53" },
-      { align: "message-left-first", sender: "噁男", chatPicSrc: God.chatPicSrc, text: "妹子ㄇ?", time: "下午04:53" },//噁男照片待補
+      { align: "message-left-first", sender: "噁男", chatPicSrc: "https://img.onl/BKTCxz", text: "妹子ㄇ?", time: "下午04:53" },//噁男照片待補
       { align: "message-center", text: Robot.nickName + "已將噁男移出群組(人數:6人)" },
       { align: "message-right", text: "欸不是，6個人是要怎麼多數決?", time: "下午04:54" },
       { align: "message-center", text: Robot.nickName + "已將潛水艇移出群組(人數:5人)" },
@@ -166,7 +166,7 @@ export const Scripts = [
   {
     scriptId: 8,//第二關_誰中毒了_第三段(我覺得資深鄉民很可疑)
     options: [
-      { text: "第二關指認", nextScriptId: -1 },
+      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>但我也覺得{Young.nickName}很可疑</span>, time: "上午08:12" },
@@ -194,7 +194,7 @@ export const Scripts = [
   {
     scriptId: 10,//第二關_誰中毒了_第四段(我也覺得機器人一直在帶風向很奇怪)
     options: [
-      { text: "第二關指認", nextScriptId: -1 },
+      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我也覺得{Robot.nickName}一直在帶風向很奇怪</span>, time: "上午08:25" },
@@ -204,7 +204,7 @@ export const Scripts = [
   {
     scriptId: 11,//第二關_誰中毒了_第四段(我覺得機器人只是比較謹慎而已)
     options: [
-      { text: "第二關指認", nextScriptId: -1 },
+      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{Robot.nickName}只是比較謹慎而已</span>, time: "上午08:25" },
@@ -228,7 +228,7 @@ export const Scripts = [
   {
     scriptId: 13,//第二關_誰中毒了_第三段(我覺得創世神 or 駭客才在帶風向)
     options: [
-      { text: "第二關指認", nextScriptId: -1 },
+      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{GodOrHack.nickName}才在帶風向</span>, time: "上午08:12" },
@@ -238,7 +238,7 @@ export const Scripts = [
   {
     scriptId: 14,//第二關_誰中毒了_第三段(我覺得機器人你才是在帶風向)
     options: [
-      { text: "第二關指認", nextScriptId: -1 },
+      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{Robot.nickName}你才是在帶風向</span>, time: "上午08:12" },
@@ -248,7 +248,7 @@ export const Scripts = [
   {
     scriptId: 15,//第二關_誰中毒了_第三段(我覺得資深鄉民可能被盜了)
     options: [
-      { text: "第二關指認", nextScriptId: -1 },
+      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{Young.nickName}可能被盜了</span>, time: "上午08:12" },
@@ -258,17 +258,17 @@ export const Scripts = [
   {
     scriptId: 16,//第三關_揪出駭客_第一段
     options: [
-      { text: "第三關提示介面", nextScriptId: -3 },
+      { text: "有人不對勁", nextScriptId: -3 },//第三關提示介面
     ],
     messages: [
-      { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: <span>必須說，管理群的篩選標準應該要嚴格一點吧，像{Young.nickName}這種天兵是不是應該被淘汰?"</span>, time: "上午10:10" },
+      { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: <span>必須說，管理群的篩選標準應該要嚴格一點吧，像{Young.nickName}這種天兵是不是應該被淘汰?</span>, time: "上午10:10" },
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "天兵再怎麼耍蠢也只是害慘自己，我覺得一直帶風向的人才是其心可誅。", time: "上午10:10" }
     ]
   },
   {
     scriptId: 17,//第三關_揪出駭客_第二段(e1-f1)
     options: [
-      { text: "第三關指認", nextScriptId: -2 },
+      { text: "立刻揪出壞分子", nextScriptId: -2 },//第三關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{God.nickName}太不謹慎了</span>, time: "上午10:39" },
@@ -284,7 +284,7 @@ export const Scripts = [
   {
     scriptId: 18,//第三關_揪出駭客_第二段(e1-f2)
     options: [
-      { text: "第三關指認", nextScriptId: -2 },
+      { text: "立刻揪出壞分子", nextScriptId: -2 }, //第三關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{God.nickName}一直在帶風向</span>, time: "上午10:39" },
@@ -300,7 +300,7 @@ export const Scripts = [
   {
     scriptId: 19,//第三關_揪出駭客_第二段(e2-f1)
     options: [
-      { text: "第三關指認", nextScriptId: -2 },
+      { text: "立刻揪出壞分子", nextScriptId: -2 }, //第三關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{Hack.nickName}太不謹慎了</span>, time: "上午10:39" },
@@ -312,7 +312,7 @@ export const Scripts = [
   {
     scriptId: 20,//第三關_揪出駭客_第二段(e2-f2)
     options: [
-      { text: "第三關指認", nextScriptId: -2 },
+      { text: "立刻揪出壞分子", nextScriptId: -2 }, //第三關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{Hack.nickName}一直在帶風向</span>, time: "上午10:39" },
@@ -327,7 +327,7 @@ export const Scripts = [
   {
     scriptId: 21,//第三關_揪出駭客_第二段(e3-f1)
     options: [
-      { text: "第三關指認", nextScriptId: -2 },
+      { text: "立刻揪出壞分子", nextScriptId: -2 }, //第三關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{Young.nickName}太不謹慎了</span>, time: "上午10:39" },
@@ -341,7 +341,7 @@ export const Scripts = [
   {
     scriptId: 22,//第三關_揪出駭客_第二段(e3-f2)
     options: [
-      { text: "第三關指認", nextScriptId: -2 },
+      { text: "立刻揪出壞分子", nextScriptId: -2 }, //第三關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{Young.nickName}一直在帶風向</span>, time: "上午10:39" },
@@ -356,7 +356,7 @@ export const Scripts = [
   {
     scriptId: 23,//第三關_揪出駭客_第二段(e4-f1)
     options: [
-      { text: "第三關指認", nextScriptId: -2 },
+      { text: "立刻揪出壞分子", nextScriptId: -2 }, //第三關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{Robot.nickName}太不謹慎了</span>, time: "上午10:39" },
@@ -369,7 +369,7 @@ export const Scripts = [
   {
     scriptId: 24,//第三關_揪出駭客_第二段(e4-f2)
     options: [
-      { text: "第三關指認", nextScriptId: -2 },
+      { text: "立刻揪出壞分子", nextScriptId: -2 }, //第三關指認
     ],
     messages: [
       { align: "message-right", sender: Player.nickName, text: <span>我覺得{Robot.nickName}一直在帶風向</span>, time: "上午10:39" },
@@ -407,7 +407,7 @@ export const Scripts = [
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "現在，這個論壇是我的了，你就乖乖認命吧，要不要為我服務呢?", time: "下午12:11" },//與下兩個同時
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "現在，這個論壇是我的了，你就乖乖認命吧，要不要為我服務呢?", time: "下午12:11" },
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "現在，這個論壇是我的了，你就乖乖認命吧，要不要為我服務呢?", time: "下午12:11" },
-      { align: "message-right", sender: Player.nickName, text: "別鬧了，就是有你這種人，論壇的人都跑去用低卡(代稱另想)了", time: "下午12:12" },
+      { align: "message-right", sender: Player.nickName, text: "別鬧了，就是有你這種人，論壇的人都跑去用低咔了", time: "下午12:12" },
       { align: "message-center", text: <span>{Hack.nickName}已將XXX噤聲</span> },
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "那你就閉嘴乖乖看我怎麼統治這個論壇吧", time: "下午12:12" },//與下兩個同時
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "那你就閉嘴乖乖看我怎麼統治這個論壇吧", time: "下午12:12" },
@@ -445,8 +445,8 @@ export const Scripts = [
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "現在，這個論壇是我的了，你就乖乖認命吧，要不要為我服務呢?", time: "下午12:12" },//與下兩個同時
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "現在，這個論壇是我的了，你就乖乖認命吧，要不要為我服務呢?", time: "下午12:12" },
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "現在，這個論壇是我的了，你就乖乖認命吧，要不要為我服務呢?", time: "下午12:12" },
-      { align: "message-right", sender: Player.nickName, text: "別鬧了，就是有你這種人，論壇的人都跑去用低卡(代稱另想)了", time: "下午12:12" },
-      { align: "message-center", text: <span>{Hack.nickName}已將XXX噤聲</span> },
+      { align: "message-right", sender: Player.nickName, text: "別鬧了，就是有你這種人，論壇的人都跑去用低咔了", time: "下午12:12" },
+      { align: "message-center", text: <span>{Hack.nickName}已將{Player.nickName}噤聲</span> },
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "那你就閉嘴乖乖看我怎麼統治這個論壇吧", time: "下午12:13" },//與下兩個同時
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "那你就閉嘴乖乖看我怎麼統治這個論壇吧", time: "下午12:13" },
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "那你就閉嘴乖乖看我怎麼統治這個論壇吧", time: "下午12:13" },
@@ -516,7 +516,7 @@ export const Scripts = [
       { align: "message-center", text: <span><span className="message-bluetext">@{Player.nickName}</span>已將<span className="message-bluetext">@{Robot.nickName}</span>移出群組</span> },
       { align: "message-right", sender: Player.nickName, text: "Job done!", time: "下午12:10" },
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "诶你好像還忘了甚麼。", time: "下午12:10" },
-      { align: "message-right", sender: Player.nickName, text: ":阿對齁，差點忘了他了。不過你真的要把他加回來嗎?他有點雷雷的欸，哈哈哈哈哈", time: "下午12:11" },
+      { align: "message-right", sender: Player.nickName, text: "阿對齁，差點忘了他了。不過你真的要把他加回來嗎?他有點雷雷的欸，哈哈哈哈哈", time: "下午12:11" },
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "還是先加回來啦，在我找到更適合的人選前", time: "下午12:11" },
       { align: "message-right", sender: Player.nickName, text: "OK!", time: "下午12:11" },
       { align: "message-center", text: <span><span className="message-bluetext">@{Player.nickName}</span>已將<span className="message-bluetext">@{Young.nickName}</span>加入群組</span> },

@@ -1,0 +1,740 @@
+/*---------------從這裡開始加入------------*/
+#wrapper {
+  width: 25rem;
+  height: 2rem;
+  margin: 2rem;
+  margin-right: 1rem;
+}
+
+
+/*----------------------------*/
+.chat {
+  position: absolute;
+  width: 25rem;
+  height: 26.66rem;
+}
+
+.chat-background {
+  /*聊天室背景(染色狀)*/
+  position: absolute;
+  width: 25rem;
+  height: 26.66rem;
+  background: linear-gradient(269.61deg, rgba(255, 165, 241, 0.8) 13.18%, rgba(152, 249, 243, 0.64) 92.58%);
+  opacity: 0.8;
+  box-shadow: 0 0 0 0.175rem white;
+  box-sizing: border-box;
+  z-index: -20;
+}
+
+.chat-container {
+  display: absolute;
+  width: 25rem;
+  height: 20.5rem;
+  margin-top: 2.55rem;
+  overflow-y: scroll;
+  padding-right: 0.5rem;
+}
+
+.time-limit-container {
+  position: flex;
+  width: 25rem;
+  height: 2.42rem;
+
+  background: #C4C4C4;
+  mix-blend-mode: soft-light;
+  box-shadow: 0 0 0 0.15rem white;
+  box-sizing: border-box;
+}
+
+.time-limit {
+  position: absolute;
+  left: 10.75rem;
+  top: 0.5rem;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+.answer-botton-container {
+  position: absolute;
+  width: 25rem;
+  height: 3.5rem;
+  top: 23.1rem;
+
+  background: #C4C4C4;
+  mix-blend-mode: soft-light;
+  /* border: 1px solid #FFFFFF; */
+  box-shadow: 0 0 0 2px white;
+  box-sizing: border-box;
+}
+
+.answer-button {
+  position: absolute;
+  width: 17.42rem;
+  height: 36px;
+  left: 3.75rem;
+  top: 24rem;
+
+  background: linear-gradient(269.61deg, rgba(255, 165, 241, 1) 13.18%, rgba(152, 249, 243, 1) 92.58%);
+  border: 2px solid #FFFFFF;
+  box-sizing: border-box;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  color: #FFFFFF;
+  z-index: 1;
+}
+
+.answer-button:hover {
+  background: rgba(152, 249, 243, 0.8);
+  border: 2px solid #FFFFFF;
+}
+
+.answer-button:active {
+  background: rgba(255, 165, 241, 0.8);
+  border: 2px solid #FFFFFF;
+}
+
+.answer-button:disabled {
+  background: rgba(196, 196, 196, 0.8);
+  border: 2px solid #FFFFFF;
+}
+
+/*--------------向左對齊，有大頭貼的訊息格式--------------*/
+
+.message-left-first .message-sender {
+  text-align: left;
+  padding-left: 80px;
+  padding-top: 15px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 10px;
+  line-height: 12px;
+  color: #000000;
+}
+ 
+.message-left-first {
+  text-align: left;
+}
+
+.message-left-first .chat-pic{
+  border-radius: 30px;
+  margin:-25px 0px 0px 0px;
+  vertical-align: middle;
+}
+
+.message-left-first .message-text {
+
+max-width: 60%;
+display: inline-block;
+align-items: center;
+margin-left: -15px;
+margin-top: 5px;
+
+padding: 8px 8px 8px 8px;
+background: rgba(255, 165, 241, 0.8);
+border-radius: 0px 10px 10px 15px;
+  
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 900;
+font-size: 13px;
+line-height: 15px;
+color:#000000;
+
+vertical-align: super;
+
+}
+
+.message-left-first .message-time {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 10px;
+  line-height: 12px;
+  margin-left: 10px;
+  vertical-align: middle;
+  color:#000000;
+}
+
+
+/*-------------向左對齊的一般訊息格式---------------*/
+
+.message-left {
+  text-align: left;
+  margin: -15px 0px 20px 75px;
+}
+
+.message-left .message-text {
+  max-width: 60%;
+  display: inline-block;
+  align-items: center;
+  padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+  background: rgba(255, 165, 241, 0.8);
+  border-radius: 0px 10px 10px 15px;
+  ;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 15px;
+  color: #000000;
+}
+
+.message-left .message-time {
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 10px;
+  line-height: 12px;
+  margin-left: 10px;
+  vertical-align: sub;
+  color: #000000;
+}
+
+.chat-message-list {
+  list-style: none;
+}
+
+/*--------------向右對齊的訊息格式-----------------*/
+
+.message-right {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 1rem;
+  align-items: flex-end;
+  padding: 10px 0px 0px 0px
+}
+
+.message-right .message-time {
+  
+  display: flex;
+  align-items: right;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 10px;
+  line-height: 12px;
+  color: #000000;
+  order: 1;
+
+  margin-right: 0.4rem;
+}
+
+.message-right .message-text {
+
+  display: flex;
+  display: inline-block;
+  align-items: center;
+
+  max-width: 16.5rem;
+
+  padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+
+  background: #81FAF8;
+  border-radius: 10px 0px 15px 10px;
+
+  text-align: left;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 15px;
+  color: #000000;
+}
+
+
+/*--------------系統的訊息格式-----------------*/
+
+.message-center {
+  text-align: center;
+  /* margin-bottom: 10px; */
+  margin-left: 10px;
+}
+
+.message-center .message-text {
+  max-width: 85%;
+  min-width: 35%;
+  display: inline-block;
+  background: #E5E5E5;
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.6);
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.07em;
+
+  margin: 1rem;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 6px 40px;
+}
+
+/*-------------額外的訊息格式(藍字、一般字體)--------------*/
+
+.message-bluetext {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 15px;
+  text-decoration-line: underline;
+  
+  color: #7B61FF;
+  margin-right: 0.2rem;
+}
+
+.message-normal {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+}
+
+/*--------------------Answer按鈕按下後的選項popUp-----------------------*/
+
+#option-popup {
+  width: 25rem;
+  height: 5rem;
+  background-color: #000000;
+  z-index: 15;
+
+}
+
+.option-btn-grid-1 {
+
+  transform: scale(1);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+
+  position: absolute;
+  width: 25rem;
+  height: 5rem;
+  top: 21.85rem;
+
+
+  background: #C4C4C4;
+
+}
+
+.option-btn-grid-2 {
+
+  transform: scale(1);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+
+  position: absolute;
+  width: 25rem;
+  height: 8rem;
+  top: 18.8rem;
+
+  padding: 1.25rem 1.78rem 0rem 1.78rem;
+
+  background: #C4C4C4;
+
+}
+
+.option-btn-grid-3 {
+
+  transform: scale(1);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+
+  position: absolute;
+  width: 25rem;
+  height: 12rem;
+  top: 14.88rem;
+
+  padding: 1.5rem 1.78rem 0rem 1.78rem;
+
+  background: #C4C4C4;
+
+}
+
+
+.option-btn-1 {
+  background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  box-sizing: border-box;
+  border: 2px solid #FFFFFF;
+
+
+  margin: 30px;
+  width: 190px;
+  height: 145px;
+
+  position: static;
+  width: 428px;
+  height: 43px;
+  left: 0px;
+  top: 0px;
+
+}
+
+.option-btn-2 {
+  background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  box-sizing: border-box;
+  border: 2px solid #FFFFFF;
+
+
+  margin: 0.25rem 0rem 0.5rem 0rem;
+  width: 190px;
+  height: 145px;
+
+  position: static;
+  width: 428px;
+  height: 43px;
+  left: 0px;
+  top: 0px;
+
+}
+
+.option-btn-2 {
+  background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  box-sizing: border-box;
+  border: 2px solid #FFFFFF;
+
+
+  /* margin: 20px 30px 15px 30px; */
+  width: 190px;
+  height: 145px;
+
+  position: static;
+  width: 428px;
+  height: 43px;
+  left: 0px;
+  top: 0px;
+
+}
+
+.option-btn-3 {
+  background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  box-sizing: border-box;
+  border: 2px solid #FFFFFF;
+
+  margin: 0rem 0rem 1.25rem 0rem;
+  width: 190px;
+  height: 145px;
+
+  position: static;
+  width: 428px;
+  height: 43px;
+  left: 0px;
+  top: 0px;
+
+}
+
+.option-btn1:hover {
+  background: rgba(152, 249, 243, 0.8);
+}
+
+.option-btn-1:disabled {
+  background: #C4C4C4;
+}
+
+.option-btn-1:focus {
+  background: rgba(255, 165, 241, 0.8);
+}
+
+.option-btn-2:hover {
+  background: rgba(152, 249, 243, 0.8);
+}
+
+.option-btn-2:disabled {
+  background: #C4C4C4;
+}
+
+.option-btn-2:focus {
+  background: rgba(255, 165, 241, 0.8);
+}
+
+.option-btn-3:hover {
+  background: rgba(152, 249, 243, 0.8);
+}
+
+.option-btn-3:disabled {
+  background: #C4C4C4;
+}
+
+.option-btn-3:focus {
+  background: rgba(255, 165, 241, 0.8);
+}
+/*--------------------第一關InputPopUp-----------------------*/
+
+#input-popup {
+  transform: scale(1);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+
+  position: absolute;
+  width: 502px;
+  height: 535px;
+  left: 0px;
+  top: 0px;
+
+  background: #C4C4C4;
+  color: #000000;
+}
+
+/*--------------------第二關指認中毒者PopUp-----------------------*/
+
+.accuse2-container {
+  position: absolute;
+  width: 25rem;
+  height: 24rem;
+  left: 0px;
+  top: 2.45rem;
+  background-color: #000000;
+  z-index: 2;
+}
+
+#accuse2-popup {
+  transform: scale(1);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+
+  position: absolute;
+  width: 25rem;
+  height: 24.2rem;
+  left: 0px;
+  top: 0rem;
+  background: linear-gradient(269.61deg, rgba(255, 165, 241, 0.8) 13.18%, rgba(152, 249, 243, 0.64) 92.58%);
+}
+
+.accuse2-title {
+  text-align: center;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 33px;
+  text-align: center;
+  margin-top: 1.75rem;
+  margin-bottom: 0rem;
+
+  color: #FFFFFF;
+}
+
+.accuse2-btn {
+  border:0;
+  background-color: rgba(255, 255, 255, 0.0);
+
+  margin: 2.25rem 0.25rem 0rem 1.575rem;
+  width: 10rem;
+  height: 6.85rem;
+
+}
+
+.accuse2-btn:hover{
+  opacity: 0.8;
+}
+
+.accuse2-btn-pic{
+  width: 10rem;
+  height: auto;
+}
+
+.accuse-btn-grid {
+  display: grid;
+  /*用格線方式排button*/
+  grid-template-columns: repeat(4, auto);
+  gap: 0px;
+}
+
+/*--------------------第三關提示選項PopUp-----------------------*/
+
+#hint-popup {
+  transform: scale(1);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+
+  position: absolute;
+  width: 25rem;
+  height: 24rem;
+  left: 0px;
+  top: 2.55rem;
+  background-color: #000000;
+  z-index: 2;
+}
+
+.hint-background {
+  position: absolute;
+  width: 25rem;
+  height: 24rem;
+  left: 0px;
+  top: 0rem;
+  background: linear-gradient(269.61deg, rgba(255, 165, 241, 0.8) 13.18%, rgba(152, 249, 243, 0.64) 92.58%);
+}
+
+.hint-title-pink {
+
+  position: absolute;
+  width: 6.65rem;
+  height: 2.3rem;
+  left: 9rem;
+  top: 1.75rem;
+
+  box-sizing: border-box;
+  background: rgba(255, 165, 241, 0.8);
+  border: 0.1rem solid #FFFFFF;
+
+  z-index: 15;
+}
+
+.hint-title-blue {
+  position: absolute;
+  width: 6.65rem;
+  height: 2.3rem;
+  left: 9rem;
+  top: 12.5rem;
+
+  box-sizing: border-box;
+  background: rgba(152, 249, 243, 0.84);
+  border: 0.1rem solid #FFFFFF;
+
+  z-index: 15;
+}
+
+.hint-title {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 33px;
+
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+.hint-btn-grid-1 {
+  position: absolute;
+  width: 20.75rem;
+  height: 6.5rem;
+  left: 1.98rem;
+  top: 3.6rem;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.hint-btn-grid-2 {
+  position: absolute;
+  width: 20.75rem;
+  height: 7.5rem;
+  left: 1.98rem;
+  top: 14.35rem;
+
+  padding: 1rem;
+
+  background: rgba(255, 255, 255, 0.8);
+
+}
+
+.hint-btn-1 {
+  border:0;
+ background-color:none;
+  margin: 5% 2.2% 2.2% 2.2%;
+  /* width:3rem;
+  height:3rem; */
+  width: 20%;
+  height: 65%;
+  border-radius: 50%;
+}
+
+.hint-btn-1:disabled {
+  opacity: 0.2;
+}
+
+.hint-pic{
+  width:8.2rem;
+  margin-left: -2rem;
+  margin-top: -1.75rem;
+}
+
+.hint-btn-2 {
+
+  width: 8.5rem;
+  height: 2.5rem;
+  margin: 1.5rem 7px 10px 10px;
+  
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 900;
+font-size:20px;
+line-height: 21px;
+text-align: center;
+color: #FFFFFF;
+
+  background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
+  box-sizing: border-box;
+  border: 2px solid #FFFFFF;
+
+}
+
+.hint-btn-2:disabled {
+
+  opacity: 0.2;
+
+}
+

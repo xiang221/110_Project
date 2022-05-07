@@ -1,10 +1,13 @@
 import React, { useState, useEffect, memo } from 'react'
 import { Scripts } from './Scripts'
 import { Accuse3List, God, Hack, HintList, Robot, Young } from './Character'
-import '../styles/chatbox.css'
+import '../styles/chatbox_RWD.css'
+import Timer from './Timer'
 import $ from 'jquery'
 
 const Chatbox3 = () => {
+
+  let pastScripts = [];
 
   let currScript_3 = Number(JSON.parse(localStorage.getItem('currScript_3')))//用localStorage控制目前狀態
   let pastScripts_3 = JSON.parse(localStorage.getItem('pastScripts_3'))
@@ -38,7 +41,7 @@ const Chatbox3 = () => {
       }
       else { setAnsBtnDisabled(true); onRowAdded() }
       setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
-      console.log(currIndex)
+      console.log(currIndex) 
 
     }, [currIndex])
 
@@ -91,16 +94,20 @@ const Chatbox3 = () => {
   const OptionBtn = (props) => {
 
     let btnClass;
+    let gridClass;
 
     let CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)[0].options
     if (CurrScript.length === 1) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-1"
+      gridClass = "option-btn-grid-1"
     }
     else if (CurrScript.length === 2) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-2"
+      gridClass = "option-btn-grid-2"
     }
     else if (CurrScript.length === 3) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-3"
+      gridClass = "option-btn-grid-3"
     }
     else return;
 
@@ -128,7 +135,7 @@ const Chatbox3 = () => {
 
     function AddPassScript(currScript) {
       if(currScript === 2  || currScript <= 0){return}
-      let pastScripts = [];
+      // let pastScripts = [];
       pastScripts.push(currScript)
       localStorage.setItem('pastScripts_3', JSON.stringify(pastScripts))
     }
@@ -136,7 +143,7 @@ const Chatbox3 = () => {
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
       <>
         <div id="option-popup">
-          <div id="option-buttons" className="option-btn-grid">
+          <div /*id="option-buttons"*/ className={gridClass}>
             <div>{BtnList}</div>
           </div>
         </div>
@@ -169,40 +176,48 @@ const Chatbox3 = () => {
       if (Lv1 === 'true' && Lv2 === 'true' && Lv3 === 'true') { //OOO以牙還牙
         setCurrScriptState(31)
         setAccuse3Popup(false);
+        localStorage.setItem('End',31)
       }
       if (Lv1 === 'true' && Lv2 === 'false' && Lv3 === 'true') { //OXO驅逐內鬼
         setCurrScriptState(30)
         setAccuse3Popup(false);
+        localStorage.setItem('End',30)
       }
       if (Lv1 === 'true' && Lv2 === 'true' && Lv3 === 'false') { //OOX縱虎歸山
         setCurrScriptState(29)
         setAccuse3Popup(false);
+        localStorage.setItem('End',29)
       }
       if (Lv1 === 'false' && Lv2 === 'true' && Lv3 === 'true') { //XOO特洛伊木馬
         setCurrScriptState(28)
         setAccuse3Popup(false);
+        localStorage.setItem('End',28)
       }
       if ((Lv1 === 'false' && Lv2 === 'false' && Lv3 === 'false') || (Lv1 === 'false' && Lv2 === 'true' && Lv3 === 'false')) { //XXX或XOX自身難保
         setCurrScriptState(26)
         setAccuse3Popup(false);
+        localStorage.setItem('End',26)
       }
-      if ((Lv1 === false && Lv2 === false && Lv3 === true) || (Lv1 === true && Lv2 === false && Lv3 === false)) { //XXO或OXX創世神殞落
+      if ((Lv1 === 'false' && Lv2 === 'false' && Lv3 === 'true') || (Lv1 === 'true' && Lv2 === 'false' && Lv3 === 'false')) { //XXO或OXX創世神殞落
         setCurrScriptState(25)
         setAccuse3Popup(false);
+        localStorage.setItem('End',25)
       }
     }
 
     return (props.trigger) ? (//指認後直接跳轉結局
       <>
+      <div className="accuse2-container">
         <div id="accuse2-popup">
           <div id="accuse2-btn" className="accuse2-btn-grid">
-            <div className="accuse2-title">你覺得誰是駭客？</div>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("A"); goToEnd(); setCurrIndex(0); }}>{"A"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("B"); goToEnd(); setCurrIndex(0); }}>{"B"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("C"); goToEnd(); setCurrIndex(0); }}>{"C"}</button>
-            <button className="accuse2-btn" onClick={(event) => { whoisHack("D"); goToEnd(); setCurrIndex(0); }}>{"D"}</button>
+            <div className="accuse2-title">揪出駭客！</div>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("匿名火龍蕉"); goToEnd(); setCurrIndex(0); }}><img src="https://img.onl/T3V7p" className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("匿名凸頂橙"); goToEnd(); setCurrIndex(0); }}><img src="https://img.onl/uHe5oT" className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("匿名麝香葡萄"); goToEnd(); setCurrIndex(0); }}><img src="https://img.onl/waqDg6" className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisHack("匿名白桃"); goToEnd(); setCurrIndex(0); }}><img src="https://img.onl/llKIo0" className='accuse2-btn-pic'/></button>
           </div>
         </div>
+      </div>
       </>
     ) : "";
   }
@@ -353,19 +368,26 @@ const Chatbox3 = () => {
 
     return (props.trigger) ? (
       <>
-        <div id="hint-popup">
-          <div className="hint-title">你覺得</div>
-          <div className="hint-btn-grid">
-            <button className="hint-btn" onClick={(event) => { Who("A"); Judge(); setSelected("A"); event.preventDefault() }} disabled={A}>{"A"}</button>
-            <button className="hint-btn" onClick={(event) => { Who("B"); Judge(); setSelected("B"); event.preventDefault() }} disabled={B}>{"B"}</button>
-            <button className="hint-btn" onClick={(event) => { Who("C"); Judge(); setSelected("C"); event.preventDefault() }} disabled={C}>{"C"}</button>
-            <button className="hint-btn" onClick={(event) => { Who("D"); Judge(); setSelected("D"); event.preventDefault() }} disabled={D}>{"D"}</button>
-          </div>
 
-          <div className="hint-btn-grid">
-            <button className="hint-btn" onClick={(event) => { How("1"); Judge(); setSelected2("E"); event.preventDefault() }} disabled={E}>{"不謹慎"}</button>
-            <button className="hint-btn" onClick={(event) => { How("2"); Judge(); setSelected2("F"); event.preventDefault() }} disabled={F}>{"在帶風向"}</button>
+        <div id="hint-popup">
+                <div className='hint-background'>
+          <div className="hint-title-pink">
+            <div className="hint-title">我覺得</div>
           </div>
+          <div className="hint-btn-grid-1">
+            <button className="hint-btn-1"  onClick={(event) => { Who("匿名火龍蕉"); Judge(); setSelected("A"); event.preventDefault() }} disabled={A}><img src="https://img.onl/SJmyju" className='hint-pic'/>{/*"A"*/}</button>
+            <button className="hint-btn-1"  onClick={(event) => { Who("匿名凸頂橙"); Judge(); setSelected("B"); event.preventDefault() }} disabled={B}><img src="https://img.onl/yMAK4Y" className='hint-pic'/>{/*"B"*/}</button>
+            <button className="hint-btn-1"  onClick={(event) => { Who("匿名麝香葡萄"); Judge(); setSelected("C"); event.preventDefault() }} disabled={C}><img src="https://img.onl/Pyy8K4" className='hint-pic'/>{/*"C"*/}</button>
+            <button className="hint-btn-1"  onClick={(event) => { Who("匿名白桃"); Judge(); setSelected("D"); event.preventDefault() }} disabled={D}><img src="https://img.onl/opoFX" className='hint-pic'/>{/*"D"*/}</button>
+          </div>
+          <div className="hint-title-blue">
+          <div className="hint-title">的確</div>
+          </div>
+          <div className="hint-btn-grid-2">
+            <button className="hint-btn-2" onClick={(event) => { How("1"); Judge(); setSelected2("E"); event.preventDefault() }} disabled={E}>{"太不謹慎了"}</button>
+            <button className="hint-btn-2" onClick={(event) => { How("2"); Judge(); setSelected2("F"); event.preventDefault() }} disabled={F}>{"一直在帶風向"}</button>
+          </div>
+        </div>
         </div>
       </>
     ) : ""
@@ -379,7 +401,7 @@ const Chatbox3 = () => {
             <div className="answer-botton-container"></div>
             <div className="time-limit-container"></div>
           </div>
-          <div className="time-limit">14:00</div>
+          <div className="time-limit"><Timer/></div>
           <button className="answer-button" id="answer-button" setButtonPopup={setButtonPopup} buttonPopup={buttonPopup} onClick={() => setButtonPopup(true)} disabled={ansBtnDisabled}>Answer</button>
           <div className="chat-container">
             <ul className="chat-message-list" id="chat-list">

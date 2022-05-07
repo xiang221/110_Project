@@ -1,6 +1,7 @@
 import React, { useState, useEffect, memo } from 'react'
 import { Scripts } from './Scripts'
-import '../styles/chatbox.css'
+import '../styles/chatbox_RWD.css'
+import Timer from './Timer'
 import $ from 'jquery'
 
 const Chatbox0 = (props) => {
@@ -10,6 +11,8 @@ const Chatbox0 = (props) => {
   const [ansBtnDisabled, setAnsBtnDisabled] = useState(true); //Answer按鈕disable
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
   const [pastScripts, setPastScripts] = useState([]);//過去訊息呈現的ScriptId紀錄
+
+  if(currIndex === 8){props.setMission(1)}
 
   const ShowMessage = memo((props) => {
     //用filter從上面的Script物件陣列中，抓取和currScriptState的ID相同的劇本，將裡面messages拿出來
@@ -82,16 +85,20 @@ const Chatbox0 = (props) => {
   const OptionBtn = (props) => {
 
     let btnClass;
+    let gridClass;
 
     let CurrScript = Scripts.filter(Script => Script.scriptId === props.currScript)[0].options
     if (CurrScript.length === 1) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-1"
+      gridClass = "option-btn-grid-1"
     }
     else if (CurrScript.length === 2) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-2"
+      gridClass = "option-btn-grid-2"
     }
     else if (CurrScript.length === 3) {
-      btnClass = "option-btn"
+      btnClass = "option-btn-3"
+      gridClass = "option-btn-grid-3"
     }
     else return;
 
@@ -123,7 +130,7 @@ const Chatbox0 = (props) => {
     return (props.trigger) ? (//Answer按鈕是否被按下，按下的話option-button的介面就會跳出來
       <>
         <div id="option-popup">
-          <div id="option-buttons" className="option-btn-grid">
+          <div /*id="option-buttons"*/ className={gridClass}>
             <div>{BtnList}</div>
           </div>
         </div>
@@ -140,7 +147,7 @@ const Chatbox0 = (props) => {
             <div className="answer-botton-container"></div>
             <div className="time-limit-container"></div>
           </div>
-          <div className="time-limit">14:00</div>
+          <div className="time-limit"><Timer /></div>
           <button className="answer-button" id="answer-button" setButtonPopup={setButtonPopup} buttonPopup={buttonPopup} onClick={() => setButtonPopup(true)} disabled={ansBtnDisabled}>Answer</button>
           <div className="chat-container">
             <ul className="chat-message-list" id="chat-list">
