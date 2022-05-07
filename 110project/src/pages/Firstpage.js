@@ -8,15 +8,15 @@ const Firstpage = () => {
   const navigate = useNavigate();
 
   const navEventHandler = (e) => {
-    if(e.key === 'Enter'){
+
       navigate('/signup');
       localStorage.clear(); 
       window.location.reload();
-    }
+    
   }
 
   useEffect(() => {
-    document.addEventListener('keydown', navEventHandler)
+    document.addEventListener("click", navEventHandler)
   }, [])
 
   return (

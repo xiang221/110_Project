@@ -4,14 +4,14 @@ import mail from '../picture/mail.png'
 import mail1 from '../picture/mail1.png'
 import mail2 from '../picture/mail2.png'
 import mail3 from '../picture/mail3.png'
+import mail25 from '../picture/mail25.png'
+import mail27 from '../picture/mail27.png'
+import mail28 from '../picture/mail28.png'
+import mail29 from '../picture/mail29.png'
+import mail30 from '../picture/mail30.png'
+import mail31 from '../picture/mail31.png'
 
-/*
-const imageMap = {
-  1: ''
 
-}
-*/
-//const image = imageMap[]
 const EndList = {
   25: "創世神殞落",
   27: "自身難保",
@@ -40,15 +40,15 @@ const Mailbox = (props) => {
 
   useEffect(() => {
     console.log("狀態改變")
-    if(mailText===1){
-      setUrl(mail1);
-    }else if(mailText===2){
-      setUrl(mail2);
-    }else if(mailText===3){
-      setUrl(mail3);
-    }
-    //let url = 'url("../picture/mail' + mailText+ '.png")';
-    //console.log(url);
+    if(mailText===1){ setUrl(mail1);}
+    else if(mailText===2){ setUrl(mail2);}
+    else if(mailText===3){ setUrl(mail3);}
+    else if(mailText===25){ setUrl(mail25);}
+    else if(mailText===27){ setUrl(mail27);}
+    else if(mailText===28){ setUrl(mail28);}
+    else if(mailText===29){ setUrl(mail29);}
+    else if(mailText===30){ setUrl(mail30);}
+    else if(mailText===31){ setUrl(mail31);}
   },[mailText])
 
   return (props.trigger)?(
@@ -75,37 +75,35 @@ const Mailbox = (props) => {
 
 }
 
-/*信件內容
-
-const Mailtext = (props) => {
-
-  return (
-    <div className='openmail'>
-    <div className='mailOne'>
-    <button type='button' className='mailTextBtn' onClick={()=>props.mailhandler(false)}>關閉通知</button>
-    </div>
-    </div>
-  )
-}
-*/
 
 //信件瀏覽
 const MailLine = (props) =>{
 
 
-  let END = localStorage.getItem('END');
+  let END = Number(localStorage.getItem('End'));
   let Mission1 = JSON.parse(localStorage.getItem("mission1"));
   let Mission2 = JSON.parse(localStorage.getItem("mission2"));
 
+  
+  useEffect(() => {
+    console.log("記錄到mission1")
+    props.openMailText(2);
+  }, [Mission1]);
+
+  useEffect(() => {
+    console.log("記錄到mission2")
+    props.openMailText(3);
+  }, [Mission2]);
+
   useEffect(() => {
     console.log("結局為",END);
+    props.openMailText(END);
   }, [END]);
-
 
 
   return(
     <>
-    <div className='mailline' style={{display:localStorage.getItem('END') === null?'none':''}} >
+    <div className='mailline' style={{display:localStorage.getItem('End') === null?'none':''}} onClick={()=>props.openMailText(END)} >
       <div className='mailcircle'></div>
       <div className='mailtext'>
       <h3 style={{display:'inline'}}>創世神</h3>
