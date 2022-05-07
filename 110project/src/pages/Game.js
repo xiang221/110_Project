@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Chatbox0 from '../components/Chatbox0'
 import Chatbox1 from '../components/Chatbox1'
 import Chatbox2 from '../components/Chatbox2'
@@ -16,7 +16,9 @@ const Game = ({user, setUser}) => {
 
   const [mailbox,mailhandler] = useState(false);
   const [chosenChatbox,setChatbox] = useState(0);
-  const [mission, setMission] = useState(0);
+  let [mission, setMission] = useState(0);
+  
+
 
   return (
     <div>

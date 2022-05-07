@@ -205,3 +205,20 @@ main {
   height: 49px;
   z-index: 2;
 }
+
+
+.end{
+  height: 100vh;
+  width: 100vw;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: fadeinout 5s linear forwards;
+}
+
+
+@keyframes fadeinout {
+  0%{ opacity:0; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
