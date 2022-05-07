@@ -1,6 +1,7 @@
 import React, { useState, useEffect, memo } from 'react'
 import { Scripts } from './Scripts'
 import { Accuse3List, God, Hack, HintList, Robot, Young } from './Character'
+import { Navigate } from 'react-router'
 import '../styles/chatbox_RWD.css'
 import Timer from './Timer'
 import $ from 'jquery'
@@ -40,7 +41,7 @@ const Chatbox3 = () => {
         return
       }
       else { setAnsBtnDisabled(true); onRowAdded() }
-      setTimeout(() => { setCurrIndex(currIndex + 1) }, 1000)//設定一定的時間後，改變當前的Index
+      setTimeout(() => { setCurrIndex(currIndex + 1) }, 1350)//設定一定的時間後，改變當前的Index
       console.log(currIndex) 
 
     }, [currIndex])
@@ -112,7 +113,7 @@ const Chatbox3 = () => {
     else return;
 
     const BtnList = CurrScript.map((sub) =>
-      <button className={btnClass} disabled={disable(sub.disable)} onClick={(event) => { props.setTrigger(false); record(sub.record); toNextScript(sub.nextScriptId); setCurrIndex(0); AddPassScript(props.currScript) }}>{sub.text}</button>
+      <button className={btnClass} disabled={disable(sub.disable)} onClick={(event) => { props.setTrigger(false); record(sub.record); toNextScript(sub.nextScriptId); setCurrIndex(0); AddPassScript(props.currScript); }}>{sub.text}</button>
       //按下option-button介面中的其中一個選項按鈕，會關閉option-button介面、記錄玩家選擇的按鈕的文字、將CurrScriptState更新成劇本中按下按鈕後要接續的下個劇本ID
     )
 
@@ -393,6 +394,10 @@ const Chatbox3 = () => {
     ) : ""
   }
 
+  function EndNav() {
+    return (currScriptState === -4) ? <Navigate to="/end" /> : ""
+  }
+
   return (//顯示整個ChatBox的內容
     <>
       <div id="wrapper">
@@ -413,7 +418,7 @@ const Chatbox3 = () => {
           <Accuse3 trigger={accuse3Popup} setTrigger={setAccuse3Popup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
           <Hint trigger={hintPopup} setTrigger={setHintPopup} currScript={currScriptState} />
         </div>
-
+        <EndNav></EndNav>
       </div>
     </>
   );

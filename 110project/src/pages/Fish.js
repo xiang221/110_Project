@@ -76,9 +76,9 @@ const Fish = (props) => {
           <div>恭喜您!您是今日的第187位訪客!填入基本資料已獲得抽取iphone大獎的機會!<br />請依序填入您的</div>
           <form onSubmit={Save} >
             <div>東方哈拉帳號:</div>
-            <input type="text" value={accField} placeholder="請輸入您的帳號" onChange={(e) => { setAccField(e.target.value) }} />
+            <input required="required" type="text" value={accField} placeholder="請輸入您的帳號" onChange={(e) => { setAccField(e.target.value) }} />
             <div>東方哈拉帳號:</div>
-            <input type="text" value={pwdField} placeholder="請輸入您的密碼" onChange={(e) => { setPwdField(e.target.value) }} />
+            <input required="required" type="text" value={pwdField} placeholder="請輸入您的密碼" onChange={(e) => { setPwdField(e.target.value) }} />
             <button>提交</button>
           </form>
         </div>
