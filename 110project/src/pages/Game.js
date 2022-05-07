@@ -20,6 +20,21 @@ const Game = ({user, setUser}) => {
   
 
 
+  let mission1 = localStorage.getItem('mission');
+  let mission2 = localStorage.getItem('mission2');
+  let JumpFish = localStorage.getItem('JumpFish');
+
+  useEffect(()=>{
+    //console.log('chatbox',chosenChatbox)
+    //console.log(localStorage.getItem('mission1'))
+    if(JumpFish!==null){
+    setChatbox(1)
+    }
+  },[JumpFish])
+
+
+
+
   return (
     <div>
       <video autoPlay muted loop style={{zIndex:-100, position:'fixed', objectFit:'fill'}} >

@@ -54,7 +54,7 @@ const Fish = (props) => {
   useEffect(() => {//判斷下一個要跳轉的劇本ID、關掉inputPopup介面
     let FishAcc = localStorage.getItem('FishAcc')
     let FishPwd = localStorage.getItem('FishPwd')
-
+    let JumpFish = localStorage.setItem('JumpFish',true)
     if (FishAcc !== null && FishPwd !== null) {//確認不是預設狀態
 
       //如果帳密都輸對，跳劇本102

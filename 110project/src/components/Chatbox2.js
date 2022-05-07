@@ -5,6 +5,7 @@ import '../styles/chatbox_RWD.css'
 import Timer from './Timer'
 import $ from 'jquery'
 
+
 let pastScripts = [];
 
 const Chatbox2 = (props) => {
@@ -19,7 +20,9 @@ const Chatbox2 = (props) => {
   const [accuse2Popup, setAccuse2Popup] = useState(false);//控制第二關指認介面Popup
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
 
-  if(currScript_2 === 103){props.setMission(3);}
+  if(currScript_2 === 103){
+    props.setMission(3);
+    localStorage.setItem('mission2', true)}
 
 
   const ShowMessage = memo((props) => {

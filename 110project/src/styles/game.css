@@ -159,12 +159,13 @@ main {
   flex-direction: column;
   flex-grow:2;
   padding-top: 2rem;
+  align-items: center;
 }
 
 
 .right{
   display:flex;
-  flex-grow:2;
+  flex-grow:1.5;
 }
 
 
