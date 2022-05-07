@@ -38,7 +38,7 @@ const Signup = ({user, setUser}) => {
             <h3 className='signupText'>建立帳號</h3>
             <form action="game" onSubmit={addAccount} className='signupForm'>
             <div className='input'>
-            <input type="text" name="account" placeholder='   帳號 :'/>
+            <input type="text" name="account" placeholder='   暱稱 :'/>
             </div>
             <div className='input'>
             <input type="password" name="password" placeholder='   密碼 :'/> 

@@ -8,9 +8,7 @@ const Firstpage = () => {
   const navigate = useNavigate();
 
   const navEventHandler = (e) => {
-    console.log(e.key)
     if(e.key === 'Enter'){
-      console.log('click');
       navigate('/signup');
       localStorage.clear(); 
       window.location.reload();

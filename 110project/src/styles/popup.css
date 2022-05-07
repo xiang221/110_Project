@@ -131,7 +131,6 @@
 }
 
 .mailOne{
-	background-image: url('../picture/mail1.png') ;
 	background-size: contain;
 	background-repeat: no-repeat;
 	position: relative;
@@ -141,10 +140,10 @@
 
 .mailTextBtn{
 	position:absolute;
-	top:83%;
-	left:2.7rem;
-	width:15.5rem;
-	height:2.5rem;
+	top:84%;
+	left:2.1rem;
+	width:16.5rem;
+	height:2.3rem;
 	color:#FFF;
 	padding-top:0.1rem;
 	border:none;  
