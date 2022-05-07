@@ -40,7 +40,7 @@ const Chatbox2 = (props) => {
           return
         }
         else { setAnsBtnDisabled(true); onRowAdded() }
-        setTimeout(() => { setCurrIndex(currIndex + 1) }, 1500)//設定一定的時間後，改變當前的Index
+        setTimeout(() => { setCurrIndex(currIndex + 1) }, 1350)//設定一定的時間後，改變當前的Index
         console.log(currIndex)
 
     }, [currIndex])

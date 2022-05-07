@@ -10,8 +10,8 @@ export const Scripts = [
   {
     scriptId: 102,//劇本三稿新增內容 //帳號對密碼對的狀態，點進連結/不點連結 都到劇本編號5(Fail)
     options: [
-      { text: "點進連結", nextScriptId: 5, },
-      { text: "不點連結", nextScriptId: 5, },
+      { text: <span className="options-bluetext">http://fuckyourphonetwice.com/gift</span>, nextScriptId: 5, record: false },
+      { text: "不理它", nextScriptId: 4, record: true },
     ],
     messages: [
       { align: "message-left-first", sender: Young.nickName, chatPicSrc: Young.chatPicSrc, text: <span className="message-bluetext">http://fuckyourphonetwice.com/gift</span>, time: "上午12:15" },
@@ -36,6 +36,11 @@ export const Scripts = [
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "诶，不會被盜了吧?", time: "上午12:15" },
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "滿有趣的，我點點看", time: "上午12:15" }
     ]
+  },
+  {
+    scriptId: -4,
+    options: [{ text: "結局動畫", nextScriptId: -2 }],
+    messages: [{ align: "結局動畫" }]
   },
   {
     scriptId: -3,
@@ -408,7 +413,7 @@ export const Scripts = [
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "現在，這個論壇是我的了，你就乖乖認命吧，要不要為我服務呢?", time: "下午12:11" },
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "現在，這個論壇是我的了，你就乖乖認命吧，要不要為我服務呢?", time: "下午12:11" },
       { align: "message-right", text: "別鬧了，就是有你這種人，論壇的人都跑去用低咔了", time: "下午12:12" },
-      { align: "message-center", text: <span>{Hack.nickName}已將XXX噤聲</span> },
+      { align: "message-center", text: <span>{Hack.nickName}已將{Player.nickName}噤聲</span> },
       { align: "message-left-first", sender: Hack.nickName, chatPicSrc: Hack.chatPicSrc, text: "那你就閉嘴乖乖看我怎麼統治這個論壇吧", time: "下午12:12" },//與下兩個同時
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "那你就閉嘴乖乖看我怎麼統治這個論壇吧", time: "下午12:12" },
       { align: "message-left-first", sender: Robot.nickName, chatPicSrc: Robot.chatPicSrc, text: "那你就閉嘴乖乖看我怎麼統治這個論壇吧", time: "下午12:12" },

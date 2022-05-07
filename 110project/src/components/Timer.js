@@ -6,8 +6,8 @@ let Time = Number(JSON.parse(localStorage.getItem('Timer')))
 const Timer = () => {
 
     const [allSeconds, setAllSeconds] = useState(Time? Time: 0)
-    const [minutes, setMinutes] = useState(Math.trunc(allSeconds / 60)>10? Math.trunc(allSeconds / 60): "0"+ Math.trunc(allSeconds / 60))
-    const [seconds, setSeconds] = useState((allSeconds % 60)>10? (allSeconds%60): "0"+(allSeconds%60) )
+    const [minutes, setMinutes] = useState(Math.trunc(allSeconds / 60)>=10? Math.trunc(allSeconds / 60): "0"+ Math.trunc(allSeconds / 60))
+    const [seconds, setSeconds] = useState((allSeconds % 60)>=10? (allSeconds%60): "0"+(allSeconds%60) )
 
     useEffect(() => {//當索引發生變化
 
