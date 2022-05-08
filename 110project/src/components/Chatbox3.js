@@ -421,7 +421,7 @@ const Chatbox3 = (props) => {
             </ul>
           </div>
           <OptionBtn trigger={buttonPopup} setTrigger={setButtonPopup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
-          <Accuse3 trigger={accuse3Popup} setTrigger={setAccuse3Popup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} />
+          <Accuse3 trigger={accuse3Popup} setTrigger={setAccuse3Popup} currScript={currScriptState} setCurrScriptState={setCurrScriptState} setAuto={props.setAuto}/>
           <Hint trigger={hintPopup} setTrigger={setHintPopup} currScript={currScriptState} />
         </div>
         <EndNav></EndNav>
