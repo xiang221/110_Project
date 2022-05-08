@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import end25 from '../picture/end25.png'
-import end26 from '../picture/end26.png'
+import end27 from '../picture/end27.png'
 import end28 from '../picture/end28.png'
 import end29 from '../picture/end29.png'
 import end30 from '../picture/end30.png'
@@ -14,7 +14,7 @@ const End = () => {
 
     //'../picture/end'+end+'.png'
     if(end===25){var background = end25}
-    else if(end===26){var background = end26}
+    else if(end===27){var background = end27}
     else if(end===28){var background = end28}
     else if(end===29){var background = end29}
     else if(end===30){var background = end30}
