@@ -206,9 +206,7 @@ const Chatbox3 = (props) => {
       if ((Lv1 === 'false' && Lv2 === 'false' && Lv3 === 'false') || (Lv1 === 'false' && Lv2 === 'true' && Lv3 === 'false')) { //XXX或XOX自身難保
         setCurrScriptState(26)
         setAccuse3Popup(false);
-        props.setAuto(4)
-        localStorage.setItem('auto', 4)
-        localStorage.setItem('End',26)
+        localStorage.setItem('End',27)
       }
       if ((Lv1 === 'false' && Lv2 === 'false' && Lv3 === 'true') || (Lv1 === 'true' && Lv2 === 'false' && Lv3 === 'false')) { //XXO或OXX創世神殞落
         setCurrScriptState(25)
