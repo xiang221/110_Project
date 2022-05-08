@@ -53,10 +53,10 @@ const Game = ({user, setUser}) => {
             <Mission chosen={chosenChatbox} setChatbox={setChatbox} mission={mission} setMission={setMission}/>
           </div>
           <div className='right'>
-            {chosenChatbox===0 && <Chatbox0 mission={mission} setMission={setMission} autoOpen={autoOpen} setAuto={setAuto}/>}
-            {chosenChatbox===1 && <Chatbox1 mission={mission} setMission={setMission} autoOpen={autoOpen} setAuto={setAuto}/>}
-            {chosenChatbox===2 && <Chatbox2 mission={mission} setMission={setMission} autoOpen={autoOpen} setAuto={setAuto} />}
-            {chosenChatbox===3 && <Chatbox3 autoOpen={autoOpen} setAuto={setAuto}/>}
+            {chosenChatbox===0 && <Chatbox0 setMission={setMission} setAuto={setAuto}/>}
+            {chosenChatbox===1 && <Chatbox1 setMission={setMission} setAuto={setAuto}/>}
+            {chosenChatbox===2 && <Chatbox2 setMission={setMission} setAuto={setAuto} />}
+            {chosenChatbox===3 && <Chatbox3 setAuto={setAuto}/>}
           </div>
       </div>
     </div>
