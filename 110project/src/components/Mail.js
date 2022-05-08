@@ -21,7 +21,7 @@ const EndList = {
   31: "以牙還牙"
 }
 
-console.log(EndList[1]);
+console.log(EndList[25]);
 
 //信箱
 const Mail = (props) => {
@@ -35,7 +35,6 @@ const Mail = (props) => {
 //打開後的信箱
 const Mailbox = (props) => {
 
-  //const [mailText, openMailText] = useState(0);
   const [url,setUrl] = useState('');
 
 
@@ -54,21 +53,6 @@ const Mailbox = (props) => {
      
   },[props.mailText])
 
-  /*
-  if(props.autoOpen===1){
-    props.mailhandler(true);
-    openMailText(1);
-    props.setAuto(0)
-  }else if(props.autoOpen===2){
-    props.mailhandler(true);
-    openMailText(2);
-    props.setAuto(0)
-  }else if(props.autoOpen===3){
-    props.mailhandler(true);
-    openMailText(3);
-    props.setAuto(0)
-  } 
-*/
   return (props.trigger)?(
       <div className="openmail">
         {props.mailText===0?(
@@ -102,36 +86,7 @@ const MailLine = (props) =>{
   let Mission1 = localStorage.getItem("mission1");
   let Mission2 = JSON.parse(localStorage.getItem("mission2"));
 
-  // setAuto = () =>{
-  //   if(autoOpen===1){
-  //     props.mailhandler(true);
-  //     props.openMailText(1);
-  //   }else if(autoOpen===2){
-  //     props.mailhandler(true);
-  //     props.openMailText(2);
-  //   }else if(autoOpen===3){
-  //     props.mailhandler(true);
-  //     props.openMailText(3); 
-  //   }
 
-  // } 
-
-  
-  /*
-  useEffect(() => {
-
-    if(Mission1!==null){
-      console.log("記錄到mission1")
-      props.setAuto(2)
-    }
-
-    if(Mission2!==null){
-      console.log("記錄到mission2")
-      props.setAuto(3)
-    }
-
-  }, []);
-*/
 
   useEffect(() => {
     console.log("結局為",END);
