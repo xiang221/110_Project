@@ -5,7 +5,7 @@ import '../styles/chatbox_RWD.css'
 import Timer from './Timer'
 import $ from 'jquery'
 
-const Chatbox3 = () => {
+const Chatbox3 = (props) => {
 
   let pastScripts = [];
 
@@ -173,40 +173,47 @@ const Chatbox3 = () => {
       let Lv2 = localStorage.getItem('FindYoung')
       let Lv3 = localStorage.getItem('FindHack')
 
+
       if (Lv1 === 'true' && Lv2 === 'true' && Lv3 === 'true') { //OOO以牙還牙
         setCurrScriptState(31)
         setAccuse3Popup(false);
         props.setAuto(4)
+        localStorage.setItem('auto', 4)
         localStorage.setItem('End',31)
       }
       if (Lv1 === 'true' && Lv2 === 'false' && Lv3 === 'true') { //OXO驅逐內鬼
         setCurrScriptState(30)
         setAccuse3Popup(false);
         props.setAuto(4)
+        localStorage.setItem('auto', 4)
         localStorage.setItem('End',30)
       }
       if (Lv1 === 'true' && Lv2 === 'true' && Lv3 === 'false') { //OOX縱虎歸山
         setCurrScriptState(29)
         setAccuse3Popup(false);
         props.setAuto(4)
+        localStorage.setItem('auto', 4)
         localStorage.setItem('End',29)
       }
       if (Lv1 === 'false' && Lv2 === 'true' && Lv3 === 'true') { //XOO特洛伊木馬
         setCurrScriptState(28)
         setAccuse3Popup(false);
         props.setAuto(4)
+        localStorage.setItem('auto', 4)
         localStorage.setItem('End',28)
       }
       if ((Lv1 === 'false' && Lv2 === 'false' && Lv3 === 'false') || (Lv1 === 'false' && Lv2 === 'true' && Lv3 === 'false')) { //XXX或XOX自身難保
         setCurrScriptState(26)
         setAccuse3Popup(false);
         props.setAuto(4)
+        localStorage.setItem('auto', 4)
         localStorage.setItem('End',26)
       }
       if ((Lv1 === 'false' && Lv2 === 'false' && Lv3 === 'true') || (Lv1 === 'true' && Lv2 === 'false' && Lv3 === 'false')) { //XXO或OXX創世神殞落
         setCurrScriptState(25)
         setAccuse3Popup(false);
         props.setAuto(4)
+        localStorage.setItem('auto', 4)
         localStorage.setItem('End',25)
       }
     }

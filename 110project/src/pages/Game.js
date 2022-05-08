@@ -17,6 +17,7 @@ const Game = ({user, setUser}) => {
   const [mailbox,mailhandler] = useState(false);
   const [chosenChatbox,setChatbox] = useState(0);
   const [autoOpen,setAuto] = useState(1);
+  const [mailText, openMailText] = useState(0);
   let [mission, setMission] = useState(0);
 
   let mission1 = localStorage.getItem('mission');
@@ -48,7 +49,7 @@ const Game = ({user, setUser}) => {
   //   setAuto(3)
   //   console.log("autoOpen",autoOpen)
   // }
-
+/*
 useEffect(() => {
   function checkAuto() {
     console.log("auto改變")
@@ -63,11 +64,12 @@ useEffect(() => {
     window.removeEventListener('storage', checkAuto)
   }
 }, [])
-
+*/
 
   useEffect(()=>{
     console.log("auto改變",autoOpen)
     mailhandler(true);
+    openMailText(autoOpen);
   },[autoOpen])
 
 
@@ -82,7 +84,7 @@ useEffect(() => {
             <Mail trigger={mailbox} mailhandler={mailhandler}/>
           </div>
           <div className='middle'>
-            <Mailbox trigger={mailbox} mailhandler={mailhandler} autoOpen={autoOpen} setAuto={setAuto}/>
+            <Mailbox trigger={mailbox} mailhandler={mailhandler} autoOpen={autoOpen} setAuto={setAuto} mailText={mailText} openMailText={openMailText}/>
             <Mission chosen={chosenChatbox} setChatbox={setChatbox} mission={mission} setMission={setMission}/>
           </div>
           <div className='right'>

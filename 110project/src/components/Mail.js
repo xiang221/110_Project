@@ -35,24 +35,24 @@ const Mail = (props) => {
 //打開後的信箱
 const Mailbox = (props) => {
 
-  const [mailText, openMailText] = useState(0);
+  //const [mailText, openMailText] = useState(0);
   const [url,setUrl] = useState('');
 
 
 
   useEffect(() => {
-    if(mailText===1){ setUrl(mail1);}
-    else if(mailText===2){ setUrl(mail2);}
-    else if(mailText===3){ setUrl(mail3);}
-    else if(mailText===25){ setUrl(mail25);}
-    else if(mailText===27){ setUrl(mail27);}
-    else if(mailText===28){ setUrl(mail28);}
-    else if(mailText===29){ setUrl(mail29);}
-    else if(mailText===30){ setUrl(mail30);}
-    else if(mailText===31){ setUrl(mail31);}
+    if(props.mailText===1){ setUrl(mail1);}
+    else if(props.mailText===2){ setUrl(mail2);}
+    else if(props.mailText===3){ setUrl(mail3);}
+    else if(props.mailText===25){ setUrl(mail25);}
+    else if(props.mailText===27){ setUrl(mail27);}
+    else if(props.mailText===28){ setUrl(mail28);}
+    else if(props.mailText===29){ setUrl(mail29);}
+    else if(props.mailText===30){ setUrl(mail30);}
+    else if(props.mailText===31){ setUrl(mail31);}
     console.log("狀態改變")
      
-  },[mailText])
+  },[props.mailText])
 
   /*
   if(props.autoOpen===1){
@@ -71,13 +71,13 @@ const Mailbox = (props) => {
 */
   return (props.trigger)?(
       <div className="openmail">
-        {mailText===0?(
+        {props.mailText===0?(
           <>
           <div className="mailheader">
           <h2 className="mailfont">信夾匣</h2>
           </div>
           <div style={{overflowY:'scroll', height: '300px'}}>
-          <MailLine mailText={mailText} openMailText={openMailText} trigger={props.mailbox} mailhandler={props.mailhandler} autoOpen={props.autoOpen} setAuto={props.setAuto}/>
+          <MailLine mailText={props.mailText} openMailText={props.openMailText} trigger={props.mailbox} mailhandler={props.mailhandler} autoOpen={props.autoOpen} setAuto={props.setAuto}/>
           </div>
           <div className='mailClose'>
           <button className="mailBtn" onClick={()=>props.mailhandler(false)}>關閉信件</button>
@@ -85,7 +85,7 @@ const Mailbox = (props) => {
           </>
         ):(
           <div className='mailOne' style={{ backgroundImage: `url(${url})`}}>
-          <button type='button' className='mailTextBtn' onClick={()=>openMailText(0)}>關閉通知</button>
+          <button type='button' className='mailTextBtn' onClick={()=>props.openMailText(0)}>關閉通知</button>
           </div>
         )}
       </div>   
