@@ -38,8 +38,9 @@ const Mailbox = (props) => {
   const [mailText, openMailText] = useState(0);
   const [url,setUrl] = useState('');
 
+
+
   useEffect(() => {
-    console.log("狀態改變")
     if(mailText===1){ setUrl(mail1);}
     else if(mailText===2){ setUrl(mail2);}
     else if(mailText===3){ setUrl(mail3);}
@@ -49,8 +50,25 @@ const Mailbox = (props) => {
     else if(mailText===29){ setUrl(mail29);}
     else if(mailText===30){ setUrl(mail30);}
     else if(mailText===31){ setUrl(mail31);}
+    console.log("狀態改變")
+     
   },[mailText])
 
+  /*
+  if(props.autoOpen===1){
+    props.mailhandler(true);
+    openMailText(1);
+    props.setAuto(0)
+  }else if(props.autoOpen===2){
+    props.mailhandler(true);
+    openMailText(2);
+    props.setAuto(0)
+  }else if(props.autoOpen===3){
+    props.mailhandler(true);
+    openMailText(3);
+    props.setAuto(0)
+  } 
+*/
   return (props.trigger)?(
       <div className="openmail">
         {mailText===0?(
@@ -59,7 +77,7 @@ const Mailbox = (props) => {
           <h2 className="mailfont">信夾匣</h2>
           </div>
           <div style={{overflowY:'scroll', height: '300px'}}>
-          <MailLine mission={props.mission} setMission={props.setMission} mailText={mailText} openMailText={openMailText}/>
+          <MailLine mailText={mailText} openMailText={openMailText} trigger={props.mailbox} mailhandler={props.mailhandler} autoOpen={props.autoOpen} setAuto={props.setAuto}/>
           </div>
           <div className='mailClose'>
           <button className="mailBtn" onClick={()=>props.mailhandler(false)}>關閉信件</button>
@@ -81,29 +99,49 @@ const MailLine = (props) =>{
 
 
   let END = Number(localStorage.getItem('End'));
-  let Mission1 = JSON.parse(localStorage.getItem("mission1"));
+  let Mission1 = localStorage.getItem("mission1");
   let Mission2 = JSON.parse(localStorage.getItem("mission2"));
 
-  
-  useEffect(() => {
-    console.log("記錄到mission1")
-    props.openMailText(2);
-  }, [Mission1]);
+  // setAuto = () =>{
+  //   if(autoOpen===1){
+  //     props.mailhandler(true);
+  //     props.openMailText(1);
+  //   }else if(autoOpen===2){
+  //     props.mailhandler(true);
+  //     props.openMailText(2);
+  //   }else if(autoOpen===3){
+  //     props.mailhandler(true);
+  //     props.openMailText(3); 
+  //   }
 
+  // } 
+
+  
+  /*
   useEffect(() => {
-    console.log("記錄到mission2")
-    props.openMailText(3);
-  }, [Mission2]);
+
+    if(Mission1!==null){
+      console.log("記錄到mission1")
+      props.setAuto(2)
+    }
+
+    if(Mission2!==null){
+      console.log("記錄到mission2")
+      props.setAuto(3)
+    }
+
+  }, []);
+*/
 
   useEffect(() => {
     console.log("結局為",END);
-    props.openMailText(END);
+
   }, [END]);
 
 
   return(
     <>
-    <div className='mailline' style={{display:localStorage.getItem('End') === null?'none':''}} onClick={()=>props.openMailText(END)} >
+    <div className='mailline' style={{display:localStorage.getItem('End') === null?'none':''}} onClick={()=>props.openMailText(END)}>
       <div className='mailcircle'></div>
       <div className='mailtext'>
       <h3 style={{display:'inline'}}>創世神</h3>

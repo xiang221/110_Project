@@ -16,13 +16,14 @@ const Game = ({user, setUser}) => {
 
   const [mailbox,mailhandler] = useState(false);
   const [chosenChatbox,setChatbox] = useState(0);
+  const [autoOpen,setAuto] = useState(1);
   let [mission, setMission] = useState(0);
-  
-
 
   let mission1 = localStorage.getItem('mission');
   let mission2 = localStorage.getItem('mission2');
   let JumpFish = localStorage.getItem('JumpFish');
+ 
+
 
   useEffect(()=>{
     //console.log('chatbox',chosenChatbox)
@@ -33,6 +34,41 @@ const Game = ({user, setUser}) => {
   },[JumpFish])
 
 
+  // if(auto===1){
+  //   setAuto(1)
+  //   mailhandler(true);
+  //   setAuto(0)
+  //   console.log("autoOpen",autoOpen)
+  // }else if(auto===2){
+  //   setAuto(2)
+  //   mailhandler(true);
+  //   setAuto(0)
+  //   console.log("autoOpen",autoOpen)
+  // }else if(auto===3){
+  //   setAuto(3)
+  //   console.log("autoOpen",autoOpen)
+  // }
+
+useEffect(() => {
+  function checkAuto() {
+    console.log("auto改變")
+    const auto = localStorage.getItem('auto')
+    mailhandler(true)
+    setAuto(auto)
+  }
+
+  window.addEventListener('storage', checkAuto)
+
+  return () => {
+    window.removeEventListener('storage', checkAuto)
+  }
+}, [])
+
+
+  useEffect(()=>{
+    console.log("auto改變",autoOpen)
+    mailhandler(true);
+  },[autoOpen])
 
 
   return (
@@ -46,14 +82,14 @@ const Game = ({user, setUser}) => {
             <Mail trigger={mailbox} mailhandler={mailhandler}/>
           </div>
           <div className='middle'>
-            <Mailbox trigger={mailbox} mailhandler={mailhandler} mission={mission} setMission={setMission}/>
+            <Mailbox trigger={mailbox} mailhandler={mailhandler} autoOpen={autoOpen} setAuto={setAuto}/>
             <Mission chosen={chosenChatbox} setChatbox={setChatbox} mission={mission} setMission={setMission}/>
           </div>
           <div className='right'>
-            {chosenChatbox===0 && <Chatbox0 mission={mission} setMission={setMission}/>}
-            {chosenChatbox===1 && <Chatbox1 mission={mission} setMission={setMission}/>}
-            {chosenChatbox===2 && <Chatbox2 mission={mission} setMission={setMission}/>}
-            {chosenChatbox===3 && <Chatbox3/>}
+            {chosenChatbox===0 && <Chatbox0 mission={mission} setMission={setMission} autoOpen={autoOpen} setAuto={setAuto}/>}
+            {chosenChatbox===1 && <Chatbox1 mission={mission} setMission={setMission} autoOpen={autoOpen} setAuto={setAuto}/>}
+            {chosenChatbox===2 && <Chatbox2 mission={mission} setMission={setMission} autoOpen={autoOpen} setAuto={setAuto} />}
+            {chosenChatbox===3 && <Chatbox3 autoOpen={autoOpen} setAuto={setAuto}/>}
           </div>
       </div>
     </div>
