@@ -21,7 +21,9 @@ const Chatbox2 = (props) => {
   const [currIndex, setCurrIndex] = useState(0);//showMsg的訊息跳出Index
 
   if(currScript_2 === 103){
-    props.setMission(3);
+    props.setMission(3)
+    props.setAuto(3)
+    localStorage.setItem('auto', 3)
     localStorage.setItem('mission2', true)}
 
 

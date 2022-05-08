@@ -5,16 +5,15 @@ import playerImg from '../picture/player.png';
 const Mission = (props) => {
 
 
-  console.log('missionprops',props.mission);
   let Mission1 = JSON.parse(localStorage.getItem("mission1"));
   let Mission2 = JSON.parse(localStorage.getItem("mission2"));
-  console.log(Mission2)
-  //localStorage.setItem('mission', JSON.stringify(props.mission));
 
+  //localStorage.setItem('mission', JSON.stringify(props.mission));
+ /*
   useEffect(() => {
     console.log('nowmission',JSON.parse(localStorage.getItem("mission")));
   }, [props.mission]);
-
+*/
 
   return (
     <div className='missioncontainer'>
