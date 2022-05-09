@@ -61,7 +61,7 @@ const Chatbox1 = (props) => {
       }
       else { setAnsBtnDisabled(true); onRowAdded() }
       setTimeout(() => { setCurrIndex(currIndex + 1) }, 1350)//設定一定的時間後，改變當前的Index
-      console.log(currIndex)
+      //console.log(currIndex)
 
     }, [currIndex])
 
@@ -129,7 +129,7 @@ const Chatbox1 = (props) => {
     else return;
 
     const BtnList = CurrScript.map((sub) =>
-      <button className={btnClass} disabled={disable(sub.disable)} onClick={(event) => { props.setTrigger(false); record(sub.record); toNextScript(sub.nextScriptId); console.log('curr = '+props.currScript); setCurrIndex(0); AddPassScript(props.currScript); }}>{sub.text}</button>
+      <button className={btnClass} disabled={disable(sub.disable)} onClick={(event) => { props.setTrigger(false); record(sub.record); toNextScript(sub.nextScriptId); /*console.log('curr = '+props.currScript);*/ setCurrIndex(0); AddPassScript(props.currScript); }}>{sub.text}</button>
       //按下option-button介面中的其中一個選項按鈕，會關閉option-button介面、記錄玩家選擇的按鈕的文字、將CurrScriptState更新成劇本中按下按鈕後要接續的下個劇本ID
     )
 

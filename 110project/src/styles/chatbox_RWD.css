@@ -54,8 +54,8 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 1.2rem;
+  line-height: 1.42rem;
   text-align: center;
 
   color: #FFFFFF;
@@ -70,14 +70,16 @@
   background: #C4C4C4;
   mix-blend-mode: soft-light;
   /* border: 1px solid #FFFFFF; */
-  box-shadow: 0 0 0 2px white;
+  box-shadow: 0 0 0 0.12rem white;
   box-sizing: border-box;
 }
 
 .answer-button {
   position: absolute;
-  width: 17.42rem;
-  height: 36px;
+  width: 69.71%;
+  /*17.42rem*/
+  height: 1.8rem;
+  /**/
   left: 3.75rem;
   top: 24rem;
 
@@ -123,37 +125,37 @@
   line-height: 12px;
   color: #000000;
 }
- 
+
 .message-left-first {
   text-align: left;
 }
 
-.message-left-first .chat-pic{
+.message-left-first .chat-pic {
   border-radius: 30px;
-  margin:-25px 0px 0px 0px;
+  margin: -25px 0px 0px 0px;
   vertical-align: middle;
 }
 
 .message-left-first .message-text {
 
-max-width: 60%;
-display: inline-block;
-align-items: center;
-margin-left: -15px;
-margin-top: 5px;
+  max-width: 60%;
+  display: inline-block;
+  align-items: center;
+  margin-left: -15px;
+  margin-top: 5px;
 
-padding: 8px 8px 8px 8px;
-background: rgba(255, 165, 241, 0.8);
-border-radius: 0px 10px 10px 15px;
-  
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 900;
-font-size: 13px;
-line-height: 15px;
-color:#000000;
+  padding: 8px 8px 8px 8px;
+  background: rgba(255, 165, 241, 0.8);
+  border-radius: 0px 10px 10px 15px;
 
-vertical-align: super;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 15px;
+  color: #000000;
+
+  vertical-align: super;
 
 }
 
@@ -165,7 +167,7 @@ vertical-align: super;
   line-height: 12px;
   margin-left: 10px;
   vertical-align: middle;
-  color:#000000;
+  color: #000000;
 }
 
 
@@ -173,7 +175,7 @@ vertical-align: super;
 
 .message-left {
   text-align: left;
-  margin: -15px 0px 20px 75px;
+  margin: -15px 0px 20px 78px;
 }
 
 .message-left .message-text {
@@ -220,7 +222,7 @@ vertical-align: super;
 }
 
 .message-right .message-time {
-  
+
   display: flex;
   align-items: right;
 
@@ -299,9 +301,11 @@ vertical-align: super;
   font-size: 13px;
   line-height: 15px;
   text-decoration-line: underline;
-  
+
   color: #7B61FF;
   margin-right: 0.2rem;
+
+  max-width: 60%;
 }
 
 .message-normal {
@@ -311,6 +315,8 @@ vertical-align: super;
   font-size: 12px;
   line-height: 15px;
   color: #000000;
+
+  max-width: 60%;
 }
 
 /*--------------------Answer按鈕按下後的選項popUp-----------------------*/
@@ -323,14 +329,14 @@ vertical-align: super;
 
 }
 
-.options-bluetext{
+.options-bluetext {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  font-size: 13px;
+  font-size: 14.5px;
   line-height: 15px;
   text-decoration-line: underline;
-  
+
   color: #7B61FF;
   margin-right: 0.2rem;
 }
@@ -532,21 +538,90 @@ vertical-align: super;
 .option-btn-3:focus {
   background: rgba(255, 165, 241, 0.8);
 }
+
 /*--------------------第一關InputPopUp-----------------------*/
 
-#input-popup {
-  transform: scale(1);
-  transition: 200ms ease-in-out;
-  z-index: 10;
+.fish-background {
+  width: 100vw;
+  height: 56.5vw;
+}
 
+.input-popup-container-1 {
   position: absolute;
-  width: 502px;
-  height: 535px;
-  left: 0px;
-  top: 0px;
+  top: 36.6vw;
+  left: 31.5vw;
+  background: transparent;
+}
 
-  background: #C4C4C4;
-  color: #000000;
+.input-popup-container-2 {
+  position: absolute;
+  top: 42vw;
+  left: 31.5vw;
+  background: transparent;
+}
+
+.input-account {
+  height: 3vw;
+  width: 27vw;
+  background: transparent;
+  border: none;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2vw;
+  line-height: 38px;
+  letter-spacing: 0.05em;
+}
+
+.input-password {
+  top: 3vw;
+  height: 3vw;
+  width: 27vw;
+  background: transparent;
+  border: none;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2vw;
+  line-height: 38px;
+  letter-spacing: 0.05em;
+}
+
+.submit-btn {
+  position: absolute;
+  width: 15vw;
+  height: 5.5vw;
+  left: 75vw;
+  top: 43.5vw;
+
+  text-align: center;
+
+  background: #FFFFFF;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2vw;
+  line-height: 38px;
+
+  text-align: center;
+  letter-spacing: 0.1em;
+
+  color: #CD1C1C;
+  border-width: 0.45vw;
+  border-color: transparent;
+}
+
+.submit-btn:hover {
+  border-color: #CD1C1C;
+}
+
+.submit-btn:active {
+  background: linear-gradient(107.01deg, #F85A5A 35.96%, rgba(239, 115, 115, 0.71) 88.58%);
+  color: #FFFFFF;
+  border-color: transparent;
 }
 
 /*--------------------第二關指認中毒者PopUp-----------------------*/
@@ -590,7 +665,7 @@ vertical-align: super;
 }
 
 .accuse2-btn {
-  border:0;
+  border: 0;
   background-color: rgba(255, 255, 255, 0.0);
 
   margin: 2.25rem 0.25rem 0rem 1.575rem;
@@ -599,11 +674,11 @@ vertical-align: super;
 
 }
 
-.accuse2-btn:hover{
+.accuse2-btn:hover {
   opacity: 0.8;
 }
 
-.accuse2-btn-pic{
+.accuse2-btn-pic {
   width: 10rem;
   height: auto;
 }
@@ -704,8 +779,8 @@ vertical-align: super;
 }
 
 .hint-btn-1 {
-  border:0;
- background-color:none;
+  border: 0;
+  background-color: none;
   margin: 5% 2.2% 2.2% 2.2%;
   /* width:3rem;
   height:3rem; */
@@ -718,25 +793,35 @@ vertical-align: super;
   opacity: 0.2;
 }
 
-.hint-pic{
-  width:8.2rem;
+.hint-pic {
+  width: 8.2rem;
   margin-left: -2rem;
-  margin-top: -1.75rem;
+  margin-top: -2rem;
+  margin-bottom: -2rem
+}
+
+.hint-name {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 15px;
+  color: #333333;
 }
 
 .hint-btn-2 {
 
   width: 8.5rem;
   height: 2.5rem;
-  margin: 1.5rem 7px 10px 10px;
-  
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 900;
-font-size:20px;
-line-height: 21px;
-text-align: center;
-color: #FFFFFF;
+  margin: 1.5rem 0.15rem 0rem 0.5rem;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 21px;
+  text-align: center;
+  color: #FFFFFF;
 
   background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
   box-sizing: border-box;
@@ -749,4 +834,3 @@ color: #FFFFFF;
   opacity: 0.2;
 
 }
-
