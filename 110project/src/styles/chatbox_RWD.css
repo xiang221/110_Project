@@ -393,6 +393,9 @@
 
 
 .option-btn-1 {
+
+  position: static;
+
   background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
 
   font-family: 'Roboto';
@@ -408,19 +411,17 @@
   border: 2px solid #FFFFFF;
 
 
-  margin: 30px;
-  width: 190px;
-  height: 145px;
+ margin: 30px;
 
-  position: static;
-  width: 428px;
-  height: 43px;
-  left: 0px;
-  top: 0px;
+  width: 21.385rem;
+  height: 2.15rem;
 
 }
 
 .option-btn-2 {
+
+  position: static;
+
   background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
 
   font-family: 'Roboto';
@@ -437,46 +438,16 @@
 
 
   margin: 0.25rem 0rem 0.5rem 0rem;
-  width: 190px;
-  height: 145px;
 
-  position: static;
-  width: 428px;
-  height: 43px;
-  left: 0px;
-  top: 0px;
-
-}
-
-.option-btn-2 {
-  background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
-
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 23px;
-  text-align: center;
-
-  color: #FFFFFF;
-
-  box-sizing: border-box;
-  border: 2px solid #FFFFFF;
-
-
-  /* margin: 20px 30px 15px 30px; */
-  width: 190px;
-  height: 145px;
-
-  position: static;
-  width: 428px;
-  height: 43px;
-  left: 0px;
-  top: 0px;
+  width: 21.385rem;
+  height: 2.15rem;
 
 }
 
 .option-btn-3 {
+
+  position: static;
+
   background: linear-gradient(269.15deg, #FAB2EF 14.74%, rgba(152, 249, 243, 0.8) 83.42%);
 
   font-family: 'Roboto';
@@ -492,14 +463,9 @@
   border: 2px solid #FFFFFF;
 
   margin: 0rem 0rem 1.25rem 0rem;
-  width: 190px;
-  height: 145px;
 
-  position: static;
-  width: 428px;
-  height: 43px;
-  left: 0px;
-  top: 0px;
+  width: 21.385rem;
+  height: 2.15rem;
 
 }
 
