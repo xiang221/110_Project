@@ -27,6 +27,8 @@ const Game = ({user, setUser}) => {
   useEffect(()=>{
     if(JumpFish!==null){
     setChatbox(1)
+    mailhandler(false);
+    setAuto(0)
     }
   },[JumpFish])
 
