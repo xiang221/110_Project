@@ -17,9 +17,9 @@
 
 .player1intro{
 	background-color: #FFF;
-    width: 612px;
-    height: 390px;
-	padding: 2em;
+	width: 930px;
+	height: 537px;
+	padding: 1em;
 	margin: auto;
     background-size: cover;
     background-image: url(../picture/player1_intro.png);
@@ -27,9 +27,9 @@
 
 .player2intro{
 	background-color: #FFF;
-    width: 612px;
-    height: 390px;
-	padding: 2em;
+	width: 930px;
+	height: 537px;
+	padding: 1em;
 	margin: auto;
     background-size: cover;
     background-image: url(../picture/player2_intro.png);
@@ -38,9 +38,9 @@
 
 .player3intro{
 	background-color: #FFF;
-    width: 612px;
-    height: 390px;
-	padding: 2em;
+	width: 930px;
+	height: 537px;
+	padding: 1em;
 	margin: auto;
     background-size: cover;
     background-image: url(../picture/player3_intro.png);
@@ -48,9 +48,9 @@
 
 .player4intro{
 	background-color: #FFF;
-    width: 612px;
-    height: 390px;
-	padding: 2em;
+	width: 930px;
+	height: 537px;
+	padding: 1em;
 	margin: auto;
     background-size: cover;
     background-image: url(../picture/player4_intro.png);
@@ -59,7 +59,7 @@
 .close-modal{
     text-decoration: none;
     cursor: pointer;
-    color:black;
+    color:gray;
     float:right;
 }
 
@@ -68,8 +68,8 @@
 	background-image: url('../picture/texture.png');
 	background-color: #272727;
 	position: absolute;
-	width:20.5rem;
-	height: 86%;
+	width:21rem;
+	height: 83%;
 	border: 0.1rem solid #FFF;
 	z-index: 1;
 	margin-left:1rem;
@@ -134,7 +134,7 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	position: relative;
-	height:28.5rem;
+	height:29.5rem;
 	z-index: 2;
 }
 

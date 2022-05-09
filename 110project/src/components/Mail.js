@@ -60,7 +60,7 @@ const Mailbox = (props) => {
           <div className="mailheader">
           <h2 className="mailfont">信夾匣</h2>
           </div>
-          <div style={{overflowY:'scroll', height: '300px'}}>
+          <div style={{overflowY:'scroll', height: '20rem'}}>
           <MailLine mailText={props.mailText} openMailText={props.openMailText} trigger={props.mailbox} mailhandler={props.mailhandler} autoOpen={props.autoOpen} setAuto={props.setAuto}/>
           </div>
           <div className='mailClose'>

@@ -1,4 +1,4 @@
-import React,{ useEffect } from 'react'
+import React from 'react'
 import logo from '../picture/logo.ico'
 import video from '../picture/backgoundVideo.mp4';
 import '../styles/account.css'

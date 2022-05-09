@@ -63,7 +63,7 @@ main {
 .container{
   display:flex;
   flex-direction: row;
-  top: 3rem;
+  top: 2rem;
   position: relative;
 }
 
@@ -93,11 +93,11 @@ main {
 .text{
   color:#ffffff;
   font-size: 0.8em;
+  margin-bottom: 1rem;
 }
 
 .player{
   align-items: center;
-  padding-top: 1.5rem;
 }
 
 .player1{
@@ -110,13 +110,9 @@ main {
   cursor: pointer;
 }
 
-.player2{
-  background-image: url('../picture/player2.png');
-  background-repeat: no-repeat;
-  background-size: 80% auto;
-  background-position: center;
-  height:4rem;
-  width:4rem;
+.playerCircle{
+  height:5.5rem;
+  width:5.5rem;
   cursor: pointer;
 }
 

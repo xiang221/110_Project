@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import Popup from './Popup';
-
+import player1 from '../picture/player1.png'
+import player2 from '../picture/player2.png'
+import player3 from '../picture/player3.png'
+import player4 from '../picture/player4.png'
 
 
 
@@ -13,22 +16,22 @@ const Online = () => {
 
   return (
     <div className='onlinecontainer'>
-    <div className='text'>上線玩家</div>
+    <div className='text'>管理團隊</div>
     <div className='player'>
-    <div className='player1' onClick={ ()=> show1handler(true)} ></div>
-    <Popup trigger={player1intro} showhandler={show1handler} pic="player1intro"/>
+    <img src={player1} className='playerCircle' onClick={ ()=> show1handler(true)} />
+    <Popup trigger={player1intro} showhandler={show1handler} pic="player1intro" video="player1"/>
     </div>
     <div className='player'>
-    <div className='player2' onClick={ ()=> show2handler(true)} ></div>
-    <Popup trigger={player2intro} showhandler={show2handler} pic="player2intro"/>
+    <img src={player2} className='playerCircle' onClick={ ()=> show2handler(true)} />
+    <Popup trigger={player2intro} showhandler={show2handler} pic="player2intro" video="player2"/>
     </div>
     <div className='player'>
-    <div className='player3' onClick={ ()=> show3handler(true)}></div>
-    <Popup trigger={player3intro} showhandler={show3handler} pic="player3intro"/>
+    <img src={player3} className='playerCircle' onClick={ ()=> show3handler(true)} />
+    <Popup trigger={player3intro} showhandler={show3handler} pic="player3intro" video="player3"/>
     </div>
     <div className='player'>
-    <div className='player4' onClick={ ()=> show4handler(true)}></div>
-    <Popup trigger={player4intro} showhandler={show4handler} pic="player4intro"/> 
+    <img src={player4} className='playerCircle' onClick={ ()=> show4handler(true)} />
+    <Popup trigger={player4intro} showhandler={show4handler} pic="player4intro" video="player4"/> 
     </div>
     </div>
   )
