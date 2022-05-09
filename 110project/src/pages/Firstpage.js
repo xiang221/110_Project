@@ -9,7 +9,7 @@ const Firstpage = () => {
 
   const navEventHandler = (e) => {
 
-      navigate('/signup');
+      navigate('/intro');
       localStorage.clear(); 
       window.location.reload();
     

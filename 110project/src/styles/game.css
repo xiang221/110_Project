@@ -210,12 +210,62 @@ main {
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
-  animation: fadeinout 5s linear forwards;
+  animation: fadein 5s linear forwards;
 }
 
 
-@keyframes fadeinout {
-  0%{ opacity:0; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+@keyframes fadein {
+  0%{ opacity:0 }
+  50% { opacity: 0.5}
+  100% { opacity: 1 }
 }
+
+
+.animate {  
+  height: 100vh;
+  width: 100vw; 
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;    
+  animation: slider 22s linear alternate;     
+}   
+
+
+@keyframes slider {   
+  0% {   
+    background-image: url('../picture/game\ instructions\ 1.png');
+    opacity:1;   
+  }
+  40%{
+    background-image: url('../picture/game\ instructions\ 1.png');
+    opacity:1; 
+  }
+  49%{
+    background-image: url('../picture/game\ instructions\ 1.png');
+    opacity:0; 
+  }   
+  50% {   
+    background-image: url('../picture/game\ instructions\ 2.png') ; 
+    opacity:0;  
+  }
+  60% {   
+    background-image: url('../picture/game\ instructions\ 2.png') ; 
+    opacity:1;  
+  }  
+  100%{
+    background-image: url('../picture/game\ instructions\ 2.png') ; 
+    opacity:1;  
+  }
+
+}   
+
+.intro {
+  height: 100vh;
+  width: 100vw;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  animation: fadeinout 10s infinite alternate;
+}
+

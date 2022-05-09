@@ -15,13 +15,13 @@ body{
 }
 
 .input input[type="text"]{
-    width: 24rem;
+    width: 20rem;
     height: 3rem;
     margin:1rem;
     color:black;
 }
 .input input[type="password"]{
-    width: 24rem;
+    width: 20rem;
     height: 3rem;
     margin:1rem;
     color:black;
@@ -30,7 +30,7 @@ body{
 
 .input input[type="submit"]{
     cursor:pointer;
-    width: 24rem;
+    width: 20rem;
     height: 3.5rem;
     border:none;
     color:#FFF;
@@ -68,6 +68,7 @@ body{
     display: flex;
     justify-content: center;
     line-height:8rem;
+    margin:0;
 }
 
 
