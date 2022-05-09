@@ -1,6 +1,8 @@
 import React from 'react'
 import { Young, God, Robot, Hack, GodOrHack, HackOrGod, Player, System } from './Character'
 
+import ChatPic_Weird from '../picture/ChatPic_Weird.png'
+
 export const Scripts = [
   {
     scriptId: 103,//第二關最後
@@ -66,7 +68,7 @@ export const Scripts = [
       { align: "message-center", text: Young.nickName + "已將您加入群組(人數:7人)" },
       { align: "message-left-first", sender: God.nickName, chatPicSrc: God.chatPicSrc, text: "嗨嗨，歡迎加入", time: "下午04:53" },
       { align: "message-right", text: "安安", time: "下午04:53" },
-      { align: "message-left-first", sender: "噁男", chatPicSrc: "https://img.onl/BKTCxz", text: "妹子ㄇ?", time: "下午04:53" },//噁男照片待補
+      { align: "message-left-first", sender: "噁男", chatPicSrc: ChatPic_Weird, text: "妹子ㄇ?", time: "下午04:53" },//噁男照片待補
       { align: "message-center", text: Robot.nickName + "已將噁男移出群組(人數:6人)" },
       { align: "message-right", text: "欸不是，6個人是要怎麼多數決?", time: "下午04:54" },
       { align: "message-center", text: Robot.nickName + "已將潛水艇移出群組(人數:5人)" },

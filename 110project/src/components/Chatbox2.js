@@ -5,6 +5,11 @@ import '../styles/chatbox_RWD.css'
 import Timer from './Timer'
 import $ from 'jquery'
 
+import Accuse_A from '../picture/Accuse_A.png'
+import Accuse_B from '../picture/Accuse_B.png'
+import Accuse_C from '../picture/Accuse_C.png'
+import Accuse_D from '../picture/Accuse_D.png'
+
 
 let pastScripts = [];
 
@@ -46,7 +51,7 @@ const Chatbox2 = (props) => {
         }
         else { setAnsBtnDisabled(true); onRowAdded() }
         setTimeout(() => { setCurrIndex(currIndex + 1) }, 1350)//設定一定的時間後，改變當前的Index
-        console.log(currIndex)
+        //console.log(currIndex)
 
     }, [currIndex])
 
@@ -184,10 +189,10 @@ const Chatbox2 = (props) => {
         <div id="accuse2-popup">
         <div className="accuse2-title">誰，才是真正中毒的人？</div>
           <div id="accuse2-btn" className="accuse2-btn-grid">
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名火龍蕉"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src="https://img.onl/T3V7p" className='accuse2-btn-pic'/></button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名凸頂橙"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src="https://img.onl/uHe5oT" className='accuse2-btn-pic'/></button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名麝香葡萄"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src="https://img.onl/waqDg6" className='accuse2-btn-pic'/></button>
-            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名白桃"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src="https://img.onl/llKIo0" className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名火龍蕉"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src={Accuse_A} className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名凸頂橙"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src={Accuse_B} className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名麝香葡萄"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src={Accuse_C} className='accuse2-btn-pic'/></button>
+            <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名白桃"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src={Accuse_D} className='accuse2-btn-pic'/></button>
           </div>
         </div>
         </div>

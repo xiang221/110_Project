@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Navigate } from 'react-router-dom';
 
+import fish from '../picture/fish.png'
+
 const Fish = (props) => {
 
   const [accField, setAccField] = useState("");
@@ -17,11 +19,11 @@ const Fish = (props) => {
   };
 
   useEffect(() => {
-    console.log("目前輸入的帳號："+accField)
+    console.log("目前輸入的帳號：" + accField)
   }, [accField])
 
   useEffect(() => {
-    console.log("目前輸入的密碼："+pwdField)
+    console.log("目前輸入的密碼：" + pwdField)
   }, [pwdField])
 
   useEffect(() => {
@@ -54,7 +56,7 @@ const Fish = (props) => {
   useEffect(() => {//判斷下一個要跳轉的劇本ID、關掉inputPopup介面
     let FishAcc = localStorage.getItem('FishAcc')
     let FishPwd = localStorage.getItem('FishPwd')
-    let JumpFish = localStorage.setItem('JumpFish',true)
+    let JumpFish = localStorage.setItem('JumpFish', true)
     if (FishAcc !== null && FishPwd !== null) {//確認不是預設狀態
 
       //如果帳密都輸對，跳劇本102
@@ -67,11 +69,29 @@ const Fish = (props) => {
     }
   })
 
-  if(flag === true){return<Navigate to="/game"/>}
+  if (flag === true) { return <Navigate to="/game" /> }
 
   return (
     <>
       <div id="input-popup">
+        <img src={fish} className="fish-background" />
+        <div >
+          <form onSubmit={Save} >
+            <div className="input-popup-container-1"><input className='input-account' required="required" type="text" value={accField} /*placeholder="點擊以輸入您的帳號"*/ onChange={(e) => { setAccField(e.target.value) }} /></div>
+            <div className="input-popup-container-2"><input className='input-password' required="required" type="password" value={pwdField} /*placeholder="點擊以輸入您的密碼"*/ onChange={(e) => { setPwdField(e.target.value) }} /></div>
+            <button className='submit-btn'>確認送出</button>
+          </form>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default Fish
+
+/*
+      <div id="input-popup">
+        <img src={fish} className="fish-background"/>
         <div className="input-popup-container">
           <div>恭喜您!您是今日的第187位訪客!填入基本資料已獲得抽取iphone大獎的機會!<br />請依序填入您的</div>
           <form onSubmit={Save} >
@@ -84,7 +104,4 @@ const Fish = (props) => {
         </div>
       </div>
     </>
-  )
-}
-
-export default Fish
+*/

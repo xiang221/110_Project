@@ -36,7 +36,7 @@ const Chatbox0 = (props) => {
         }
         else { setAnsBtnDisabled(true); onRowAdded() }
         setTimeout(() => { setCurrIndex(currIndex + 1) }, 1350)//設定一定的時間後，改變當前的Index
-        console.log(currIndex)
+        //console.log(currIndex)
 
     }, [currIndex])
 
@@ -109,7 +109,7 @@ const Chatbox0 = (props) => {
       if (currScript !== pastScripts[pastScripts.length] && currScript !== 2 && currScript >= 0) {
         //  pastScripts.push(currScript)
         setPastScripts(oldArray => [...oldArray, currScript])
-        console.log(pastScripts)
+        //console.log(pastScripts)
       }
     }
 

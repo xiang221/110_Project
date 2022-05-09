@@ -1,5 +1,11 @@
 import React from "react";
 
+import ChatPic_God from '../picture/ChatPic_God.png'  
+import ChatPic_Hack from '../picture/ChatPic_Hack.png' 
+import ChatPic_Young from '../picture/ChatPic_Young.png' 
+import ChatPic_Robot from '../picture/ChatPic_Robot.png' 
+
+
 //角色分配(Random)
 class Character extends React.Component {
     constructor(realName, nickName, chatPicSrc) {
@@ -19,21 +25,21 @@ function getRandomInt(max) {
 const nickNameRandomIndex = getRandomInt(11)
 const nickNameList = nickNameRandomList[nickNameRandomIndex]
 
-console.log("nickNameRandomIndex = " + nickNameRandomIndex);
-console.log("nickNameRandomList" + nickNameList);
+// console.log("nickNameRandomIndex = " + nickNameRandomIndex);
+// console.log("nickNameRandomList" + nickNameList);
 
 function assignChatPic(nickName) {//圖片待UI補
     if (nickName === "A") {
-        return "https://img.onl/waSEor" //火龍蕉
+        return ChatPic_God //火龍蕉 "https://img.onl/waSEor" 
     }
     else if (nickName === "B") {
-        return "https://img.onl/j9TIUF" //凸頂橙
+        return ChatPic_Hack //凸頂橙 "https://img.onl/j9TIUF"
     }
     else if (nickName === "C") {
-        return "https://img.onl/fQva9Z" //麝香葡萄
+        return ChatPic_Young //麝香葡萄 "https://img.onl/fQva9Z"
     }
     else if (nickName === "D") {
-        return "https://img.onl/g1CxXX" //白桃
+        return ChatPic_Robot //白桃 "https://img.onl/g1CxXX"
     }
 }
 
