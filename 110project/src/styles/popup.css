@@ -22,6 +22,7 @@
 	padding: 1em;
 	margin: auto;
     background-size: cover;
+	z-index:2;
     background-image: url(../picture/player1_intro.png);
 }
 
@@ -32,6 +33,7 @@
 	padding: 1em;
 	margin: auto;
     background-size: cover;
+	z-index:2;
     background-image: url(../picture/player2_intro.png);
 }
 
@@ -43,6 +45,7 @@
 	padding: 1em;
 	margin: auto;
     background-size: cover;
+	z-index:2;
     background-image: url(../picture/player3_intro.png);
 }
 
@@ -53,6 +56,7 @@
 	padding: 1em;
 	margin: auto;
     background-size: cover;
+	z-index:2;
     background-image: url(../picture/player4_intro.png);
 }
 
