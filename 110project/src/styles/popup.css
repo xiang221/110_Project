@@ -11,7 +11,7 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-	z-index: 2;
+	z-index: 100;
 }
 
 
@@ -24,6 +24,7 @@
     background-size: cover;
 	z-index:2;
     background-image: url(../picture/player1_intro.png);
+	z-index: 100;
 }
 
 .player2intro{
@@ -35,6 +36,7 @@
     background-size: cover;
 	z-index:2;
     background-image: url(../picture/player2_intro.png);
+	z-index: 100;
 }
 
 
@@ -47,6 +49,7 @@
     background-size: cover;
 	z-index:2;
     background-image: url(../picture/player3_intro.png);
+	z-index: 100;
 }
 
 .player4intro{
@@ -55,9 +58,11 @@
 	height: 537px;
 	padding: 1em;
 	margin: auto;
+	z-index: 100;
     background-size: cover;
 	z-index:2;
     background-image: url(../picture/player4_intro.png);
+
 }
 
 .close-modal{
@@ -101,7 +106,6 @@
 	overflow: hidden;
 	margin:0.3rem 0;
 }
-
 .mailBtn{
 	position:absolute;
 	background-color: #FFF;
