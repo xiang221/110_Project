@@ -227,7 +227,7 @@ main {
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center;    
-  animation: slider 22s linear alternate;     
+  animation: slider 30s linear alternate;     
 }   
 
 
@@ -236,11 +236,11 @@ main {
     background-image: url('../picture/game\ instructions\ 1.png');
     opacity:0;   
   }
-  10% {   
+  5% {   
     background-image: url('../picture/game\ instructions\ 1.png');
     opacity:1;   
   }
-  40%{
+  45%{
     background-image: url('../picture/game\ instructions\ 1.png');
     opacity:1; 
   }
@@ -252,13 +252,17 @@ main {
     background-image: url('../picture/game\ instructions\ 2.png') ; 
     opacity:0;  
   }
-  60% {   
+  55% {   
+    background-image: url('../picture/game\ instructions\ 2.png') ; 
+    opacity:1;  
+  }
+  95%{
     background-image: url('../picture/game\ instructions\ 2.png') ; 
     opacity:1;  
   }  
   100%{
     background-image: url('../picture/game\ instructions\ 2.png') ; 
-    opacity:1;  
+    opacity:0;  
   }
 
 }   
