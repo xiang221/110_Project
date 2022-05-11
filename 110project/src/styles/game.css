@@ -6,6 +6,14 @@
 
 }
 
+/*firstpage*/
+
+.indexContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+
 .overlay{
   z-index: 100;
 }
@@ -41,17 +49,6 @@ div.circle {
   border-radius: 999em; 
 }
 
-div.circle.circle1 {
-  background-color: #f06874;
-}
-
-div.circle.circle2 {
-  background-color: #6aaff2;
-}
-
-div.circle.circle3 {
-  background-color: #ffffff;
-}
 
 
 
@@ -165,7 +162,6 @@ main {
 }
 
 
-
 .board_card {
   display: flex;
   flex-direction: column;
@@ -269,7 +265,6 @@ main {
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
-
   animation: fadeinout 10s infinite alternate;
 }
 

@@ -18,8 +18,6 @@ const Game = ({user, setUser}) => {
   const [mailText, openMailText] = useState(0);
   let [mission, setMission] = useState(0);
 
-  let mission1 = localStorage.getItem('mission');
-  let mission2 = localStorage.getItem('mission2');
   let JumpFish = localStorage.getItem('JumpFish');
  
 

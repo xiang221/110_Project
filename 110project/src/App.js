@@ -6,6 +6,7 @@ import Game from "./pages/Game";
 import Fish from "./pages/Fish";
 import Signup from "./pages/Signup";
 import End from "./pages/End";
+import './styles/game.css'
 
 function App() {
 

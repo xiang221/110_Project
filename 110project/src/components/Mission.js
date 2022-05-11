@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import '../styles/middle.css'
 import playerImg from '../picture/player.png';
 import logo from '../picture/missionlogo.png'
@@ -10,15 +10,9 @@ const Mission = (props) => {
   let Mission1 = JSON.parse(localStorage.getItem("mission1"));
   let Mission2 = JSON.parse(localStorage.getItem("mission2"));
 
-  //localStorage.setItem('mission', JSON.stringify(props.mission));
- /*
-  useEffect(() => {
-    console.log('nowmission',JSON.parse(localStorage.getItem("mission")));
-  }, [props.mission]);
-*/
 
   return (
-    <div className='missioncontainer'>
+  <div className='missioncontainer'>
       <div className='playercontainer'>
         <img src={playerImg} className='playercard' /> 
       </div>
@@ -43,8 +37,8 @@ const Mission = (props) => {
         <p>創世神傳送了貼圖</p>
         </div>
       </div>
-</div>
-)
+  </div>
+  )
 }
 
 export default Mission
