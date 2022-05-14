@@ -173,7 +173,7 @@ export const Scripts = [
   {
     scriptId: 8,//第二關_誰中毒了_第三段(我覺得資深鄉民很可疑)
     options: [
-      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
+      { text: "有人…被操控了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", text: <span>但我也覺得{Young.nickName}很可疑</span>, time: "上午08:12" },
@@ -201,7 +201,7 @@ export const Scripts = [
   {
     scriptId: 10,//第二關_誰中毒了_第四段(我也覺得機器人一直在帶風向很奇怪)
     options: [
-      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
+      { text: "有人…被操控了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", text: <span>我也覺得{Robot.nickName}一直在帶風向很奇怪</span>, time: "上午08:25" },
@@ -211,7 +211,7 @@ export const Scripts = [
   {
     scriptId: 11,//第二關_誰中毒了_第四段(我覺得機器人只是比較謹慎而已)
     options: [
-      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
+      { text: "有人…被操控了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", text: <span>我覺得{Robot.nickName}只是比較謹慎而已</span>, time: "上午08:25" },
@@ -235,7 +235,7 @@ export const Scripts = [
   {
     scriptId: 13,//第二關_誰中毒了_第三段(我覺得創世神 or 駭客才在帶風向)
     options: [
-      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
+      { text: "有人…被操控了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", text: <span>我覺得{GodOrHack.nickName}才在帶風向</span>, time: "上午08:12" },
@@ -245,7 +245,7 @@ export const Scripts = [
   {
     scriptId: 14,//第二關_誰中毒了_第三段(我覺得機器人你才是在帶風向)
     options: [
-      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
+      { text: "有人…被操控了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", text: <span>我覺得{Robot.nickName}你才是在帶風向</span>, time: "上午08:12" },
@@ -255,7 +255,7 @@ export const Scripts = [
   {
     scriptId: 15,//第二關_誰中毒了_第三段(我覺得資深鄉民可能被盜了)
     options: [
-      { text: "有人…中毒了？", nextScriptId: -1 },//第二關指認
+      { text: "有人…被操控了？", nextScriptId: -1 },//第二關指認
     ],
     messages: [
       { align: "message-right", text: <span>我覺得{Young.nickName}可能被盜了</span>, time: "上午08:12" },

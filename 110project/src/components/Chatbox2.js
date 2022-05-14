@@ -50,7 +50,7 @@ const Chatbox2 = (props) => {
           return
         }
         else { setAnsBtnDisabled(true); onRowAdded() }
-        setTimeout(() => { setCurrIndex(currIndex + 1) }, 1350)//設定一定的時間後，改變當前的Index
+        setTimeout(() => { setCurrIndex(currIndex + 1) }, 1700)//設定一定的時間後，改變當前的Index
         //console.log(currIndex)
 
     }, [currIndex])
@@ -170,7 +170,7 @@ const Chatbox2 = (props) => {
     function whoisControlled(nickNamepicked) {
       let pickedCharacter = Accuse2List.filter(Character => Character.nickName === nickNamepicked)//因為filter回傳的是陣列 所以要找出來要用陣列
 
-      if (pickedCharacter[0].realName === 'Young') {//劇本的第二關的中毒者是青年
+      if (pickedCharacter[0].realName === 'Robot') {//劇本的第二關的中毒者是青年
         localStorage.setItem('FindYoung', true)//用localstorage來記錄
       }
       else {
@@ -187,7 +187,7 @@ const Chatbox2 = (props) => {
       <>
         <div className="accuse2-container">
         <div id="accuse2-popup">
-        <div className="accuse2-title">誰，才是真正中毒的人？</div>
+        <div className="accuse2-title">誰，才是被操控的人？</div>
           <div id="accuse2-btn" className="accuse2-btn-grid">
             <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名火龍蕉"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src={Accuse_A} className='accuse2-btn-pic'/></button>
             <button className="accuse2-btn" onClick={(event) => { whoisControlled("匿名凸頂橙"); toNextScript(Number(103)); props.setTrigger(false); setCurrIndex(0); }}><img src={Accuse_B} className='accuse2-btn-pic'/></button>
