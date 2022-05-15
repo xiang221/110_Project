@@ -24,7 +24,7 @@ const End = () => {
         navigate('/');
     }
 
-    window.setTimeout(toindex, 10000);
+    window.setTimeout(toindex, 15000);//原為10000
 
 
   return (

@@ -9,7 +9,7 @@ const Intro = () => {
     navigate('/signup');
   }
 
-window.setTimeout(toNext, 30000);
+window.setTimeout(toNext, 40000);//原30000
 
 
   return (
