@@ -34,7 +34,6 @@ const Game = ({user, setUser}) => {
 
 
   useEffect(()=>{
-    console.log("auto改變",autoOpen)
     mailhandler(true);
     openMailText(autoOpen);
   },[autoOpen])

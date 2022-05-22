@@ -21,8 +21,6 @@ const EndList = {
   31: "以牙還牙"
 }
 
-console.log(EndList[25]);
-
 //信箱
 const Mail = (props) => {
   return (
@@ -49,7 +47,6 @@ const Mailbox = (props) => {
     else if(props.mailText===29){ setUrl(mail29);}
     else if(props.mailText===30){ setUrl(mail30);}
     else if(props.mailText===31){ setUrl(mail31);}
-    console.log("狀態改變")
      
   },[props.mailText])
 
@@ -86,12 +83,6 @@ const MailLine = (props) =>{
   let Mission1 = localStorage.getItem("mission1");
   let Mission2 = JSON.parse(localStorage.getItem("mission2"));
 
-
-
-  useEffect(() => {
-    console.log("結局為",END);
-
-  }, [END]);
 
 
   return(
