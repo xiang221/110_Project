@@ -13,7 +13,6 @@ function App() {
 
 
   return (
-    <div>
       <Routes>
         <Route path="/" element={<Firstpage />} />
         <Route path="intro" element={<Intro />} />
@@ -22,7 +21,6 @@ function App() {
         <Route path="fish" element={<Fish />}/> 
         <Route path="end" element={<End />} />       
       </Routes>
-    </div>
   );
 }
 
