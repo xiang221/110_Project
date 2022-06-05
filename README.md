@@ -2,11 +2,11 @@
 
 論壇風雲
 
-劇本：白耕竹
-美術：林宥丞
-程式：陳湘宜、陳品臻
-UI/UX：葉婉宜
-行銷：應羽雯
+###### 劇本：白耕竹
+###### 美術：林宥丞
+###### 程式：陳湘宜、陳品臻
+###### UI/UX：葉婉宜
+###### 行銷：應羽雯
 
 ## DEMO
 https://cyberwarfare-2427e.web.app/
@@ -33,13 +33,13 @@ https://drive.google.com/file/d/1T2EXPwHfCV1JJQ1lVhQVJ6Ul_OJ4WOBT/view?usp=shari
 ## 技術原理
 作品使用技術：HTML、CSS、JavaScript（使用React.js框架撰寫）
 撰寫過程：
-１．將頁面拆分成不同component，透過傳遞和接收props，使遊戲主頁的郵件、
+###### １．將頁面拆分成不同component，透過傳遞和接收props，使遊戲主頁的郵件、
 任務、聊天室能根據遊戲的進展而有不同呈現。
-２．使用一些Hooks來實現動態互動的效果：useState及useEffect控制頁面元件的
+###### ２．使用一些Hooks來實現動態互動的效果：useState及useEffect控制頁面元件的
 渲染，並搭配Router控制頁面之間的跳轉。
-３．呈現方式：作品於展期間使用本地端運行，減少網路斷線風險以及圖檔、影片檔
+###### ３．呈現方式：作品於展期間使用本地端運行，減少網路斷線風險以及圖檔、影片檔
 載入較慢的問題，展後則部屬至Firebase。
-４．未來改善：未來或許可改用Redux來管理狀態(state)。
+###### ４．未來改善：未來或許可改用Redux來管理狀態(state)。
 
 
 
